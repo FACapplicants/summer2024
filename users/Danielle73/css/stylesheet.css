@@ -1,0 +1,132 @@
+*, *:before, *:after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+  }
+
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+
+body{
+    font-family: 'Quicksand', sans-serif;
+    color: #ca6464;
+    /* background-color: #F6F5F2; */
+    /* background-color: #F7E3DA; */
+    /* background-color: #FBF8DD; */
+    background-color: #FEFBF6;
+    scroll-behavior: smooth;
+}
+
+.navigation{
+    /* background-color: #F69F91; */
+    /* background-color: #F0ADA7; */
+    /* background-color: rgb(63, 122, 99, 0.5); */
+    background-color: #E9C874;
+    width: 15%;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    border-right: #C0D6E8 solid 5px ;
+}
+ 
+ul {
+    list-style-type: none;
+} 
+
+li {
+    padding: 15px; 
+    margin: 15px;
+    /* background-color: #b68d13; */
+}  
+
+li a {
+    text-decoration: none;
+    color: #A34343;
+    font-weight:600;
+} 
+
+li a:hover {
+  color: hsl(210, 56%, 58%);
+}
+
+/*Will move the main container towards the right*/
+
+.main-container {
+    margin-left: 15%;
+    padding: 10px;
+}
+
+.top-container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    padding: 20px;
+    /* border: blue solid 3px; */
+}
+
+img {
+    /* border: green solid 3px; */
+}
+
+.intro {
+    /* border: 3px solid black; */
+    padding: 80px 50px; 
+} 
+
+#intro-para {
+    margin: 10px 0;
+}
+
+.middle-container {
+    /* border: pink solid 3px;  */
+    padding: 10px;
+}
+
+h2 {
+    padding: 15px;
+}
+
+/* projects container */
+
+.projects-container{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    /* border: 3px solid black; */
+    /* margin: 30px; */
+} 
+
+/* .projects-card {
+    /* background: #f3f0ee;  */
+    /* margin: 20px;
+}  */
+
+ 
+.projects-container h3,  p {
+    margin: 30px;
+}
+
+/* socials */
+
+.contact-container{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+#icons{
+    padding: 10px;
+}
+
+#icons:hover{
+    /* background-color: rgb(255, 165, 0); */
+    /* background-color: rgb(255, 220, 174); */
+    background-color: #C0D6E8;
+    box-shadow: 3px 3px 3px 3px rgba(211, 211, 211,0.5);
+    border-radius: 100%;
+    transform: translateY(4px);
+} 
