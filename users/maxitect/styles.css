@@ -1,0 +1,33 @@
+h1, h2, p {
+  font-family: Necto Mono;
+}
+
+h1 {
+  margin: 1em auto;
+  text-align: center;
+  width: 60vw;
+}
+
+.central {
+  text-align: center;
+}
+
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  height: auto;
+  line-height:30px;
+}
+
+.flex-item {
+  background: tomato;
+  margin: 5px;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  flex: 1 0 0px;
+  height: auto;
+}
