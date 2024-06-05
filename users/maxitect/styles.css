@@ -4,11 +4,10 @@ h1, h2, p {
 
 h1 {
   margin: 1em auto;
-  text-align: center;
   width: 60vw;
 }
 
-.central {
+.central, h1 {
   text-align: center;
 }
 
@@ -18,7 +17,6 @@ h1 {
   list-style: none;
   display: flex;
   justify-content: space-around;
-  height: auto;
   line-height:30px;
 }
 
@@ -29,5 +27,4 @@ h1 {
   color: white;
   text-align: center;
   flex: 1 0 0px;
-  height: auto;
 }
