@@ -1,0 +1,60 @@
+body {
+    background-color: rgb(210, 173, 173);
+    box-sizing: border-box;
+    position:relative;
+    line-height: 1.5;
+    /*overflow-x: hidden;
+    overflow-y: scroll;*/
+  }
+
+h1,h2,p {
+   text-align: center;
+  }
+
+/*home*/
+.home {
+    color:rgb(246, 244, 241);
+    background-image: url(./assets/home_background.jpg);
+    background-color:rgb(52, 100, 100);
+    background-position: center;
+    height: 90vh;
+    /*min-height: 80rem;
+    max-height: 120rem;*/
+    position: relative;
+}
+.home_content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90rem;
+    width: 92%;
+}
+.heading_home {
+    font-size: 3rem;
+    letter-spacing: 3px;
+    text-align: center;
+    color:antiquewhite;
+    font-weight: 600;
+}
+.home_info {
+    margin: 3rem auto 0 auto;
+    max-width: 80rem;
+}
+.text_home {
+    color:pink;
+    font-size: 2rem;
+    text-align: center;
+    width: 100%;
+    line-height: 1.6;
+}
+.home_link {
+    text-align: center;
+}
+
+/*about*/
+.main_container {
+    max-width: 120rem;
+    margin:auto;
+    width: 92%;
+}
