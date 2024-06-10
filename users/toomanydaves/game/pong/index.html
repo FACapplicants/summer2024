@@ -13,10 +13,14 @@
                 display: block;
                 margin: 0 auto;
             }
+            button {
+                display: block;
+            }
         </style>
     </head>
     <body>
         <canvas id="pong" width="480" height="320"></canvas>
+        <button id="start">Start Game</button>
 
         <script>
             const canvas = document.getElementById('pong');
@@ -42,7 +46,16 @@
                 y += dy;
             }
 
-            setInterval(draw, 10);
+            function startGame () {
+                const interval = setInterval(draw, 10);
+            }
+
+            document
+            .getElementById('start')
+            .addEventListener('click', function () {
+                startGame();
+                this.disabled = true;
+            });
         </script>
     </body>
 </html>
