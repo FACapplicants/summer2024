@@ -28,6 +28,8 @@
             const ballRadius = 10;
             const paddleHeight = 10;
             const paddleWidth = 75;
+
+            let gameInterval;
             
             //ball coodinates and motion
             let x = canvas.width / 2;
@@ -95,8 +97,10 @@
                 if (x + dx < ballRadius || x + dx > canvas.width - ballRadius) {
                     dx = -dx;
                 }
-                if (y + dy < ballRadius || y + dy > canvas.height - ballRadius) {
+                if (y + dy < ballRadius) {
                     dy = -dy;
+                } else if (y + dy > canvas.height - ballRadius) {
+                    endGame();
                 }
 
                 drawPaddle();
@@ -104,9 +108,15 @@
             }
 
             function startGame () {
-                const interval = setInterval(draw, 10);
+                gameInterval = setInterval(draw, 10);
                 document.addEventListener('keydown', movePaddle, false);
                 document.addEventListener('keyup', stopPaddle, false);
+            }
+
+            function endGame () {
+                alert('GAME OVER');
+                clearInterval(gameInterval);
+                document.location.reload();
             }
 
             document
