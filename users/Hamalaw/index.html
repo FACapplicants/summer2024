@@ -4,82 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adam Smith - Dentist</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: rgba(128, 104, 235, 0.782); /*changing the color*/
-            color: white;
-            padding: 1rem;
-            text-align: center;
-        }
-        nav {
-            display: flex;
-            justify-content: space-between;
-            background-color: #333;
-        }
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-        nav ul li {
-            display: inline;
-        }
-        nav ul li a {
-            color: white;
-            padding: 14px 20px;
-            text-decoration: none;
-            display: inline-block;
-        }
-        nav ul li a:hover {
-            background-color: #111;
-        }
-        .menu-toggle {
-            display: none;
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 14px 20px;
-            cursor: pointer;
-        }
-        .menu-toggle:hover {
-            background-color: #111;
-        }
-        .content {
-            padding: 1rem;
-        }
-        .section {
-            margin-bottom: 2rem;
-        }
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-            }
-            nav ul li {
-                display: block;
-            }
-            .menu-toggle {
-                display: block;
-            }
-        }
-    </style>
-    <script>
-        function toggleMenu() {
-            var menu = document.getElementById("menu");
-            if (menu.style.display === "flex") {
-                menu.style.display = "none";
-            } else {
-                menu.style.display = "flex";
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="./CSS/styles.css">
 </head>
 <body>
 
@@ -122,6 +47,8 @@
         <p>Address: 123 Dental Clinic St, Smile City, Country</p>
     </div>
 </div>
+
+<script src="./JS/script.js"></script>
 
 </body>
 </html>
