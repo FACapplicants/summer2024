@@ -1,0 +1,87 @@
+body {
+    font-family: 'Roboto Mono', monospace;
+    background-color: #222;
+    color: #eee;
+    margin-top: 10px;
+    font-size: 16px;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.title_container {
+  vertical-align: center;
+  display: inline-block;
+  margin-left: 20px;
+  padding-left: 20px;
+}
+
+.ascii-art {
+  white-space: normal;
+  border: 2px solid #eee;
+  padding: 15px 15px 20px 15px;
+  border-radius: 20px;
+}
+
+.navbox {
+  color: #eee;
+  margin: 10px;
+  margin-left: auto;
+}
+
+.navbar_button {
+  display: inline-block;
+  padding: 10ps 20px;
+  border: 2px solid #eee;
+  border-radius: 15px;
+  color: #eee;
+  background-color: #222;
+  transition: background-color 0.3s, color 0.3s;
+  padding: 15px;
+  text-decoration-line: none;
+}
+
+.navbar_button:hover, 
+.navbar_button:active {
+  background-color: #eee;
+  color: #222;
+}
+
+a, a:visited {
+    color: #9c78e3; /* Dark pastel purple color */
+    text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+    color: #7B68EE; /* Darker shade of pastel purple on hover */
+}
+
+h1 {
+  margin-left: 0px;
+  color: #eee;
+  text-decoration-line: underline;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #eee;
+  text-decoration-line: underline;
+}
+
+.content {
+  max-width: 75%;
+  text-align: justify;
+  margin: 60px auto; /* Center horizontally */
+}
+
+.article-content {
+  max-width: 60%;
+  text-align: justify;
+  margin: 60px auto; /* Center horizontally */
+}
