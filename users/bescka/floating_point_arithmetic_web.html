@@ -1,128 +1,136 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-  <link rel="Stylesheet" type="text/css" href="style.css" />
-  <title>Flounders and Codes - Home</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <link rel="icon" href="/assets/fc_favicon_96_2.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="/assets/fc_favicon_96_2.ico" type="image/x-icon">
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  <style>
-    body {
-      margin-top: 10px;
-    }
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Flounders and Codes - Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="icon" href="/assets/fc_favicon_96_2.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/fc_favicon_96_2.ico" type="image/x-icon">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background-color: #222;
+            color: #eee;
+            margin-top: 10px;
+            font-size: 16px;
+        }
 
-    .container {
-      display: flex;
-      align-items: left;
-      justify-content: flex-start;
-      vertical-align: center;
-      margin-bottom: 20px;
-    }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 20px;
+        }
 
-    .title_container {
-      vertical-align: center;
-      display: inline-block;
-      margin_left: 20px;
-      padding-left: 20px;
-    }
+        .ascii-art {
+            white-space: normal;
+            border: 2px solid #eee;
+            padding: 15px;
+            border-radius: 20px;
+        }
 
-    .ascii-art {
-      white-space: normal;
-      border: 2px solid #eee;
-      padding: 15px 15px 20px 15px;
-      border-radius: 20px;
-    }
+        .title_container {
+            padding-left: 20px;
+        }
 
-    .navbox {
-      color: #eee;
-      margin: 10px;
-      margin-left: auto;
-    }
+        .navbox {
+            color: #eee;
+            margin-left: auto;
+        }
 
-    .navbar_button {
-      display: inline-block;
-      padding=10ps 20px;
-      border: 2px solid #eee;
-      border-radius: 15px;
-      color: #eee;
-      background-color: #222;
-      transition: background-color 0.3s, color 0.3s;
-      padding: 15px;
-      text-decoration-line: none;
-    }
+        .navbar_button {
+            display: inline-block;
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: 15px;
+            color: #eee;
+            background-color: #222;
+            transition: background-color 0.3s, color 0.3s;
+            text-decoration-line: none;
+        }
 
-    .navbar_button:hover {
-      background-color: #eee;
-      color: #222;
-    }
+        .navbar_button:hover,
+        .navbar_button:active {
+            background-color: #eee;
+            color: #222;
+        }
 
-    .navbar_button:active {
-      background-color: #eee;
-      color: #222;
-    }
+        h1 {
+            color: #eee;
+            text-decoration-line: underline;
+        }
 
-    h1 {
-      margin-left: 10px;
-      color: #eee;
-      text-decoration-line: underline;
-    }
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: #eee;
+            text-decoration-line: underline;
+        }
 
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      color: #eee;
-    }
+        .article-content {
+            max-width: 60%;
+            text-align: justify;
+            margin: 60px auto; /* Center horizontally */
+        }
 
-    body {
-      background-color: #222;
-      color: #eee;
-      font-family: 'Roboto Mono', monospace;
-    }
-
-    /* code, { background-color: #5a4580; /* You can adjust the color code as needed */ */
-    /* padding: 10px; /* Adjust padding as needed */ */
-    /* border-radius: 5px; /* Add rounded corners */ */
-    /* } */
-
-  </style>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+        .sourceCode {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 16px;
+            margin: 0 auto;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <div class="container">
-    <div class="ascii-art">
-      - ~- ~ - - O o <br>
-      &nbsp; ~- - ~ - o -<br>
-      ~ - ><(((º> ~ -<br>
-        &nbsp; - ~ - - -- ~ <br>
+    <div class="container">
+        <div class="ascii-art">
+            - ~- ~ - - O o <br>
+            &nbsp; ~- - ~ - o -<br>
+            ~ - &gt;&lt;(((º&gt; ~ -<br>
+            &nbsp; - ~ - - -- ~ <br>
+        </div>
+        <span class="title_container">
+            <h1>Flounders and Codes</h1>
+        </span>
+        <div class="navbox">
+            <a href="index.html" class="navbar_button">Home</a>
+        </div>
     </div>
-    <span class="title_container">
-      <h1>Flounders and Codes</h1>
-    </span>
-    <div class="navbox">
-      <a href="index.html" , class="navbar_button">Home</a>
-    </div>
-  </div>
-  <hr>
-  <div class="content">
-    
-  <h1 id="why-does-0.1-0.2-0.3-in-floating-point-arithmetic">Why does 0.1 + 0.2 !== 0.3 in floating point arithmetic?</h1>
-  
+    <hr>
+    <div class="article-content">
+
+  <h1>Why does 0.1 + 0.2 !== 0.3 in floating point arithmetic?</h1>
+
   <h2 id="intro">Intro</h2>
   
-  <p>If you’ve ever had to do an equality check on a calculation, the quirks of floating point arithmetic are a great way to introduce a “gotcha” bug into your code. In Javascript:</p>
+  <p>If you’ve ever had to do an equality check on a calculation, the quirks of 
+    floating point arithmetic are a great way to introduce a “gotcha” bug into 
+    your code. In Javascript:
+  </p>
   
-  <div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="fl">0.1</span> <span class="op">+</span> <span class="fl">0.2</span><span class="op">;</span> <span class="co">// = 0.30000000000000004</span></span></code></pre></div>
+  <div class="sourceCode"><code><span>0.1 + 0.2; // = 0.30000000000000004</span></code></div>
   
   <p>But why is this the case?</p>
   
   <h2 id="floating-point-number">“Floating point” number?</h2>
   
-  <p>Floating point numbers are stored internally much the same as scientific number notation: <span class="math display">\[ significand * base^{exponent} \]</span> In a computer, the significand is limited to a certain number of bits depending on the precision. So in effect, the radix point “floats” around the digits of the significand to represent different orders of magnitude: Simply, with base 10 for example, <span class="math inline">\(123456\)</span> with an exponent of <span class="math inline">\(-5\)</span> will yield <span class="math inline">\(1.23456\)</span>, <span class="math inline">\(-3\)</span> will yield <span class="math inline">\(123.456\)</span> etc.</p>
+  <p>Floating point numbers are stored internally much the same as scientific 
+    number notation: 
+    <span class="math display">\[ significand * base^{exponent} \]</span> 
+    In a computer, the significand is limited to a certain number of bits depending 
+    on the precision. So in effect, the radix point “floats” around the digits 
+    of the significand to represent different orders of magnitude: Simply, 
+    with base 10 for example, 
+    <span class="math inline">\(123456\)</span> with an exponent of <span class="math inline">\(-5\)</span> 
+    will yield <span class="math inline">\(1.23456\)</span>, 
+    <span class="math inline">\(-3\)</span> will yield <span class="math inline">\(123.456\)</span> etc.
+  </p>
 
   <h2 id="javascript">Javascript</h2>
 
@@ -138,13 +146,17 @@
 
   <p>The second section with 11 bytes is the exponent. By IEEE 754 it is represented as a “biased exponent”.</p>
 
-  <p>It is “biased” because it doesn’t simply represent the number of the exponent. Instead, in order to represent positive and negative exponents easily, the exponent is calculated as the number represented by the 11 bits minus 1023.</p>
+  <p>It is “biased” because it doesn’t simply represent the number of the exponent. 
+    Instead, in order to represent positive and negative exponents easily, 
+    the exponent is calculated as the number represented by the 11 bits minus 1023.</p>
 
   <h3 id="converting-binary">Converting Binary</h3>
 
   <p>Let’s apply this to 0.1. With 11 bits, the computer can represent numbers from 0 to 2047.</p>
 
-  <p>Converting binary simply applies the same principles that we use for our base 10 system. Multiply the binary digits by 2 to the power of the position of the bit (zero indexed, i.e. the lowest positive position is 0). Then add everything up.</p>
+  <p>Converting binary simply applies the same principles that we use for our base 10 system. 
+    Multiply the binary digits by 2 to the power of the position of the bit 
+    (zero indexed, i.e. the lowest positive position is 0). Then add everything up.</p>
 
   <p><span class="math display">\[
   11111111111 \mapsto 1\cdot2^{10} + 1\cdot2^{9} + 1\cdot2^{8} + ... 1\cdot2^{1} + 1\cdot2^{0} = 2047
@@ -152,7 +164,12 @@
 
   <p>For 0.1, the 11 bits are 01111111011, or 1019. So 1019 - 1023. The exponent is -4!</p>
 
-  <p>The third bit is the significand or “mantissa”. So, the thing that it going to be multiplied by <span class="math inline">\(base^{exponent}\)</span>. In base 10 scientific notation, the significand is a normalized number in the range from 1 to 9, multiplied by <span class="math inline">\(10^{exponent}\)</span>. In binary, a normalized number <em>always</em> has 1 as the leading number. So this is omitted.</p>
+  <p>The third bit is the significand or “mantissa”. So, the thing that it going to be multiplied by 
+    <span class="math inline">\(base^{exponent}\)</span>. 
+    In base 10 scientific notation, the significand is a normalized number in the range from 1 to 9, multiplied by 
+    <span class="math inline">\(10^{exponent}\)</span>. In binary, a normalized number <em>always</em> 
+    has 1 as the leading number. So this is omitted.
+  </p>
 
   <p>We can see this here - the 52 bits for the significand of 0.1:</p>
 
@@ -166,11 +183,18 @@
 
   <pre><code>0.00011001100110011001100110011001100110011001100110011010</code></pre>
 
-  <p>Now, to convert the decimal part of a binary number to base 10 we do the same thing as above, just anything to the right of the decimal gets multiplied by <span class="math inline">\(\text{base}^{-\text{position}}\)</span>. In the above we therefore have, starting from the leading 0: <span class="math display">\[0\cdot2^{0} + 0\cdot2^{-1} + 0\cdot2^{-2} + 0\cdot2^{-3} + 1\cdot2^{-4} + 1\cdot2^{-5} + ...\]</span></p>
+  <p>Now, to convert the decimal part of a binary number to base 10 we do the same thing as above, 
+    just anything to the right of the decimal gets multiplied by 
+    <span class="math inline">\(\text{base}^{-\text{position}}\)</span>. 
+    In the above we therefore have, starting from the leading 0: 
+    <span class="math display">\[0\cdot2^{0} + 0\cdot2^{-1} + 0\cdot2^{-2} + 0\cdot2^{-3} + 1\cdot2^{-4} + 1\cdot2^{-5} + ...\]</span>
+  </p>
 
   <p>If you do this, you can quickly see from <span class="math inline">\(1\cdot2^{-4} + 1\cdot2^{-5} = 0.09375 \neq 0.1\)</span>.</p>
 
-  <p>Also interesting to note - if you’ve ever seen “32 bit precision” or “single precision”, the logic is exactly the same, it’s just instead of</p>
+  <p>Also interesting to note - if you’ve ever seen “32 bit precision” or 
+    “single precision”, the logic is exactly the same, it’s just instead of
+  </p>
 
   <ul>
   <li>1 bit: sign</li>
@@ -186,13 +210,19 @@
 
   <h2 id="working-with-binary">Working with binary</h2>
 
-  <p>So we now know what 0.1 looks like in IEEE 754 64 bit (double) precision. We also know that it isn’t exactly 0.1. The final bit of the puzzle is why it is stored like that in the first place.</p>
+  <p>So we now know what 0.1 looks like in IEEE 754 64 bit (double) precision. 
+    We also know that it isn’t exactly 0.1. 
+    The final bit of the puzzle is why it is stored like that in the first place.
+  </p>
 
   <h3 id="binary-conversion-algorithms">Binary conversion algorithms</h3>
 
   <h4 id="integers">Integers</h4>
 
-  <p>Let’s try converting an easier number to binary. Say I want to convert the number 24. Well, we can get the significand by just repeatedly dividing it by 2 and breaking down the number into the quotient and remainder:</p>
+  <p>Let’s try converting an easier number to binary. Say I want to convert the 
+    number 24. Well, we can get the significand by just repeatedly dividing it 
+    by 2 and breaking down the number into the quotient and remainder:
+  </p>
 
   <p><span class="math display">\[
   \begin{matrix}
@@ -210,7 +240,10 @@
 
   <h4 id="fractions">Fractions</h4>
 
-  <p>Unsurprisingly, the algorithm for converting fractional numbers to binary is then based on an opposite process: Multiply by 2 and keep the integer and left over decimal. For say 0.4375:</p>
+  <p>Unsurprisingly, the algorithm for converting fractional numbers to binary 
+    is then based on an opposite process: Multiply by 2 and keep the integer 
+    and left over decimal. For say 0.4375:
+  </p>
 
   <p><span class="math display">\[
   \begin{matrix}
@@ -228,7 +261,10 @@
   \end{matrix} 
   \]</span></p>
 
-  <p>Here is the key point - the rational number 0.4375 can be represented in a rational binary number 0.0111 because <em>it can be represented as a fraction where denominator is a power of 2</em>.</p>
+  <p>Here is the key point - the rational number 0.4375 can be represented in a 
+    rational binary number 0.0111 because <em>it can be represented as a 
+      fraction where denominator is a power of 2</em>.
+  </p>
 
   <p>if we try 0.1: <span class="math display">\[
   \begin{matrix}
@@ -253,22 +289,34 @@
 
   <pre><code>0.00011001100110011001100110011..</code></pre>
 
-  <p>You might have noticed that the repetend starts with 0.2. 0.2 is almost the same repeating binary decimal, just without the first step:</p>
+  <p>You might have noticed that the repetend starts with 0.2. 
+    0.2 is almost the same repeating binary decimal, just without the first step:
+  </p>
 
   <pre><code>0.0011001100110011001100110011...</code></pre>
 
   <h3 id="binary-addition">Binary Addition</h3>
 
-  <p>So we now know that 0.1 and 0.2 are actually infinitely repeating decimals or irrational numbers in binary, similarly to 1/3 in base 10. We also know that javascript represents these irrational numbers with a fixed number of bits - an implicitly normalized 52 digit binary number, an 11 bit exponent calculated as the difference from 1023, and a bit that tells us the sign of the number.</p>
+  <p>So we now know that 0.1 and 0.2 are actually infinitely repeating decimals 
+    or irrational numbers in binary, similarly to 1/3 in base 10. We also know 
+    that javascript represents these irrational numbers with a fixed number of 
+    bits - an implicitly normalized 52 digit binary number, an 11 bit exponent 
+    calculated as the difference from 1023, and a bit that tells us the sign 
+    of the number.
+  </p>
 
-  <p>Binary addition of 0.1 and 0.2 is again structurally the same as in base 10. If we take the first 10 bits in the representations of 0.1 and 0.2 for example:</p>
+  <p>Binary addition of 0.1 and 0.2 is again structurally the same as in base 10. 
+    If we take the first 10 bits in the representations of 0.1 and 0.2 for example:
+  </p>
 
-  <pre><code>   0.000110011 <br />
+  <pre><code>    0.000110011 <br />
   + 0.001100110 <br /> 
     ---11--11-- <br />
     0.010011001</code></pre>
 
-  <p>Here, carrying the 1 is shown within the separator line. In binary the rules to remember are: <span class="math display">\[
+  <p>Here, carrying the 1 is shown within the separator line. In binary the 
+    rules to remember are: 
+    <span class="math display">\[
   \begin{matrix}
     0 + 0 = 0 \\
     1 + 0 = 1 \\
@@ -277,9 +325,14 @@
   \end{matrix}
   \]</span></p>
 
-  <p>This is intuitive. In base 10, say 5 + 5 carries the “one”, or 10, over to the next digit. In binary you carry over the “one”, or the value of 2. e.g. <span class="math inline">\(1 + 1 = 10 \mapsto 1\cdot2^{1} + 0\cdot2^{0} = 2\)</span>.</p>
+  <p>This is intuitive. In base 10, say 5 + 5 carries the “one”, or 10, over to 
+    the next digit. In binary you carry over the “one”, or the value of 2. e.g. 
+    <span class="math inline">\(1 + 1 = 10 \mapsto 1\cdot2^{1} + 0\cdot2^{0} = 2\)</span>.
+  </p>
 
-  <p>So, extrapolating this calculation we can see the number 0.3 in binary is the irrational number:</p>
+  <p>So, extrapolating this calculation we can see the number 0.3 in binary is 
+    the irrational number:
+  </p>
 
   <pre><code>0.01001100110011001100...</code></pre>
 
@@ -294,7 +347,8 @@
   <li>01111111001 : Exponent value of 1021, or 1023 - 1021 = -2</li>
   <li>0011001100110011001100110011001100110011001100110011: Mantissa/ significand
   <ul>
-  <li>The (1) in brackets above is the implicit leading digit which is omitted because all normalised numbers in binary will start with 1.</li>
+  <li>The (1) in brackets above is the implicit leading digit which is omitted 
+    because all normalised numbers in binary will start with 1.</li>
   </ul></li>
   </ul>
 
@@ -317,9 +371,12 @@
 
   <p>With these methods, we are ready to put things together.</p>
 
-  <p>To summarise, we now know that 0.3 in javascript actually gives the 64 bit, IEEE 754 encoded binary: <span class="math display">\[
+  <p>To summarise, we now know that 0.3 in javascript actually gives the 64 bit, 
+    IEEE 754 encoded binary: <span class="math display">\[
   0 01111111101 0011001100110011001100110011001100110011001100110011
-  \]</span> Which is in fact a normalised form of an infinitely repeating binary decimal, because fractional numbers which cannot be expressed with a denominator that is a number to the power of 2 are irrational numbers in binary.</p>
+  \]</span> Which is in fact a normalised form of an infinitely repeating binary 
+  decimal, because fractional numbers which cannot be expressed with a 
+  denominator that is a number to the power of 2 are irrational numbers in binary.</p>
 
   <p>This encoding in pseudo-binary represents the following:</p>
 
@@ -352,7 +409,10 @@
 
   <h2 id="code-application">Code Application</h2>
 
-  <p>So what? Well, precision issues with floating point numbers means that if you need to, equality checks for decimal values should include a small margin of error, typically represented by <em>epsilon</em>. Here is an example function in Javascript:</p>
+  <p>So what? Well, precision issues with floating point numbers means that if 
+    you need to, equality checks for decimal values should include a small margin 
+    of error, typically represented by <em>epsilon</em>. Here is an example 
+    function in Javascript:</p>
 
   <pre><code>function isAlmostEqual(result, target, epsilon = [some small number]) {
     return Math.abs(result - target) &lt; epsilon;
@@ -366,16 +426,16 @@
 
   <p>https://numeral-systems.com/ieee-754-add/</p>
 
-  <p>The inspiration:</p>
+  <p>Other sources</p>
+
+  <p>https://standards.ieee.org/ieee/754/6210/</p>
 
   <p>https://learnxinyminutes.com/docs/javascript/</p>
 
   <p>https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html</p>
 
-  <p>The standard:</p>
-
-  <p>https://standards.ieee.org/ieee/754/6210/</p>
-
-  <p>Good binary addition examples:</p>
-
   <p>https://angularindepth.com/posts/1019/the-simple-math-behind-decimal-binary-conversion-algorithms</p>
+
+  </div>
+</body>
+</html>
