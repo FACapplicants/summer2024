@@ -1,0 +1,334 @@
+<!--TODO: Back button implementation - dynamic load for articles? -->
+
+<h1>Why does 0.1 + 0.2 !== 0.3 in floating point arithmetic?</h1>
+
+<h2 id="intro">Intro</h2>
+
+<p>If you’ve ever had to do an equality check on a calculation, the quirks of 
+  floating point arithmetic are a great way to introduce a “gotcha” bug into 
+  your code. In Javascript:
+</p>
+
+<div class="sourceCode"><code><span>0.1 + 0.2; // = 0.30000000000000004</span></code></div>
+
+<p>But why is this the case?</p>
+
+<h2 id="floating-point-number">“Floating point” number?</h2>
+
+<p>Floating point numbers are stored internally much the same as scientific 
+  number notation: 
+  <span class="math display">\[ significand * base^{exponent} \]</span> 
+  In a computer, the significand is limited to a certain number of bits depending 
+  on the precision. So in effect, the radix point “floats” around the digits 
+  of the significand to represent different orders of magnitude: Simply, 
+  with base 10 for example, 
+  <span class="math inline">\(123456\)</span> with an exponent of <span class="math inline">\(-5\)</span> 
+  will yield <span class="math inline">\(1.23456\)</span>, 
+  <span class="math inline">\(-3\)</span> will yield <span class="math inline">\(123.456\)</span> etc.
+</p>
+
+<h2 id="javascript">Javascript</h2>
+
+<p>Javascript uses the IEEE 754 standard for floating point arithmetic. It uses 64-bit precision, or “double precision”.</p>
+
+<p>What does this mean?</p>
+
+<p>Well, lets take 0.1. Here are those 64 bits:</p>
+
+<pre><code>0 01111111011 1001100110011001100110011001100110011001100110011010</code></pre>
+
+<p>The first bit on the left, the 0, indicates the sign of the number. 0 means it is positive, 1 would mean it is negative.</p>
+
+<p>The second section with 11 bytes is the exponent. By IEEE 754 it is represented as a “biased exponent”.</p>
+
+<p>It is “biased” because it doesn’t simply represent the number of the exponent. 
+  Instead, in order to represent positive and negative exponents easily, 
+  the exponent is calculated as the number represented by the 11 bits minus 1023.</p>
+
+<h3 id="converting-binary">Converting Binary</h3>
+
+<p>Let’s apply this to 0.1. With 11 bits, the computer can represent numbers from 0 to 2047.</p>
+
+<p>Converting binary simply applies the same principles that we use for our base 10 system. 
+  Multiply the binary digits by 2 to the power of the position of the bit 
+  (zero indexed, i.e. the lowest positive position is 0). Then add everything up.</p>
+
+<p><span class="math display">\[
+11111111111 \mapsto 1\cdot2^{10} + 1\cdot2^{9} + 1\cdot2^{8} + ... 1\cdot2^{1} + 1\cdot2^{0} = 2047
+\]</span></p>
+
+<p>For 0.1, the 11 bits are 01111111011, or 1019. So 1019 - 1023. The exponent is -4!</p>
+
+<p>The third bit is the significand or “mantissa”. So, the thing that it going to be multiplied by 
+  <span class="math inline">\(base^{exponent}\)</span>. 
+  In base 10 scientific notation, the significand is a normalized number in the range from 1 to 9, multiplied by 
+  <span class="math inline">\(10^{exponent}\)</span>. In binary, a normalized number <em>always</em> 
+  has 1 as the leading number. So this is omitted.
+</p>
+
+<p>We can see this here - the 52 bits for the significand of 0.1:</p>
+
+<pre><code>1001100110011001100110011001100110011001100110011010</code></pre>
+
+<p>Are actually implicitly the normalized binary decimal:</p>
+
+<pre><code>1.1001100110011001100110011001100110011001100110011010</code></pre>
+
+<p>Which, multiplied by <span class="math inline">\(\text{base}^{-4}\)</span> is:</p>
+
+<pre><code>0.00011001100110011001100110011001100110011001100110011010</code></pre>
+
+<p>Now, to convert the decimal part of a binary number to base 10 we do the same thing as above, 
+  just anything to the right of the decimal gets multiplied by 
+  <span class="math inline">\(\text{base}^{-\text{position}}\)</span>. 
+  In the above we therefore have, starting from the leading 0: 
+  <span class="math display">\[0\cdot2^{0} + 0\cdot2^{-1} + 0\cdot2^{-2} + 0\cdot2^{-3} + 1\cdot2^{-4} + 1\cdot2^{-5} + ...\]</span>
+</p>
+
+<p>If you do this, you can quickly see from <span class="math inline">\(1\cdot2^{-4} + 1\cdot2^{-5} = 0.09375 \neq 0.1\)</span>.</p>
+
+<p>Also interesting to note - if you’ve ever seen “32 bit precision” or 
+  “single precision”, the logic is exactly the same, it’s just instead of
+</p>
+
+<ul>
+<li>1 bit: sign</li>
+<li>11 bits: biased exponent from 1023</li>
+<li>52 bits: significand/ mantissa</li>
+</ul>
+<p>we have</p>
+<ul>
+<li>1 bit: sign</li>
+<li>8 bits: biased exponent from 127</li>
+<li>23 bits: significand/mantissa</li>
+</ul>
+
+<h2 id="working-with-binary">Working with binary</h2>
+
+<p>So we now know what 0.1 looks like in IEEE 754 64 bit (double) precision. 
+  We also know that it isn’t exactly 0.1. 
+  The final bit of the puzzle is why it is stored like that in the first place.
+</p>
+
+<h3 id="binary-conversion-algorithms">Binary conversion algorithms</h3>
+
+<h4 id="integers">Integers</h4>
+
+<p>Let’s try converting an easier number to binary. Say I want to convert the 
+  number 24. Well, we can get the significand by just repeatedly dividing it 
+  by 2 and breaking down the number into the quotient and remainder:
+</p>
+
+<p><span class="math display">\[
+\begin{matrix}
+  24 / 2 = 12 + 0 \\
+  12 / 2 = 6 + 0 \\
+  4 / 2 = 3 + 0 \\
+  3 / 2 = 1 + 1 \\
+  1 / 2 = 0 + 1 \\
+\end{matrix}
+\]</span></p>
+
+<p>Then, writing out the remainders in reverse order, we have <code>11000</code>, or:</p>
+
+<p><span class="math display">\[ 1 \cdot 2^{4} + 1 \cdot 2^{3} + 0 \cdot 2^{2} + 0 \cdot 2^{1} + 1 \cdot 2^{0} = 16 + 8 + 0 + 0 + 0 = 24 \]</span></p>
+
+<h4 id="fractions">Fractions</h4>
+
+<p>Unsurprisingly, the algorithm for converting fractional numbers to binary 
+  is then based on an opposite process: Multiply by 2 and keep the integer 
+  and left over decimal. For say 0.4375:
+</p>
+
+<p><span class="math display">\[
+\begin{matrix}
+  0.1875 \cdot 2 = 0 + 0.875 \\
+  0.875 \cdot 2 = 1 + 0.75 \\
+  0.75 \cdot 2 = 1 + 0.5 \\
+  0.5 \cdot 2 = 1 \\
+\end{matrix}
+\]</span></p>
+
+<p>Writing out the integers, we have <code>0.0111</code>, or: <span class="math display">\[ 
+\begin{matrix}
+  0 \cdot 2^{0} + 0 \cdot 2^{-1} + 1 \cdot 2^{-2} + 1 \cdot 2^{-3} + 1 \cdot 2^{-4} = \\
+  0 + 0 + 1/4 + 1/8 + 1/16 = 7/16 = 0.4375\\
+\end{matrix} 
+\]</span></p>
+
+<p>Here is the key point - the rational number 0.4375 can be represented in a 
+  rational binary number 0.0111 because <em>it can be represented as a 
+    fraction where denominator is a power of 2</em>.
+</p>
+
+<p>if we try 0.1: <span class="math display">\[
+\begin{matrix}
+  0.1 \cdot 2 = 0 + 0.2 \\
+  0.2 \cdot 2 = 0 + 0.4 \\
+  0.4 \cdot 2 = 0 + 0.8 \\
+  0.8 \cdot 2 = 1 + 0.6 \\
+  0.6 \cdot 2 = 1 + 0.2 \\
+  0.1 \cdot 2 = 0 + 0.2 \\
+  0.2 \cdot 2 = 0 + 0.4 \\
+  0.4 \cdot 2 = 0 + 0.8 \\
+  0.8 \cdot 2 = 1 + 0.6 \\
+  0.6 \cdot 2 = 1 + 0.2 \\
+  0.2 \cdot 2 = 0 + 0.4 \\
+  ...
+\end{matrix} 
+\]</span></p>
+
+<p>You get the point - it is infinitely repeating! With a repetend of 0011.</p>
+
+<p>Hence 0.1 being represented as</p>
+
+<pre><code>0.00011001100110011001100110011..</code></pre>
+
+<p>You might have noticed that the repetend starts with 0.2. 
+  0.2 is almost the same repeating binary decimal, just without the first step:
+</p>
+
+<pre><code>0.0011001100110011001100110011...</code></pre>
+
+<h3 id="binary-addition">Binary Addition</h3>
+
+<p>So we now know that 0.1 and 0.2 are actually infinitely repeating decimals 
+  or irrational numbers in binary, similarly to 1/3 in base 10. We also know 
+  that javascript represents these irrational numbers with a fixed number of 
+  bits - an implicitly normalized 52 digit binary number, an 11 bit exponent 
+  calculated as the difference from 1023, and a bit that tells us the sign 
+  of the number.
+</p>
+
+<p>Binary addition of 0.1 and 0.2 is again structurally the same as in base 10. 
+  If we take the first 10 bits in the representations of 0.1 and 0.2 for example:
+</p>
+
+<pre><code>    0.000110011 <br />
++ 0.001100110 <br /> 
+  ---11--11-- <br />
+  0.010011001</code></pre>
+
+<p>Here, carrying the 1 is shown within the separator line. In binary the 
+  rules to remember are: 
+  <span class="math display">\[
+\begin{matrix}
+  0 + 0 = 0 \\
+  1 + 0 = 1 \\
+  0 + 1 = 1 \\
+  1 + 1 = 10 \\
+\end{matrix}
+\]</span></p>
+
+<p>This is intuitive. In base 10, say 5 + 5 carries the “one”, or 10, over to 
+  the next digit. In binary you carry over the “one”, or the value of 2. e.g. 
+  <span class="math inline">\(1 + 1 = 10 \mapsto 1\cdot2^{1} + 0\cdot2^{0} = 2\)</span>.
+</p>
+
+<p>So, extrapolating this calculation we can see the number 0.3 in binary is 
+  the irrational number:
+</p>
+
+<pre><code>0.01001100110011001100...</code></pre>
+
+<p>Which, converting to IEEE 754 is</p>
+
+<pre><code>0 01111111101 (1) 0011001100110011001100110011001100110011001100110011</code></pre>
+
+<p>Breaking this down we have:</p>
+
+<ul>
+<li>0 : positive number</li>
+<li>01111111001 : Exponent value of 1021, or 1023 - 1021 = -2</li>
+<li>0011001100110011001100110011001100110011001100110011: Mantissa/ significand
+<ul>
+<li>The (1) in brackets above is the implicit leading digit which is omitted 
+  because all normalised numbers in binary will start with 1.</li>
+</ul></li>
+</ul>
+
+<h3 id="binary-exponentiation-mutiplication">Binary Exponentiation/ Mutiplication</h3>
+
+<p>Just to check this all works, the normalized representation of 0.3 given by the 64 bit encoding is:<br />
+
+<span class="math display">\[
+(+)10011001100110011..... \cdot 2^{-2}
+\]</span> Which in binary gives us back: <span class="math display">\[
+0.01001100110011001100...
+\]</span> Why? Multiplication in binary also follows the same logic as our base 10 system: <span class="math display">\[ 
+\begin{matrix}
+1 \cdot 2 \text{ in binary } = 1 \cdot 10 = 10 \mapsto 1 \cdot 2^{1} + 0 \cdot 2^{0} = 2 \\
+1 \cdot 2^{4} \text{ in binary } = 1 \cdot 1000 = 1000 \mapsto 1 \cdot 2^{4} + 0 \cdot .... = 16 
+\end{matrix}
+\]</span></p>
+
+<h2 id="section">0.1 + 0.2 == …</h2>
+
+<p>With these methods, we are ready to put things together.</p>
+
+<p>To summarise, we now know that 0.3 in javascript actually gives the 64 bit, 
+  IEEE 754 encoded binary: <span class="math display">\[
+0 01111111101 0011001100110011001100110011001100110011001100110011
+\]</span> Which is in fact a normalised form of an infinitely repeating binary 
+decimal, because fractional numbers which cannot be expressed with a 
+denominator that is a number to the power of 2 are irrational numbers in binary.</p>
+
+<p>This encoding in pseudo-binary represents the following:</p>
+
+<p>
+<span class="math display">\[
+\begin{matrix}
+  +1.0011001100110011001100110011001100110011001100110011 \\
+      \cdot 2^{11111111111 - 01111111101}
+\end{matrix}
+\]</span> Which in base 10 numbers is similar to standard scientific notation:<br />
+<span class="math display">\[
++1.1999999999999999555910790149937383830547332763671875 \cdot 2^{-2}
+\]</span> or <span class="math display">\[
++0.299999999999999988897769753748434595763683319091796875
+\]</span> Following the same conversion logic, 0.1 in javascript is actually stored as<br />
+<span class="math display">\[
+0 01111111011 1001100110011001100110011001100110011001100110011010
+\]</span> or <span class="math display">\[
+0.1000000000000000055511151231257827021181583404541015625
+\]</span> and 0.2 is stored as<br />
+<span class="math display">\[
+0 01111111100 1001100110011001100110011001100110011001100110011010
+\]</span> or <span class="math display">\[
+0.200000000000000011102230246251565404236316680908203125
+\]</span> which, if we add them together, gives <span class="math display">\[
+0011111111010011001100110011001100110011001100110011001100110100
+\]</span> or <span class="math display">\[
+0.3000000000000000444089209850062616169452667236328125
+\]</span> Which is, rounded, exactly the observation we started with :).</p>
+
+<h2 id="code-application">Code Application</h2>
+
+<p>So what? Well, precision issues with floating point numbers means that if 
+  you need to, equality checks for decimal values should include a small margin 
+  of error, typically represented by <em>epsilon</em>. Here is an example 
+  function in Javascript:</p>
+
+<pre><code>function isAlmostEqual(result, target, epsilon = [some small number]) {
+  return Math.abs(result - target) &lt; epsilon;
+}</code></pre>
+
+<p>Typically, something like <span class="math inline">\(10^{-7}\)</span> is used for epsilon (“E-7” in E notation).</p>
+
+<h2 id="appendix">Appendix</h2>
+
+<p>You can see the steps for the addition of IEEE 754 double precision numbers with steps here:</p>
+
+<p>https://numeral-systems.com/ieee-754-add/</p>
+
+<p>Other sources</p>
+
+<p>https://standards.ieee.org/ieee/754/6210/</p>
+
+<p>https://learnxinyminutes.com/docs/javascript/</p>
+
+<p>https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html</p>
+
+<p>https://angularindepth.com/posts/1019/the-simple-math-behind-decimal-binary-conversion-algorithms</p>
+
+</div>
