@@ -1,3 +1,8 @@
+/* Interesting tip: 
+CSS is applied by giving specificity priority. 
+Also by position here - priority given to later definitions 
+*/
+
 body {
     font-family: 'Roboto Mono', monospace;
     background-color: #222;
@@ -5,6 +10,7 @@ body {
     margin-top: 10px;
     font-size: 16px;
 }
+
 .container {
   display: flex;
   align-items: center;
@@ -32,7 +38,12 @@ body {
   margin-left: auto;
 }
 
-.navbar_button {
+.back_button_container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav_button {
   display: inline-block;
   padding: 10ps 20px;
   border: 2px solid #eee;
@@ -44,19 +55,19 @@ body {
   text-decoration-line: none;
 }
 
-.navbar_button:hover, 
+.nav_button:hover, 
 .navbar_button:active {
   background-color: #eee;
   color: #222;
 }
 
 a, a:visited {
-    color: #9c78e3; /* Dark pastel purple color */
-    text-decoration: none; /* Remove underline */
+    color: #9c78e3;
+    text-decoration: none;
 }
 
 a:hover {
-    color: #7B68EE; /* Darker shade of pastel purple on hover */
+    color: #7B68EE; 
 }
 
 h1 {
@@ -74,14 +85,63 @@ h6 {
   text-decoration-line: underline;
 }
 
-.content {
+main {
   max-width: 75%;
   text-align: justify;
-  margin: 60px auto; /* Center horizontally */
+  margin: 60px auto; 
 }
 
 .article-content {
   max-width: 60%;
   text-align: justify;
-  margin: 60px auto; /* Center horizontally */
+  margin: 60px auto;
+}
+
+
+.dropdown-button {
+  background-color: #222;
+  color: #eee;
+  padding: 16px; 
+  font-size: 16px; 
+  border: 2px solid #eee;
+  border-radius: 20px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right:0;
+  background-color: #222;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-menu a {
+  color: #eee;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  right:0;
+}
+
+.dropdown-menu a:hover {
+  background-color: #eee;
+  color: #222;
+}
+
+.dropdown:hover .dropdown-menu {display: block;}
+
+.dropdown:hover .dropdown-button {
+  background-color: #eee;
+  color: #222
+}
+
+h1 a {
+  color: #eee !important; /* the !important flag overrides any and all conflicting styles! */
 }
