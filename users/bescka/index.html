@@ -1,13 +1,68 @@
+<!-- 
+---  ---   -    ---
+| |__| |  ---  |   |
+|  __  |  | |   \_/
+| |  | |  | |    _
+---  ---  ---   |_| 
+
+You've found the development blog section! 
+------------------------------------------ 
+
+################
+## 2024-06-13 ##
+################
+
+Single Page Applications
+------------------------ 
+
+After a kind review by Maxitect, these updates are centered around navigation! 
+
+The concept workflow for this site was originally to write in either
+vimwiki script or markdown, then export these directly to a local version 
+of the codebase using a custom HTML template. 
+
+To make these exports a bit more modular, the pages have been refactored to 
+just include the html associated with their content. This can then be 
+dynamically loaded into the main page which contains the header/ footer/ navbar
+etc. 
+
+Patch updates: 
+* Header links back to home
+* Dynamic menu dropdown loads core pages
+* External links are distinguished by their path and opened in a new tab
+* Event listeners wait for DOM to load in order to identify content links
+* MathJax integration fixed for rendering LaTeX in dynamically loaded content 
+* Started the devBlog! Some explanatory notes and references added to codebase
+
+On modularization, effectively this makes it a Single Page Application. 
+https://developer.mozilla.org/en-US/docs/Glossary/SPA#
+
+There are other ways of doing this - namely putting html flags to insert content
+on the server side before the page loads, called SSI (Server Side Includes). You 
+can just include a flag in the base html template like this
+<\!--#include virtual="/path/to/file" --\> (remove \, used as an escape character)
+and at the top of the content you want to use. 
+
+This is effectively javascript emulation of SSI but is done client side. 
+The pros of this architecture aside from modularization seem to be 
+snappy load times primarily, but apparently SEO can suffer (not an issue here!)
+
+-->
+
+
 <!DOCTYPE html>
 <html>
 
 <head>
   <link rel="Stylesheet" type="text/css" href="style.css" />
-  <title>Flounders and Codes - Home</title>
+  <title>Flounders and Codes</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link rel="icon" href="/assets/fc_favicon_96_2.ico" type="image/x-icon">
   <link rel="shortcut icon" href="/assets/fc_favicon_96_2.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+  <script src="script.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -19,92 +74,32 @@
         &nbsp; - ~ - - -- ~ <br>
     </div>
     <span class="title_container">
-      <h1>Flounders and Codes</h1>
+      <h1><a href="#" id="home-link">Flounders and Codes</a></h1>
     </span>
     <div class="navbox">
-      <a href="index.html" , class="navbar_button">Home</a>
+      <div class="dropdown">
+      <button class="dropdown-button">Menu</button>
+        <div class="dropdown-menu">
+          <a href="#" id="dropdown-home-link">Home</a>
+          <a href="#" id="dropdown-about-link">About</a>
+          <a href="#" id="dropdown-articles-link">Articles</a>
+          <!-- Explanation: "#" are placeholder links. Here, as we are actually
+                not going anywhere, just loading html into the same page, the 
+                "#" allows us to trigger javascript actions without anything 
+                happening!
+            
+                You can see in script.js that it is an event listener on click 
+                of the respective ids that triggers the content load, where
+                we overwrite the "default" behaviour -->
+        </div>
+      </div>
+      <!-- <a href="index.html" , class="navbar_button">Menu</a> -->
     </div>
   </div>
   <hr>
-  <div class="content">
-    
+  <main id="main-content">
 
-<p>
-Welcome to the blog! 
-</p>
-
-<div id="Series"><h2 id="Series" class="header">Entries</h2></div>
-
-<ul>
-<li>
-<a href="floating_point_arithmetic_web.html">05/06/2024 - Floating Point Arithmetic</a> 
-
-<li>
-<a href="marshmallow donut.html">marshmallow donut</a>
-
-<li>
-<a href="cuba chups.html">cuba chups</a>
-
-</ul>
-<p>
-Jelly tootsie roll ice cream cotton candy chocolate bar. Toffee caramels liquorice sugar plum pudding oat cake apple pie. Oat cake bear claw soufflé halvah cheesecake. Bonbon carrot cake shortbread cookie cupcake jujubes marzipan. Sugar plum cotton candy caramels cake gummi bears marshmallow. Cookie brownie wafer croissant cake chocolate cake tart apple pie oat cake. Tiramisu dragée jelly beans carrot cake cheesecake. Dragée gummi bears candy cupcake toffee tart. Candy canes sweet roll liquorice croissant sesame snaps candy biscuit. Cake gingerbread cupcake danish wafer chocolate tootsie roll tiramisu. Chocolate cake jujubes chocolate bar croissant caramels. Gummi bears pastry wafer ice cream cheesecake caramels shortbread muffin topping. Jelly sweet gummies candy canes chupa chups oat cake danish chocolate cake croissant. Chocolate cake croissant soufflé carrot cake icing candy chupa chups biscuit tiramisu.
-</p>
-
-<div id="links"><h2 id="Series" class="header">links</h2></div>
-
-<div id="miscellaneous"><h3 id="Series" class="header">Misc</h3></div>
-<ul>
-<li>
-<a href="https://cupcakeipsum.com/" target="_blank">Cupcake Lorem Ipsum</a> 
-<li>
-<a href="https://learn.microsoft.com/en-us/windows/wsl/install" target="_blank">Getting started with WSL</a> 
-<li>
-<a href="https://github.com/nvim-lua/kickstart.nvim" target="_blank">TJ DeVries' Kickstart Neovim project</a>
-  <ul>
-    <li>
-    <a href="https://www.youtube.com/watch?v=m8C0Cq9Uv9o" target="_blank">And the video introduction :)</a>
-    </ul>
-</ul>
-<div id="links"><h3 id="webdev" class="header">Webdev</h3></div>
-<ul> 
-  <li> 
-    <a href="https://developer.mozilla.org/en-US/docs/Web" target="_blank">Mozilla Development Network Reference</a>
-  <ul> 
-    <li>
-      <a href="https://developer.mozilla.org/en-US/curriculum/" target="_blank">The MDN curriculumn framework</a></li>
-    </li>
-  </ul>
-  <li>
-    <a href="https://react.dev/reference/react" target="_blank">React reference docs</a>
-  </li>
-  <li>
-    <a href="https://ui.shadcn.com/" target="_blank">Shadcn - a nice component library</a>
-  </li>
-  </ul>
-<div id="links"><h3 id="webdev" class="header">Useful VSCode Tips/ Extensions</h3></div>
-<ul>
-  <li>
-    <a href="https://learn.microsoft.com/en-us/visualstudio/ide/editor-sticky-scroll?view=vs-2022", target="_blank">
-      The feature you didn't know you needed: sticky scroll to view your current scope
-    </a>
-  </li>
-  <li>
-    <a href="https://marketplace.visualstudio.com/items?itemName=humao.rest-client", target="_blank">Super convenient REST client</a>
-  </li>
-  <li>
-    <a href="https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter", target="_blank">Jupyter Notebooks in VSCode!</a>
-  </li>
-  <li>
-    <a href="https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree", target="_blank">Todo-Tree: grep TODOs and other items in your codebase</a>
-  </li>
-  <li> 
-    <a href="https://marketplace.visualstudio.com/items?itemName=vivaxy.vscode-conventional-commits", target="_blank">Conventional Commits: great way to standardize commits</a>
-  </li>
-
-</ul>
-  
-
-</div>
+  </main>
 </body>
-
 </html>
+    
