@@ -2,6 +2,10 @@
 CSS is applied by giving specificity priority. 
 Also by position here - priority given to later definitions 
 */
+/* 
+TODO: Dropdown CSS not showing white on hover
+TODO: Border on Ascii art not rendering as #eee (just in chrome?) 
+*/
 
 body {
     font-family: 'Roboto Mono', monospace;
@@ -144,4 +148,11 @@ main {
 
 h1 a {
   color: #eee !important; /* the !important flag overrides any and all conflicting styles! */
+}
+
+canvas {
+  justify-content: center;
+  align-items: center;
+  background-color: #111;
+  color: white;
 }

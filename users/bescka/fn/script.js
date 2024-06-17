@@ -1,17 +1,23 @@
-// The syntax of an eventlistener is quite literally if x type of event happens, 
-// do y. 
-document.addEventListener(type='click', function(event){
-    var dropdownMenu = document.getElementsByClassName('dropdown-menu');
+// TODO: Event Listeners
+document.addEventListener('click', function(event) {
+    var dropdownMenus = document.getElementsByClassName('dropdown-menu');
     var dropdownButton = document.getElementsByClassName('dropdown-button');
 
-    // event.target is just the thing that the event - a click in this case - happens to 
-    if (!dropdownMenu.contains(event.target)) { 
-        dropdownMenu.style.display = 'none';
+    var dropdownMenusArray = Array.from(dropdownMenus);
+
+    var isOutsideDropdownMenus = dropdownMenusArray.every(function(menu) {
+        return !menu.contains(event.target);
+    });
+
+    if (isOutsideDropdownMenus) {
+        dropdownMenusArray.forEach(function(menu) {
+            menu.style.display = 'none';
+        });
     }
-    if (dropdownButton.contains(event.target)){
-        // 
-        var dropdown = button.nextElementSibling;
-        dropdown.style.display = dropdown.style.display == 'block' ? 'none' : 'block';
+
+    if (dropdownButton[0].contains(event.target)) {
+        var dropdown = dropdownButton[0].nextElementSibling;
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
     }
 });
 
@@ -21,7 +27,6 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch(filePath)
             .then(response => response.text())
             .then(html => {
-                // TODO: https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML
                 document.getElementById('main-content').innerHTML = html;
                 MathJax.typeset();
             })
@@ -55,7 +60,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // In JS, Objects are collections of "Properties" which then have keys/ values
     // Accessing the values associated with keys is done with obj['key'] or obj.key
     // I've used obj['key']. I blame pandas. 
-    // TODO https://github.com/eslint-community/eslint-plugin-security/blob/main/docs/the-dangers-of-square-bracket-notation.md
     const dropdownLinks = {
         'dropdown-home-link': './content/home.html', 
         'dropdown-about-link': './content/about.html', 
