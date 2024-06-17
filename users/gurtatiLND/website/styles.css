@@ -136,7 +136,10 @@ a {
     display:grid;
     grid-template-columns: 1.5fr 1fr;
     grid-gap: 5rem;
-    margin-bottom: 11rem;
+    margin-bottom: 1rem;
+}
+.projects-row p {
+    text-align: left;
 }
 h3 {
     color:#464c2f;
