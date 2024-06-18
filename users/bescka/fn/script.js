@@ -1,4 +1,5 @@
 // TODO: Event Listeners
+// TODO: Navigation refactoring for export/ import
 document.addEventListener('click', function(event) {
     var dropdownMenus = document.getElementsByClassName('dropdown-menu');
     var dropdownButton = document.getElementsByClassName('dropdown-button');
@@ -19,6 +20,12 @@ document.addEventListener('click', function(event) {
         var dropdown = dropdownButton[0].nextElementSibling;
         dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
     }
+
+    dropdownMenusArray.forEach(function(menu) {
+        menu.addEventListener('mouseleave', function() {
+            this.style.display = 'none';
+        });
+    });
 });
 
 // TODO: DOM

@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
   var startButton = document.getElementById('startCubeGridButton');
-  var stopButton = document.getElementById('startCubeGridButton');
+  var stopButton = document.getElementById('stopCubeGridButton');
 
   startButton.addEventListener('click', startAnimation);
   stopButton.addEventListener('click', stopAnimation);
