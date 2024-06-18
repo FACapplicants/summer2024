@@ -1,5 +1,23 @@
 body {
-    background-color: antiquewhite;
+    background-color: rgb(255, 255, 255);
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul {
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+}
+
+li {
+    display: inline;
 }
 
 h1 {
