@@ -132,6 +132,11 @@
                                 dy = -dy;
                                 b.status = 0;
                                 score++;
+                                if (score === brickRowCount * brickColumnCount) {
+                                    alert('You win!! Congratulations!');
+                                    clearInterval(gameInterval);
+                                    document.location.reload();
+                                }
                             }
                         }
                     }
