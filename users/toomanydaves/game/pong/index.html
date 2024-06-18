@@ -26,6 +26,7 @@
             const canvas = document.getElementById('pong');
             const ctx = canvas.getContext('2d');
             const ballRadius = 10;
+            const ballSpeed = 4;
             const paddleHeight = 10;
             const paddleWidth = 75;
             const brickRowCount = 3;
@@ -37,15 +38,14 @@
             const brickOffsetLeft = 30;
             const bricks = [];
 
-            let gameInterval;
             let lives = 3;
             let score = 0;
             
             //ball coodinates and motion
             let x = canvas.width / 2;
             let y = canvas.height - 30;
-            let dx = 2;
-            let dy = -2;
+            let dx = ballSpeed;
+            let dy = -ballSpeed;
 
             //paddle placement
             let paddleX = (canvas.width - paddleWidth) / 2;
@@ -149,7 +149,6 @@
                                 score++;
                                 if (score === brickRowCount * brickColumnCount) {
                                     alert('You win!! Congratulations!');
-                                    clearInterval(gameInterval);
                                     document.location.reload();
                                 }
                             }
@@ -189,8 +188,8 @@
                         } else {
                             x = canvas.width / 2;
                             y = canvas.height - 30;
-                            dx = 2;
-                            dy = -2;
+                            dx = ballSpeed;
+                            dy = -ballSpeed;
                             paddleX = (canvas.width - paddleWidth) / 2;
                         }
                     }
@@ -202,10 +201,12 @@
                 drawBricks();
                 drawScore();
                 drawLives();
+
+                requestAnimationFrame(draw);
             }
 
             function startGame () {
-                gameInterval = setInterval(draw, 10);
+                draw();
                 document.addEventListener('keydown', movePaddle, false);
                 document.addEventListener('keyup', stopPaddle, false);
                 document.addEventListener('mousemove', followMouse, false);
@@ -213,7 +214,6 @@
 
             function endGame () {
                 alert('GAME OVER');
-                clearInterval(gameInterval);
                 document.location.reload();
             }
 
