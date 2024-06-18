@@ -38,6 +38,7 @@
             const bricks = [];
 
             let gameInterval;
+            let lives = 3;
             let score = 0;
             
             //ball coodinates and motion
@@ -104,6 +105,12 @@
                 ctx.font = '16px sans-serif';
                 ctx.fillStyle = '#0095DD';
                 ctx.fillText(`Score: ${score}`, 8, 20);
+            }
+
+            function drawLives () {
+                ctx.font = '16px sans-serif';
+                ctx.fillStyle = '#0095DD';
+                ctx.fillText(`Lives: ${lives}`, canvas.width - 65, 20);
             }
 
             function movePaddle (e) {
@@ -175,7 +182,17 @@
                     if (x > paddleX && x < paddleX + paddleWidth) {
                         dy = -dy
                     } else {
-                        endGame();
+                        lives--;
+
+                        if (!lives) {
+                            endGame();
+                        } else {
+                            x = canvas.width / 2;
+                            y = canvas.height - 30;
+                            dx = 2;
+                            dy = -2;
+                            paddleX = (canvas.width - paddleWidth) / 2;
+                        }
                     }
                 }
 
@@ -184,6 +201,7 @@
                 drawBall();
                 drawBricks();
                 drawScore();
+                drawLives();
             }
 
             function startGame () {
