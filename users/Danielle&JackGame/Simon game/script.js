@@ -4,6 +4,8 @@ var gamePattern = [];
 var userClickedPattern = [];
 
 
+// 
+
 $(".btn").click(function(){
 
    var userChosenColour = $(this).attr("id");
@@ -13,6 +15,8 @@ $(".btn").click(function(){
    playSound(userChosenColour);
 
 });
+
+ 
 
 
 function nextSequence() {
@@ -39,8 +43,3 @@ function playSound(name){
 // detect press
 
 $("#start-button").click(nextSequence()
-
-var level = 0;
-
-
-)
