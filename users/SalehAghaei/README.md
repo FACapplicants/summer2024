@@ -1,1 +1,1 @@
-Marya is amazing
+summer is amazing

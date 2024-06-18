@@ -1,0 +1,105 @@
+<!-- 
+---  ---   -    ---
+| |__| |  ---  |   |
+|  __  |  | |   \_/
+| |  | |  | |    _
+---  ---  ---   |_| 
+
+You've found the development blog section! 
+------------------------------------------ 
+
+################
+## 2024-06-13 ##
+################
+
+Single Page Applications
+------------------------ 
+
+After a kind review by Maxitect, these updates are centered around navigation! 
+
+The concept workflow for this site was originally to write in either
+vimwiki script or markdown, then export these directly to a local version 
+of the codebase using a custom HTML template. 
+
+To make these exports a bit more modular, the pages have been refactored to 
+just include the html associated with their content. This can then be 
+dynamically loaded into the main page which contains the header/ footer/ navbar
+etc. 
+
+Patch updates: 
+* Header links back to home
+* Dynamic menu dropdown loads core pages
+* External links are distinguished by their path and opened in a new tab
+* Event listeners wait for DOM to load in order to identify content links
+* MathJax integration fixed for rendering LaTeX in dynamically loaded content 
+* Started the devBlog! Some explanatory notes and references added to codebase
+
+On modularization, effectively this makes it a Single Page Application. 
+https://developer.mozilla.org/en-US/docs/Glossary/SPA#
+
+There are other ways of doing this - namely putting html flags to insert content
+on the server side before the page loads, called SSI (Server Side Includes). You 
+can just include a flag in the base html template like this
+<\!--#include virtual="/path/to/file" --\> (remove \, used as an escape character)
+and at the top of the content you want to use. 
+
+This is effectively javascript emulation of SSI but is done client side. 
+The pros of this architecture aside from modularization seem to be 
+snappy load times primarily, but apparently SEO can suffer (not an issue here!)
+
+-->
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="Stylesheet" type="text/css" href="style.css" />
+  <title>Flounders and Codes</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="icon" href="/assets/fc_favicon_96_2.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/assets/fc_favicon_96_2.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+  <script src="script.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="ascii-art">
+      - ~- ~ - - O o <br>
+      &nbsp; ~- - ~ - o -<br>
+      ~ - ><(((º> ~ -<br>
+        &nbsp; - ~ - - -- ~ <br>
+    </div>
+    <span class="title_container">
+      <h1><a href="#" id="home-link">Flounders and Codes</a></h1>
+    </span>
+    <div class="navbox">
+      <div class="dropdown">
+      <button class="dropdown-button">Menu</button>
+        <div class="dropdown-menu">
+          <a href="#" id="dropdown-home-link">Home</a>
+          <a href="#" id="dropdown-about-link">About</a>
+          <a href="#" id="dropdown-articles-link">Articles</a>
+          <!-- Explanation: "#" are placeholder links. Here, as we are actually
+                not going anywhere, just loading html into the same page, the 
+                "#" allows us to trigger javascript actions without anything 
+                happening!
+            
+                You can see in script.js that it is an event listener on click 
+                of the respective ids that triggers the content load, where
+                we overwrite the "default" behaviour -->
+        </div>
+      </div>
+      <!-- <a href="index.html" , class="navbar_button">Menu</a> -->
+    </div>
+  </div>
+  <hr>
+  <main id="main-content">
+
+  </main>
+</body>
+</html>
+    
