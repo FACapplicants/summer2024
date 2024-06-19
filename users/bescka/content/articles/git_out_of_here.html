@@ -1,0 +1,47 @@
+<h2>Git out of here! What does "Git" stand for?</h2>
+
+<p>Git was created by Linus Torvolds in 2005. But why "Git"?</p> 
+
+<p>Well, it turns out that Linus explained this in the initial 
+readme to the Git repository!</p>
+
+<pre>
+<code class="general-code-block">GIT - the stupid content tracker
+
+"git" can mean anything, depending on your mood.
+
+ - random three-letter combination that is pronounceable, and not
+   actually used by any common UNIX command.  The fact that it is a
+   mispronounciation of "get" may or may not be relevant.
+ - stupid. contemptible and despicable. simple. Take your pick from the
+   dictionary of slang.
+ - "global information tracker": you're in a good mood, and it actually
+   works for you. Angels sing, and a light suddenly fills the room. 
+ - "goddamn idiotic truckload of sh*t": when it breaks
+
+This is a stupid (but extremely fast) directory content manager.  It
+doesn't do a whole lot, but what it _does_ do is track directory
+contents efficiently. 
+</code>
+</pre>
+
+<p>
+To see this we can simply clone the repo and checkout the initial 
+commit:  
+</p>
+<code class="general-code-block">git clone https://github.com/git/git.git</code>
+<p>You can see the initial commit id with </p>
+
+<code class="general-code-block">git log -reverse</code>
+
+<p>And checkout with the id: </p>
+<code class="general-code-block">git checkout e83c5163316f89bfbde7d9ab23ca2e25604af290
+</code>
+<br>
+<h3>Appendix</h3> 
+<p>Others have done far more useful and informative breakdowns
+of the initial architecture of git. For example this project
+by Jacob Stopak:</p> 
+
+<a href ="https://bitbucket.org/blog/what-can-we-learn-from-the-code-in-gits-initial-commit">https://bitbucket.org/blog/what-can-we-learn-from-the-code-in-gits-initial-commit</a>
+
