@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
               if (!(Math.abs(i) == Math.abs(maxDistance) || Math.abs(j) == Math.abs(maxDistance) || (k == 0)|| k == cubeSize)) {
               var L = 0;
               } else {
-              var L = 0.4;
+              var L = 0.5;
               };
               if (L > 0) {
               ctx.fillStyle = 'rgba(255,255,255,' + L + ')';

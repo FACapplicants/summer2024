@@ -146,9 +146,10 @@ document.addEventListener('DOMContentLoaded', function() {
               var xp = x * scale + offsetX; //offsets are just set to middle of canvas for positioning
               var yp = y * scale + offsetY; //scale gives some flexibility in the size of the render
               
-              ctx.fillStyle = '#eee';
+              const L = 0.5;
+              ctx.fillStyle = 'rgba(255,255,255,' + L + ')';
               ctx.fillRect(xp, yp, 2, 2);
-  
+              
               x += incrementX;
               y += incrementY;
               z += incrementZ;

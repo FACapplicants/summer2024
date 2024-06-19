@@ -1,11 +1,10 @@
-<!-- TODO: Initialize animation for Cube frame on content load -->
-<!-- TODO: Fix grid Cube start/stop buttons -->
 <!-- TODO: Check animation load on multiple visits -->
 <h2>Donut? 3d Modelling without a Graphics Engine</h2>
 <p>Maybe it's because of the cupcake Lorem Ipsum. In thinking about how one 
   might go about visualizing objects on a html canvas with javascript I found 
   Andy Sloane's breakdown of his well known donut animation:</p>
   <h2>3D Donut Animation</h2>
+  <p>Known issue - if no load, try refreshing the page!</p>
   <div style="text-align: center;">
   <canvas id="canvasDonut" width="300" height="240"></canvas>
   <br>
@@ -20,7 +19,7 @@
   <canvas id="canvasCubeGrid" width="300" height="240"></canvas>
   <br>
   <button id="startCubeGridButton">Start Rotation</button>
-  <button id="startCubeGridButton">Stop Rotation</button>
+  <button id="stopCubeGridButton">Stop Rotation</button>
 </div>
 <p>It turns out that a torus is quite a nice shape to visualize, because the 
   donut effect is created by rotating a circle offset from the canvas center
