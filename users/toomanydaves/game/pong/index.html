@@ -20,7 +20,7 @@
     </head>
     <body>
         <canvas id="pong" width="480" height="320"></canvas>
-        <button id="start">Start Game</button>
+        <button id="start" style="margin: 10px">Start Game</button>
 
         <script>
             const canvas = document.getElementById('pong');
@@ -38,6 +38,7 @@
             const brickOffsetLeft = 30;
             const bricks = [];
 
+            let animationFrameId;
             let lives = 3;
             let score = 0;
             
@@ -148,7 +149,7 @@
                                 b.status = 0;
                                 score++;
                                 if (score === brickRowCount * brickColumnCount) {
-                                    alert('You win!! Congratulations!');
+                                    alert('Congratulations, you won!! Play again?');
                                     document.location.reload();
                                 }
                             }
@@ -185,7 +186,8 @@
 
                         if (!lives) {
                             endGame();
-                        } else {
+                        } else if (lives > 0) {
+                            alert(`1 life down, ${lives} left.`);
                             x = canvas.width / 2;
                             y = canvas.height - 30;
                             dx = ballSpeed;
@@ -202,7 +204,7 @@
                 drawScore();
                 drawLives();
 
-                requestAnimationFrame(draw);
+                animationFrameId = requestAnimationFrame(draw);
             }
 
             function startGame () {
@@ -213,7 +215,8 @@
             }
 
             function endGame () {
-                alert('GAME OVER');
+                cancelAnimationFrame(animationFrameId);
+                alert(`You hit ${score} blocks before you lost all your lives. Play again?`);
                 document.location.reload();
             }
 
