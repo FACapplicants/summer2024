@@ -1,4 +1,4 @@
-<p>
+<p id="home-title">
 Welcome to the blog! 
 </p>
 
@@ -9,7 +9,7 @@ Welcome to the blog!
 
 <a href="content/articles/floating_point_arithmetic_web.html">05/06/2024: Why does 0.1 + 0.2 !== 0.3 in Javascript? Floating Point Arithmetic</a>
 <li>
-<a href="content/marshmallow donut.html">marshmallow donut</a>
+<a href="content/articles/donut_3d_modelling_web.html">15/06/2024: Donut? 3d Modelling</a>
 
 <li>
 <a href="content/cuba chups.html">cuba chups</a>
@@ -70,3 +70,14 @@ Welcome to the blog!
 
 </ul>
 </div>
+<script>
+  function printDOM(node, prefix = '') {
+      console.log(prefix + node.nodeName);
+      for (let i = 0; i < node.children.length; i++) {
+          printDOM(node.children[i], prefix + '--');
+      }
+  }
+
+  // Call printDOM with the document object to print the entire DOM tree
+  printDOM(document);
+</script>

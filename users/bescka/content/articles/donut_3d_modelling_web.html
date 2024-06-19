@@ -1,0 +1,61 @@
+<!-- TODO: Check animation load on multiple visits -->
+<h2>Donut? 3d Modelling without a Graphics Engine</h2>
+<p>Maybe it's because of the cupcake Lorem Ipsum. In thinking about how one 
+  might go about visualizing objects on a html canvas with javascript I found 
+  Andy Sloane's breakdown of his well known donut animation:</p>
+  <h2>3D Donut Animation</h2>
+  <p>Known issue - if no load, try refreshing the page!</p>
+  <div style="text-align: center;">
+  <canvas id="canvasDonut" width="300" height="240"></canvas>
+  <br>
+  <button id="startDonutButton">Start Animation</button>
+  <button id="stopDonutButton">Stop Animation</button>
+</div>
+<p>Andy provides a great walkthrough of the maths of rotation and projection,
+  see the link below. Here is a go at implementing this for a cube! 
+  </p>
+  <h2>3D Cube Animation</h2>
+<div style="text-align: center;">
+  <canvas id="canvasCubeGrid" width="300" height="240"></canvas>
+  <br>
+  <button id="startCubeGridButton">Start Rotation</button>
+  <button id="stopCubeGridButton">Stop Rotation</button>
+</div>
+<p>It turns out that a torus is quite a nice shape to visualize, because the 
+  donut effect is created by rotating a circle offset from the canvas center
+  around an axis. The initialization for a cube in the implementation here is 
+  slightly different because we instead start by iterating out a grid of points. 
+</p>
+<p>
+  The light for the donut is interesting - it gets the normal to the surface
+  of the torus from the vector to a point on the unit circle after applying the same
+  transformation matrix, then projects this on to designated light 
+  source for a shading number normalized between -1 and 1.  
+</p>
+<p>
+  This approach doesn't work as simply for the cube because the normal
+  to the surface is not the same as the vector running from the center to the edge
+  of a 2d cross-section. Getting the normal to the surface of the cube requires a plane, 
+  and the cheapest way to get this information is with triangles! 
+  Definitely a next step! 
+</p>
+<h2>3D Cube Frame Animation</h2>
+<p>Here is another initial attempt at rendering a cube using 
+  a slightly different approach. The cube is rendered using fixed point 
+  information, but only for the vertices. The edges are rendered after the
+  transformation of the vertices by mapping the relevant lines connecting them. 
+  The dots are just filled in along the line according to the number of 
+  dots required and the length of the edge. I haven't done analysis on 
+  compute time but I assume this way is far less expensive! 
+</p>
+<div style="text-align: center;">
+  <canvas id="canvasCubeFrame" width="300" height="240"></canvas>
+  <br>
+  <button id="startCubeFrameButton">Start Rotation</button>
+  <button id="stopCubeFrameButton">Stop Rotation</button>
+</div>
+<h2 id="appendix">Appendix</h2>
+<p>Code for the donut and walkthrough of the maths of projection:</p>
+<p><a href="https://www.a1k0n.net/2011/07/20/donut-math.html">https://www.a1k0n.net/2011/07/20/donut-math.html</a></p>
+<p>Overview on the yaw/ pitch/ roll transformation matrices for 3d objects:</p>
+<p><a href="https://en.wikipedia.org/wiki/Rotation_matrix">https://en.wikipedia.org/wiki/Rotation_matrix</a></p>
