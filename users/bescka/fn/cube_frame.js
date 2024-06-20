@@ -1,4 +1,4 @@
-// TODO: Donut Script load/ start on page view.
+//TODO: hashnav
 document.addEventListener('DOMContentLoaded', function() {
     function initializeCubeAnimation() {
         var canvas = document.getElementById('canvasCubeFrame');

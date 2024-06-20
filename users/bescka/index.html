@@ -32,15 +32,15 @@
         &nbsp; - ~ - - -- ~ <br>
     </div>
     <span class="title_container">
-      <h1><a href="./content/home.html" id="home-link">Flounders and Codes</a></h1>
+      <h1><a href="#/home" id="home-link">Flounders and Codes</a></h1>
     </span>
     <div class="navbox">
       <div class="dropdown">
       <button class="dropdown-button", id="dropdown-button">Menu</button>
         <div class="dropdown-menu", id="dropdown-menu">
-          <a href="./content/home.html">Home</a>
-          <a href="./content/about.html">About</a>
-          <a href="./content/articles.html">Articles</a>
+          <a href="#/home">Home</a>
+          <a href="#/about">About</a>
+          <a href="#/articles">Articles</a>
         </div>
       </div>
     </div>
@@ -51,11 +51,10 @@
   </main>
   <script type="module">
     import { handleDropdownBehaviour } from './fn/dropdown.js'
-    import { handlePageLoad, handleContentLoad } from './fn/content_loader.js'
+    import { handleNavigation } from './fn/app.js'
     document.addEventListener('DOMContentLoaded', function() {
-        handlePageLoad();    
+        handleNavigation();    
         handleDropdownBehaviour(); 
-        handleContentLoad();
         });
   </script>
 </body>

@@ -1,7 +1,10 @@
-// to run you first use "npm install" to get chai/mocha and their dependencies
-// defined in the package-lock.json file
-// (mocha is the testing module, chai provides assertion functionality)
-// to run it's "npx mocha sum_of_positive_test.mjs"
+// These are the actual basic tests given by Codewars. Let's try and run them
+// locally!
+// (note do do this you need to have nodejs installed on your machine) 
+// To run you first navigate to this directory and use "npm install" to get 
+// chai/mocha and their dependencies which have been defined in the 
+// package-lock.json file (mocha is the testing module, chai provides 
+// assertion functionality) to run it's "npx mocha sum_of_positive_test.mjs"
 
 import { assert } from "chai";
 import positiveSum from "./sum_of_positive.mjs";
