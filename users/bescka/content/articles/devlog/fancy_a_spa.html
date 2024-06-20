@@ -1,0 +1,60 @@
+<div>
+<h1 id="Fancy a SPA? Not as relaxing" class="header">Fancy a SPA? Not as relaxing</h1>
+</div>
+
+<!-- <p>
+Yesterday a short note on what <a href="#/articles/git_out_of_here">"Git" stands for</a> was added. In the hopes that it might be at least somewhat interesting, I wanted to share a link to the article. The problem was that the site had been inadvertently based on a SPA model for a while. This was to make exporting and mantaining blog entries in html files a bit less confusing when writing in vimwiki/ markdown. There was no direct link to the article - the website had no URL paths apart from "/" because all content was dynamically loaded into /index.html.
+</p> -->
+<!-- 
+<h1>SPA?</h2> -->
+
+<p>
+The site has had a (more or less) working <a href="https://developer.mozilla.org/en-US/docs/Glossary/SPA">Single Page Application</a> model for a while. This means that instead of navigating directly to pages, content is dynamically loaded into a base webpage. The idea was to help make adding and mantaining html files exported from markdown/ vimwiki a bit easier. However, the blog had no explicit URL paths apart from the root page. This meant things like sharing links to nested content and browser navigation wasn't possible. 
+</p>
+
+<div><h2>How is it done here?</h2></div>
+
+<p>
+Hash symbols. In the URL, anything to the right of the hash (#) is actually handled client side, i.e. on the user's computer. The cool thing about this is that if you type in the following URL:</p> 
+<a href="https://facapplicants.github.io/summer2024/users/bescka/#/articles/git_out_of_here">https://facapplicants.github.io/summer2024/users/bescka/#/articles/git_out_of_here</a>
+
+<p>
+It enables you to load any scripts from the root page of the project, which is how the URL gets processed. What you see is /index.html with content loaded from /content/articles/git_out_of_here.html, triggered by an event listener on window load. 
+</p>
+
+<p>
+Navigating around the website with links requires either:
+</p>
+<ol>
+<li>
+Intercepting a link click and calling the content loading function using <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault">preventDefault()</a>, or;
+
+<li>
+What seems to currently work, put an event listener for <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event">'hashchange'</a> and update anchor elements with internal hrefs to start with #. 
+
+</ol>
+   
+<p>
+Updating the URL with the right path requires setting a history object using <a href="https://developer.mozilla.org/en-US/docs/Web/API/History/pushState">pushState()</a>. Navigating 
+using browser controls is then made accessible by by using an event listener for <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/popstate_event">popState()</a>.
+</p>
+
+
+<p>
+The catch? Well, in looking for a solution we are slightly restricted by wanting to host with github.io. There are definitely better ways of implementing the above! Beyond navigation, site accessibility features (and SEO) can apparently be more difficult - something to look into!  
+</p>
+
+<p><h2>Appendix</h2>
+</p>
+
+<p>
+Older article on W3C for HashURI with some interesting references:
+<a href="https://www.w3.org/wiki/HashURI">https://www.w3.org/wiki/HashURI</a>
+</p>
+
+
+
+
+
+
+
