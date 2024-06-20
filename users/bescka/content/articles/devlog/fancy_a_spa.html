@@ -1,0 +1,74 @@
+<div>
+<h1 id="Fancy a SPA? Not as relaxing" class="header">Fancy a SPA? Not as relaxing</h1>
+</div>
+
+<p>
+Yesterday I committed a short note on what <a href="#/articles/git_out_of_here">"Git" stands for</a>. 
+In the hopes that it might be at least somewhat interesting, I went to post a link to it. The 
+problem is that I had been inadvertently playing around with an SPA structure for a while to make
+exporting blog articles to html less confusing. There was no direct link to the article - my 
+website had no URL paths apart from "/" because all content was dynamically loaded into /index.html.
+</p>
+
+<h1>What is it?</h2>
+
+<p>
+A <a href="https://developer.mozilla.org/en-US/docs/Glossary/SPA">Single Page Application</a>. Instead of jumping around the file
+structure you dynamically load content into a webpage.  
+</p>
+
+<div><h2>How is it done here?</h2></div>
+
+<p>
+Hash symbols. In the URL, anything to the right of the hash
+symbol (#) is actually handled client side, i.e. on the user's computer: 
+</p>
+
+<p>
+So, the cool thing about this is that if you type in the following URL: 
+<a href="https://facapplicants.github.io/summer2024/users/bescka/#/articles/git_out_of_here">https://facapplicants.github.io/summer2024/users/bescka/#/articles/git_out_of_here</a>
+</p>
+
+<p>
+It enables you to load the javascript from the root page of the project, 
+which is how the URL gets processed. What you see is /index.html 
+with content loaded from /content/articles/git_out_of_here.html, triggered
+by an event listener on window load. 
+</p>
+
+<p>
+Navigating around the website with links requires either:
+</p>
+<ol>
+<li>
+Intercepting a link click and calling the content loading function using <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault">preventDefault()</a>, or;
+
+<li>
+What seems to currently work, just put an event listener for <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event">'hashchange'</a> and make 
+   anchor elements with internal hrefs start with #. 
+
+</ol>
+   
+<p>
+Updating the URL with the right path requires setting a history object using <a href="https://developer.mozilla.org/en-US/docs/Web/API/History/pushState">pushState()</a>. Navigating 
+using browser controls is then made accessible by by using an event listener for <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/popstate_event">popState()</a>.
+</p>
+
+<p> 
+I am sure there are better ways of doing it! Wanting it to be able to be hosted with 
+github.io means we are restricted to client-side operations though.  
+</p>
+<p><h2>Appendix</h2>
+</p>
+
+<p>
+Older article on W3C for HashURI with some interesting references from Tim Berners-Lee:
+<a href="https://www.w3.org/wiki/HashURI">https://www.w3.org/wiki/HashURI</a>
+</p>
+
+
+
+
+
+
+
