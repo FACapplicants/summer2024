@@ -11,6 +11,10 @@ const greenButton = document.getElementById("green");
 const blueButton = document.getElementById("blue");
 const yellowButton = document.getElementById("yellow");
 const startButton = document.getElementById("start-button");
+const redAudio = document.getElementById("red_button_sound");
+const greenAudio = document.getElementById("green_button_sound");
+const blueAudio = document.getElementById("blue_button_sound");
+const yellowAudio = document.getElementById("yellow_button_sound");
 
 // Resets all the game arrays
 function resetGame() {
@@ -69,9 +73,7 @@ redButton.addEventListener("click", function () {
   userPattern.push("red");
   timesClicked++;
   checkWin();
-
-  let audio = document.getElementById('red_button_sound');
-    audio.play();
+  redAudio.play();
 });
 
 // Pushes "green" to the userPattern, adds 1 to timesClicked, and checks for a win
@@ -80,9 +82,7 @@ greenButton.addEventListener("click", function () {
   userPattern.push("green");
   timesClicked++;
   checkWin();
-
-  let audio = document.getElementById('green_button_sound');
-    audio.play();
+  greenAudio.play();
 });
 
 // Pushes "blue" to the userPattern, adds 1 to timesClicked, and checks for a win
@@ -91,9 +91,7 @@ blueButton.addEventListener("click", function () {
   userPattern.push("blue");
   timesClicked++;
   checkWin();
-
-  let audio = document.getElementById('blue_button_sound');
-    audio.play();
+  blueAudio.play();
 });
 
 // Pushes "green" to the userPattern, adds 1 to timesClicked, and checks for a win
@@ -102,7 +100,5 @@ yellowButton.addEventListener("click", function () {
   userPattern.push("yellow");
   timesClicked++;
   checkWin();
-
-  let audio = document.getElementById('yellow_button_sound');
-    audio.play();
+  yellowAudio.play();
 });
