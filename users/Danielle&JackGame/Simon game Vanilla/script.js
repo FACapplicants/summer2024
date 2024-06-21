@@ -32,6 +32,29 @@ function randomNumber() {
 function pushToGameArray() {
   const myRandomNumber = randomNumber();
   gamePattern.push(buttonColours[myRandomNumber]);
+  // console.log(gamePattern);
+}
+
+let i = 0;
+
+function playLoop() {
+  //  create a loop function
+  setTimeout(function () {
+    if (gamePattern[i] === "red") {
+      redAudio.play();
+    } else if (gamePattern[i] === "green") {
+      greenAudio.play();
+    } else if (gamePattern[i] === "blue") {
+      blueAudio.play();
+    } else if (gamePattern[i] === "yellow") {
+      yellowAudio.play();
+    }
+
+    i++; //  increment the counter
+    if (i <= 3) {
+      playLoop();
+    }
+  }, 1000);
 }
 
 // Resets game, then pushes to the gamePattern array 4 times so that 4 colours are selected
@@ -40,6 +63,8 @@ function pushToGameArray() {
 // Need to get a timeout going on this so that it selects them slowly rather than all at once
 function startGame() {
   resetGame();
+  playLoop();
+
   for (let i = 1; i <= 4; i++) {
     pushToGameArray();
     //  const myTimeout = setTimeout(pushToGameArray, 1000);
