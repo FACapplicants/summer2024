@@ -69,6 +69,9 @@ redButton.addEventListener("click", function () {
   userPattern.push("red");
   timesClicked++;
   checkWin();
+
+  let audio = document.getElementById('red_button_sound');
+    audio.play();
 });
 
 // Pushes "green" to the userPattern, adds 1 to timesClicked, and checks for a win
@@ -77,6 +80,9 @@ greenButton.addEventListener("click", function () {
   userPattern.push("green");
   timesClicked++;
   checkWin();
+
+  let audio = document.getElementById('green_button_sound');
+    audio.play();
 });
 
 // Pushes "blue" to the userPattern, adds 1 to timesClicked, and checks for a win
@@ -85,6 +91,9 @@ blueButton.addEventListener("click", function () {
   userPattern.push("blue");
   timesClicked++;
   checkWin();
+
+  let audio = document.getElementById('blue_button_sound');
+    audio.play();
 });
 
 // Pushes "green" to the userPattern, adds 1 to timesClicked, and checks for a win
@@ -93,4 +102,7 @@ yellowButton.addEventListener("click", function () {
   userPattern.push("yellow");
   timesClicked++;
   checkWin();
+
+  let audio = document.getElementById('yellow_button_sound');
+    audio.play();
 });
