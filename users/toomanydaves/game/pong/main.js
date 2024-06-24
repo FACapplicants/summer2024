@@ -7,6 +7,7 @@ const levelSettings = [
         ballSpeed: 4,
         paddleHeight: 10,
         paddleWidth: 80,
+        paddleSpeed: 8,
         brickRowCount: 3,
         brickColumnCount: 5,
         brickWidth: 75,
@@ -18,7 +19,8 @@ const levelSettings = [
         ballRadius: 8,
         ballSpeed: 5,
         paddleHeight: 10,
-        paddleWidth: 95,
+        paddleWidth: 98,
+        paddleSpeed: 11,
         brickRowCount: 5,
         brickColumnCount: 5,
         brickWidth: 75,
@@ -183,9 +185,9 @@ function draw () {
 
     // shift paddle without leaving canvas
     if (rightPressed) {
-        paddleX = Math.min(paddleX + 7, canvas.width - settings.paddleWidth);
+        paddleX = Math.min(paddleX + settings.paddleSpeed, canvas.width - settings.paddleWidth);
     } else if (leftPressed) {
-        paddleX = Math.max(paddleX - 7, 0);
+        paddleX = Math.max(paddleX - settings.paddleSpeed, 0);
     }
 
     //collision detection
