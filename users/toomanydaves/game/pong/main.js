@@ -52,6 +52,11 @@ let paddleX;
 let rightPressed;
 let leftPressed;
 
+const red = '#FF665E';
+const slate = '#5E695E';
+const blue = '#3D5588';
+const turquoise = '#00AA93';
+
 function loadLevel () {
     settings = levelSettings[level];
     x = canvas.width / 2;
@@ -61,11 +66,13 @@ function loadLevel () {
     paddleX = (canvas.width - settings.paddleWidth) / 2;
     rightPressed = false;
     leftPressed = false;
+    tally = 0;
 
     for (let c = 0; c < settings.brickColumnCount; c++) {
         bricks[c] = [];
         for (let r = 0; r < settings.brickRowCount; r++) {
-            bricks[c][r] = { x: 0, y: 0, status: 1 };
+            bricks[c][r] = { x: 0, y: 0, status: 1, color: tally % 2 ? blue : turquoise };
+            tally++;
         }
     }
 
@@ -75,7 +82,7 @@ function loadLevel () {
 function drawBall () {
     ctx.beginPath();
     ctx.arc(x, y, settings.ballRadius, 0, Math.PI * 2);
-    ctx.fillStyle = "#0095DD";
+    ctx.fillStyle = red;
     ctx.fill();
     ctx.closePath();
 }
@@ -88,7 +95,7 @@ function drawPaddle () {
         settings.paddleWidth,
         settings.paddleHeight
     );
-    ctx.fillStyle = "#0095DD";
+    ctx.fillStyle = slate;
     ctx.fill();
     ctx.closePath();
 }
@@ -105,7 +112,7 @@ function drawBricks () {
 
                 ctx.beginPath();
                 ctx.rect(brickX, brickY, settings.brickWidth, settings.brickHeight);
-                ctx.fillStyle = '#0095DD';
+                ctx.fillStyle = bricks[c][r].color;
                 ctx.fill();
                 ctx.closePath();
             }
