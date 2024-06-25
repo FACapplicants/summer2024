@@ -21,16 +21,44 @@ export default function tribonacci(signature, n){
 const res = tribonacci([1,1,1], 5);
 console.log(res)
 
-// upvoted 1: 
-function tribonacci(signature,n){  
-    for (var i = 0; i < n-3; i++) { // iterate n times
-      signature.push(signature[i] + signature[i+1] + signature[i+2]); // add last 3 array items and push to trib
-    }
-    return signature.slice(0, n); //return trib - length of n
+// upvoted answer review
+// found it hard to improve on upvoted 1 - tried 
+// e.g. n = Math.max(0, n-3), or m = n<3? n, n-3
+// computationally the redundancy from always computing
+// i, i+1, i+2 is slightly unsatisfying, but looks great
+export function tribonacci_upvote1(signature, n){
+  for (let i = 0; i < n-3; i++) {
+    signature.push(
+      signature[i] + 
+      signature[i+1] + 
+      signature[i+2]);
   }
+  return signature.slice(0,n)
+}
+
+// export function tribonacci_attempt2(signature, n){
+//   i = signature.length
+//   while (i < Math.max(n-3)) {
+//     signature.push(
+//       signature[i] + 
+//       signature[i+1] + 
+//       signature[i+2]);
+//   }
+//   return signature
+// }
+
+
+// function test(signature, n){
+//   let i = n - 3
+//   let j = 0
+//   while (i + j < n) {
+//     signature.push(signature.slice())
+//   }
+// }
+
 
   // upvoted 2: 
-  function tribonacci(signature,n) {
+  function tribonacci_upvote2(signature,n) {
     const result = signature.slice(0, n);
     while (result.length < n) {
       result[result.length] = result.slice(-3).reduce((p,c) => p + c, 0);
