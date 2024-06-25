@@ -6,6 +6,8 @@ let userPattern = [];
 
 let timesClicked = [];
 
+let gameLevel = 1;
+
 const redButton = document.getElementById("red");
 const greenButton = document.getElementById("green");
 const blueButton = document.getElementById("blue");
@@ -42,16 +44,32 @@ function playLoop() {
   setTimeout(function () {
     if (gamePattern[i] === "red") {
       redAudio.play();
+      redButton.classList.add("transparent");
+      setTimeout(() => {
+        redButton.classList.remove("transparent");
+      }, 300);
     } else if (gamePattern[i] === "green") {
       greenAudio.play();
+      greenButton.classList.add("transparent");
+      setTimeout(() => {
+        greenButton.classList.remove("transparent");
+      }, 300);
     } else if (gamePattern[i] === "blue") {
       blueAudio.play();
+      blueButton.classList.add("transparent");
+      setTimeout(() => {
+        blueButton.classList.remove("transparent");
+      }, 300);
     } else if (gamePattern[i] === "yellow") {
       yellowAudio.play();
+      yellowButton.classList.add("transparent");
+      setTimeout(() => {
+        yellowButton.classList.remove("transparent");
+      }, 300);
     }
 
     i++; //  increment the counter
-    if (i <= 3) {
+    if (i <= gameLevel) {
       playLoop();
     }
   }, 1000);
@@ -63,12 +81,12 @@ function playLoop() {
 // Need to get a timeout going on this so that it selects them slowly rather than all at once
 function startGame() {
   resetGame();
-  playLoop();
-
-  for (let i = 1; i <= 4; i++) {
+  for (let i = 1; i <= gameLevel; i++) {
     pushToGameArray();
+    console.log(i);
     //  const myTimeout = setTimeout(pushToGameArray, 1000);
   }
+  playLoop();
   console.log(gamePattern);
 }
 
@@ -83,9 +101,11 @@ function checkWin() {
       console.log(consistencyCounter);
     }
   }
-  if (consistencyCounter === 4 && timesClicked === 4) {
+  if (consistencyCounter === gameLevel && timesClicked === gameLevel) {
     console.log("WINNER");
-  } else if (timesClicked === 4) {
+    gameLevel++;
+    startGame();
+  } else if (timesClicked === gameLevel) {
     console.log("LOSER");
   }
 }
