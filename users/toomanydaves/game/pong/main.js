@@ -56,6 +56,8 @@ const red = '#FF665E';
 const slate = '#5E695E';
 const blue = '#3D5588';
 const turquoise = '#00AA93';
+const paddleSound = document.getElementById('paddle-sound');
+const brickSound = document.getElementById('brick-sound');
 
 function loadLevel () {
     settings = levelSettings[level];
@@ -163,6 +165,7 @@ function detectCollisionWithBricks () {
 
             if (b.status === 1) {
                 if (x > b.x && x < b.x + settings.brickWidth && y > b.y && y < b.y + settings.brickHeight) {
+                    brickSound.play();
                     dy = -dy;
                     b.status = 0;
                     score++;
@@ -205,6 +208,7 @@ function draw () {
         dy = -dy;
     } else if (y + dy > canvas.height - settings.ballRadius) {
         if (x > paddleX && x < paddleX + settings.paddleWidth) {
+            paddleSound.play();
             dy = -dy
         } else {
             lives--;
