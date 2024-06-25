@@ -16,8 +16,21 @@ const levelSettings = [
         brickOffsetTop: 30,
         brickOffsetLeft: 30
     }, {
-        ballRadius: 8,
+        ballRadius: 9,
         ballSpeed: 5,
+        paddleHeight: 10,
+        paddleWidth: 90,
+        paddleSpeed: 10,
+        brickRowCount: 4,
+        brickColumnCount: 5,
+        brickWidth: 75,
+        brickHeight: 20,
+        brickPadding: 10,
+        brickOffsetTop: 35,
+        brickOffsetLeft: 30
+    }, {
+        ballRadius: 8,
+        ballSpeed: 6,
         paddleHeight: 10,
         paddleWidth: 98,
         paddleSpeed: 11,
@@ -32,6 +45,14 @@ const levelSettings = [
 ]
 
 const bricks = [];
+
+const paddleSound = document.getElementById('paddle-sound');
+const brickSound = document.getElementById('brick-sound');
+
+const red = '#FF665E';
+const slate = '#5E695E';
+const blue = '#3D5588';
+const turquoise = '#00AA93';
 
 let animationFrameId;
 
@@ -51,13 +72,6 @@ let dy;
 let paddleX;
 let rightPressed;
 let leftPressed;
-
-const red = '#FF665E';
-const slate = '#5E695E';
-const blue = '#3D5588';
-const turquoise = '#00AA93';
-const paddleSound = document.getElementById('paddle-sound');
-const brickSound = document.getElementById('brick-sound');
 
 function loadLevel () {
     settings = levelSettings[level];
@@ -200,12 +214,15 @@ function draw () {
         paddleX = Math.max(paddleX - settings.paddleSpeed, 0);
     }
 
-    //collision detection
+    //collision detection...
+    //...with sides
     if (x + dx < settings.ballRadius || x + dx > canvas.width - settings.ballRadius) {
         dx = -dx;
     }
+    //...with top
     if (y + dy < settings.ballRadius) {
         dy = -dy;
+    //...with bottom
     } else if (y + dy > canvas.height - settings.ballRadius) {
         if (x > paddleX && x < paddleX + settings.paddleWidth) {
             paddleSound.play();
