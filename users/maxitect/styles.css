@@ -1,4 +1,4 @@
-h1, h2, p, button {
+h1, h2, p, button, a, li {
   font-family: Necto Mono;
 }
 
@@ -11,22 +11,42 @@ h1 {
   text-align: center;
 }
 
+a, a:visited {
+  color: white;
+}
+
+a:hover {
+  color: yellow;
+}
+
 .flex-container {
-  padding: 0;
-  margin: 0;
-  list-style: none;
   display: flex;
-  justify-content: space-around;
-  line-height:30px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: top;
+  gap: 16px;
+  max-width: auto;
+  margin: 0 auto;
+  padding: 20px 10px;
 }
 
 .flex-item {
   background: tomato;
+  min-width: 250px;
   margin: 5px;
   padding: 20px;
   color: white;
-  text-align: center;
   flex: 1 0 0px;
+}
+
+li {
+  margin: 10px;
+}
+
+.logo {
+  width: 40px;
+  margin: 8px;
 }
 
 /* FOR GAME */
