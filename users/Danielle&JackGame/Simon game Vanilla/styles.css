@@ -53,3 +53,7 @@ h1 {
 #yellow {
   background-color: yellow;
 }
+
+.transparent {
+  opacity: 60%;
+}

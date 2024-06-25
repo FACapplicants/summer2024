@@ -4,19 +4,27 @@ let gamePattern = [];
 
 let userPattern = [];
 
-let timesClicked = [];
+let timesClicked = 0;
+
+let gameLevel = 1;
 
 const redButton = document.getElementById("red");
 const greenButton = document.getElementById("green");
 const blueButton = document.getElementById("blue");
 const yellowButton = document.getElementById("yellow");
 const startButton = document.getElementById("start-button");
+const redAudio = document.getElementById("red_button_sound");
+const greenAudio = document.getElementById("green_button_sound");
+const blueAudio = document.getElementById("blue_button_sound");
+const yellowAudio = document.getElementById("yellow_button_sound");
+const levelCounter = document.getElementById("level-counter");
 
 // Resets all the game arrays
 function resetGame() {
   gamePattern = [];
   userPattern = [];
   timesClicked = [];
+  gameLevel = 1;
 }
 
 // Generates random number out of 4 (as there are 4 colours)
@@ -30,79 +38,104 @@ function pushToGameArray() {
   gamePattern.push(buttonColours[myRandomNumber]);
 }
 
+let i = 0;
+
+function playLoop() {
+  //  create a loop function
+  setTimeout(function () {
+    if (gamePattern[i] === "red") {
+      redAudio.play();
+      redButton.classList.add("transparent");
+      setTimeout(() => {
+        redButton.classList.remove("transparent");
+      }, 300);
+    } else if (gamePattern[i] === "green") {
+      greenAudio.play();
+      greenButton.classList.add("transparent");
+      setTimeout(() => {
+        greenButton.classList.remove("transparent");
+      }, 300);
+    } else if (gamePattern[i] === "blue") {
+      blueAudio.play();
+      blueButton.classList.add("transparent");
+      setTimeout(() => {
+        blueButton.classList.remove("transparent");
+      }, 300);
+    } else if (gamePattern[i] === "yellow") {
+      yellowAudio.play();
+      yellowButton.classList.add("transparent");
+      setTimeout(() => {
+        yellowButton.classList.remove("transparent");
+      }, 300);
+    }
+
+    i++; //  increment the counter
+    if (i <= gameLevel) {
+      playLoop();
+    } else i = 0;
+  }, 1000);
+}
+
 // Resets game, then pushes to the gamePattern array 4 times so that 4 colours are selected
 // Obviously will start with one, then two, then three, onwards colours. I started with four to
 // get the game logic going
 // Need to get a timeout going on this so that it selects them slowly rather than all at once
-function startGame() {
-  resetGame();
-  for (let i = 1; i <= 4; i++) {
-    pushToGameArray();
-    //  const myTimeout = setTimeout(pushToGameArray, 1000);
-  }
-  console.log(gamePattern);
+function startRound() {
+  pushToGameArray();
+  levelCounter.innerHTML = gameLevel;
+  playLoop();
 }
 
 // Checks the elements of the gamePattern and the userPattern, then
 // console logs LOSER until they match, then when they match console logs WINNER
 function checkWin() {
   let consistencyCounter = 0;
-  console.log(userPattern);
   for (let i = 0; i < gamePattern.length; i++) {
     if (gamePattern[i] === userPattern[i]) {
       consistencyCounter++;
-      console.log(consistencyCounter);
     }
   }
-  if (consistencyCounter === 4 && timesClicked === 4) {
+  if (consistencyCounter === gameLevel && timesClicked === gameLevel) {
     console.log("WINNER");
-  } else if (timesClicked === 4) {
+    gameLevel++;
+    userPattern = [];
+    timesClicked = 0;
+    startRound();
+  } else if (timesClicked === gameLevel) {
     console.log("LOSER");
   }
 }
 
-startButton.addEventListener("click", startGame);
+startButton.addEventListener("click", startRound);
 
 // Pushes "red" to the userPattern, adds 1 to timesClicked, and checks for a win
 redButton.addEventListener("click", function () {
-  //   console.log("red button pressed");
   userPattern.push("red");
   timesClicked++;
+  redAudio.play();
   checkWin();
-
-  let audio = document.getElementById('red_button_sound');
-    audio.play();
 });
 
 // Pushes "green" to the userPattern, adds 1 to timesClicked, and checks for a win
 greenButton.addEventListener("click", function () {
-  //   console.log("green button pressed");
   userPattern.push("green");
   timesClicked++;
+  greenAudio.play();
   checkWin();
-
-  let audio = document.getElementById('green_button_sound');
-    audio.play();
 });
 
 // Pushes "blue" to the userPattern, adds 1 to timesClicked, and checks for a win
 blueButton.addEventListener("click", function () {
-  //   console.log("blue button pressed");
   userPattern.push("blue");
   timesClicked++;
+  blueAudio.play();
   checkWin();
-
-  let audio = document.getElementById('blue_button_sound');
-    audio.play();
 });
 
 // Pushes "green" to the userPattern, adds 1 to timesClicked, and checks for a win
 yellowButton.addEventListener("click", function () {
-  //   console.log("yellow button pressed");
   userPattern.push("yellow");
   timesClicked++;
   checkWin();
-
-  let audio = document.getElementById('yellow_button_sound');
-    audio.play();
+  yellowAudio.play();
 });
