@@ -19,9 +19,13 @@ main {
 }
 
 #profile-pic {
+  max-width: 40%;
   border-radius: 50%;
-  width: 150px;
-  height: 150px;
+}
+
+#video-games {
+  width: 600px;
+  height: 350px;
 }
 
 h1, h2 {
