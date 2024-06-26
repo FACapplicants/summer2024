@@ -3,7 +3,7 @@
 
 
 // first attempt
-export default function tribonacci(signature, n){
+export function tribonacci(signature, n){
     // bit of a rubbish way of dealing with n<3
     if (n < 3) {
         return signature.slice(0, n) 
@@ -58,7 +58,7 @@ export function tribonacci_upvote1(signature, n){
 
 
   // upvoted 2: 
-  function tribonacci_upvote2(signature,n) {
+  export function tribonacci_upvote2(signature,n) {
     const result = signature.slice(0, n);
     while (result.length < n) {
       result[result.length] = result.slice(-3).reduce((p,c) => p + c, 0);

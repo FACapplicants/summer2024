@@ -1,0 +1,176 @@
+<h1 id="far-from-perfect-a-faillog">Far from Perfect: a failLog</h1>
+<p>TLDR: 
+    <ul> 
+        <li> Learning is often a process of iterative failure (and hopefully improvement!). Here is an example!</li>
+        <li> Pseudocode can be a good way to get your thoughts down for tricky problems.</li>
+        <li> Timing how long execution takes can be done with <a href="https://developer.mozilla.org/en-US/docs/Web/API/console/time_static">‘console.time(’label’)’ and ‘console.timeEnd(’label’)’</a>.</li>
+        <li> <a href ="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax">Spread syntax, "..."</a> is a short way to access elements of iterable objects.</li>
+    </ul>   
+</p>
+<br>
+<p>I recently came across the CodeWars problem <a
+href="https://www.codewars.com/kata/5a3af5b1ee1aaeabfe000084/train/javascript">"Sums of Perfect Squares"</a>. The task is to create a fast algorithm to work out the lowest number of squared numbers which add together to make the given number. 
+</p>
+<p>
+There is a mini-log of problems and reviews of upvoted submissions to CodeWars appended to the site. As a harder problem, it might be illuminating to explicitly show the process of getting stuck on a problem and iteratively failing. It is a great way to learn and it would be nice to hear any ideas on the problem or the approach! 
+</p>
+<h2>The Problem</h2>
+<pre><code class="general-code-block">The task is simply stated. Given an integer n (3 &lt; n &lt; 109), find the length of the smallest list of perfect squares which add up to n. Come up with the best algorithm you can; you&#39;ll need it!
+
+Examples:
+
+    sum_of_squares(17) = 2
+    17 = 16 + 1 (16 and 1 are perfect squares).
+    sum_of_squares(15) = 4
+    15 = 9 + 4 + 1 + 1. There is no way to represent 15 as the sum of three perfect squares.
+    sum_of_squares(16) = 1
+    16 itself is a perfect square.
+
+Time constraints:
+
+5 easy (sample) test cases: n &lt; 20
+
+5 harder test cases: 1000 &lt; n &lt; 15000
+
+5 maximally hard test cases: 5e8 &lt; n &lt; 1e9
+
+100 random maximally hard test cases: 1e8 &lt; n &lt; 1e9</code></pre>
+<h2 id="first-attempt-just-plain-wrong">First Attempt: Just Plain
+Wrong</h2>
+<p>The idea here was quite simple. Here is the pseudo code:</p>
+<pre><code class="general-code-block">function sumOfSquares_v1(n) {
+    get the sqrt of n 
+    
+    repeat: 
+        take the integer value of the sqrt
+            square it
+        subtract the squared number from n
+        repeat until n = 0
+    
+    return the count of times this process was executed
+}</code></pre>
+<p>And the javascript implementation:</p>
+<pre><code class="general-code-block">function sumOfSquares_v1(n) {
+    let x = n;
+    let count = 0;
+   while (x &gt; 0) {
+        let y = Math.floor(Math.sqrt(x));
+        let y_ps = Math.pow(y,2); 
+        x = x - y_ps; 
+        count += 1; 
+    }
+    return count;
+}</code></pre>
+<p>This got through most of the basic tests! The problem is that if you
+have a number such as 18, the solution does not feature the highest
+square - instead the smallest sum of perfect squares is 9 + 9, or a
+count of 2. This algorithm would give instead 16 + 1 + 1, or a count of
+3.</p>
+<h2 id="second-attempt-too-slow">Second Attempt: Too Slow</h2>
+<p>The second attempt tried to brute force the solution - by iterating
+through the possible combinations of squares and returning the smallest
+number of combinations.</p>
+<p>Squares get pretty big pretty quickly. So maybe we can save some
+compute time by precalculating some squares based on the value of
+n. </p>
+<p>We can also save some time because we can stop iterating if the count
+is 1 or 2. This is because we start with the highest square, so if it
+isn’t that, then 2 will be correct.</p>
+<pre><code class="general-code-block">function sumOfSquares(n) {
+    initialise an array of possible squares: 
+        sqrt n as before, then create an array of squares from the integer of the sqrt to 1 (so the array is in reverse order)
+    
+    repeat (similar to v1, but faster because the squares have been precomputed): 
+        Round 1
+        Start with the highest square lower than or equal to n 
+            Take that away from n
+        Find the highest square lower than or equal to the remainder
+            Take that away from n
+        Log the count in an array
+        
+        Round 2 - 
+        Now take the next square that is lower than or equal to n
+            Follow the same process as in Round 1
+    
+    return the minimum count logged in the array - break if returns 1 or 2
+    
+}</code></pre>
+<p>Here is the javascript implementation:</p>
+<pre><code class="general-code-block">function sumOfSquares(n) { 
+   
+   function initializeSqArray(n){
+        let sq_array = []
+        const y = Math.floor(Math.sqrt(n));
+        for (let i = y; i &gt;= 1; i--){
+            sq_array.push(i**2)
+        }
+        return sq_array
+   };
+
+    function getMaxSquarePosition(n) {
+        for (let i = 0; i &lt; sq_array.length; i++){
+            if (sq_array[i] &lt;= n) {
+                return i
+            }
+        }
+    }; 
+    
+    function returnSquareCount(n, mx) {
+        let count = 0; 
+        let x = n
+        while (x &gt; 0) {
+            x = x - sq_array[mx];
+            count += 1;
+            mx = getMaxSquarePosition(x);
+        }
+        return count
+    };
+
+    const sq_array = initializeSqArray(n)
+    const mx = 0
+    let count_arr = [];
+    for (let j = 0; j &lt; sq_array.length ; j++) {
+        let count_j = returnSquareCount(n, j); 
+        if ([1, 2].includes(count_j)) { 
+            return count_j
+        } else {
+            count_arr.push(count_j)
+        };
+    };
+    return Math.min(...count_arr)
+}</code></pre>
+<p>This actually passed the base tests where n&lt;20, the bigger tests where 1000&lt;n&lt15000 and some maximally hard tests where 5e8&lt;n&lt;1e9 (500 million to 1 billion)! But it was too slow for all of the maximally hard tests. We might need to scrap the
+whole thing and try another approach. One thing we can do before that is check
+where the time is being spent. We can do this by logging the time to the
+console with ‘console.time(’label’)’ and ‘console.endTime(’label’)’.</p>
+<pre><code class="general-code-block">// .........    
+    console.time(&#39;initializeArray&#39;);
+    const sq_array = initializeSqArray(n);
+    console.timeEnd(&#39;initializeArray&#39;);
+    const mx = 0;
+    
+    let count_arr = [];
+    console.time(&#39;iteration&#39;);
+    for (let j = 0; j &lt; sq_array.length ; j++) {
+        let count_j = returnSquareCount(n, j); 
+        if ([1, 2].includes(count_j)) { 
+            return count_j
+        } else {
+            count_arr.push(count_j)
+            //console.log(count_arr)
+        };
+    };
+    console.timeEnd(&#39;iteration&#39;)
+    return Math.min(...count_arr)    
+} </code></pre>
+<p>Running a test with 661915703, we can see that the initialization of
+the array of squares only took 1.187ms - Thats pretty good! The error
+message in CodeWars informs us that we have 12000ms, or 12 seconds to
+complete the run with all the examples. So it seems that this might be
+an OK idea. So the problem is then iterating through the possible
+squares. This part took 2.897s. So it can solve a few
+maximally hard cases, but there is no way it will get through 100 in 12
+seconds!</p>
+<h2 id="next-steps">What Next?</h2>
+<p>Next step: can we be a bit more discerning with the order of our
+checks? What is most 'likely' to be the solution?</p>

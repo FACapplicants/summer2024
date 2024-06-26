@@ -20,7 +20,7 @@ return result;
 
 array_list.forEach((array) => {   
     let positive_sum = positiveSum(array); 
-    console.log(positive_sum);
+    //console.log(positive_sum);
 });
 
 export default positiveSum;

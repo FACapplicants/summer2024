@@ -26,7 +26,6 @@
 
 
 import { assert } from "chai";
-import divisors from "../7_find_the_divisors.mjs";
 import positiveSum from "../8_sum_of_positive.mjs";
 
 
