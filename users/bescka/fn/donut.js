@@ -1,4 +1,4 @@
-// Wait for the whole document to be loaded before initializing animation
+//TODO: Refactor loading/ checking mechanism
 document.addEventListener('DOMContentLoaded', function() {
   function initializeAnimation() {
       var canvastag = document.getElementById('canvasDonut');

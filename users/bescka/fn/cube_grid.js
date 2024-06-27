@@ -1,4 +1,5 @@
 // TODO: Put conditional for outer grid points before the transformation. 
+// TODO: explanation for why rotation around A not required
 document.addEventListener('DOMContentLoaded', function() {
   function initializeAnimation() {
       var canvastag = document.getElementById('canvasCubeGrid');
