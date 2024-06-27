@@ -30,6 +30,9 @@
 <div id="Home"></div>
 <div class="main-container"> 
 
+
+    <button onclick="lightsOff()" id="darkMode" >Hit the lights!</button>
+
     <div class="top-container">
     
         <div class="intro">
@@ -38,7 +41,8 @@
         </div>
         
         <div class="image">
-        <img src="https://th.bing.com/th/id/R.1f57e5988584554f8cc3f862f1a8773f?rik=nRV8PIqb02RHuA&riu=http%3a%2f%2fupload.wikimedia.org%2fwikipedia%2fbs%2fe%2fec%2fLisa_Simpson.png&ehk=BtwwYlTcmoQosJmYJL81k5qSxIi%2bT8YLzGZ%2bVeYg6Ww%3d&risl=&pid=ImgRaw&r=0" height="250px" alt="">
+            <!-- <img src="/images/Bart_Simpson.png" height="250px" alt=""> -->
+        <img id ='myImage' src="https://th.bing.com/th/id/R.1f57e5988584554f8cc3f862f1a8773f?rik=nRV8PIqb02RHuA&riu=http%3a%2f%2fupload.wikimedia.org%2fwikipedia%2fbs%2fe%2fec%2fLisa_Simpson.png&ehk=BtwwYlTcmoQosJmYJL81k5qSxIi%2bT8YLzGZ%2bVeYg6Ww%3d&risl=&pid=ImgRaw&r=0" height="250px" alt="">
         </div>
     </div>
 
@@ -120,7 +124,29 @@
 </div>
 
 
+<script>
 
+function lightsOff() {
+
+const darkMode = document.body;
+darkMode.classList.toggle("dark-theme");
+
+const nav = document.querySelector('.navigation');
+nav.classList.toggle('dark-theme');
+
+
+const changeImage = document.getElementById('myImage');
+const originalSrc = "https://th.bing.com/th/id/R.1f57e5988584554f8cc3f862f1a8773f?rik=nRV8PIqb02RHuA&riu=http%3a%2f%2fupload.wikimedia.org%2fwikipedia%2fbs%2fe%2fec%2fLisa_Simpson.png&ehk=BtwwYlTcmoQosJmYJL81k5qSxIi%2bT8YLzGZ%2bVeYg6Ww%3d&risl=&pid=ImgRaw&r=0";
+const newSrc = "/images/Bart_Simpson.png";
+
+if (changeImage.src === originalSrc) {
+    changeImage.src = newSrc;
+} else {
+    changeImage.src = originalSrc;
+}
+}
+
+    </script>
 
 </body>
 </html>
