@@ -19,6 +19,25 @@ body{
     scroll-behavior: smooth;
 }
 
+button {
+
+}
+
+.dark-theme {
+    background-color: #45474B;
+    color: #FEFBF6;
+}
+
+.navigation.dark-theme {
+    background-color: #3D3B40;
+    color: #FEFBF6;
+}
+
+.navigation.dark-theme ul li a {
+    color: #ffffff;
+}
+
+
 .navigation{
     /* background-color: #F69F91; */
     /* background-color: #F0ADA7; */
@@ -66,9 +85,6 @@ li a:hover {
     /* border: blue solid 3px; */
 }
 
-img {
-    /* border: green solid 3px; */
-}
 
 .intro {
     /* border: 3px solid black; */
@@ -99,8 +115,7 @@ h2 {
 } 
 
 /* .projects-card {
-    /* background: #f3f0ee;  */
-    /* margin: 20px;
+    box-shadow: 4px 4px 8px 0 #ffdda5b7;
 }  */
 
  
