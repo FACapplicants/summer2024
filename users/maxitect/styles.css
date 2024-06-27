@@ -1,4 +1,9 @@
-h1, h2, p, button, a, li {
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+h1, h2, p, button, a, li, .logotext-M, .logotext-FF, .logotext-W {
   font-family: Necto Mono;
 }
 
@@ -17,6 +22,38 @@ a, a:visited {
 
 a:hover {
   color: yellow;
+}
+
+svg {
+  display: block;
+}
+
+.logotext-M, .logotext-FF, .logotext-W {
+  font-size: 48px;
+  fill: black;
+}
+
+.logo-website {
+  max-width: 600px;
+  display: block;
+  margin: auto;
+}
+
+.logobox-M, .logobox-FF, .logobox-W {
+  fill: yellow;
+}
+
+.logobox-M:hover, .logobox-FF:hover, .logobox-W:hover, .logobox-hidden-M, .logobox-hidden-FF, .logobox-hidden-W, .logobox-M:active {
+  fill: tomato;
+}
+
+.logobox-M:hover ~ .logobox-hidden-M, .logobox-FF:hover ~ .logobox-hidden-FF, .logobox-W:hover ~ .logobox-hidden-W, .logobox-W:hover ~ .logobox-hidden-W  {
+  height: 88px;
+  transition: height 2s;
+}
+
+.logobox-M:hover ~ .logotext-M, .logobox-FF:hover ~ .logotext-FF, .logobox-W:hover ~ .logotext-W {
+  fill: white;
 }
 
 .flex-container {
@@ -44,9 +81,19 @@ li {
   margin: 10px;
 }
 
+.logos {
+  fill:#FFFFFF;
+}
+
+.logos:hover {
+  fill: yellow;
+}
+
 .logo {
   width: 40px;
-  margin: 8px;
+  height: 40px;
+  margin: 12px 8px;
+  display:inline-flex;
 }
 
 /* FOR GAME */
