@@ -1,0 +1,16 @@
+body {
+    text-align: center;
+    background-color:#2E8BC0;
+    box-sizing: border-box;
+}
+
+.pics-for-choice {
+    align-items: center;
+}
+button {
+    cursor: pointer;
+    border: 1px solid #2E8BC0;
+    background-color: transparent;
+    margin: 1rem;
+    padding: 1rem;
+}
