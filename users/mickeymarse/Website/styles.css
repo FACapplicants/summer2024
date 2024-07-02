@@ -1,0 +1,30 @@
+body {
+  background-color: black;
+  color: aliceblue;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: baseline;
+  gap: 200px;
+  padding-left: 50px;
+  background-color: darkslategray;
+  width: 100%;
+  height: 100%;
+}
+.navButtons {
+  cursor: pointer;
+  padding: 5px;
+}
+.navButtons:hover {
+  background-color: hotpink;
+  border-radius: 10px;
+  border: 2px solid pink;
+}
+#darkMode {
+  position: absolute;
+  right: 100px;
+}
