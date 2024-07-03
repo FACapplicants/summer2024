@@ -322,6 +322,22 @@ textarea {
     background: #464c2f;
     color: #e7ded2;
 }
+/* This is our style for the invalid fields */
+
+
+  
+/* This is the style of our error messages */
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    display: none;
+}
+
+.error {
+    display: block;
+}
+
+/*footer*/
 .main-footer {
     max-width: 120rem;
     margin: auto;
