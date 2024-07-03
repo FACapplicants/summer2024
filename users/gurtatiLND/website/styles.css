@@ -328,13 +328,10 @@ textarea {
   
 /* This is the style of our error messages */
 .error-message {
-    color: red;
-    font-size: 0.9em;
-    display: none;
-}
-
-.error {
-    display: block;
+    color: #1bca2f;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 3px;
 }
 
 /*footer*/
