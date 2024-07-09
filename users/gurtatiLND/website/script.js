@@ -1,4 +1,20 @@
+const openBtn = document.querySelector("#modalBtn");
+const modal = document.querySelector(".modal");
+const closeBtn = document.querySelector(".close");
+
+function openModal() {
+	modal.classList.remove("hide");
+}
+
+function closeModal(e, clickedOutside) {
+	if (clickedOutside) {
+		if (e.target.classList.contains("modal"))
+			modal.classList.add("hide");
+	} else modal.classList.add("hide");
+}
+
 function validateForm() {
+
     const nameInput = document.getElementById('name').value;
     const emailInput = document.getElementById('email').value;
     const messageInput = document.getElementById('message').value;
@@ -12,8 +28,6 @@ function validateForm() {
     const messageError = document.getElementById('message-error');
     messageError.textContent = "";
 
-    //get the modal box
-    const modal = document.getElementsByClassName("modal");
     const emailRegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
     let isValid = true;
@@ -38,24 +52,11 @@ function validateForm() {
     
     if (isValid) {       
        // When the user clicks the button, open the modal 
-        modal.style.display = "block";
-        
+       openBtn.addEventListener("click", openModal);
+       modal.addEventListener("click", (e) => closeModal(e, true));
+       closeBtn.addEventListener("click", closeModal);       
     }
-    // When the user clicks on <span> (x), close the modal
-    const span = document.getElementsByClassName("close")[0];
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-  
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-
-    return isValid; // Prevent default form submission for demonstration purposes
-
+    return false;
 };
 
 
