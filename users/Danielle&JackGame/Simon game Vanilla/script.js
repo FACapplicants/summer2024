@@ -1,3 +1,9 @@
+//The Simon game is a memory game. 
+//The aim is to remember the sequence shown, and to submit the same sequence.
+//The sequence builds the higher the level you go
+//A wrong move ends the game. 
+
+
 const buttonColours = ["red", "green", "blue", "yellow"];
 
 let gamePattern = [];
@@ -25,6 +31,7 @@ function resetGame() {
   userPattern = [];
   timesClicked = [];
   gameLevel = 1;
+  levelCounter.innerHTML = gameLevel;
 }
 
 // Generates random number out of 4 (as there are 4 colours)
@@ -32,16 +39,18 @@ function randomNumber() {
   return Math.floor(Math.random() * 4);
 }
 
-// Uses a random number to push to game array
+// Uses a random number to push to game array & generate a random color
 function pushToGameArray() {
   const myRandomNumber = randomNumber();
   gamePattern.push(buttonColours[myRandomNumber]);
 }
 
+
 let i = 0;
 
+
 function playLoop() {
-  //  create a loop function
+  //  creates a loop function 
   setTimeout(function () {
     if (gamePattern[i] === "red") {
       redAudio.play();
@@ -77,35 +86,41 @@ function playLoop() {
 }
 
 // Resets game, then pushes to the gamePattern array 4 times so that 4 colours are selected
-// Obviously will start with one, then two, then three, onwards colours. I started with four to
-// get the game logic going
-// Need to get a timeout going on this so that it selects them slowly rather than all at once
 function startRound() {
   pushToGameArray();
   levelCounter.innerHTML = gameLevel;
   playLoop();
 }
 
-// Checks the elements of the gamePattern and the userPattern, then
-// console logs LOSER until they match, then when they match console logs WINNER
+// Compares the user pattern against the game pattern.
+// if the user pattern doesnt match the game pattern, the game immediately ends and displays
+// loser in the console, and a alert message to the user. 
+// However if it does match, the game continues and we start a new pattern again. 
+
 function checkWin() {
-  let consistencyCounter = 0;
-  for (let i = 0; i < gamePattern.length; i++) {
-    if (gamePattern[i] === userPattern[i]) {
-      consistencyCounter++;
+
+  for (let i = 0; i < userPattern.length; i++){
+
+    if(userPattern[i] !== gamePattern[i]){
+      console.log('LOSER');
+      alert('YOU LOSE! BETTER LUCK NEXT TIME!')
+      resetGame();
+      return;
     }
   }
-  if (consistencyCounter === gameLevel && timesClicked === gameLevel) {
+
+  if (userPattern.length === gamePattern.length){
     console.log("WINNER");
     gameLevel++;
     userPattern = [];
     timesClicked = 0;
     startRound();
-  } else if (timesClicked === gameLevel) {
-    console.log("LOSER");
   }
+
 }
 
+//This relates to the user clicking the start button. 
+// On the user's click, we trigger the startRound function
 startButton.addEventListener("click", startRound);
 
 // Pushes "red" to the userPattern, adds 1 to timesClicked, and checks for a win
