@@ -156,7 +156,7 @@ canvas {
   background-color: #111;
   color: white;
 }
-
+/* 
 .general-code-block {
   background-color: #333;
   color: #fff;
@@ -166,9 +166,11 @@ canvas {
   font-size: 14px;
   line-height: 1.5;
   overflow-x: auto; /* Enable horizontal scroll for long lines */
-}
+/* }
 
 code {
   display: block; 
   white-space: pre-wrap;
-}
+} */
+
+  

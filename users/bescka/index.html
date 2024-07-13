@@ -21,6 +21,7 @@
   <script src="fn/cube_grid.js"></script>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <link id="prism-theme" href="prism-spmcs.css" rel="Stylesheet">
 </head>
 <body>
   <div class="container">
@@ -54,7 +55,24 @@
     document.addEventListener('DOMContentLoaded', function() {
         handleNavigation();    
         handleDropdownBehaviour(); 
-        });
+
+        Prism.highlightAll();
+
+        document.getElementById('main-content').addEventListener('DOMNodeInserted', function(event) {
+                // Use a timeout to ensure the element is fully added to the DOM
+                setTimeout(() => {
+                    const element = event.target;
+                    if (element.tagName === 'PRE' && element.querySelector('code')) {
+                        Prism.highlightElement(element.querySelector('code'));
+                    } else if (element.tagName === 'CODE') {
+                        Prism.highlightElement(element);
+                    }
+                }, 0);
+            });
+    });
   </script>
+  <!-- Prism JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 </body>
 </html>
