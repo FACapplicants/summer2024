@@ -16,7 +16,9 @@ export function handleNavigation() {
 };
 
 function loadContent(path) {
-  const fetchPath = `/content/${path}.html`;
+  const isHosted = window.location.hostname === 'facapplicants.github.io';
+  const basePath = isHosted ? 'summer2024/users/bescka' : '';
+  const fetchPath = `${basePath}/content/${path}.html`;
   fetch(fetchPath)
     .then(response => {
       if (!response.ok) {
