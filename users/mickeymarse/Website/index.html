@@ -5,15 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
     <script defer type="module" src="main.js"></script>
+    <script defer src="../Game/game.js"></script>
     <title>Mickey's Website for FAC</title>
   </head>
   <body>
-    <!-- <nav>
-      <h1>MICKEY</h1>
-      <h2 class="navButtons"><a>About Me</a></h2>
-      <h2 class="navButtons"><a>Contacts</a></h2>
-      <h2 class="navButtons" id="darkMode">🌞</h2>
-    </nav> -->
     <main id="landing" class="vis">
       <h1>What the FAC</h1>
       <h2>is this?</h2>
@@ -23,6 +18,13 @@
     </main>
     <main class="vis invis" id="home">
       <p>Oh, well, it worked! Who would have thought.</p>
+      <p>Now, why don't you press <a id="to-game">PLAY</a>?</p>
+    </main>
+    <main class="vis invis" id="game-container">
+      <canvas id="game-canvas"></canvas>
+      <div id="dialogue-box"></div>
+      <div id="level-display"></div>
+      <div id="controls">← → : Move | ↑ : Jump | Enter : Interact</div>
     </main>
   </body>
 </html>
