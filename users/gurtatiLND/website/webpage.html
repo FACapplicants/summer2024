@@ -34,7 +34,7 @@
                     <h1 class="heading-home">HI, I'M TATIANA GUROVA</h1>
                     <div class="home-info">
                         <!--change this part to explanation about me like a applicant to the course-->
-                        <p class="text-home">Creative Junior Frontend Developer crafting captivating user experiences for seamless web solutions</p>
+                        <p class="text-home">Hey FAC community! I built this website to introduce myself and give you a glimpse of my web development abilities.</p>
                     </div>
                     <div class="home-link">
                         <a href="#projects" class="btn">Project</a>
@@ -52,8 +52,7 @@
                         <div class="about-content-main">
                             <h3>Uncover my journey!</h3>
                             <p class="about-content-main-details">
-                                <!-- talking about my past which is related to my application-->
-                                Lorem Ipsum comes from a latin text written in 45BC by Roman statesman, lawyer, scholar, and philosopher, Marcus Tullius Cicero. The text is titled "de Finibus Bonorum et Malorum" which means "The Extremes of Good and Evil". The most common form of Lorem ipsum is the following:
+                                At this stage, I consider myself an aspiring junior frontend developer, eager to expand and deepen my knowledge in software development. I have a Bachelor's Degree in Computer Science and Applied Mathematics, but it was a long time ago, and I’ve forgotten much of it. Now, I’m diving back into the field with a wealth of experience in logistics, event planning, and running my own business. Besides that, I love traveling, organizing events for friends, crafting, and sports.                     
                             </p>
                             <a href="#contact" class="btn">Contact</a>
                         </div>
@@ -74,15 +73,16 @@
                 <div class="main-container">
                     <h2 class="heading projects">PROJECT</h2>
                     <!--at this part I will talk about game which I will build for this application -->
-                    <p class="intro">Here you will find a collection of my personal projects, each accompanied by its own case study. I created these projects for my portfolio and to practice and build my skills.</p>
+                    <p class="intro">Here you will find a project I created both for the application and to practice and build my skills.</p>
                     <div class="projects-content">
                         <div class="projects-row">
                             <div class="projects-row-img-content">
-                                <img src="./assets/first_memorygame.png" class="projects-row-img" alt="wepapp screenshot">
+                                <img src="./assets/RPS_game.png" class="projects-row-img" alt="wepapp screenshot">
                             </div>
                             <div class="projects-row-content">
                                 <h3>Game</h3>
-                                <p>A simple flip-card memory game using React. The game is designed to train memory by having players flip cards to find matching pairs. It features a clean UI, state management for game logic, and uses React components to handle the card flipping and matching mechanics.</p>
+                                <p>The Rock, Paper, Scissors game is a simple yet entertaining game where both participants(user and computer) choose either rock, paper, or scissors. The game can end in a tie or result in one player winning and the other losing. I plan to build this game with HTML, CSS, and JavaScript.</p>
+                                <!-- CHANGE THE LINK TO THE GAME -->
                                 <a class="btn" href="https://shimmering-muffin-69285d.netlify.app/">View Project</a>
                             </div>
                         </div>
@@ -95,24 +95,33 @@
                     <p class="intro">Feel free to Contact me by submitting the form below and I will get back to you as soon as possible</p>
                     
                     <div class="contact-form-container">
-                        <form action="#" class="contact-form" method="POST">
+                        <form class="contact-form" onsubmit="return validateForm()">
                             <div class="contact-form-field">
                                 <label for="name" class="contact-form-label">Name </label>
-                                <input id="name" name="name" class="contact-form-input" type="text" placeholder="Enter Your Name" required/>
+                                <input id="name" name="name" class="contact-form-input" type="text" placeholder="Enter Your Name"/>
+                                <span id="name-error" class="error-message"></span>
                             </div>
                             <div class="contact-form-field">
                                 <label for="email" class="contact-form-label">Email </label>
-                                <input id="email" name="email" class="contact-form-input" type="email" placeholder="Enter Your Email" required/>
+                                <input id="email" name="email" class="contact-form-input" type="email" placeholder="Enter Your Email"/>
+                                <span id="email-error" class="error-message"></span>
                             </div>
                             <div class="contact-form-field">
                                 <label for="message" class="contact-form-label">Message </label>
-                                <textarea id="message" name="message" class="contact-form-input" rows="10" cols="60" placeholder="Enter Your Message" required></textarea>
+                                <textarea id="message" name="message" class="contact-form-input" rows="10" cols="60" placeholder="Enter Your Message"></textarea>
+                                <span id="message-error" class="error-message"></span>
                             </div>
-                            <button type="submit" class="btn contact-btn">Submit</button>
+                            <button id="modalBtn" type="submit" class="btn contact-btn">Submit</button>
+                            <!-- The Modal -->
+                            <div class="modal hide">
+                                <div class="modal-content">
+                                    <span class="close">&times;</span>
+                                    <p>Thanks for reaching out! ✋</p>
+                                    <p>I'll get back to you faster than you can say " Kirkjubæjarklaustur"!</p>
+                                </div> 
+                            </div>
                         </form>
-                    </div>
-                    
-                    
+                    </div>       
                 </div>         
             </section>
         </main>
@@ -152,5 +161,6 @@
                 Made by <a href="https://github.com/gurtatiLND">Tatiana Gurova</a>.
             </p>
         </footer>
+        <script src="script.js"></script>
     </body>
 </html>

@@ -322,6 +322,56 @@ textarea {
     background: #464c2f;
     color: #e7ded2;
 }
+/* This is the style of our error messages */
+.error-message {
+    color: #1bca2f;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 3px;
+}
+
+/*Modal Box*/
+.modal {
+    position: fixed; /* Stay in place */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: whitesmoke;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #afad8c;
+    width: 80%; 
+    border-radius: 5px;
+    text-align: center;
+    color:#464c2f;
+}
+.hide {
+	display: none;
+}
+/* The Close Button*/
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*footer*/
 .main-footer {
     max-width: 120rem;
     margin: auto;
