@@ -1,16 +1,36 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head class="game-canvas">
     <meta charset = "utf-8" />
-    <title>the journey of the blockbuster</title>
+    <title>BL0CKBUSTER</title>
+    <link rel="icon" type="image/x-icon" href="game-favicon.svg">
     <link href="styles.css" rel="stylesheet"/>
 </head>
-<body>
-
-<canvas id="myCanvas" width="480" height="320"></canvas>
-<button id="runButton">click here to begin this unforgettable journey</button>
-
-<script src="game.js"></script>
+<audio autoplay loop>
+    <source src="https://tunes.stocktune.com/public/3/5/6/3560785b-caea-4d72-a263-559fe1fee80c/funky-grooves-underground-stocktune.mp3" type="audio/mpeg">
+</audio>
+<body class="game-canvas">
+    <canvas id="myCanvas" width="0" height="0"></canvas>
+    <h1>BL0CKBUSTER</h1>
+    <div class="keyboard">
+        <span>
+            <button id="runButton" class="start-button">
+                <span>start</span>
+            </button>
+        </span>
+    </div>
+    <br></br>
+    <h2 class="central">how to play</h2>
+    <p class = "central white-text">use left and right arrow keys to control paddle</p>
+    <div class="keyboard">
+        <button class="key-white">^</button>
+    </div>
+    <div class="keyboard">
+        <button class="key-yellow margin-left"><</button>
+        <button class="key-white">v</button>
+        <button class="key-yellow margin-right">></button>
+    </div>
+    <script src="game.js"></script>
 
 </body>
 </html>

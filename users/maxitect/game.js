@@ -1,26 +1,45 @@
 /* general graphics variable*/
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
-/* moving ball variables */
-const ballRadius = 10;
-let x = canvas.width / 2;
-let y = canvas.height - 30;
-let dx = 2;
-let dy = -2;
+let screenWidth  = window.innerWidth;
+let screenHeight = window.innerHeight;
+let timeToStart = 3;
+let won = false;
+
 /* paddle variables */
-const paddleHeight = 10;
-const paddleWidth = 75;
-let paddleX = (canvas.width - paddleWidth) / 2;
+const paddleHeight = screenHeight / 50;
+const paddleWidth = screenWidth / 10;
+let paddleX = (screenWidth - paddleWidth) / 2;
 let rightPressed = false;
 let leftPressed = false;
+let paddleDeflection = 0;
+
+/* moving ball variables */
+let ballRadius = 0;
+if (screenWidth > screenHeight) {
+    ballRadius = Math.round(screenWidth / 80);
+} else {
+    ballRadius = Math.round(screenHeight / 60);
+}
+let x = screenWidth / 2;
+let y = screenHeight - ballRadius - paddleHeight - 1;
+let dx = 0;
+if (screenWidth > screenHeight) {
+    dx = Math.round(screenWidth / 300);
+} else {
+    dx = Math.round(screenHeight / 300);
+}
+let dy = -dx;
+
 /* brick variables */
-const brickRowCount = 8;
-const brickColumnCount = 10;
-const brickWidth = 40;
-const brickHeight = 10;
-const brickPadding = 6;
-const brickOffsetTop = 12;
-const brickOffsetLeft = 12;
+const brickRowCount = Math.round(screenHeight / 100);
+const brickColumnCount = Math.round(screenWidth / 200);
+const brickPadding = screenWidth / 75;
+const brickWidth = (screenWidth - (brickPadding * (brickColumnCount + 3))) / brickColumnCount;
+const brickHeight = brickWidth / 5;
+const brickOffsetTop = brickPadding * 2;
+const brickOffsetLeft = brickPadding * 2;
+
 /* score */
 let score = 0;
 
@@ -57,18 +76,12 @@ function collisionDetection() {
             const b = bricks[c][r];
             if (b.status == 1) {
                 if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
+                    paddleDeflection = 0;
                     dy = -dy;
                     b.status = 0;
                     score ++;
                     if (score === brickRowCount * brickColumnCount) {
-                        alert("amazing ball control, you beat the game!");
-                        ctx.font = "300px Necto Mono";
-                        ctx.fillStyle = "#0095DD";
-                        ctx.textBaseline = 'middle'; 
-                        ctx.textAlign = 'center'; 
-                        ctx.fillText("win", canvas.width/2, canvas.height/2);
-                        document.location.reload();
-                        clearInterval(interval);
+                        won = true;
                     }
                 }
             }
@@ -76,8 +89,18 @@ function collisionDetection() {
     }
 }
 
+function drawTimer() {
+    drawCanvas();
+    ctx.font = screenHeight.toString() + "px Necto Mono";
+    ctx.fillStyle = "#0095DD";
+    ctx.textBaseline = "middle"; 
+    ctx.textAlign = "center";
+    ctx.fillText(`${timeToStart}`, canvas.width/2, canvas.height/2);
+    timeToStart--;
+}
+
 function drawScore() {
-    ctx.font = "400px Necto Mono";
+    ctx.font = screenHeight.toString() + "px Necto Mono";
     ctx.fillStyle = "#0095DD";
     ctx.textBaseline = "middle"; 
     ctx.textAlign = "center"; 
@@ -118,33 +141,63 @@ function drawBricks() {
         }
     }
 
-function draw() {
+function drawCanvas() {
+    canvas.width = screenWidth;
+    canvas.height = screenHeight;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+function draw() {
+    drawCanvas();
     drawPaddle();
-    collisionDetection();
     drawScore();
     drawBall();
     drawBricks();
+    collisionDetection();
+    if (won) {
+        drawCanvas();
+        ctx.font = "bold " + (screenWidth/7.5).toString() + "px Necto Mono"; 
+        ctx.fillStyle = "white";
+        ctx.textBaseline = 'middle';  
+        ctx.textAlign = 'center';
+        ctx.fillText("BUSTEDBL0CKS", canvas.width/2, (screenWidth/15)/2 + screenWidth/14.4);
+        ctx.font = (screenWidth/40).toString() + "px Necto Mono";
+        ctx.fillText("congratulations! it looks like the paddle &", canvas.width/2, canvas.height/2);
+        ctx.fillText("ball duo cleared all the blocks thanks to you!", canvas.width/2, canvas.height/2 + screenWidth/40);
+        ctx.fillText("you busted up all " + `${score}` + " blocks", canvas.width/2, canvas.height/2 + screenWidth/20);
+        ctx.fillText("click anywhere for a new (yet remarkably similar!) adventure!", canvas.width/2, canvas.height/2 + screenWidth/10);
+        addEventListener("click", function () {
+            document.location.reload();
+            });
+        clearInterval(interval);
+    }
     if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
+        paddleDeflection = 0;
         dx = -dx;
     }
     if (y + dy < ballRadius) {
         dy = -dy;
+    } else if ((y + dy > canvas.height - ballRadius - paddleHeight) && (x > paddleX && x < paddleX + paddleWidth)) {
+        dy = -dy;
+        paddleDeflection = (x - paddleX - paddleWidth/2) / (paddleWidth/4);
     } else if (y + dy > canvas.height - ballRadius) {
-        if (x > paddleX && x < paddleX + paddleWidth) {
-            dy = -dy;
-        } else {
-            alert("you've run out of steam! click to try and bounce back...");
-            ctx.font = "300px Necto Mono";
-            ctx.fillStyle = "#0095DD";
-            ctx.textBaseline = 'middle'; 
-            ctx.textAlign = 'center'; 
-            ctx.fillText("fin", canvas.width/2, canvas.height/2);
+        drawCanvas();
+        ctx.font = "bold " + (screenWidth/7.2).toString() + "px Necto Mono"; 
+        ctx.fillStyle = "white";
+        ctx.textBaseline = 'middle';  
+        ctx.textAlign = 'center';
+        ctx.fillText("BL0CKBUSTED", canvas.width/2, (screenWidth/14.4)/2 + screenWidth/14.4);
+        ctx.font = (screenWidth/40).toString() + "px Necto Mono";
+        ctx.fillText("looks like the blocks have prevailed", canvas.width/2, canvas.height/2);
+        ctx.fillText("against the paddle & ball duo this time...", canvas.width/2, canvas.height/2 + screenWidth/40);
+        ctx.fillText("you managed to bust " + `${score}` + "/" + `${brickRowCount * brickColumnCount}` + " blocks before going down", canvas.width/2, canvas.height/2 + screenWidth/20);
+        ctx.fillText("click anywhere to bounce back against those blasted blocks", canvas.width/2, canvas.height/2 + screenWidth/10);
+        addEventListener("click", function () {
             document.location.reload();
-            clearInterval(interval);
-        }
+            });
+        clearInterval(interval);
     }
-    x += dx;
+    x += dx + paddleDeflection;
     y += dy;
     if (rightPressed) {
         paddleX = Math.min(paddleX + 7, canvas.width - paddleWidth);
@@ -154,9 +207,14 @@ function draw() {
 }
 
 function startGame() {
-    const interval = setInterval(draw, 10);
+    const timer = setInterval(drawTimer, 1000);
+    setTimeout(function game() {
+        clearInterval(timer);
+        const interval = setInterval(draw, 10);
+    }, 4000)
 }
+
 document.getElementById("runButton").addEventListener("click", function () {
-startGame();
-this.disabled = true;
-});
+    startGame();
+    this.disabled = true;
+    });

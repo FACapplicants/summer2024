@@ -1,15 +1,16 @@
+@font-face {
+  font-family: "Necto Mono";
+  src: url("NectoMono-Regular.woff2") format("woff2");
+}
+
 html, body {
   width: 100%;
   height: 100%;
+  scrollbar-width: none
 }
 
-h1, h2, p, button, a, li, .logotext-M, .logotext-FF, .logotext-W {
-  font-family: Necto Mono;
-}
-
-h1 {
-  margin: 1em auto;
-  width: 60vw;
+h1, h2, p, button, a, li, .logotext-M, .logotext-FF, .logotext-W, .h2-image {
+  font-family: "Necto Mono";
 }
 
 .central, h1 {
@@ -20,7 +21,7 @@ a, a:visited {
   color: white;
 }
 
-a:hover {
+a:hover, .flex-image:hover {
   color: yellow;
 }
 
@@ -28,9 +29,14 @@ svg {
   display: block;
 }
 
+img {
+  height: 100%;
+}
+
 .logotext-M, .logotext-FF, .logotext-W {
   font-size: 48px;
   fill: black;
+  font-weight: bold;
 }
 
 .logo-website {
@@ -39,17 +45,20 @@ svg {
   margin: auto;
 }
 
-.logobox-M, .logobox-FF, .logobox-W {
+.logobox-M, .logobox-FF, .logobox-W, .logobox-hidden-M, .logobox-hidden-FF, .logobox-hidden-W {
   fill: yellow;
 }
 
 .logobox-M:hover, .logobox-FF:hover, .logobox-W:hover, .logobox-hidden-M, .logobox-hidden-FF, .logobox-hidden-W, .logobox-M:active {
   fill: tomato;
+  transition: fill 0.5s;
 }
 
 .logobox-M:hover ~ .logobox-hidden-M, .logobox-FF:hover ~ .logobox-hidden-FF, .logobox-W:hover ~ .logobox-hidden-W, .logobox-W:hover ~ .logobox-hidden-W  {
   height: 88px;
-  transition: height 2s;
+  fill: tomato;
+  transition: height 2s,
+              fill 0.5s;
 }
 
 .logobox-M:hover ~ .logotext-M, .logobox-FF:hover ~ .logotext-FF, .logobox-W:hover ~ .logotext-W {
@@ -68,14 +77,55 @@ svg {
   padding: 20px 10px;
 }
 
+.flex-item, .flex-image {
+  min-width: 300px;
+  margin: 5px;
+  color: white;
+  flex: 1;
+}
+
 .flex-item {
   background: tomato;
   min-width: 250px;
-  margin: 5px;
   padding: 20px;
-  color: white;
-  flex: 1 0 0px;
 }
+
+.flex-image {
+  overflow: hidden;
+  justify-content: center;
+  display: flex;
+  position: relative;
+}
+
+.flex-item:hover, .flex-image:hover {
+  margin: 0;
+  transition: margin 1s;
+}
+
+.h2-image {
+  justify-content: left;
+  align-items: center;
+  display: flex;
+  color: yellow;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  bottom: 0;
+  font-size: 5vh;
+  opacity: 0%;
+  }
+
+  .flex-image:hover img {
+    opacity: 50%;
+    transition: 1s;
+  }
+  
+  .flex-image:hover .h2-image{
+    color: black;
+    opacity: 100%;
+    transition: 0.5s;
+  }
 
 li {
   margin: 10px;
@@ -93,14 +143,105 @@ li {
   width: 40px;
   height: 40px;
   margin: 12px 8px;
-  display:inline-flex;
+  display: inline-flex;
 }
 
 /* FOR GAME */
 
+.game-canvas {
+  margin: 0;
+  padding: 0;
+  background: tomato;
+  overflow: hidden; /* Hide scrollbars */
+}
+
+button {
+  display: block;
+  margin: 20px auto;
+}
+
 canvas {
   background: tomato;
 }
-button {
-  display: block;
+
+h1 {
+  font-size: 14vw;
+  margin: 0 0;
+}
+
+h1, h2, .white-text {
+  color: white;
+}
+
+.start-button, .key-white, .key-yellow {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: black;
+  border-color: black;
+  border:3px solid;
+  border-radius: 15px;
+  box-shadow: 0 9px black;
+  margin-top: 0;
+}
+
+.start-button, .key-white {
+  background-color: white;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.key-yellow {
+  background-color: yellow;
+  gap: 10px;
+}
+
+.margin-left {
+  margin-left: 50vw;
+}
+
+.margin-right {
+  margin-right: 50vw;
+}
+
+.keyboard {
+  display: flex;
+  justify-content: center;
+}
+
+.start-button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.start-button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.start-button:hover {
+  transition: 0.5s;
+  background-color: yellow;
+}
+
+.start-button:hover span {
+  padding-right: 25px;
+}
+
+.start-button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.start-button:active, .key-white:active, .key-yellow:active {
+  box-shadow: 0 5px black;
+  transform: translateY(4px);
 }
