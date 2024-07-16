@@ -217,6 +217,8 @@ nav {
   color: #ffc100;
   position: relative;
   z-index: 900;
+  /* animation: bounce 0.45s infinite alternate;
+  -webkit-animation: bounce 0.45s infinite alternate; */
 }
 
 .hero-header span::after {
@@ -242,6 +244,7 @@ nav {
 .section {
   margin: auto;
   width: 80%;
+  padding-top: 100px;
 }
 
 .about-heading {
@@ -254,7 +257,7 @@ nav {
 
 .about-cards-container {
   display: flex;
-  gap: 100 px;
+  gap: 100px;
 }
 
 .about-card {
@@ -262,6 +265,7 @@ nav {
   flex-direction: column;
   gap: 20px;
   width: 50%;
+  margin-bottom: 240px;
 }
 
 .about-card-header {
@@ -271,9 +275,43 @@ nav {
   font-weight: 400;
 }
 
+.about-card p {
+  line-height: 24px;
+}
+
 footer {
-  margin-top: 400px;
+  padding: 20px;
+  margin-top: 20px;
+  color: black;
+  text-align: center;
   width: 100%;
-  height: 100px;
-  background-color: blue;
+  background-color: #f4edea;
+}
+
+/* --------------------------- WORK SECTION  --------------------------------------------- */
+
+#work {
+  /* margin: 64px; */
+}
+
+.project-card {
+  display: flex;
+  gap: 80px;
+  margin-bottom: 100px;
+}
+
+.project-heading {
+  font-size: 64px;
+  font-family: "cormorant";
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.project-card p {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.main-project-img {
+  width: 600px;
 }
