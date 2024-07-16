@@ -1,21 +1,9 @@
-<h1 id="far-from-perfect-a-faillog">Far from Perfect: a failLog</h1>
-<p>TLDR: 
-    <ul> 
-        <li> Learning is often a process of iterative failure (and hopefully improvement!). Here is an example!</li>
-        <li> Pseudocode can be a good way to get your thoughts down for tricky problems.</li>
-        <li> Timing how long execution takes can be done with <a href="https://developer.mozilla.org/en-US/docs/Web/API/console/time_static">‘console.time(’label’)’ and ‘console.timeEnd(’label’)’</a>.</li>
-        <li> <a href ="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax">Spread syntax, "..."</a> is a short way to access elements of iterable objects.</li>
-    </ul>   
-</p>
-<br>
-<p>I recently came across the CodeWars problem <a
-href="https://www.codewars.com/kata/5a3af5b1ee1aaeabfe000084/train/javascript">"Sums of Perfect Squares"</a>. The task is to create a fast algorithm to work out the lowest number of squared numbers which add together to make the given number. 
-</p>
-<p>
-There is a mini-log of problems and reviews of upvoted submissions to CodeWars appended to the site. As a harder problem, it might be illuminating to explicitly show the process of getting stuck on a problem and iteratively failing. It is a great way to learn and it would be nice to hear any ideas on the problem or the approach! 
-</p>
+<h1 id="far-from-perfect-codewars-example">Far from Perfect: Sums of Squares</h1>
+
+A log of attempts made for the <a href="https://www.codewars.com/kata/5a3af5b1ee1aaeabfe000084/train/javascript">"Sums of Perfect Squares"</a> problem.
+
 <h2>The Problem</h2>
-<pre><code class="general-code-block">The task is simply stated. Given an integer n (3 &lt; n &lt; 109), find the length of the smallest list of perfect squares which add up to n. Come up with the best algorithm you can; you&#39;ll need it!
+<pre><code class="language-javascript">Given an integer n (3 &lt; n &lt; 109), find the length of the smallest list of perfect squares which add up to n. 
 
 Examples:
 
@@ -34,11 +22,11 @@ Time constraints:
 
 5 maximally hard test cases: 5e8 &lt; n &lt; 1e9
 
-100 random maximally hard test cases: 1e8 &lt; n &lt; 1e9</code></pre>
+100 random maximally hard test cases: 1e8 &lt; n &lt; 1e9 </code></pre>
 <h2 id="first-attempt-just-plain-wrong">First Attempt: Just Plain
 Wrong</h2>
 <p>The idea here was quite simple. Here is the pseudo code:</p>
-<pre><code class="general-code-block">function sumOfSquares_v1(n) {
+<pre><code class="language-javascript">function sumOfSquares_v1(n) {
     get the sqrt of n 
     
     repeat: 
@@ -50,7 +38,7 @@ Wrong</h2>
     return the count of times this process was executed
 }</code></pre>
 <p>And the javascript implementation:</p>
-<pre><code class="general-code-block">function sumOfSquares_v1(n) {
+<pre><code class="language-javascript">function sumOfSquares_v1(n) {
     let x = n;
     let count = 0;
    while (x &gt; 0) {
@@ -76,9 +64,10 @@ n. </p>
 <p>We can also save some time because we can stop iterating if the count
 is 1 or 2. This is because we start with the highest square, so if it
 isn’t that, then 2 will be correct.</p>
-<pre><code class="general-code-block">function sumOfSquares(n) {
+<pre><code class="language-javascript">function sumOfSquares(n) {
     initialise an array of possible squares: 
-        sqrt n as before, then create an array of squares from the integer of the sqrt to 1 (so the array is in reverse order)
+        sqrt n as before, then create an array of squares from the integer of the sqrt to 1 
+        (so the array is in reverse order)
     
     repeat (similar to v1, but faster because the squares have been precomputed): 
         Round 1
@@ -96,7 +85,7 @@ isn’t that, then 2 will be correct.</p>
     
 }</code></pre>
 <p>Here is the javascript implementation:</p>
-<pre><code class="general-code-block">function sumOfSquares(n) { 
+<pre><code class="language-javascript">function sumOfSquares(n) { 
    
    function initializeSqArray(n){
         let sq_array = []
@@ -143,7 +132,7 @@ isn’t that, then 2 will be correct.</p>
 whole thing and try another approach. One thing we can do before that is check
 where the time is being spent. We can do this by logging the time to the
 console with ‘console.time(’label’)’ and ‘console.endTime(’label’)’.</p>
-<pre><code class="general-code-block">// .........    
+<pre><code class="language-javascript">// .........    
     console.time(&#39;initializeArray&#39;);
     const sq_array = initializeSqArray(n);
     console.timeEnd(&#39;initializeArray&#39;);
@@ -172,5 +161,4 @@ squares. This part took 2.897s. So it can solve a few
 maximally hard cases, but there is no way it will get through 100 in 12
 seconds!</p>
 <h2 id="next-steps">What Next?</h2>
-<p>Next step: can we be a bit more discerning with the order of our
-checks? What is most 'likely' to be the solution?</p>
+<p>Next step: Lagrange's four-square theorem!</p>

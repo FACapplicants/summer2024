@@ -1,0 +1,146 @@
+<h2>Recursion</h2>
+
+<h3>Description</h3>
+
+<p>Recursive algorithms keep on repeating until they reach a base case.</p>
+
+<h3>Example Application</h3>
+
+<p>Suppose we have a database with a JSON formatted column.</p>
+
+<p>Let's take a fictional database with customizable product parameters. The task is to retrieve the object types associated with each order. Let's assume standard transformation and proper storage in a more sensible schema isn't possible. </p>
+<br>
+<table border="1">
+    <thead> 
+        <tr>
+            <th style="padding-right: 20px;">id</th>
+            <th style="padding-right: 20px;">date</th>
+            <th style="padding-right: 20px;">dimension</th>
+            <th style="padding-right: 20px;">json_column</th>
+        </tr>
+    </thead>
+    <tbody >
+        <tr>
+            <td>1</td>
+            <td>2024-01-01</td>
+            <td>C-137</td>
+            <td>{"order":[{"type": "Plumbus", "model_number": "P42", "dimensions": {"3d": ["height": 40, "width": 70}},{"type": "Meeseeks Box", "dimensions": {"height": 20, "width": 30}}], "total_price": 1000}</td>
+        </tr>
+        <tr>
+            <td>2/td>
+            <td>2024-02-01</td>
+            <td>D-716</td>
+            <td>{"order":[{"type": "Microverse Battery", "model_number": "X17", "dimensions": {"height": 80, "width": 70}},{"type": "Meeseeks Box", "dimensions": {"height": 20, "width": 30}}, {"type": "Butter Robot", "model_number": "V1"}], "total_price": 1000}</td>
+        </tr>
+    </tbody>
+</table>
+
+<br>
+<p>Here is a recursive function which allows us to flexibly return an array of product types (or any other value) just by using keys.</p>
+<pre><code class="language-javascript">function getNested(data: any, keys: string[]): any[] {
+        const recurse = (data: any, keys: string[]): any[] => {
+            let results: any[] = [];
+
+            if (!keys.length) {
+                if (data !== undefined && data !== null) {
+                    results.push(data);
+                }
+                return results;
+            }
+
+            const [key, ...remainingKeys] = keys;
+
+            if (typeof data === 'object' && !Array.isArray(data) && data !== null) {
+                if (key in data) {
+                    results = results.concat(recurse(data[key], remainingKeys));
+                }
+            } else if (Array.isArray(data)) {
+                for (const item of data) {
+                    results = results.concat(recurse(item, keys));
+                }
+            }
+
+            return results;
+        };
+
+        return recurse(data, keys);
+    }</code></pre>
+
+<p>The function takes a list of keys which traverse the datastructure, regardless of whether the keys are nested in an array/ object array etc. This avoids having to specify indicies for array positions and makes the code more readable. We can do something like this to get an array of types in each order:</p> 
+
+<pre><code class="language-javascript">getNested(json_column, ['order','type'])</code></pre>
+<p>Which, if applied on a row basis would give us something like<p>
+<table border="1">
+    <thead> 
+        <tr>
+            <th style="padding-right: 20px;">id</th>
+            <th style="padding-right: 20px;">order_types</th>
+        </tr>
+    </thead>
+    <tbody >
+        <tr>
+            <td>1</td>
+            <td>{"Plumbus", "Meeseeks Box"}</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>{"Microverse Battery", "Meeseeks Box", "Butter Robot"}</td>
+        </tr>
+    </tbody>
+</table>
+<br>
+
+<h4>Walkthrough</h4>
+<p>The base case here is:</p>
+<pre><code class="language-javascript">if (!keys.length {
+    if (data !== undefined && data !== null) {
+        results.push(data);
+    }
+    return results;
+    }</code></pre>
+<p>Why? The conditional is on having no more keys to look up. Each time we run the recursion (recurse()) we split the key array into the key we are looking for and the remainingKeys: </p>
+<pre><code class="language-javascript">const [key, ...remainingKeys]</code></pre>
+<p>So, when we run out of keys, we push the variable "data" to our results array.</p>
+
+<p>Following the execution step by step:</p>
+
+<pre><code class="language-javascript">
+    //0. We call the cursion with keys = ['order','type']: 
+    return recurse(data, keys);
+    //1. We initialize the results array:
+    let results: any[] = []
+    //2. Base case does not apply as !keys.length = 2
+    //3. We split keys into key ('order') and ...remainingKeys ('type')
+    //4. The object we are looking at in row one is the initial entry for "data" {"order": [], "total_price"} 
+    //   This is an object {}, so the first part of the if statement applies: 
+    if (typeof data === 'object' && !Array.isArray(data) && data !== null)
+    {
+        if (key in data) {
+            results = results.concat(recurse(data[key], remainingKeys));
+        }
+    }
+    //5. Here were are concatenating results with a recusive element.
+    //   However, now this is not on the full object {"order": [], "total_price"}, but the value of 'order', which is an array: 
+    //   [
+    //      {"type": "Plumbus", "model_number": "P42", "dimensions": {"3d": ["height": 40, "width": 70}},
+    //      {"type": "Meeseeks Box", "dimensions": {"height": 20, "width": 30}}
+    //   ].
+    //6. We still have a key, 'type'. remaining. Keys is now undefined: 
+    const [key, ...remainingKeys] = keys;
+    //7. It is an Array, so: 
+    else if (Array.isArray(data)) {
+        for (const item of data) {
+            results = results.concat(recurse(item, keys))
+        }
+    }
+    //8. Eor each item of the array, we run recurse, with keys = ['type', undefined]
+    //9. Each item of the array is an object. Each element also satisfies our base case, because there are no further keys. 
+    //   For each element we return the value of 'type' if it exists: 
+    if (!keys.length) {
+                if (data !== undefined && data !== null) {
+                    results.push(data);
+                }
+                return results;
+            }
+    //10. The returned results from the base case are concatenated and we exit the for loop. 
+</code></pre>

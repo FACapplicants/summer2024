@@ -1,0 +1,124 @@
+<h2>Queues</h2>
+
+<h3>Description</h3>
+Operates on FIFO (first in first out). Items are ENQUEUED - added to the end of the queue (the TAIL) or DEQUEUED - removed from the front of the queue (the HEAD). PEEK returns the front element of the queue.
+
+<h3>Array versus Linked List Implementation</h3>
+<p>A basic array-based implementation:</p>
+<pre><code class="language-javascript">class Queue<T> {
+    private elements: T[] = []
+
+    // Note: if require instantiation of class from existing array: 
+    //private elements: T[];
+    //constructor (initialElements?: T[]) {
+    //    this.elements = initialElements || []
+    //}
+
+    enqueue(element: T): void {
+        this.elements.push(element);
+    }
+
+    dequeue(): T | undefined {
+        if (this.isEmpty()) {
+            return undefined;
+        }
+        return this.elements.shift();
+    }
+
+    peek(): T | undefined {
+        if (this.isEmpty()) {
+            return undefined;
+        }
+        return this.elements[0];
+    }
+
+    isEmpty(): boolean {
+        return this.elements.length === 0;
+    }
+
+    size(): number {
+        return this.elements.length;
+    }
+}
+</code></pre>
+
+<p>Array based implementations are great for traversing the data structure (we can do better than linear search, see e.g. <a href="#/algorithms/binary_search">binary search</a>), but if we are only concerned with enqueue/ dequeue operations, this may not be the best solution.</p>
+
+<p><u>What's the issue?</u></p> 
+
+<p>Well, on a low level, an array requires a contiguous block of memory. In higer level languages, arrays are typically dynamically allocated memory. Under the hood, if enough elements are enqueued then the array will be resized, which can mean finding another larger contiguous memory block and copying the existing array to it. Thus, whilst the enqueue/ dequeue processes are <span class="math inline">\(O(1)\)</span>, resizing is <span class="math inline">\(O(n)\)</span> for copying each element. In practice, resizing isn't done every time an element is pushed, rather this can mean something like an initial allocation of x elements for the array, then doubling the space when the <span class="math inline">\((x+1)^{th}\)</span> element is enqueued.
+
+<p><u>The solution?</u></p> 
+
+<p>Linked Lists. Here, each element is a node which contains information on directly related nodes. In the case of the queue we just need to know the value of the next node (singly linked list). This means that we don't need a contiguous block of memory for storage, avoiding the resizing penalty associated with the array based implementation. The Primeagen gives a similar implementation to the below: </p>
+
+<pre><code class="language-javascript">class Node<T> {
+    value: T;
+    next?: Node<T>;
+
+    constructor(value: T) {
+        this.value = value;
+        this.next = undefined;
+    }
+}
+
+export default class Queue<T> {
+    public length: number;
+    private head?: Node<T>;
+    private tail?: Node<T>;
+
+    constructor() {
+        this.head = this.tail = undefined;
+        this.length = 0;
+    }
+
+    enqueue(item: T): void {
+        const node = new Node(item);
+        this.length++;
+        if (!this.tail) {
+            this.head = this.tail = node;
+            return;
+        }
+        this.tail.next = node;
+        this.tail = node;
+    }
+
+    dequeue(): T | undefined {
+        if (!this.head) {
+            return undefined;
+        }
+        this.length--;
+        const head = this.head;
+        this.head = this.head.next;
+        head.next = undefined;
+
+        if (this.length === 0) {
+            this.tail = undefined;
+        }
+        return head.value;
+    }
+
+    peek(): T | undefined {
+        return this.head?.value;
+    }
+
+    clear(): void {
+        this.head = this.tail = undefined;
+        this.length = 0;
+    }
+    
+    // Note: example implementation of traversal - limited to linear: 
+    get(idx: number): T | undefined {
+        let curr = this.head;
+        for (let i = 0; i < idx && curr; ++i) {
+            curr = curr.next;
+        }
+        return curr?.value;
+    }
+
+    isEmpty(): boolean {
+        return this.length === 0;
+    }
+}</code></pre>
+
+

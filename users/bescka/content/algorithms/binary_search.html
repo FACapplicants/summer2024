@@ -1,0 +1,71 @@
+<h2>Binary Search</h2>
+
+<h3>Description</h3>
+For ORDERED data. Leverages the ordering to speed up search. It does this by iteratively checking the mid points of the input array/ subarray. If the midpoint is lower than target, it then updates the search space to check above the midpoint and vice versa. Else if m === target, then return. 
+<p>Time Complexity: <span class="math inline">\(O(log(n))\)</span>. Halving the search space each time means reducing the input to 1 element takes <span class="math inline">\(O(log(n))\)</span> times </p>
+<p>Why? You need to solve the recurrance relation. See <a>below</a>. 
+<span class="math display">\[
+\]</span>
+
+</p>
+
+<h3>Code Example</h3>
+<pre><code class="language-javascript">function binary_search(data: array, target: number): boolean { 
+  L = 0; 
+  R = data.length - 1; 
+  while (L <= R) { 
+    M = Math.floor((R + L)/2)
+    m = data[M]
+    if (m < target) {
+      L = M + 1;
+    } else if (m > target) { 
+      R = M - 1; 
+    } else {
+      return true 
+    }
+  }
+  return false
+}}
+</code></pre>
+<p><span class="math display">\[
+\]</span></p>
+
+<h3 id="TimeComplexity">Time Complexity</h3>
+
+Take the first step of the binary search algorithm - its time complexity <span class="math inline">\(T(n)\)</span> is the same as checking the mid value against the target (<span class="math inline">\(O(1)\)</span>) plus the time complexity of the following search space (now halved):
+<span class="math display">\[
+    T(n) = O(1) + T\left(\frac{n}{2}\right)  
+\]</span>
+<p>Expanding this another step will give:</p>
+<span class="math display">\[
+    T(n) = T\left(\frac{n}{4}\right) + O(1) + O(1)
+\]</span>
+<span class="math display">\[
+    T(n) = T\left(\frac{n}{4}\right) + 2 \cdot O(1)
+\]</span>
+
+<p>Generalizing:</p>
+<span class="math display">\[
+    T(n) = T\left(\frac{n}{2^k}\right) + k \cdot O(1) \tag{*}
+\]</span>
+
+<p>Remembering that big-O notation gives us the upper bound of time complexity (the worst case), the base case occurs when \(\frac{n}{2^k} = 1\). So, solving for \(k\):</p>
+<span class="math display">\[
+    \frac{n}{2^k} = 1
+\]</span>
+<span class="math display">\[
+    n = 2^k
+\]</span>
+<span class="math display">\[
+    k = \log_2(n)
+\]</span>
+
+<p>We can then substitute this into the general form (*):</p>
+<span class="math display">\[
+    T(n) = T(1) + \log_2(n) \cdot O(1)
+\]</span>
+
+<p><span class="math inline">\( T(1) \)</span> is an additive constant, which we can disregard. Multiplying <span class="math inline">\(O(1)\)</span> by <span class="math inline">\(log_2(n)\)</span> yields:</p>
+<span class="math display">\[
+    T(n) = O(\log_2(n))
+\]</span>

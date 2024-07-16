@@ -1,0 +1,23 @@
+<h2>Bubble Sort</h2>
+<h3>Description</h3>
+<p>Takes an element at a time from an unsorted array. Iteratively compares to the element to right and swaps if higher. 
+<p>Time Complexity: <span class="math inline">\(O(n^{2})\)</span>. Why? Because the worst case here is the list sorted in reverse order. Here we would perform n-1 passes with n-1, n-2, n-3 .... 1 comparisons. Therefore we have <span class="math inline">\(\frac{n(n-1)}{2}\)</span> comparisons (it's an arithmetic series). 
+
+<h3>Code Example</h3>
+<pre><code class="language-javascript">function bubble_sort(data: number[], target: number): boolean {
+    let swapped = false;
+    do {
+        swapped = false;
+        for (let i = 0; i < data.length; i++) {
+            if (data[i] > data[i+1]) {
+                const temp = data[i];
+                data[i] = data[i+1];
+                data[i+1] = temp;
+                swapped = true;
+            }
+        }
+    } while (swapped);
+</code></pre>
+
+
+
