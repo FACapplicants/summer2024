@@ -137,14 +137,16 @@ body {
 
 /* .top-wrapper {
   height: 100vh;
-} */
+  } */
 
 nav {
-  margin: auto;
+  margin: 10px auto 0;
   width: 80%;
   display: flex;
+  /* position: fixed; */
   align-items: center;
-  /* background-color: red; */
+  background-color: #757761;
+
   height: 100px;
   font-size: 24px;
 }
@@ -153,28 +155,48 @@ nav {
   display: flex;
   margin-right: auto;
   gap: 10px;
+  align-items: center;
 }
 
-.navbar-links {
+.navbar-img {
+  width: 72px;
+  margin-right: 42px;
+}
+
+.navbar-links-list {
   display: flex;
   list-style: none;
 }
 
-.navbar-links li {
+.navbar-links-list-item {
   list-style: none;
-  text-decoration: none;
-  padding: 20px;
 }
 
-.navbar-links li a {
+.navbar-link {
+  padding: 0 20px;
+  position: relative;
   color: inherit;
   text-decoration: none;
+}
+
+.selected::after {
+  content: "";
+  width: 100%;
+  height: 4px;
+
+  /* background-color: var(--c-title-underline-color); */
+  background: #778da9;
+
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  z-index: 999;
 }
 
 /*--------------- HERO -------------------------------- */
 
 #hero {
-  height: calc(100vh - 100px);
+  height: calc(100vh - 110px);
   /* background-color: pink; */
   width: 80%;
   /* margin: auto; */
@@ -213,4 +235,45 @@ nav {
 
 .hero-subheading {
   font-size: 24px;
+}
+
+/* --------------------------- ABOUT SECTION  --------------------------------------------- */
+
+.section {
+  margin: auto;
+  width: 80%;
+}
+
+.about-heading {
+  margin: 0 auto 100px;
+  text-align: center;
+  font-size: 64px;
+  font-weight: bold;
+  font-family: "cormorant", serif;
+}
+
+.about-cards-container {
+  display: flex;
+  gap: 100 px;
+}
+
+.about-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 50%;
+}
+
+.about-card-header {
+  text-align: center;
+  font-family: "cormorant", serif;
+  font-size: 32px;
+  font-weight: 400;
+}
+
+footer {
+  margin-top: 400px;
+  width: 100%;
+  height: 100px;
+  background-color: blue;
 }
