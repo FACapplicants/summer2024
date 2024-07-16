@@ -10,9 +10,9 @@ canvas.height = 600;
 const player = {
   x: 50,
   y: 550,
-  width: 40,
-  height: 60,
-  speed: 5,
+  width: 45,
+  height: 55,
+  speed: 10,
   jumpForce: 15,
   velocityY: 0,
   isJumping: false,
@@ -32,18 +32,19 @@ const levels = [
       { x: 0, y: 590, width: 800, height: 10 },
       { x: 300, y: 450, width: 200, height: 10 },
     ],
-    npcs: [{ x: 700, y: 530, width: 40, height: 60, dialogue: 'Welcome to level 1!' }],
+    npcs: [{ x: 700, y: 530, width: 20, height: 60, dialogue: "Just pass over me. I don't mind." }],
     playerStart: { x: 50, y: 550 },
   },
   {
     platforms: [
       { x: 0, y: 590, width: 800, height: 10 },
       { x: 100, y: 450, width: 200, height: 10 },
-      { x: 500, y: 300, width: 200, height: 10 },
+      { x: 290, y: 350, width: 200, height: 10 },
+      { x: 450, y: 250, width: 550, height: 10 },
     ],
     npcs: [
-      { x: 300, y: 530, width: 40, height: 60, dialogue: "This is level 2. It's trickier!" },
-      { x: 650, y: 240, width: 40, height: 60, dialogue: 'You made it to the top!' },
+      { x: 300, y: 530, width: 50, height: 60, dialogue: 'Got to go up this time!' },
+      { x: 650, y: 180, width: 40, height: 60, dialogue: 'The meaning of life is beyond me!' },
     ],
     playerStart: { x: 50, y: 550 },
   },
@@ -51,9 +52,10 @@ const levels = [
 ];
 
 // Initialize game
-function init() {
+function startGame() {
+  currentLevel = 1;
   loadLevel(currentLevel);
-  gameLoop = setInterval(update, 1000 / 60); // 60 FPS
+  gameLoop = setInterval(update, 1000 / 60);
 }
 
 // Load level
@@ -141,11 +143,15 @@ function checkLevelCompletion() {
     } else {
       // Game completed
       // Move to next page of the website
-      alert("Congratulations! You've completed all levels!");
-      currentLevel = 1;
-      loadLevel(currentLevel);
+      endGame();
     }
   }
+}
+
+function endGame() {
+  clearInterval(gameLoop);
+  document.getElementById('game-container').classList.add('invis');
+  document.getElementById('after-game').classList.remove('invis');
 }
 
 // Make the player jump
@@ -155,12 +161,13 @@ function jump() {
 }
 
 // Interact with nearby NPC
-// Add timer to dialogue box
-// Have the NPC vanish after the dialogue
 function interactWithNPC() {
   if (currentDialogue) {
     dialogueBox.style.display = 'block';
     dialogueBox.textContent = currentDialogue;
+    setTimeout(() => {
+      dialogueBox.style.display = 'none';
+    }, 3000);
   } else {
     dialogueBox.style.display = 'none';
   }
@@ -172,7 +179,7 @@ function render() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   // Draw player
-  ctx.fillStyle = 'blue';
+  ctx.fillStyle = 'white';
   ctx.fillRect(player.x, player.y, player.width, player.height);
 
   // Draw platforms
@@ -182,11 +189,11 @@ function render() {
   }
 
   // Draw NPCs
-  ctx.fillStyle = 'red';
+  ctx.fillStyle = 'white';
   for (let npc of npcs) {
     ctx.fillRect(npc.x, npc.y, npc.width, npc.height);
   }
 }
 
 // Start the game
-init();
+startGame();
