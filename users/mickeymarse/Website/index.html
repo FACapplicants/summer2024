@@ -21,10 +21,20 @@
       <p>Now, why don't you press <a id="to-game">PLAY</a>?</p>
     </main>
     <main class="vis invis" id="game-container">
-      <canvas id="game-canvas"></canvas>
-      <div id="dialogue-box"></div>
-      <div id="level-display"></div>
-      <div id="controls">← → : Move | ↑ : Jump | Enter : Interact</div>
+      <div class="container">
+        <h1>TYPING SPEED TEST</h1>
+        <div class="timer-container">
+          <button id="countdown" class="btn"></button>
+          <h3 id="wpm"></h3>
+        </div>
+        <div id="main">
+          <h3 id="word"></h3>
+          <textarea id="text-input" placeholder="Start typing here..."></textarea>
+        </div>
+        <div id="reset">
+          <button id="reset-btn" class="btn">Take the Test Again</button>
+        </div>
+      </div>
     </main>
     <main class="vis invis" id="after-game">
       <p>Very fun game, wasn't it?</p>

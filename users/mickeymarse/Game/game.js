@@ -1,199 +1,87 @@
-const canvas = document.getElementById('game-canvas');
-const ctx = canvas.getContext('2d');
-const dialogueBox = document.getElementById('dialogue-box');
-const levelDisplay = document.getElementById('level-display');
+const timerElement = document.getElementById('countdown');
+const wordElement = document.getElementById('word');
+const textInput = document.getElementById('text-input');
+const wpmElement = document.getElementById('wpm');
+const mainContainer = document.getElementById('main');
+const resetContainer = document.getElementById('reset');
+const resetBtn = document.getElementById('reset-btn');
 
-canvas.width = 800;
-canvas.height = 600;
+const duration = 120;
+let interval;
+let timerStarted = false;
 
-// Player object
-const player = {
-  x: 50,
-  y: 550,
-  width: 45,
-  height: 55,
-  speed: 10,
-  jumpForce: 15,
-  velocityY: 0,
-  isJumping: false,
-};
+const phrase = `Creating and building have always driven my professional journey, leading me to transition into software development. With experience in kitchen management and screenwriting, I bring unique creativity, teamwork, and problem-solving skills to tech. My recent 16-week Full Stack Developer bootcamp at School of Code equipped me with proficiency in Next.js, TypeScript, Node, and PostgreSQL. I excel in fast-paced environments, as shown by my success in Hackathons and collaborative projects. My computational thinking and eagerness to learn make me well-suited for software development. Whether designing interfaces, managing databases, or implementing full-stack solutions, I'm committed to applying my diverse skill set to drive innovation in tech.`;
 
-// Game state
-let gameLoop;
-let platforms = [];
-let npcs = [];
-let currentDialogue = '';
-let currentLevel = 1;
+const text = phrase.replace(/[\r\n]+\s*/g, ' ').replace(/\s{2,}/g, ' ');
 
-// Level designs
-const levels = [
-  {
-    platforms: [
-      { x: 0, y: 590, width: 800, height: 10 },
-      { x: 300, y: 450, width: 200, height: 10 },
-    ],
-    npcs: [{ x: 700, y: 530, width: 20, height: 60, dialogue: "Just pass over me. I don't mind." }],
-    playerStart: { x: 50, y: 550 },
-  },
-  {
-    platforms: [
-      { x: 0, y: 590, width: 800, height: 10 },
-      { x: 100, y: 450, width: 200, height: 10 },
-      { x: 290, y: 350, width: 200, height: 10 },
-      { x: 450, y: 250, width: 550, height: 10 },
-    ],
-    npcs: [
-      { x: 300, y: 530, width: 50, height: 60, dialogue: 'Got to go up this time!' },
-      { x: 650, y: 180, width: 40, height: 60, dialogue: 'The meaning of life is beyond me!' },
-    ],
-    playerStart: { x: 50, y: 550 },
-  },
-  // Can add one or two more levels here
-];
+const displayLength = 80;
 
-// Initialize game
-function startGame() {
-  currentLevel = 1;
-  loadLevel(currentLevel);
-  gameLoop = setInterval(update, 1000 / 60);
-}
-
-// Load level
-function loadLevel(levelNumber) {
-  const level = levels[levelNumber - 1];
-  platforms = level.platforms;
-  npcs = level.npcs;
-  player.x = level.playerStart.x;
-  player.y = level.playerStart.y;
-  updateLevelDisplay();
-}
-
-// Update level display
-function updateLevelDisplay() {
-  levelDisplay.textContent = `Level: ${currentLevel}`;
-}
-
-// Update game state
-function update() {
-  handleInput();
-  applyGravity();
-  checkCollisions();
-  checkLevelCompletion();
-  render();
-}
-
-// Handle user input
-function handleInput() {
-  document.onkeydown = function (e) {
-    switch (e.key) {
-      case 'ArrowLeft':
-        player.x -= player.speed;
-        break;
-      case 'ArrowRight':
-        player.x += player.speed;
-        break;
-      case 'ArrowUp':
-        if (!player.isJumping) jump();
-        break;
-      case 'Enter':
-        interactWithNPC();
-        break;
+function startTimer() {
+  let timer = duration;
+  interval = setInterval(() => {
+    timer--;
+    timerElement.textContent = `${timer}s`;
+    if (timer <= 0) {
+      clearInterval(interval);
+      timerElement.textContent = "Time's up!";
+      updateResults();
     }
-  };
+  }, 1000);
 }
 
-// Apply gravity to player
-function applyGravity() {
-  player.velocityY += 0.8;
-  player.y += player.velocityY;
-}
+function updateDisplay() {
+  const typedText = textInput.value;
+  let displayText = '';
+  let startIndex = Math.max(0, typedText.length - displayLength / 2);
+  let endIndex = startIndex + displayLength;
 
-// Check collisions with platforms and NPCs
-function checkCollisions() {
-  // Platform collisions
-  for (let platform of platforms) {
-    if (
-      player.y + player.height > platform.y &&
-      player.y < platform.y + platform.height &&
-      player.x < platform.x + platform.width &&
-      player.x + player.width > platform.x
-    ) {
-      player.y = platform.y - player.height;
-      player.velocityY = 0;
-      player.isJumping = false;
-    }
-  }
-
-  // NPC collisions (for interaction)
-  for (let npc of npcs) {
-    if (Math.abs(player.x - npc.x) < 50 && Math.abs(player.y - npc.y) < 50) {
-      currentDialogue = npc.dialogue;
-      return;
-    }
-  }
-  currentDialogue = '';
-}
-
-// Check if level is completed
-function checkLevelCompletion() {
-  if (player.x > canvas.width - player.width) {
-    currentLevel++;
-    if (currentLevel <= levels.length) {
-      loadLevel(currentLevel);
+  for (let i = startIndex; i < endIndex && i < text.length; i++) {
+    if (i < typedText.length) {
+      if (text[i] === typedText[i]) {
+        displayText += `<span class="correct">${text[i]}</span>`;
+      } else {
+        displayText += `<span class="incorrect">${text[i]}</span>`;
+      }
     } else {
-      // Game completed
-      // Move to next page of the website
-      endGame();
+      displayText += text[i];
     }
   }
+
+  wordElement.innerHTML = displayText;
 }
 
-function endGame() {
-  clearInterval(gameLoop);
-  document.getElementById('game-container').classList.add('invis');
-  document.getElementById('after-game').classList.remove('invis');
+function updateResults() {
+  mainContainer.style.display = 'none';
+  const wordsTyped = textInput.value.trim().split(/\s+/).length;
+  const wpm = Math.round((wordsTyped * 60) / duration);
+  wpmElement.textContent = `Your speed was: ${wpm} WPM`;
+  resetContainer.style.display = 'block';
 }
 
-// Make the player jump
-function jump() {
-  player.velocityY = -player.jumpForce;
-  player.isJumping = true;
+function resetTest() {
+  clearInterval(interval);
+  timerStarted = false;
+  timerElement.textContent = '120s';
+  textInput.value = '';
+  wpmElement.textContent = '';
+  mainContainer.style.display = 'block';
+  resetContainer.style.display = 'none';
+  updateDisplay();
 }
 
-// Interact with nearby NPC
-function interactWithNPC() {
-  if (currentDialogue) {
-    dialogueBox.style.display = 'block';
-    dialogueBox.textContent = currentDialogue;
-    setTimeout(() => {
-      dialogueBox.style.display = 'none';
-    }, 3000);
-  } else {
-    dialogueBox.style.display = 'none';
+textInput.addEventListener('input', (e) => {
+  if (!timerStarted) {
+    startTimer();
+    timerStarted = true;
   }
-}
+  updateDisplay();
+});
 
-// Render game objects
-function render() {
-  // Clear canvas
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+document.addEventListener('DOMContentLoaded', () => {
+  timerElement.textContent = `${duration}s`;
+});
 
-  // Draw player
-  ctx.fillStyle = 'white';
-  ctx.fillRect(player.x, player.y, player.width, player.height);
+resetBtn.addEventListener('click', resetTest);
 
-  // Draw platforms
-  ctx.fillStyle = 'green';
-  for (let platform of platforms) {
-    ctx.fillRect(platform.x, platform.y, platform.width, platform.height);
-  }
-
-  // Draw NPCs
-  ctx.fillStyle = 'white';
-  for (let npc of npcs) {
-    ctx.fillRect(npc.x, npc.y, npc.width, npc.height);
-  }
-}
-
-// Start the game
-startGame();
+// Initialize the display
+updateDisplay();
