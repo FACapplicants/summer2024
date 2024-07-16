@@ -95,6 +95,13 @@ main {
   margin: 60px auto; 
 }
 
+blockquote {
+  font-style: italic; 
+  margin: 20px; 
+  padding: 20px 30px; 
+  background-color: #111111;
+}
+
 .article-content {
   max-width: 60%;
   text-align: justify;

@@ -2,7 +2,7 @@
 code[class*="language-"],
 pre[class*="language-"] {
   color: #b2b2b2; /* Default text color */
-  background: #000000; /* Background color (black) */
+  background: #111111; /* Background color (black) */
   font-family: 'Roboto Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   text-shadow: none;
   font-size: 1em;
