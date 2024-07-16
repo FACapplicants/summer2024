@@ -1,0 +1,161 @@
+body {
+  all: unset;
+  overscroll-behavior-y: none;
+}
+/* img {
+    max-width:100%;
+    height:auto;
+    max-height:100%;
+ } */
+
+main {
+  display: flex;
+}
+
+#navSection {
+  background-color: hsl(170, calc(var(--r) * 100%), 50%);
+  flex: 1;
+  height: 100vh;
+}
+
+#workSection {
+  background-color: rgb(57, 74, 40);
+  flex: 1;
+}
+.shapesContainer {
+  position: relative;
+}
+/* @-webkit-keyframes toBlack {
+  0% {
+    background-color: white;
+  }
+  100% {
+    background-color: black;
+  }
+} */
+.shape {
+  position: absolute;
+  transition: transform 2s ease-in-out;
+  mix-blend-mode: lighten;
+  /* -webkit-animation-name: blackWhite;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-duration: 2s; */
+}
+
+.shape:hover {
+  transform: rotate(44deg) scale(134%);
+}
+
+.parallelogram {
+  width: 50vh;
+  height: 50vh;
+  transform: skew(20deg) rotate(20deg);
+  background-color: #f88383;
+
+  top: 70px;
+  right: 15px;
+}
+.circle {
+  height: 50vh;
+  width: 20vh;
+  background-color: #c2c457;
+  border-radius: 50%;
+  top: 270px;
+  right: 315px;
+}
+
+.flower {
+  height: 50vh;
+  width: 50vh;
+  background-color: #57c2c4;
+
+  aspect-ratio: 1;
+  --g: /33.334% 33.334% radial-gradient(#000 calc(71% - 1px), #0000 71%) no-repeat;
+  mask: 100% 50% var(--g), 75% 93.301% var(--g), 25% 93.301% var(--g),
+    0% 50% var(--g), 25% 6.699% var(--g), 75% 6.699% var(--g),
+    radial-gradient(100% 100%, #000 28.868%, #0000 calc(28.868% + 1px));
+  top: 170px;
+  right: 15px;
+}
+
+.hexagon {
+  height: 50vh;
+  width: 50vh;
+  background-color: #140134;
+
+  aspect-ratio: 1 / cos(30deg);
+  clip-path: polygon(50% -50%, 100% 50%, 50% 150%, 0 50%);
+  top: 0px;
+  right: 35px;
+}
+
+.starburst {
+  height: 50vh;
+  width: 50vh;
+  background-color: hsl(3, 10%, 37%);
+
+  aspect-ratio: 1;
+  clip-path: polygon(
+    100% 50%,
+    79.74% 53.92%,
+    98.3% 62.94%,
+    77.72% 61.48%,
+    93.3% 75%,
+    73.8% 68.26%,
+    85.36% 85.36%,
+    68.26% 73.8%,
+    75% 93.3%,
+    61.48% 77.72%,
+    62.94% 98.3%,
+    53.92% 79.74%,
+    50% 100%,
+    46.08% 79.74%,
+    37.06% 98.3%,
+    38.52% 77.72%,
+    25% 93.3%,
+    31.74% 73.8%,
+    14.64% 85.36%,
+    26.2% 68.26%,
+    6.7% 75%,
+    22.28% 61.48%,
+    1.7% 62.94%,
+    20.26% 53.92%,
+    0% 50%,
+    20.26% 46.08%,
+    1.7% 37.06%,
+    22.28% 38.52%,
+    6.7% 25%,
+    26.2% 31.74%,
+    14.64% 14.64%,
+    31.74% 26.2%,
+    25% 6.7%,
+    38.52% 22.28%,
+    37.06% 1.7%,
+    46.08% 20.26%,
+    50% 0%,
+    53.92% 20.26%,
+    62.94% 1.7%,
+    61.48% 22.28%,
+    75% 6.7%,
+    68.26% 26.2%,
+    85.36% 14.64%,
+    73.8% 31.74%,
+    93.3% 25%,
+    77.72% 38.52%,
+    98.3% 37.06%,
+    79.74% 46.08%
+  );
+}
+.scalloped-box {
+  height: 50vh;
+  width: 50vh;
+  background-color: hsl(3, 10%, 37%);
+  --r: 30px; /* radius of circles */
+  height: 350px;
+  aspect-ratio: 1;
+  padding: calc(1.5 * var(--r));
+  mask: linear-gradient(#000 0 0) no-repeat 50% / calc(100% - 2 * var(--r))
+      calc(100% - 2 * var(--r)),
+    radial-gradient(farthest-side, #000 97%, #0000) 0 0 / calc(2 * var(--r))
+      calc(2 * var(--r)) round;
+}
