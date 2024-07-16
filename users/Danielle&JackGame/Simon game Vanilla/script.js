@@ -1,8 +1,7 @@
-//The Simon game is a memory game. 
+//The Simon game is a memory game.
 //The aim is to remember the sequence shown, and to submit the same sequence.
 //The sequence builds the higher the level you go
-//A wrong move ends the game. 
-
+//A wrong move ends the game.
 
 const buttonColours = ["red", "green", "blue", "yellow"];
 
@@ -45,12 +44,10 @@ function pushToGameArray() {
   gamePattern.push(buttonColours[myRandomNumber]);
 }
 
-
 let i = 0;
 
-
 function playLoop() {
-  //  creates a loop function 
+  //  creates a loop function
   setTimeout(function () {
     if (gamePattern[i] === "red") {
       redAudio.play();
@@ -94,34 +91,34 @@ function startRound() {
 
 // Compares the user pattern against the game pattern.
 // if the user pattern doesnt match the game pattern, the game immediately ends and displays
-// loser in the console, and a alert message to the user. 
-// However if it does match, the game continues and we start a new pattern again. 
+// loser in the console, and a alert message to the user.
+// However if it does match, the game continues and we start a new pattern again.
 
 function checkWin() {
-
-  for (let i = 0; i < userPattern.length; i++){
-
-    if(userPattern[i] !== gamePattern[i]){
-      console.log('LOSER');
-      alert('YOU LOSE! BETTER LUCK NEXT TIME!')
+  for (let i = 0; i < userPattern.length; i++) {
+    if (userPattern[i] !== gamePattern[i]) {
+      console.log("LOSER");
+      alert("YOU LOSE! BETTER LUCK NEXT TIME!");
       resetGame();
       return;
     }
   }
 
-  if (userPattern.length === gamePattern.length){
+  if (userPattern.length === gamePattern.length) {
     console.log("WINNER");
     gameLevel++;
     userPattern = [];
     timesClicked = 0;
     startRound();
   }
-
 }
 
-//This relates to the user clicking the start button. 
+//This relates to the user clicking the start button.
 // On the user's click, we trigger the startRound function
-startButton.addEventListener("click", startRound);
+startButton.addEventListener("click", function () {
+  resetGame();
+  startRound();
+});
 
 // Pushes "red" to the userPattern, adds 1 to timesClicked, and checks for a win
 redButton.addEventListener("click", function () {
