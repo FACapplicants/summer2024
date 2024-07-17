@@ -323,12 +323,12 @@ textarea {
     color: #e7ded2;
 }
 /* This is the style of our error messages */
-.error-message {
+/*.error-message {
     color: #1bca2f;
     font-size: 14px;
     font-weight: 600;
     margin-top: 3px;
-}
+}*/
 
 /*Modal Box*/
 .modal {
