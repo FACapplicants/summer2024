@@ -3,29 +3,35 @@
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
       <link href="styles.css" rel="stylesheet"/>
+      <link rel="icon" type="image/x-icon" href="./assets/favicon_game.svg">
+      <audio id="audio-losing" src="./assets/losing.wav"></audio>
+      <audio id="audio-winning" src="./assets/winning.wav"></audio>
       <meta name="author" content="Tatiana Gurova">
-      <meta name="description" content="Rock Paper Scissors Game" />
-      <title>Rock Paper Scissors Game</title>
+      <meta name="description" content="Rock-Paper-Scissors Game" />
+      <title>Rock-Paper-Scissors Game</title>
     </head>
     <body>
         <header class="header">
-           <h1>Rock Paper Scissors Game</h1>
+           <h1>Rock - Paper - Scissors Game</h1>
         </header>
         <main>
             <div class="action-choose">
                 <h2>Choose your hand:</h2>
             </div>
             <div class="pics-for-choice">
-                <button id="paper" onclick=""><img src="./assets/paper.png"></button>
-                <button id="rock" onclick=""><img src="./assets/rock.png"></button>
-                <button id="scissors" onclick=""><img src="./assets/scissors.png"></button>
+                <button id="paper" onclick="gameLogic('paper')"><img src="./assets/paper.png"></button>
+                <button id="rock" onclick="gameLogic('rock')"><img src="./assets/rock.png"></button>
+                <button id="scissors" onclick="gameLogic('scissors')"><img src="./assets/scissors.png"></button>
             </div>
-            <div class="counter-after-play">
-                <p>Player:</p>
-                <p>Computer:</p>
-                <p>Result:</p>
-            </div>      
+            <div id="playerScore">PLAYER:</div>
+            <div id="computerScore">COMPUTER:</div>
+            <div id="result">RESULT:</div>
+     
         </main>
+        <script src="app.js"></script>
     </body>
 </html>
