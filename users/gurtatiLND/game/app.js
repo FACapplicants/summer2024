@@ -31,6 +31,12 @@ const gameLogic =(playerChoice) => {
 
   result.classList.remove('bold', 'italic');
 
+  // Pause and reset both audio elements before playing the new sound
+  winAudio.pause();
+  winAudio.currentTime = 0;
+  loseAudio.pause();
+  loseAudio.currentTime = 0;
+
   switch(outcome) {
       case 'YOU WIN!':
         result.classList.add('bold');
