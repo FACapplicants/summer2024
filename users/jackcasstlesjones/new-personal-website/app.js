@@ -129,3 +129,37 @@ window.addEventListener("scroll", () => {
 });
 
 /* ADD LEFT AND RIGHT IN FOR THE ABOUT THINGIES */
+
+/* ----------------------------- CAROUSEL ---------------------------------- */
+
+let carouselContainer = document.getElementById("carousel");
+const leftButton = document.querySelector(".left-arrow-container");
+const rightButton = document.querySelector(".right-arrow-container");
+const photographyBtns = document.querySelectorAll(".photography-btn");
+
+let chosenFolder = "street";
+let photoCounter = 1;
+carouselContainer.innerHTML = `<img src="assets/photography/${chosenFolder}/${photoCounter}.jpeg" alt=""/>`;
+
+photographyBtns.forEach((element) => {
+  element.addEventListener("click", function () {
+    chosenFolder = element.id;
+    carouselContainer.innerHTML = `<img src="assets/photography/${chosenFolder}/${photoCounter}.jpeg" alt=""/>`;
+  });
+});
+
+rightButton.addEventListener("click", function () {
+  if (photoCounter === 5) {
+    photoCounter = 0;
+  }
+  photoCounter++;
+  carouselContainer.innerHTML = `<img src="assets/photography/${chosenFolder}/${photoCounter}.jpeg" alt=""/>`;
+});
+
+leftButton.addEventListener("click", function () {
+  if (photoCounter === 1) {
+    photoCounter = 6;
+  }
+  photoCounter--;
+  carouselContainer.innerHTML = `<img src="assets/photography/${chosenFolder}/${photoCounter}.jpeg" alt=""/>`;
+});

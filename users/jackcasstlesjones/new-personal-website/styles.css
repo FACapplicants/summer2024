@@ -396,3 +396,51 @@ footer {
 .main-project-img {
   width: 600px;
 }
+
+/* -------------------------------------------------- */
+
+.carousel-container {
+  width: 80%;
+  height: 700px;
+  background-color: pink;
+  margin: auto;
+}
+
+.carousel {
+  display: flex;
+  height: 80%;
+  width: 100%;
+  background-color: green;
+}
+
+.left-arrow-container {
+  width: 10%;
+  height: 100%;
+  background-color: red;
+}
+
+.carousel-img-container {
+  width: 80%;
+  height: 100%;
+  background-color: yellow;
+}
+
+.carousel-img-container img {
+  width: 100%;
+}
+
+.right-arrow-container {
+  width: 10%;
+  height: 100%;
+  background-color: blue;
+}
+
+.carousel-dots {
+}
+
+.carousel-folder-choice {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
