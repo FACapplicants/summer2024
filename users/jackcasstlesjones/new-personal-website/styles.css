@@ -425,11 +425,15 @@ footer {
 .carousel-img-container {
   width: 80%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   /* background-color: yellow; */
 }
 
 .carousel-img-container img {
-  width: 100%;
+  /* max-width: 100%; */
+  max-height: 600px;
 }
 
 .right-arrow-container {
@@ -446,6 +450,22 @@ footer {
 }
 
 .carousel-dots {
+}
+
+.photography-btn {
+  background-color: #757761;
+  color: #f4edea;
+  font-size: 24px;
+  margin: auto;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: none;
+  outline: inherit;
+  border: none;
+}
+
+.bordered {
+  border: solid 1px white;
 }
 
 .carousel-folder-choice {

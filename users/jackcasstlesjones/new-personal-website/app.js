@@ -137,11 +137,18 @@ const leftButton = document.querySelector(".left-arrow-container");
 const rightButton = document.querySelector(".right-arrow-container");
 const photographyBtns = document.querySelectorAll(".photography-btn");
 
-let chosenFolder = "street";
+let chosenFolder = "landscape";
 let photoCounter = 1;
 
 const updateCarousel = () => {
   carouselContainer.innerHTML = `<img src="assets/photography/${chosenFolder}/${photoCounter}.jpeg" alt=""/>`;
+  photographyBtns.forEach((element) => {
+    if (element.id === chosenFolder) {
+      element.classList.add("bordered");
+    } else {
+      element.classList.remove("bordered");
+    }
+  });
 };
 
 updateCarousel();
