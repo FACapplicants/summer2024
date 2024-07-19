@@ -79,3 +79,53 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     });
   });
 });
+
+/* -------------------------------------------------------------------------- */
+
+const unscrolledElements = document.querySelectorAll(".unscrolled");
+const pastCard = document.querySelector(".past-card");
+const presentCard = document.querySelector(".present-card");
+const futureCard = document.querySelector(".future-card");
+
+unscrolledElements.forEach((element) => {
+  // element.style.opacity = 0;
+});
+
+const elementInView = (element, scrollOffset) => {
+  const elementTop = element.getBoundingClientRect().top;
+  // console.log(elementTop);
+  // console.log(window.innerHeight);
+  return (
+    elementTop <=
+    (window.innerHeight || document.documentElement.clientHeight) - scrollOffset
+  );
+};
+
+const addClasslist = (element, chosenClass) => {
+  element.classList.add(chosenClass);
+};
+
+const handleScrollAnimation = (targetElement, chosenClass) => {
+  targetElement.forEach((element) => {
+    if (elementInView(element, 300)) {
+      addClasslist(element, chosenClass);
+    }
+  });
+};
+
+const addSingleAnimation = (element, chosenClass) => {
+  if (elementInView(element, 300)) {
+    addClasslist(element, chosenClass);
+  }
+  if (pastCard.classList.contains("transform-zero")) {
+    addClasslist(presentCard, "transform-zero");
+  }
+};
+
+window.addEventListener("scroll", () => {
+  handleScrollAnimation(unscrolledElements, "scrolled");
+  addSingleAnimation(pastCard, "transform-zero");
+  addSingleAnimation(futureCard, "transform-zero");
+});
+
+/* ADD LEFT AND RIGHT IN FOR THE ABOUT THINGIES */
