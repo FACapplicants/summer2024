@@ -136,6 +136,7 @@ let carouselContainer = document.getElementById("carousel");
 const leftButton = document.querySelector(".left-arrow-container");
 const rightButton = document.querySelector(".right-arrow-container");
 const photographyBtns = document.querySelectorAll(".photography-btn");
+const carouselDots = document.querySelectorAll(".carousel-dot");
 
 let chosenFolder = "landscape";
 let photoCounter = 1;
@@ -147,6 +148,13 @@ const updateCarousel = () => {
       element.classList.add("bordered");
     } else {
       element.classList.remove("bordered");
+    }
+  });
+  carouselDots.forEach((element) => {
+    if (element.id === `dot-${photoCounter}`) {
+      element.classList.add("full-dot");
+    } else {
+      element.classList.remove("full-dot");
     }
   });
 };
