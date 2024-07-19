@@ -350,7 +350,7 @@ nav {
 
 .transform-zero {
   transform: translateX(0);
-  transition: all 1.2s;
+  transition: all 1.3s ease-out;
   opacity: 1;
 }
 
