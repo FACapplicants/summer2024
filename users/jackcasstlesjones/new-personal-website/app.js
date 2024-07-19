@@ -139,12 +139,17 @@ const photographyBtns = document.querySelectorAll(".photography-btn");
 
 let chosenFolder = "street";
 let photoCounter = 1;
-carouselContainer.innerHTML = `<img src="assets/photography/${chosenFolder}/${photoCounter}.jpeg" alt=""/>`;
+
+const updateCarousel = () => {
+  carouselContainer.innerHTML = `<img src="assets/photography/${chosenFolder}/${photoCounter}.jpeg" alt=""/>`;
+};
+
+updateCarousel();
 
 photographyBtns.forEach((element) => {
   element.addEventListener("click", function () {
     chosenFolder = element.id;
-    carouselContainer.innerHTML = `<img src="assets/photography/${chosenFolder}/${photoCounter}.jpeg" alt=""/>`;
+    updateCarousel();
   });
 });
 
@@ -153,7 +158,7 @@ rightButton.addEventListener("click", function () {
     photoCounter = 0;
   }
   photoCounter++;
-  carouselContainer.innerHTML = `<img src="assets/photography/${chosenFolder}/${photoCounter}.jpeg" alt=""/>`;
+  updateCarousel();
 });
 
 leftButton.addEventListener("click", function () {
@@ -161,5 +166,5 @@ leftButton.addEventListener("click", function () {
     photoCounter = 6;
   }
   photoCounter--;
-  carouselContainer.innerHTML = `<img src="assets/photography/${chosenFolder}/${photoCounter}.jpeg" alt=""/>`;
+  updateCarousel();
 });

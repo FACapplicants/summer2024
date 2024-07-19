@@ -402,7 +402,7 @@ footer {
 .carousel-container {
   width: 80%;
   height: 700px;
-  background-color: pink;
+  /* background-color: pink; */
   margin: auto;
 }
 
@@ -410,19 +410,22 @@ footer {
   display: flex;
   height: 80%;
   width: 100%;
-  background-color: green;
+  /* background-color: green; */
 }
 
 .left-arrow-container {
   width: 10%;
   height: 100%;
-  background-color: red;
+  /* background-color: red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .carousel-img-container {
   width: 80%;
   height: 100%;
-  background-color: yellow;
+  /* background-color: yellow; */
 }
 
 .carousel-img-container img {
@@ -432,7 +435,14 @@ footer {
 .right-arrow-container {
   width: 10%;
   height: 100%;
-  background-color: blue;
+  /* background-color: blue; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-arrow {
+  cursor: pointer;
 }
 
 .carousel-dots {
