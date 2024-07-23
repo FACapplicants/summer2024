@@ -1,0 +1,93 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #8A2BE2;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+section {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#about-me .content, #career-goals .content {
+    display: flex;
+    width: 80%;
+    max-width: 1000px;
+}
+
+#about-me .text, #career-goals .text {
+    background-color: #8A2BE2;
+    border-radius: 25px;
+    color: #fff;
+    text-align: justify;
+    font-size: 1.2rem;
+    flex: 1;
+    padding: 20px;
+}
+
+#about-me .image, #career-goals .image {
+    flex: 1;
+    padding: 20px;
+}
+
+#about-me .image img, #career-goals .image img {
+    width: 100%;
+    height: auto;
+}
+
+footer {
+    background-color: #8A2BE2;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer p {
+    margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+    section {
+        padding: 20px;
+    }
+
+    #about-me .content, #career-goals .content {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #about-me .image, #career-goals .image {
+        padding: 10px 0;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+}
