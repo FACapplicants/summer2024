@@ -129,7 +129,14 @@ table {
 body {
   font-family: "orbitron", sans-serif;
   text-transform: uppercase;
-  background-color: darkslategray;
+
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ),
+    url(assets/metal-background.jpg);
+  background-size: cover;
 }
 
 h1 {
@@ -179,12 +186,13 @@ h1 {
   justify-content: center;
   flex-direction: column;
   background-image: linear-gradient(
-      to right bottom,
-      rgba(0, 0, 0, 0.6),
-      rgba(0, 0, 0, 0.6)
+      to bottom,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.1)
     ),
-    url(assets/metal-background.jpg);
+    url(assets/conrete-or-not.jpg);
   background-size: cover;
+  z-index: 9000;
 }
 /* 
 .modal-container p {
@@ -203,11 +211,18 @@ h1 {
   /* border: solid 5px #eed202; */
 }
 
+.game-container {
+  background-color: white;
+  width: 95%;
+  margin: auto;
+}
+
 .start-game {
   font-size: 18px;
+  margin: auto;
   margin-top: 25px;
   font-weight: bold;
-  padding: 0 25px;
+  width: 95%;
 }
 
 .start-game {
@@ -251,7 +266,7 @@ h1 {
   grid-template-columns: 1fr 1fr;
 
   justify-content: space-evenly;
-  height: 70vh;
+  height: 72.5vh;
 }
 
 .level-container {
@@ -266,6 +281,7 @@ h1 {
   box-shadow: none;
   /* border: none; */
   width: 100%;
+  position: relative;
 }
 
 .btn:active {
@@ -276,22 +292,92 @@ h1 {
 
 #red {
   background-color: red;
+  position: relative;
+}
+
+#red::after {
+  background-image: url(assets/distressed-background.jpg);
+  background-size: cover;
+  content: " ";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.25;
 }
 
 #green {
   background-color: green;
+  position: relative;
+}
+
+#green::after {
+  background-image: url(assets/distressed-background.jpg);
+  background-size: cover;
+  content: " ";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.25;
+  transform: rotate(180deg);
 }
 
 #blue {
   background-color: blue;
+  position: relative;
+}
+
+#blue::after {
+  background-image: url(assets/distressed-background.jpg);
+  background-size: cover;
+  content: " ";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.25;
+  transform: rotate(180deg);
 }
 
 #yellow {
   background-color: yellow;
+  position: relative;
+}
+
+#yellow::after {
+  background-image: url(assets/distressed-background.jpg);
+  background-size: cover;
+  content: " ";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.25;
+  z-index: 900;
 }
 
 .transparent {
   opacity: 60%;
+  background-image: url(assets/robot.svg);
+  background-size: 50%;
+  content: " ";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.25;
+  z-index: 900;
 }
 
 .hide {
