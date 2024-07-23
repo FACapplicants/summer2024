@@ -193,6 +193,10 @@ nav {
   z-index: 999;
 }
 
+.mobile-menu-icon {
+  display: none;
+}
+
 /*--------------- HERO -------------------------------- */
 
 #hero {

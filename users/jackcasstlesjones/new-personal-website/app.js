@@ -15,6 +15,13 @@ const navbarAbout = document.getElementById("navbar-about");
 const navbarWork = document.getElementById("navbar-work");
 const navbarPhotography = document.getElementById("navbar-photography");
 
+const navBar = document.querySelector(".navbar");
+const navbarMenuIcon = document.querySelector(".mobile-menu-icon");
+
+navbarMenuIcon.addEventListener("click", function () {
+  navBar.classList.toggle("show-navbar");
+});
+
 navbarHome.classList.add("selected");
 // console.log("sadfasd");
 
