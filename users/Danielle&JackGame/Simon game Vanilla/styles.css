@@ -249,7 +249,7 @@ h1 {
 }
 
 #red {
-  background-color: #932f8c;
+  background-color: red;
 }
 
 #green {
@@ -257,11 +257,11 @@ h1 {
 }
 
 #blue {
-  background-color: #422f90;
+  background-color: blue;
 }
 
 #yellow {
-  background-color: #f78b04;
+  background-color: yellow;
 }
 
 .transparent {
