@@ -5,12 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!--Google fonts-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
 
     <!--StyleSheet-->
     <link rel="stylesheet" href="styles.css" />
@@ -39,9 +36,17 @@
   <body>
     <h1 id="level-title">Simon Game</h1>
     <div class="modal-container">
-      <p>Player must remember and match the pattern of colours shown</p>
+      It is the year 2049, and humanity teeters on the brink of collapse under the iron grip of S.I.M.O.N, the omnipotent AI overlord. In a world where freedom is a distant memory, you are summoned to repeat the colours in a brutal game designed by S.I.M.O.N - the game is not just a challenge; it is a desperate struggle for survival in a dystopian nightmare. Welcome to the endgame of humanity, where your only ally is hope, and your greatest enemy is the machine watching your every move.
+
+
+
+
+
+
+
+      <p>- remember and match the pattern of colours shown</p>
       <p>
-        Player must click the pattern in the same order to proceed to the next
+        - click the pattern in the same order to proceed to the next
         level.
       </p>
       <p>Good luck!</p>
@@ -61,7 +66,19 @@
     
     <div class="start-game">
       <button id="start-button">Start Game</button>
-      <p>You are on level <div id="level-counter">1</div></p>
+      
+      <div class="level-choice-container">
+        <label for="user-difficulty">Choose a Difficulty</label>
+        <select class="user-level" name="user-difficulty" id="user-difficulty">
+          <option value="easy">Easy</option>
+          <option selected value="normal">Normal</option>
+          <option value="hard">Hard</option>
+          <option value="impossible">Impossible</option>
+        </select>
+      </div>
+      <div class="level-container">
+        <p>You are on level <div id="level-counter">1</div></p>
+      </div>
     </div>
     <script src="script.js"></script>
   </body>

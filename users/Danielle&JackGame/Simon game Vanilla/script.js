@@ -27,6 +27,31 @@ const levelCounter = document.getElementById("level-counter");
 const modalBtn = document.getElementById("modal-button");
 const modalContainer = document.querySelector(".modal-container");
 
+const userDifficultyDropdown = document.getElementById("user-difficulty");
+
+let gameSpeed = 500;
+
+const changeDifficulty = () => {
+  const myVal = userDifficultyDropdown.value;
+  console.log(myVal);
+  switch (myVal) {
+    case "easy":
+      gameSpeed = 1200;
+      break;
+    case "normal":
+      gameSpeed = 750;
+      break;
+    case "hard":
+      gameSpeed = 500;
+      break;
+    case "impossible":
+      gameSpeed = 300;
+      break;
+  }
+};
+
+userDifficultyDropdown.addEventListener("change", changeDifficulty);
+
 // Resets all the game arrays
 function resetGame() {
   gamePattern = [];
@@ -49,10 +74,7 @@ function pushToGameArray() {
 
 let i = 0;
 
-let gameSpeed = 500;
-
 function playLoop() {
-  //  creates a loop function
   setTimeout(function () {
     if (gamePattern[i] === "red") {
       redAudio.play();
@@ -159,6 +181,7 @@ yellowButton.addEventListener("click", function () {
 
 modalBtn.addEventListener("click", function () {
   modalContainer.classList.add("hide");
+  startRound();
 });
 
 /*

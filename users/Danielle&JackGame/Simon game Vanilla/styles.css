@@ -130,10 +130,15 @@ body {
 /* <uniquifier>: Use a unique and descriptive class name */
 /* // <weight>: Use a value from 400 to 700 */
 
+body {
+  font-family: "orbitron", sans-serif;
+  text-transform: uppercase;
+}
+
 h1 {
   display: flex;
   justify-content: center;
-  font-family: "Pixelify Sans", sans-serif;
+  font-weight: 800;
   font-size: 75px;
 }
 
@@ -141,23 +146,32 @@ h1 {
   position: absolute;
   top: 50%;
   left: 50%;
+  font-size: 16px;
   transform: translate(-50%, -50%);
-  background-color: red;
+  background-color: white;
   padding: 20px;
+  border: double 20px black;
+  line-height: 30px;
+  font-weight: 800;
 }
 
-.modal-container,
 .start-game {
-  font-family: "Pixelify Sans", sans-serif;
   font-size: 18px;
-  margin: 25px;
-  /* font-weight:bold; */
+  margin-top: 25px;
+  font-weight: bold;
+  padding: 0 25px;
 }
 
 .start-game {
   display: flex;
-  width: 100%;
+  /* width: 100%; */
   justify-content: space-between;
+}
+
+.level-choice-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .buttons {
@@ -173,17 +187,18 @@ h1 {
   /* width: 180px; */
   /* border-radius: 100px; */
   border: 3px solid;
-  box-shadow: 3px 10px #5e5c5c;
+  /* box-shadow: 3px 10px #5e5c5c; */
   width: 100%;
 }
 
 .btn:active {
-  box-shadow: 3px 5px #666;
-  transform: translateY(4px);
+  opacity: 0.8;
+  /* box-shadow: 3px 5px #666; */
+  /* transform: translateY(4px); */
 }
 
 #red {
-  background-color: red;
+  background-color: #932f8c;
 }
 
 #green {
@@ -191,11 +206,11 @@ h1 {
 }
 
 #blue {
-  background-color: blue;
+  background-color: #422f90;
 }
 
 #yellow {
-  background-color: yellow;
+  background-color: #f78b04;
 }
 
 .transparent {
