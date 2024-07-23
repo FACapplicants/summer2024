@@ -236,8 +236,9 @@ h1 {
   /* height: 180px; */
   /* width: 180px; */
   /* border-radius: 100px; */
-  border: 3px solid;
-  /* box-shadow: 3px 10px #5e5c5c; */
+  /* border: 3px solid; */
+  box-shadow: none;
+  /* border: none; */
   width: 100%;
 }
 
