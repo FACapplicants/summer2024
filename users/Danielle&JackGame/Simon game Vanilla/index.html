@@ -36,21 +36,26 @@
   <body>
     <h1 id="level-title">Simon Game</h1>
     <div class="modal-container">
-      It is the year 2049, and humanity teeters on the brink of collapse under the iron grip of S.I.M.O.N, the omnipotent AI overlord. In a world where freedom is a distant memory, you are summoned to repeat the colours in a brutal game designed by S.I.M.O.N - the game is not just a challenge; it is a desperate struggle for survival in a dystopian nightmare. Welcome to the endgame of humanity, where your only ally is hope, and your greatest enemy is the machine watching your every move.
-
-
-
-
-
-
-
-      <p>- remember and match the pattern of colours shown</p>
       <p>
-        - click the pattern in the same order to proceed to the next
-        level.
+
+        It is the year 2049, and humanity teeters on the brink of collapse under the iron grip of S.I.M.O.N, the omnipotent AI overlord. In a world where freedom is a distant memory, you are summoned to repeat the colours in a brutal game designed by S.I.M.O.N - the game is not just a challenge; it is a desperate struggle for survival in a dystopian nightmare. Welcome to the endgame of humanity, where your only ally is hope, and your greatest enemy is the machine watching your every move.
       </p>
-      <p>Good luck!</p>
-      <button id="modal-button">OK</button>
+
+
+
+
+
+
+<div class="instructions-container">
+
+  <p>- remember and match the pattern of colours shown</p>
+  <p>
+    - click the pattern in the same order to proceed to the next
+    level.
+  </p>
+
+</div>
+      <button class="modal-button" id="modal-button">OK</button>
     </div>
     
     
@@ -65,11 +70,11 @@
     </div>
     
     <div class="start-game">
-      <button id="start-button">Start Game</button>
+      <button id="start-button">Reset Game</button>
       
       <div class="level-choice-container">
         <label for="user-difficulty">Choose a Difficulty</label>
-        <select class="user-level" name="user-difficulty" id="user-difficulty">
+        <select class="user-difficulty-dropdown" name="user-difficulty" id="user-difficulty">
           <option value="easy">Easy</option>
           <option selected value="normal">Normal</option>
           <option value="hard">Hard</option>

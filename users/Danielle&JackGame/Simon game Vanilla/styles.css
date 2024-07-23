@@ -146,13 +146,41 @@ h1 {
   position: absolute;
   top: 50%;
   left: 50%;
-  font-size: 16px;
+  font-size: 20px;
   transform: translate(-50%, -50%);
+  color: white;
   background-color: white;
-  padding: 20px;
-  border: double 20px black;
-  line-height: 30px;
+  padding: 50px 50px 0 50px;
+  border: solid 10px white;
+  line-height: 34px;
   font-weight: 800;
+  gap: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ),
+    url(assets/metal-background.jpg);
+  background-size: cover;
+}
+/* 
+.modal-container p {
+  background-color: black;
+} */
+
+.modal-button {
+  padding: 10px 20px;
+  margin: 10px auto;
+  background-color: white;
+  color: black;
+  font-size: 22px;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: none;
+  /* border: solid 5px #eed202; */
 }
 
 .start-game {
@@ -168,10 +196,32 @@ h1 {
   justify-content: space-between;
 }
 
+#start-button {
+  font-family: inherit;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 24px;
+  padding: 20px;
+}
+
 .level-choice-container {
   display: flex;
   flex-direction: column;
   gap: 14px;
+}
+
+.user-difficulty-dropdown {
+  padding: 10px;
+  font-family: inherit;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+#level-counter {
+  margin-top: 10px;
+  font-size: 40px;
+  text-align: center;
 }
 
 .buttons {
