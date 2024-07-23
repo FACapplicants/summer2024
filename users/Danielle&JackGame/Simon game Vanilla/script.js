@@ -29,7 +29,7 @@ const modalContainer = document.querySelector(".modal-container");
 
 const userDifficultyDropdown = document.getElementById("user-difficulty");
 
-let gameSpeed = 500;
+let gameSpeed = 750;
 
 const changeDifficulty = () => {
   const myVal = userDifficultyDropdown.value;
