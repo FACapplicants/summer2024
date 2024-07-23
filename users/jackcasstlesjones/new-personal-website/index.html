@@ -2,10 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
+    />
+
     <title>Jack Casstles-Jones</title>
     <script defer src="app.js"></script>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="media-queries.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -21,6 +27,38 @@
   </head>
   <body>
     <header>
+      <?xml version="1.0" encoding="UTF-8"?><svg
+        class="mobile-menu-icon"
+        width="24px"
+        height="24px"
+        stroke-width="1.5"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        <!--
+        color="#f4edea"
+        --
+      >
+        >
+        <path
+          d="M3 5H21"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M3 12H21"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M3 19H21"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </svg>
       <nav id="home" class="navbar">
         <div class="navbar-img-and-title">
           <img class="navbar-img" src="assets/portrait.png" alt="" />
@@ -28,7 +66,7 @@
         </div>
         <ul class="navbar-links-list">
           <li>
-            <a id="navbar-home" class="navbar-link" href="#home">Home</a>
+            <a id="navbar-home" class="navbar-link" href="#">Home</a>
           </li>
           <li>
             <a id="navbar-about" class="navbar-link" href="#about">About</a>
@@ -46,44 +84,55 @@
     </header>
     <main>
       <section id="hero">
-        <div class="hero-text-container"></div>
-        <h1 class="hero-header">Hi, my name is <span>Jack</span></h1>
-        <p class="hero-subheading">
-          I'm a frontend developer, photographer and climber based in London.
-        </p>
+        <div class="hero-text-container">
+          <h1 class="hero-header">Hi, my name is <span>Jack</span></h1>
+          <p class="hero-subheading">
+            I'm a frontend developer, amateur photographer and climber based in
+            London.
+          </p>
+        </div>
+        <div class="mouse-container">
+          <div class="mouse"></div>
+        </div>
       </section>
       <section class="section" id="about">
-        <h1 class="about-heading">About Me</h1>
+        <h1 class="unscrolled about-heading">About Me</h1>
         <div class="about-cards-container">
-          <div class="about-card">
+          <div class="unscrolled past-card about-card">
             <h2 class="about-card-header">Past</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
-              nostrum cum assumenda magni expedita ea fugiat, labore aspernatur
-              iure ipsa at eaque sapiente aperiam laudantium laborum quis
-              distinctio reprehenderit recusandae. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Dolorem nostrum cum assumenda magni
-              expedita ea fugiat, labore aspernatur iure ipsa at eaque sapiente
-              aperiam laudantium laborum quis distinctio reprehenderit
-              recusandae.
+            <p class="about-card-info">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
+              quo enim hic! Ad harum totam excepturi eligendi dicta suscipit
+              similique natus laudantium sint! Deleniti velit nam unde mollitia
+              exercitationem esse. Lorem ipsum, dolor sit amet consectetur
+              adipisicing elit. Sapiente, nemo minima ipsam quos, quod facere
+              numquam explicabo reprehenderit, rerum vero facilis totam rem? Aut
+              quia labore pariatur, possimus esse dolor? Lorem ipsum dolor sit,
+              amet consectetur adipisicing elit. Dolores facilis, fugit
+              necessitatibus, minima, quaerat adipisci ex ut veritatis corrupti
+              deserunt cum! Repellendus eum facere sequi harum esse, fugiat hic
+              vel!
             </p>
           </div>
-          <div class="about-card">
+          <div class="present-card about-card">
             <h2 class="about-card-header">Present</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
-              nostrum cum assumenda magni expedita ea fugiat, labore aspernatur
-              iure ipsa at eaque sapiente aperiam laudantium laborum quis
-              distinctio reprehenderit recusandae. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Dolorem nostrum cum assumenda magni
-              expedita ea fugiat, labore aspernatur iure ipsa at eaque sapiente
-              aperiam laudantium laborum quis distinctio reprehenderit
-              recusandae.
+            <p class="about-card-info">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
+              quo enim hic! Ad harum totam excepturi eligendi dicta suscipit
+              similique natus laudantium sint! Deleniti velit nam unde mollitia
+              exercitationem esse. Lorem ipsum, dolor sit amet consectetur
+              adipisicing elit. Sapiente, nemo minima ipsam quos, quod facere
+              numquam explicabo reprehenderit, rerum vero facilis totam rem? Aut
+              quia labore pariatur, possimus esse dolor? Lorem ipsum dolor sit,
+              amet consectetur adipisicing elit. Dolores facilis, fugit
+              necessitatibus, minima, quaerat adipisci ex ut veritatis corrupti
+              deserunt cum! Repellendus eum facere sequi harum esse, fugiat hic
+              vel!
             </p>
           </div>
-          <div class="about-card">
+          <div class="unscrolled future-card about-card">
             <h2 class="about-card-header">Future</h2>
-            <p>
+            <p class="about-card-info">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
               nostrum cum assumenda magni expedita ea fugiat, labore aspernatur
               iure ipsa at eaque sapiente aperiam laudantium laborum quis
@@ -98,7 +147,7 @@
       </section>
       <section class="section" id="work">
         <h1 class="about-heading">Projects</h1>
-        <div class="project-card">
+        <div class="unscrolled project-card">
           <img class="main-project-img" src="assets/olympiatree.png" alt="" />
           <div class="project-info">
             <h2 class="project-heading">Olympiatree</h2>
@@ -117,7 +166,7 @@
             </p>
           </div>
         </div>
-        <div class="project-card">
+        <div class="unscrolled project-card">
           <div class="project-info">
             <h2 class="project-heading">Ella Rose Bakes</h2>
             <p>
@@ -136,7 +185,7 @@
           </div>
           <img class="main-project-img" src="assets/ellarosebakes.png" alt="" />
         </div>
-        <div class="project-card">
+        <div class="unscrolled project-card">
           <img class="main-project-img" src="assets/cornish-pasty.png" alt="" />
           <div class="project-info">
             <h2 class="project-heading">Humble or Noble</h2>
@@ -153,6 +202,69 @@
               deserunt cum! Repellendus eum facere sequi harum esse, fugiat hic
               vel!
             </p>
+          </div>
+        </div>
+      </section>
+      <section id="photography">
+        <h1 class="about-heading">Photography</h1>
+        <div class="carousel-container">
+          <div class="carousel">
+            <div class="left-arrow-container">
+              <?xml version="1.0" encoding="UTF-8"?><svg
+                class="carousel-arrow"
+                width="24px"
+                height="24px"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                color="white"
+              >
+                <path
+                  d="M21 12L3 12M3 12L11.5 3.5M3 12L11.5 20.5"
+                  stroke="white"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+            </div>
+            <div id="carousel" class="carousel-img-container"></div>
+            <div class="right-arrow-container">
+              <?xml version="1.0" encoding="UTF-8"?><svg
+                class="carousel-arrow"
+                width="24px"
+                height="24px"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                color="white"
+              >
+                <path
+                  d="M3 12L21 12M21 12L12.5 3.5M21 12L12.5 20.5"
+                  stroke="white"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+            </div>
+          </div>
+          <div class="carousel-dots-container">
+            <div id="dot-1" class="carousel-dot"></div>
+            <div id="dot-2" class="carousel-dot"></div>
+            <div id="dot-3" class="carousel-dot"></div>
+            <div id="dot-4" class="carousel-dot"></div>
+            <div id="dot-5" class="carousel-dot"></div>
+          </div>
+          <div class="carousel-folder-choice">
+            <button class="photography-btn" id="landscape">
+              Landscape Photography
+            </button>
+            <button class="photography-btn" id="street">
+              Street Photography
+            </button>
           </div>
         </div>
       </section>

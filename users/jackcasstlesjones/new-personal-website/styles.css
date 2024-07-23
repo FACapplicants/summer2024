@@ -129,10 +129,15 @@ table {
   border-spacing: 0;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   background-color: #757761;
   color: #f4edea;
   font-family: "Roboto", serif;
+  overflow-x: hidden;
 }
 
 /* .top-wrapper {
@@ -148,7 +153,7 @@ nav {
   background-color: #757761;
 
   height: 100px;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .navbar-img-and-title {
@@ -193,17 +198,29 @@ nav {
   z-index: 999;
 }
 
+.mobile-menu-icon {
+  display: none;
+}
+
 /*--------------- HERO -------------------------------- */
 
 #hero {
   height: calc(100vh - 110px);
   /* background-color: pink; */
-  width: 80%;
+  width: 100%;
   /* margin: auto; */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.hero-text-container {
+  transform: translate(-20%, -20%);
+  /* display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center; */
 }
 
 .hero-header {
@@ -239,6 +256,47 @@ nav {
   font-size: 24px;
 }
 
+.mouse-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+}
+
+.mouse {
+  position: relative;
+
+  border: black single 1pxi;
+  width: 25px;
+  height: 50px;
+  /* background-color: red; */
+  border-radius: 15px;
+  border: 2px solid #f4edea;
+}
+
+.mouse::before {
+  border-radius: 10000px;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  content: " ";
+  width: 6px;
+  height: 6px;
+  background-color: #f4edea;
+  animation: moveDown 1.3s ease infinite;
+}
+
+@keyframes moveDown {
+  0% {
+    transform: translate(-50%, -50%) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) translateY(25px);
+    opacity: 0;
+  }
+}
+
 /* --------------------------- ABOUT SECTION  --------------------------------------------- */
 
 .section {
@@ -263,7 +321,7 @@ nav {
 .about-card {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 50px;
   width: 50%;
   margin-bottom: 240px;
 }
@@ -275,8 +333,48 @@ nav {
   font-weight: 400;
 }
 
-.about-card p {
+.about-card-info {
+  /* opacity: 0; */
   line-height: 24px;
+  /* transition: all 1s; */
+}
+
+.unscrolled {
+  transition: all 1s;
+  opacity: 0;
+}
+
+.scrolled {
+  opacity: 1;
+  /* background-color: red; */
+  line-height: 24px;
+  animation: all 1s;
+}
+
+.past-card {
+  transform: translateX(-50%);
+}
+
+.present-card {
+  opacity: 0;
+  transform: translateY(50%);
+  transition: all 1s;
+}
+
+.future-card {
+  transform: translateX(50%);
+}
+
+.transform-zero {
+  transform: translateX(0);
+  transition: all 1.3s ease-out;
+  opacity: 1;
+}
+
+.present-card.transform-zero {
+  transform: translateY(0);
+  /* transition: all 1s; */
+  opacity: 1;
 }
 
 footer {
@@ -314,4 +412,106 @@ footer {
 
 .main-project-img {
   width: 600px;
+}
+
+/* -------------------------------------------------- */
+
+.carousel-container {
+  width: 80%;
+  height: 800px;
+  /* background-color: pink; */
+  margin: auto;
+}
+
+.carousel {
+  display: flex;
+  height: 80%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  /* background-color: green; */
+}
+
+.left-arrow-container {
+  width: 10%;
+  height: 100%;
+  /* background-color: red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-img-container {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: yellow; */
+}
+
+.carousel-img-container img {
+  /* max-width: 100%; */
+  max-height: 600px;
+  display: block;
+}
+
+.right-arrow-container {
+  width: 10%;
+  height: 100%;
+  /* background-color: blue; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-arrow {
+  cursor: pointer;
+}
+
+.photography-btn {
+  background-color: #757761;
+  color: #f4edea;
+  font-size: 20px;
+
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: none;
+  outline: inherit;
+  border: none;
+}
+
+.carousel-dots-container {
+  margin: auto;
+  margin-top: 20px;
+  display: flex;
+  /* background-color: yellow; */
+
+  justify-content: center;
+  width: 50%;
+  gap: 20px;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border: solid 2px #f4edea;
+  /* background-color: #f4edea; */
+  border-radius: 999px;
+}
+
+.full-dot {
+  background-color: #f4edea;
+}
+
+.bordered {
+  border: solid 1px white;
+}
+
+.carousel-folder-choice {
+  margin-top: 40px;
+  display: flex;
+  gap: 200px;
+  justify-content: center;
+  align-items: center;
 }
