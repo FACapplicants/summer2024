@@ -129,10 +129,15 @@ table {
   border-spacing: 0;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   background-color: #757761;
   color: #f4edea;
   font-family: "Roboto", serif;
+  overflow-x: hidden;
 }
 
 /* .top-wrapper {
@@ -202,12 +207,20 @@ nav {
 #hero {
   height: calc(100vh - 110px);
   /* background-color: pink; */
-  width: 80%;
+  width: 100%;
   /* margin: auto; */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.hero-text-container {
+  transform: translate(-20%, -20%);
+  /* display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center; */
 }
 
 .hero-header {

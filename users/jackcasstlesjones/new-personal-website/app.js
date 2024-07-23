@@ -20,6 +20,7 @@ const navbarMenuIcon = document.querySelector(".mobile-menu-icon");
 
 navbarMenuIcon.addEventListener("click", function () {
   navBar.classList.toggle("show-navbar");
+  navbarMenuIcon.classList.toggle("other-colour");
 });
 
 navbarHome.classList.add("selected");
@@ -36,6 +37,8 @@ const addAndRemove = function (
   elementOne.classList.remove(className);
   elementTwo.classList.remove(className);
   elementThree.classList.add(className);
+  navBar.classList.remove("show-navbar");
+  navbarMenuIcon.classList.remove("other-colour");
 };
 
 navbarHome.addEventListener("click", function () {
