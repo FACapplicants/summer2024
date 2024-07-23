@@ -24,6 +24,9 @@ const blueAudio = document.getElementById("blue_button_sound");
 const yellowAudio = document.getElementById("yellow_button_sound");
 const levelCounter = document.getElementById("level-counter");
 
+const modalBtn = document.getElementById("modal-button");
+const modalContainer = document.querySelector(".modal-container");
+
 // Resets all the game arrays
 function resetGame() {
   gamePattern = [];
@@ -45,6 +48,8 @@ function pushToGameArray() {
 }
 
 let i = 0;
+
+let gameSpeed = 500;
 
 function playLoop() {
   //  creates a loop function
@@ -79,7 +84,7 @@ function playLoop() {
     if (i <= gameLevel) {
       playLoop();
     } else i = 0;
-  }, 1000);
+  }, gameSpeed);
 }
 
 // Resets game, then pushes to the gamePattern array 4 times so that 4 colours are selected
@@ -150,6 +155,10 @@ yellowButton.addEventListener("click", function () {
   timesClicked++;
   checkWin();
   yellowAudio.play();
+});
+
+modalBtn.addEventListener("click", function () {
+  modalContainer.classList.add("hide");
 });
 
 /*

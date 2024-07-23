@@ -38,20 +38,17 @@
   </head>
   <body>
     <h1 id="level-title">Simon Game</h1>
-    <div class="paragraph-container">
+    <div class="modal-container">
       <p>Player must remember and match the pattern of colours shown</p>
       <p>
         Player must click the pattern in the same order to proceed to the next
         level.
       </p>
       <p>Good luck!</p>
-      <p>You are on level <div id="level-counter">1</div></p>
+      <button id="modal-button">OK</button>
     </div>
-
-    <div class="start-game">
-      <button id="start-button">Start Game</button>
-    </div>
-
+    
+    
     <div class="game-container">
       <!--Note to self, change classes here-->
       <div class="buttons">
@@ -61,7 +58,11 @@
         <button class="btn yellow" id="yellow"></button>
       </div>
     </div>
-
+    
+    <div class="start-game">
+      <button id="start-button">Start Game</button>
+      <p>You are on level <div id="level-counter">1</div></p>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
