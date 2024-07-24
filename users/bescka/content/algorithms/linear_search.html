@@ -1,0 +1,16 @@
+<h2>Linear Search</h2>
+<h3>Description</h3>
+<p>Searches input array one element at a time, checks each time if arr[i] === target. </p>
+<p>Time Complexity: <span class="math inline">\(O(n)\)</span></p>
+
+<h3>Code Example</h3>
+<pre><code class="language-javascript">function linear_search(data: number[], target: number): boolean {
+    for(let i = 0; i < data.length; ++i) {
+          if (data[i] === target) { 
+              return true;
+          }
+      }
+      return false; 
+    }
+</code></pre>
+

@@ -95,6 +95,13 @@ main {
   margin: 60px auto; 
 }
 
+blockquote {
+  font-style: italic; 
+  margin: 20px; 
+  padding: 20px 30px; 
+  background-color: #111111;
+}
+
 .article-content {
   max-width: 60%;
   text-align: justify;
@@ -156,7 +163,7 @@ canvas {
   background-color: #111;
   color: white;
 }
-
+/* 
 .general-code-block {
   background-color: #333;
   color: #fff;
@@ -166,9 +173,11 @@ canvas {
   font-size: 14px;
   line-height: 1.5;
   overflow-x: auto; /* Enable horizontal scroll for long lines */
-}
+/* }
 
 code {
   display: block; 
   white-space: pre-wrap;
-}
+} */
+
+  

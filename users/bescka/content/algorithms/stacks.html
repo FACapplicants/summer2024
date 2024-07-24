@@ -1,0 +1,53 @@
+<h2>Stacks</h2>
+<h3>Description</h3>
+Similar to <a href="#/algorithms/queues">queues</a>. A stack operates on LIFO (last in first out). Here, elements are PUSHED or POPPED from the top/ most recently added end. PEEK shows the most recent element. Cormen et. al. give quite a nice analogy: 
+
+<blockquote cite="">
+    "These names are allusions to physical stacks, such as the spring-loaded stacks of plates used in cafeterias.
+    The order in which plates are popped from the stack is the reverse of the order in which they were pushed onto the stack,
+    since only the top plate is accessible"
+</blockquote>
+
+
+<h3>Code Example</h3>
+<pre><code class="language-javascript">
+    class Stack<T> {
+        private items: T[];
+
+        constructor() {
+            this.items = [];
+        }
+
+        // Push a new element onto the stack
+        push(element: T): void {
+            this.items.push(element);
+        }
+
+        // Pop an element off of the stack
+        pop(): T | undefined {
+            if (this.isEmpty()) {
+                throw new Error("Stack is empty");
+            }
+            return this.items.pop();
+        }
+
+        // Peek at the top element of the stack
+        peek(): T | undefined {
+            if (this.isEmpty()) {
+                throw new Error("Stack is empty");
+            }
+            return this.items[this.items.length - 1];
+        }
+
+        // Check if the stack is empty
+        isEmpty(): boolean {
+            return this.items.length === 0;
+        }
+
+        // Get the size of the stack
+        size(): number {
+            return this.items.length;
+        }
+    }
+
+</code></pre>
