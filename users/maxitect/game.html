@@ -6,31 +6,39 @@
     <link rel="icon" type="image/x-icon" href="game-favicon.svg">
     <link href="styles.css" rel="stylesheet"/>
 </head>
-<audio autoplay loop>
+<audio id="music" autoplay loop>
     <source src="https://tunes.stocktune.com/public/3/5/6/3560785b-caea-4d72-a263-559fe1fee80c/funky-grooves-underground-stocktune.mp3" type="audio/mpeg">
 </audio>
 <body class="game-canvas">
-    <canvas id="myCanvas" width="0" height="0"></canvas>
-    <h1>BL0CKBUSTER</h1>
+    <svg id="sound" class="sound" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 50 42.57" style="enable-background:new 0 0 50 42.57;" xml:space="preserve">
+        <path d="M25.23,0.63L12.13,10.75H3.02C1.34,10.77,0,12.11,0,13.77v15.04c0,1.66,1.34,3,3,3h9.11l13.11,10.13
+        c1.98,1.54,4.84,0.13,4.84-2.38V3C30.07,0.52,27.21-0.89,25.23,0.63z"/>
+        <path id="sound1" d="M34.93,11.31c-1.05,0.68-1.34,2.07-0.68,3.13c2.64,4.11,2.68,9.43,0.09,13.57c-0.66,1.05-0.34,2.45,0.71,3.11
+        c0.38,0.23,0.79,0.34,1.2,0.34c0.75,0,1.48-0.38,1.91-1.05c3.52-5.63,3.46-12.84-0.13-18.41C37.38,10.93,35.96,10.63,34.93,11.31z"/>
+        <path id="sound2" d="M45.93,7.18c-0.66-1.05-2.05-1.36-3.11-0.7s-1.38,2.05-0.7,3.11c4.59,7.27,4.5,16.59-0.25,23.77
+        c-0.68,1.04-0.39,2.45,0.64,3.13c0.38,0.25,0.82,0.38,1.23,0.38c0.73,0,1.45-0.36,1.89-1.02C51.34,27.18,51.47,15.95,45.93,7.18z"/>
+    </svg>
+    <canvas id="myCanvas" width="1516" height="615"></canvas>
+    <h1 id="game-title">BL0CKBUSTER</h1>
     <div class="keyboard">
         <span>
             <button id="runButton" class="start-button">
-                <span>start</span>
+                <span id="start">start</span>
             </button>
         </span>
     </div>
     <br></br>
-    <h2 class="central">how to play</h2>
-    <p class = "central white-text">use left and right arrow keys to control paddle</p>
-    <div class="keyboard">
+    <h2 class="central" id="event-title">how to play</h2>
+    <p class = "central white-text" id="description">use left and right arrow keys to control paddle</p>
+    <div class="keyboard" id="kb1">
         <button class="key-white">^</button>
     </div>
-    <div class="keyboard">
+    <div class="keyboard" id="kb2">
         <button class="key-yellow margin-left"><</button>
         <button class="key-white">v</button>
         <button class="key-yellow margin-right">></button>
     </div>
     <script src="game.js"></script>
-
 </body>
 </html>

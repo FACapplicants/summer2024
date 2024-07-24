@@ -245,3 +245,17 @@ h1, h2, .white-text {
   box-shadow: 0 5px black;
   transform: translateY(4px);
 }
+
+.sound {
+  width: 20px;
+  height: 20px;
+  margin: 10px;
+  fill: white;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.sound:hover {
+  fill: yellow;
+}
