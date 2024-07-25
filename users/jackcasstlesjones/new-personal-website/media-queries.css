@@ -82,6 +82,16 @@
     line-height: 30px;
   }
 
+  .first-half-hero::after {
+    bottom: 6px;
+    height: 4px;
+  }
+  
+  .second-half-hero::after {
+    bottom: 6px;
+    height: 4px;
+  }
+
   .about-cards-container {
     flex-direction: column;
     justify-content: center;
@@ -108,7 +118,12 @@
 }
 
 @media screen and (max-width: 450px) {
+
+.hero-header {
+  font-size: 48px;
+}
+
   .hero-text-container {
-    width: 70%;
+    width: 90%;
   }
 }
