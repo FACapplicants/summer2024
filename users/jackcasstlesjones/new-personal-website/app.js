@@ -111,8 +111,8 @@ const elementInView = (element, scrollOffset) => {
   );
 };
 
-const addClasslist = (element, chosenClass) => {
-  element.classList.add(chosenClass);
+const addClasslist = (element, chosenClass, chosenClass2) => {
+  element.classList.add(chosenClass, chosenClass2);
 };
 
 const handleScrollAnimation = (targetElement, chosenClass) => {
@@ -123,20 +123,31 @@ const handleScrollAnimation = (targetElement, chosenClass) => {
   });
 };
 
-const addSingleAnimation = (element, chosenClass) => {
+const addSingleAnimation = (element, chosenClass, chosenClass2) => {
   if (elementInView(element, 300)) {
     addClasslist(element, chosenClass);
   }
   if (pastCard.classList.contains("transform-zero")) {
-    addClasslist(presentCard, "transform-zero");
+    setTimeout(function () {
+      addClasslist(presentCard, "transform-zero");
+    }, 700);
+    setTimeout(function () {
+      addClasslist(futureCard, "transform-zero", "scrolled");
+    }, 1400);
   }
 };
 
 window.addEventListener("scroll", () => {
   handleScrollAnimation(unscrolledElements, "scrolled");
   addSingleAnimation(pastCard, "transform-zero");
-  addSingleAnimation(futureCard, "transform-zero");
+  // addSingleAnimation(futureCard, "transform-zero");
 });
+
+const delayedAnimation = () => {
+  if (pastCard.classList.contains("transform-zero")) {
+    addClasslist(presentCard, "transform-zero");
+  }
+};
 
 /* ADD LEFT AND RIGHT IN FOR THE ABOUT THINGIES */
 
@@ -152,6 +163,7 @@ let chosenFolder = "landscape";
 let photoCounter = 1;
 
 const updateCarousel = () => {
+  /* ADD A SWITCH STATEMENT HERE FOR THE ALT TEXT OF EACH FOLDER AND NUMBER TO DESCRIBE THEM FOR ACCESSIBILITY */
   carouselContainer.innerHTML = `<img src="assets/photography/${chosenFolder}/${photoCounter}.jpeg" alt=""/>`;
   photographyBtns.forEach((element) => {
     if (element.id === chosenFolder) {
