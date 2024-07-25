@@ -127,3 +127,9 @@
     width: 90%;
   }
 }
+
+@media screen and (max-width: 375px) {
+  .hero-header {
+    font-size: 38px;
+  }
+}
