@@ -49,19 +49,27 @@ img {
   fill: yellow;
 }
 
-.logobox-M:hover, .logobox-FF:hover, .logobox-W:hover, .logobox-hidden-M, .logobox-hidden-FF, .logobox-hidden-W, .logobox-M:active {
+.logo-FF-wrapper:hover .logobox-FF,
+.logo-M-wrapper:hover .logobox-M,
+.logo-W-wrapper:hover .logobox-W {
   fill: tomato;
   transition: fill 0.5s;
 }
 
-.logobox-M:hover ~ .logobox-hidden-M, .logobox-FF:hover ~ .logobox-hidden-FF, .logobox-W:hover ~ .logobox-hidden-W, .logobox-W:hover ~ .logobox-hidden-W  {
+.logo-FF-wrapper:hover .logobox-hidden-FF,
+.logo-M-wrapper:hover .logobox-hidden-M,
+.logo-W-wrapper:hover .logobox-hidden-W {
   height: 88px;
   fill: tomato;
-  transition: height 2s,
-              fill 0.5s;
+  transition: height 2s, fill 0.5s;
 }
 
-.logobox-M:hover ~ .logotext-M, .logobox-FF:hover ~ .logotext-FF, .logobox-W:hover ~ .logotext-W {
+.logo-FF-wrapper:hover ~ .logotext-FF,
+.logo-M-wrapper:hover ~ .logotext-M,
+.logo-W-wrapper:hover ~ .logotext-W,
+.logo-FF-wrapper:hover .logotext-FF,
+.logo-M-wrapper:hover .logotext-M,
+.logo-W-wrapper:hover .logotext-W {
   fill: white;
 }
 
