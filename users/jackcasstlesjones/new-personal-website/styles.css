@@ -485,10 +485,6 @@ footer {
 
 /* --------------------------- WORK SECTION  --------------------------------------------- */
 
-#work {
-  /* margin: 64px; */
-}
-
 .project-card {
   display: flex;
   gap: 80px;
