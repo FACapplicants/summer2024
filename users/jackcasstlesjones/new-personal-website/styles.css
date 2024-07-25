@@ -250,9 +250,23 @@ nav {
   bottom: 10px;
   left: 0;
   z-index: -1;
+  animation: lineDrawToRight 1s;
+  /* animation: name duration timing-function delay iteration-count direction
+    fill-mode; */
+}
+
+@keyframes lineDrawToRight {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
 }
 
 .hero-subheading {
+  margin-top: 50px;
+
   font-size: 24px;
 }
 
