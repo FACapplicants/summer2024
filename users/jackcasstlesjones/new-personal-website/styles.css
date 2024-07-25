@@ -140,6 +140,10 @@ body {
   overflow-x: hidden;
 }
 
+p {
+  letter-spacing: 0.5px;
+}
+
 /* .top-wrapper {
   height: 100vh;
   } */
@@ -417,9 +421,6 @@ nav {
 }
 
 .about-card {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
   width: 50%;
 }
 
@@ -428,6 +429,7 @@ nav {
   font-family: "cormorant", serif;
   font-size: 32px;
   font-weight: 400;
+  margin-bottom: 40px;
 }
 
 .about-card-info {

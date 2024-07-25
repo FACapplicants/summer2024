@@ -123,13 +123,13 @@ const handleScrollAnimation = (targetElement, chosenClass) => {
   });
 };
 
-const addSingleAnimation = (element, chosenClass, chosenClass2) => {
+const addSingleAnimation = (element, chosenClass) => {
   if (elementInView(element, 300)) {
     addClasslist(element, chosenClass);
   }
   if (pastCard.classList.contains("transform-zero")) {
     setTimeout(function () {
-      addClasslist(presentCard, "transform-zero");
+      addClasslist(presentCard, "transform-zero", "scrolled");
     }, 700);
     setTimeout(function () {
       addClasslist(futureCard, "transform-zero", "scrolled");
