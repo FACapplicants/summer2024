@@ -258,7 +258,7 @@ h3 {
     position: relative;
 }
 .projects-row-img {
-    position: absolute;
+    position: relative;
     width:100%;
     margin: auto;
     top: 0; 
@@ -333,13 +333,6 @@ textarea {
     background: #464c2f;
     color: #e7ded2;
 }
-/* This is the style of our error messages */
-/*.error-message {
-    color: #1bca2f;
-    font-size: 14px;
-    font-weight: 600;
-    margin-top: 3px;
-}*/
 
 /*Modal Box*/
 .modal {
@@ -362,7 +355,11 @@ textarea {
     width: 80%; 
     border-radius: 5px;
     text-align: center;
+    align-items: center;
     color:#464c2f;
+}
+.modal-content p {
+    margin-bottom: 1rem;
 }
 .hide {
 	display: none;
