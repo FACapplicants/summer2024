@@ -2,6 +2,7 @@ body {
   all: unset;
   overscroll-behavior-y: none;
 }
+
 /* img {
     max-width:100%;
     height:auto;
@@ -11,16 +12,28 @@ body {
 main {
   display: flex;
 }
+.projectMedia {
+  max-width: 50vw;
+}
+
+#logo {
+  max-width: 50px;
+}
+#overlaySection {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+}
 
 #navSection {
-  background-color: hsl(170, calc(var(--r) * 100%), 50%);
   flex: 1;
   height: 100vh;
 }
 
 #workSection {
-  background-color: rgb(57, 74, 40);
   flex: 1;
+  padding: 20px;
 }
 .shapesContainer {
   position: relative;
@@ -37,6 +50,8 @@ main {
   position: absolute;
   transition: transform 2s ease-in-out;
   mix-blend-mode: lighten;
+  display: block;
+
   /* -webkit-animation-name: blackWhite;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-duration: 2s; */
@@ -46,53 +61,76 @@ main {
   transform: rotate(44deg) scale(134%);
 }
 
+.shape.clicked {
+  transition: 3s;
+  /* margin-left: 100%; */
+  background-color: hsla(0, 0%, 100%, 0) !important;
+
+  scale: 0% !important;
+}
+
+/* ---SHAPES------ */
+
 .parallelogram {
   width: 50vh;
   height: 50vh;
-  transform: skew(20deg) rotate(20deg);
-  background-color: #f88383;
-
   top: 70px;
-  right: 15px;
+  left: 15px;
+  scale: 100%;
+
+  background-color: hsl(3, 41%, 52%);
+
+  transform: skew(20deg) rotate(20deg);
 }
 .circle {
   height: 50vh;
   width: 20vh;
-  background-color: #c2c457;
+  top: 70px;
+  left: 15px;
+  scale: 100%;
+
+  background-color: hsl(3, 41%, 52%);
+
   border-radius: 50%;
-  top: 270px;
-  right: 315px;
 }
 
 .flower {
   height: 50vh;
   width: 50vh;
-  background-color: #57c2c4;
+  top: 170px;
+  left: 15px;
+  scale: 100%;
+
+  background-color: hsl(3, 41%, 52%);
 
   aspect-ratio: 1;
   --g: /33.334% 33.334% radial-gradient(#000 calc(71% - 1px), #0000 71%) no-repeat;
   mask: 100% 50% var(--g), 75% 93.301% var(--g), 25% 93.301% var(--g),
     0% 50% var(--g), 25% 6.699% var(--g), 75% 6.699% var(--g),
     radial-gradient(100% 100%, #000 28.868%, #0000 calc(28.868% + 1px));
-  top: 170px;
-  right: 15px;
 }
 
 .hexagon {
   height: 50vh;
   width: 50vh;
-  background-color: #140134;
+  top: 0px;
+  left: 35px;
+  scale: 100%;
+
+  background-color: hsl(3, 41%, 52%);
 
   aspect-ratio: 1 / cos(30deg);
   clip-path: polygon(50% -50%, 100% 50%, 50% 150%, 0 50%);
-  top: 0px;
-  right: 35px;
 }
 
 .starburst {
   height: 50vh;
   width: 50vh;
-  background-color: hsl(3, 10%, 37%);
+  top: 0px;
+  left: 35px;
+  scale: 100%;
+
+  background-color: hsl(3, 41%, 52%);
 
   aspect-ratio: 1;
   clip-path: polygon(
@@ -149,9 +187,13 @@ main {
 .scalloped-box {
   height: 50vh;
   width: 50vh;
+  top: 0px;
+  left: 35px;
+  scale: 100%;
+
   background-color: hsl(3, 10%, 37%);
+
   --r: 30px; /* radius of circles */
-  height: 350px;
   aspect-ratio: 1;
   padding: calc(1.5 * var(--r));
   mask: linear-gradient(#000 0 0) no-repeat 50% / calc(100% - 2 * var(--r))
