@@ -248,7 +248,7 @@ nav {
 
 .second-half-hero {
   position: relative;
-  padding-left: 5px;
+  /* padding-left: 5px; */
   color: #ffc100;
   z-index: 200;
 }
@@ -265,8 +265,8 @@ nav {
   bottom: 10px;
   left: 0;
   z-index: -1;
-  animation: showLine 1s ease-out, lineDrawToRight 1.3s ease-out 0.9s,
-    removeLineFromLeft 1.8s forwards 3s;
+  animation: showLine 0.95s ease-out, lineDrawToRight 1.3s linear 0.9s,
+    removeLineFromLeft 2s forwards 3.6s;
 }
 
 .second-half-hero::after {
@@ -282,7 +282,7 @@ nav {
   left: 0;
   z-index: -1;
 
-  animation: showLine 2.2s ease-out, lineDrawToRight 1.4s ease-out 2.1s;
+  animation: showLine 2.2s ease-out, lineDrawToRight 1.4s ease-out 2.15s;
 
   /* animation: name duration timing-function delay iteration-count direction
     fill-mode; */
@@ -400,6 +400,7 @@ nav {
   margin: auto;
   width: 80%;
   padding-top: 100px;
+  margin-bottom: 120px;
 }
 
 .about-heading {
@@ -420,7 +421,6 @@ nav {
   flex-direction: column;
   gap: 50px;
   width: 50%;
-  margin-bottom: 240px;
 }
 
 .about-card-header {
@@ -485,6 +485,18 @@ footer {
 
 /* --------------------------- WORK SECTION  --------------------------------------------- */
 
+#work h1 {
+  margin-bottom: 80px;
+}
+
+.projects-subheading {
+  font-family: "cormorant", sans-serif;
+  font-size: 28px;
+  margin: auto;
+  text-align: center;
+  margin-bottom: 120px;
+}
+
 .project-card {
   display: flex;
   gap: 80px;
@@ -495,11 +507,19 @@ footer {
   font-size: 64px;
   font-family: "cormorant";
   font-weight: 500;
-  margin-bottom: 24px;
+  margin-bottom: 40px;
 }
 
-.project-card p {
+.project-technologies {
+  font-family: "cormorant", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.project-paragraph {
   font-size: 16px;
+  letter-spacing: 0.5px;
   line-height: 24px;
 }
 
