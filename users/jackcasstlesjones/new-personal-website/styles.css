@@ -238,7 +238,7 @@ nav {
   -webkit-animation: bounce 0.45s infinite alternate; */
 }
 
-.hero-header span::after {
+.first-half-hero::after {
   content: "";
   width: 100%;
   height: 7px;
@@ -250,7 +250,25 @@ nav {
   bottom: 10px;
   left: 0;
   z-index: -1;
-  animation: lineDrawToRight 1s;
+  animation: showLine 1s ease-out, lineDrawToRight 1.2s ease-out 0.9s,
+    removeLineFromLeft 1.8s forwards 3s;
+}
+
+.second-half-hero::after {
+  content: "";
+  width: 100%;
+  height: 7px;
+
+  /* background-color: var(--c-title-underline-color); */
+  background: #778da9;
+
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  z-index: -1;
+
+  animation: showLine 2.1s ease-out, lineDrawToRight 1.1s ease-out 2s;
+
   /* animation: name duration timing-function delay iteration-count direction
     fill-mode; */
 }
@@ -261,6 +279,29 @@ nav {
   }
   100% {
     width: 100%;
+  }
+}
+
+@keyframes removeLineFromLeft {
+  from {
+    clip-path: inset(0 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 100%);
+  }
+}
+
+@keyframes showLine {
+  0% {
+    opacity: 0;
+  }
+
+  99% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
 
