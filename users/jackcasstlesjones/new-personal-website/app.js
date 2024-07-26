@@ -99,7 +99,7 @@ const handleScrollAnimation = (targetElement, chosenClass) => {
   });
 };
 
-const addSingleAnimation = (element, chosenClass) => {
+const aboutCardsAnimation = (element, chosenClass) => {
   if (elementInView(element, 300)) {
     addClasslist(element, chosenClass);
   }
@@ -115,8 +115,7 @@ const addSingleAnimation = (element, chosenClass) => {
 
 window.addEventListener("scroll", () => {
   handleScrollAnimation(unscrolledElements, "scrolled");
-  addSingleAnimation(pastCard, "transform-zero");
-  // addSingleAnimation(futureCard, "transform-zero");
+  aboutCardsAnimation(pastCard, "transform-zero");
 });
 
 const delayedAnimation = () => {
@@ -124,8 +123,6 @@ const delayedAnimation = () => {
     addClasslist(presentCard, "transform-zero");
   }
 };
-
-/* ADD LEFT AND RIGHT IN FOR THE ABOUT THINGIES */
 
 /* ----------------------------- CAROUSEL ---------------------------------- */
 
@@ -156,9 +153,8 @@ let chosenFolder = "landscape";
 let photoCounter = 1;
 
 const updateCarousel = () => {
-  /* ADD A SWITCH STATEMENT HERE FOR THE ALT TEXT OF EACH FOLDER AND NUMBER TO DESCRIBE THEM FOR ACCESSIBILITY */
-
   carouselContainer.innerHTML = `<img src="assets/photography/${chosenFolder}/${photoCounter}.jpeg" alt="${carouselAltText[chosenFolder][photoCounter]}"/>`;
+
   photographyBtns.forEach((element) => {
     if (element.id === chosenFolder) {
       element.classList.add("bordered");
@@ -166,6 +162,7 @@ const updateCarousel = () => {
       element.classList.remove("bordered");
     }
   });
+
   carouselDots.forEach((element) => {
     if (element.id === `dot-${photoCounter}`) {
       element.classList.add("full-dot");
