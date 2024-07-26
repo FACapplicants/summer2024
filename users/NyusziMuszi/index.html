@@ -19,29 +19,46 @@
       rel="stylesheet"
     />
   </head>
-  <body>
-    <main>
-      <section id="overlaySection">
-        
-        <img id="logo" src="img/Logo.png" alt="" /></div>
-        <button class="button" id="loadBtn">ask for a new plate </button>
-      </section>
-      <section id="navSection">
-        <!-- nav -->
-        <div class="shapesContainer">
-          <div id="0" class="shape parallelogram"></div>
-          <div id="1" class="shape circle"></div>
-          <div id="2" class="shape flower"></div>
-          <div id="3" class="shape hexagon"></div>
-          <div id="4" class="shape starburst"></div>
-          <div id="5" class="shape scalloped-box" id="test"></div>
-        </div>
-      </section>
-      <section id="workSection">
-   
-        <div id="content about">Come, try my tasty taster menu of work.</div>
 
-     
+  <body>
+    <main id="table">
+      <nav id="menu">
+        <button id="loadBtn" class="button">Look at the menu again</button>
+        <button id="loadBtn" class="button">Ask for a new plate</button>
+        <button id="loadBtn" class="button">Ask for the chef</button>
+
+      </nav>
+
+      <section id="foodSection" class="flexCol">
+        <!-- <div class="flexWrapper">
+          <div class="shapesContainer">
+            <div id="bgPlate"></div>
+          </div>
+        </div> -->
+        <!-- nav -->
+        <div class="plateContainer" class="">
+
+        <div class="relativeContainer">
+          <div id="shapesContainer">
+          <nav id="0" class="shape absoluteItem parallelogram"></nav>
+          <nav id="1" class="shape absoluteItem circle"></nav>
+          <nav id="2" class="shape absoluteItem flower"></nav>
+          <nav id="3" class="shape absoluteItem hexagon"></nav>
+          <nav id="4" class="shape absoluteItem starburst"></nav>
+          <nav id="5" class="shape absoluteItem scalloped-box" id="test"></nav>
+        </div>
+        
+
+            <div id="plate"></div>
+          </div>
+        </div>
+      </div>
+      </section>
+
+      <section id="contentSection" class="flexCol">
+        <img id="logo" src="img/Logo.png" alt="Eszter Muray logo" />
+
+        <div id="content about">Come, try my tasty taster menu of work.</div>
 
         <!-- work -->
       </section>

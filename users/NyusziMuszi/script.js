@@ -73,7 +73,11 @@ function animateShape(e) {
 function matchColor(e) {
   let colorShape = e.style.backgroundColor;
 
-  workContainer.style.backgroundColor = colorShape
+  contentSection.style.backgroundColor = colorShape
+    .replace("rgb", "rgba")
+    .replace(")", ", 0.5)");
+
+  foodSection.style.backgroundColor = colorShape
     .replace("rgb", "rgba")
     .replace(")", ", 0.5)");
 }
@@ -91,7 +95,7 @@ function loadContent(shapeId) {
   <p id="blurb">${work[shapeId].blurb}</p>
   <img class="projectMedia" src="${work[shapeId].imgURL[0]}" alt="" />
   `;
-  workContainer.appendChild(div);
+  contentSection.appendChild(div);
 }
 function removeContent() {
   let element;
@@ -101,8 +105,11 @@ function removeContent() {
     console.log("not yet loaded");
   }
 }
+//// TARGETS /////
 
-const workContainer = document.getElementById("workSection");
+const contentSection = document.getElementById("contentSection");
+const foodSection = document.getElementById("foodSection");
+
 const shapes = document.getElementsByClassName("shape");
 const loadButton = document.getElementById("loadBtn");
 

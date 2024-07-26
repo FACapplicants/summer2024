@@ -1,42 +1,102 @@
+/*--RESET-- */
 body {
   all: unset;
   overscroll-behavior-y: none;
 }
 
-/* img {
-    max-width:100%;
-    height:auto;
-    max-height:100%;
- } */
+/*--LAYOUT-- */
 
-main {
+#table {
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 }
+
+#foodSection {
+  padding: 20px;
+  background-color: rgb(175, 175, 175);
+  height: 100vh;
+}
+
+#contentSection {
+  padding: 20px;
+  background: rgb(175, 175, 175);
+  flex-direction: column;
+}
+
+.relativeContainer {
+  position: relative;
+}
+
 .projectMedia {
   max-width: 50vw;
+}
+.flexCol {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.plateContainer {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  z-index: 1;
+}
+#shapesContainer {
+  isolation: isolate;
+}
+#plate {
+  /* flex: 1; */
+
+  width: 50vw;
+  height: 50vw;
+  /* top: 70px;
+  left: 15px; */
+  /* min-height: 100%;
+  min-width: 100%; */
+
+  /* position: absolute;*/
+  /* z-index: -999; */
+
+  border-radius: 50%;
+  z-index: 1;
+  background-color: rgba(219, 219, 219, 0.233);
+  @include filter-gradient(#e2e1e7, #d2d1d7, vertical); // IE6-9
+  @include background-image(
+    linear-gradient(top, rgba(226, 225, 231, 1) 0%, rgba(210, 209, 215, 1) 100%)
+  );
+  box-shadow: 0 -5px 4px -2px rgba(79, 77, 77, 0.3),
+    0 0 3px 2px rgba(1, 1, 1, 0.2) inset;
+
+  /* &-inner {
+    width: 70%;
+    height: 70%;
+    position: absolute;
+    left: 15%;
+    top: 15%;
+    display: block;
+    border-radius: 999em;
+    box-shadow: 0 20px 10px -5px rgba(255, 255, 255, 0.145) inset,
+      0 -20px 10px -5px rgba(161, 161, 161, 0.205) inset;
+  } */
 }
 
 #logo {
   max-width: 50px;
 }
-#overlaySection {
+#menu {
   position: absolute;
   top: 20px;
   left: 20px;
   z-index: 100;
 }
 
-#navSection {
-  flex: 1;
-  height: 100vh;
-}
-
-#workSection {
-  flex: 1;
-  padding: 20px;
-}
-.shapesContainer {
-  position: relative;
+.absoluteItem {
+  position: absolute;
+  display: block;
 }
 /* @-webkit-keyframes toBlack {
   0% {
@@ -46,11 +106,22 @@ main {
     background-color: black;
   }
 } */
+
+/* img {
+    max-width:100%;
+    height:auto;
+    max-height:100%;
+ } */
+
 .shape {
-  position: absolute;
   transition: transform 2s ease-in-out;
-  mix-blend-mode: lighten;
-  display: block;
+  mix-blend-mode: soft-light;
+  /* isolation: isolate; */
+
+  z-index: 10;
+  height: 30vh;
+  width: 30vw;
+  scale: 100%;
 
   /* -webkit-animation-name: blackWhite;
   -webkit-animation-iteration-count: infinite;
@@ -69,39 +140,24 @@ main {
   scale: 0% !important;
 }
 
-/* ---SHAPES------ */
+/* --IDIVIDUAL SHAPES-- */
 
 .parallelogram {
-  width: 50vh;
-  height: 50vh;
   top: 70px;
   left: 15px;
-  scale: 100%;
-
-  background-color: hsl(3, 41%, 52%);
 
   transform: skew(20deg) rotate(20deg);
 }
 .circle {
-  height: 50vh;
-  width: 20vh;
   top: 70px;
   left: 15px;
-  scale: 100%;
-
-  background-color: hsl(3, 41%, 52%);
 
   border-radius: 50%;
 }
 
 .flower {
-  height: 50vh;
-  width: 50vh;
   top: 170px;
   left: 15px;
-  scale: 100%;
-
-  background-color: hsl(3, 41%, 52%);
 
   aspect-ratio: 1;
   --g: /33.334% 33.334% radial-gradient(#000 calc(71% - 1px), #0000 71%) no-repeat;
@@ -111,26 +167,16 @@ main {
 }
 
 .hexagon {
-  height: 50vh;
-  width: 50vh;
   top: 0px;
   left: 35px;
-  scale: 100%;
-
-  background-color: hsl(3, 41%, 52%);
 
   aspect-ratio: 1 / cos(30deg);
   clip-path: polygon(50% -50%, 100% 50%, 50% 150%, 0 50%);
 }
 
 .starburst {
-  height: 50vh;
-  width: 50vh;
   top: 0px;
   left: 35px;
-  scale: 100%;
-
-  background-color: hsl(3, 41%, 52%);
 
   aspect-ratio: 1;
   clip-path: polygon(
@@ -185,13 +231,8 @@ main {
   );
 }
 .scalloped-box {
-  height: 50vh;
-  width: 50vh;
   top: 0px;
   left: 35px;
-  scale: 100%;
-
-  background-color: hsl(3, 10%, 37%);
 
   --r: 30px; /* radius of circles */
   aspect-ratio: 1;
