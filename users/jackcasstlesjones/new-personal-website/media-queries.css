@@ -1,3 +1,13 @@
+@media screen and (max-width: 1300px) {
+  .project-card {
+    grid-template-columns: 1fr;
+  }
+
+  .main-project-img {
+    max-width: 100%;
+  }
+}
+
 @media screen and (max-width: 1100px) {
   nav {
     margin-top: 0;

@@ -481,15 +481,6 @@ nav {
   opacity: 1;
 }
 
-footer {
-  padding: 20px;
-  margin-top: 20px;
-  color: black;
-  text-align: center;
-  width: 100%;
-  background-color: #f4edea;
-}
-
 /* --------------------------- WORK SECTION  --------------------------------------------- */
 
 #work h1 {
@@ -505,9 +496,12 @@ footer {
 }
 
 .project-card {
-  display: flex;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 80px;
   margin-bottom: 100px;
+  width: 90%;
 }
 
 .project-heading {
@@ -515,6 +509,10 @@ footer {
   font-family: "cormorant";
   font-weight: 500;
   margin-bottom: 40px;
+}
+
+.project-info {
+  /* width: 500px; */
 }
 
 .project-technologies {
@@ -531,7 +529,7 @@ footer {
 }
 
 .main-project-img {
-  width: 600px;
+  max-width: 100%;
 }
 
 /* -------------------------------------------------- */
@@ -634,4 +632,27 @@ footer {
   gap: 200px;
   justify-content: center;
   align-items: center;
+}
+
+/* ------------------------------------------------------------------- */
+
+footer {
+  padding: 20px;
+  margin-top: 20px;
+  color: black;
+  text-align: center;
+  width: 100%;
+  background-color: #f4edea;
+}
+
+.socials-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 7%;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+footer a {
+  text-decoration: none;
 }
