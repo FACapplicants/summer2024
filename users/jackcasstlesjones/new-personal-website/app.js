@@ -1,5 +1,3 @@
-const navbarLinks = document.querySelectorAll(".navbar-link");
-
 // navbarLinks.forEach((element) => {
 //   element.addEventListener("click", function () {
 //     // if (element.classList.contains("selected")) {
@@ -18,67 +16,45 @@ const navbarPhotography = document.getElementById("navbar-photography");
 const navBar = document.querySelector(".navbar");
 const navbarMenuIcon = document.querySelector(".mobile-menu-icon");
 
+const navBarLinks = document.querySelectorAll(".navbar-link");
+
 navbarMenuIcon.addEventListener("click", function () {
   navBar.classList.toggle("show-navbar");
   navbarMenuIcon.classList.toggle("other-colour");
 });
 
-navbarHome.classList.add("selected");
 // console.log("sadfasd");
 
-const addAndRemove = function (
-  elementZero,
-  elementOne,
-  elementTwo,
-  elementThree,
-  className
-) {
-  elementZero.classList.remove(className);
-  elementOne.classList.remove(className);
-  elementTwo.classList.remove(className);
-  elementThree.classList.add(className);
-  navBar.classList.remove("show-navbar");
-  navbarMenuIcon.classList.remove("other-colour");
+let navCounter = "home";
+
+const updateNavBar = () => {
+  navBarLinks.forEach((element) => {
+    console.log(element);
+    if (element.id === `navbar-${navCounter}`) {
+      console.log(element.id);
+      element.classList.add("selected");
+    } else {
+      element.classList.remove("selected");
+    }
+  });
 };
 
-navbarHome.addEventListener("click", function () {
-  addAndRemove(
-    navbarAbout,
-    navbarWork,
-    navbarPhotography,
-    navbarHome,
-    "selected"
-  );
-});
+updateNavBar();
+
 navbarAbout.addEventListener("click", function () {
-  addAndRemove(
-    navbarHome,
-    navbarWork,
-    navbarPhotography,
-    navbarAbout,
-    "selected"
-  );
+  changeNav("about");
 });
-
 navbarWork.addEventListener("click", function () {
-  addAndRemove(
-    navbarAbout,
-    navbarHome,
-    navbarPhotography,
-    navbarWork,
-    "selected"
-  );
+  changeNav("work");
+});
+navbarPhotography.addEventListener("click", function () {
+  changeNav("photography");
 });
 
-navbarPhotography.addEventListener("click", function () {
-  addAndRemove(
-    navbarAbout,
-    navbarHome,
-    navbarWork,
-    navbarPhotography,
-    "selected"
-  );
-});
+const changeNav = (changeChoice) => {
+  navCounter = changeChoice;
+  updateNavBar();
+};
 
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
