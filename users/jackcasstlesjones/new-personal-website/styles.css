@@ -523,6 +523,14 @@ nav {
   font-size: 64px;
   font-family: "cormorant";
   font-weight: 500;
+  margin-bottom: 40px;
+}
+
+.project-technologies {
+  font-family: "cormorant", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
   margin-bottom: 24px;
 }
 
