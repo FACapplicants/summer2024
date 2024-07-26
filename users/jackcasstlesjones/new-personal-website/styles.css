@@ -526,15 +526,12 @@ nav {
   margin-bottom: 40px;
 }
 
-.project-info {
-  /* width: 500px; */
-}
-
 .project-technologies {
   font-family: "cormorant", sans-serif;
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .project-paragraph {

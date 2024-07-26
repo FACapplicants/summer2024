@@ -112,6 +112,27 @@
   }
 
   .about-card {
+    margin-bottom: 50px;
+    width: 100%;
+  }
+
+  .project-card {
+    flex-direction: column;
+  }
+
+  .project-heading {
+    font-size: 42px;
+    text-align: center;
+    margin-bottom: 72px;
+  }
+
+  .project-info p {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .hero-text-container {
+    width: 70%;
     width: 80%;
   }
 }
