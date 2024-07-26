@@ -501,7 +501,7 @@ nav {
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   margin-bottom: 100px;
-  width: 90%;
+  width: 100%;
 }
 
 .project-heading {
@@ -548,6 +548,7 @@ nav {
   justify-content: center;
   align-items: center;
   /* background-color: green; */
+  position: relative;
 }
 
 .left-arrow-container {

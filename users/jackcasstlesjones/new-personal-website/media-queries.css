@@ -1,10 +1,28 @@
 @media screen and (max-width: 1300px) {
+  .hero-text-container {
+    width: 70%;
+    margin-left: 200px;
+  }
+  .hero-header {
+    font-size: 72px;
+  }
+
   .project-card {
     grid-template-columns: 1fr;
   }
 
   .main-project-img {
     max-width: 100%;
+  }
+
+  .about-cards-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .carousel-img-container img {
+    max-height: 400px;
   }
 }
 
@@ -66,10 +84,11 @@
     height: 100vh;
   }
 
-  /*----------------------------------------------- */
-
   .hero-text-container {
+    /* text-align: center; */
+    width: 90%;
     transform: translate(0, 0);
+    margin: auto;
   }
 
   .hero-header {
@@ -79,8 +98,45 @@
   .hero-subheading {
     font-size: 18px;
   }
+
+  .about-cards-container {
+    gap: 100px;
+  }
+
+  .about-card {
+    width: 80%;
+  }
 }
 
+@media screen and (max-width: 980px) {
+.carousel-container {
+  width: 95%;
+}
+
+  .carousel-img-container img {
+    max-height: 400px;
+  }
+@media screen and (max-width: 750px) {
+  .carousel-img-container img {
+    max-height: 300px;
+  }
+
+  .left-arrow-container {
+position: absolute;
+left: 35%;
+top: 30%;
+/* top: 100%; */
+/* bottom: 10%; */
+  }
+  .right-arrow-container {
+
+    right: 35%;
+    top: 30%;
+position: absolute;
+  }
+
+
+}
 @media screen and (max-width: 650px) {
   .hero-header {
     font-size: 48px;
@@ -103,9 +159,7 @@
   }
 
   .about-cards-container {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    gap: 10px;
   }
 
   .about-card {
@@ -127,6 +181,15 @@
     font-size: 14px;
   }
 }
+@media screen and (max-width: 550px) {
+.carousel {
+  width: 100%;
+}
+
+  .carousel-img-container img {
+    max-width: 110%;
+  }
+}
 @media screen and (max-width: 450px) {
   .hero-header {
     font-size: 42px;
@@ -134,6 +197,10 @@
 
   .hero-text-container {
     width: 90%;
+  }
+
+  .carousel-img-container img {
+    max-height: 200px;
   }
 }
 
