@@ -123,16 +123,20 @@ table {
   border-spacing: 0;
 }
 
-body {
-  background-color: aliceblue;
-}
-
 /* <uniquifier>: Use a unique and descriptive class name */
 /* // <weight>: Use a value from 400 to 700 */
 
 body {
   font-family: "orbitron", sans-serif;
   text-transform: uppercase;
+
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ),
+    url(assets/metal-background.jpg);
+  background-size: cover;
 }
 
 h1 {
@@ -140,6 +144,29 @@ h1 {
   justify-content: center;
   font-weight: 800;
   font-size: 75px;
+  animation: flicker 3s infinite alternate;
+  color: white;
+  margin: 25px auto 25px;
+}
+
+@keyframes flicker {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    text-shadow: 0 0 4px #fff,
+      /* 0 0 11px #fff,
+      0 0 19px #fff, */ 0 0 40px #0fa, 0 0 80px #0fa,
+      0 0 90px #0fa, 0 0 100px #0fa, 0 0 150px #0fa;
+  }
+  20%,
+  24%,
+  55% {
+    text-shadow: none;
+  }
 }
 
 .modal-container {
@@ -159,12 +186,13 @@ h1 {
   justify-content: center;
   flex-direction: column;
   background-image: linear-gradient(
-      to right bottom,
-      rgba(0, 0, 0, 0.6),
-      rgba(0, 0, 0, 0.6)
+      to bottom,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.1)
     ),
-    url(assets/metal-background.jpg);
+    url(assets/conrete-or-not.jpg);
   background-size: cover;
+  z-index: 9000;
 }
 /* 
 .modal-container p {
@@ -183,11 +211,18 @@ h1 {
   /* border: solid 5px #eed202; */
 }
 
+.game-container {
+  background-color: white;
+  width: 95%;
+  margin: auto;
+}
+
 .start-game {
   font-size: 18px;
+  margin: auto;
   margin-top: 25px;
   font-weight: bold;
-  padding: 0 25px;
+  width: 95%;
 }
 
 .start-game {
@@ -208,6 +243,7 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  color: #f5f5f5d5;
 }
 
 .user-difficulty-dropdown {
@@ -222,6 +258,7 @@ h1 {
   margin-top: 10px;
   font-size: 40px;
   text-align: center;
+  color: #f5f5f5d5;
 }
 
 .buttons {
@@ -229,7 +266,11 @@ h1 {
   grid-template-columns: 1fr 1fr;
 
   justify-content: space-evenly;
-  height: 80vh;
+  height: 72.5vh;
+}
+
+.level-container {
+  color: #f5f5f5d5;
 }
 
 .btn {
@@ -240,6 +281,7 @@ h1 {
   box-shadow: none;
   /* border: none; */
   width: 100%;
+  position: relative;
 }
 
 .btn:active {
@@ -249,23 +291,93 @@ h1 {
 }
 
 #red {
-  background-color: #932f8c;
+  background-color: red;
+  position: relative;
+}
+
+#red::after {
+  background-image: url(assets/distressed-background.jpg);
+  background-size: cover;
+  content: " ";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.25;
 }
 
 #green {
   background-color: green;
+  position: relative;
+}
+
+#green::after {
+  background-image: url(assets/distressed-background.jpg);
+  background-size: cover;
+  content: " ";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.25;
+  transform: rotate(180deg);
 }
 
 #blue {
-  background-color: #422f90;
+  background-color: blue;
+  position: relative;
+}
+
+#blue::after {
+  background-image: url(assets/distressed-background.jpg);
+  background-size: cover;
+  content: " ";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.25;
+  transform: rotate(180deg);
 }
 
 #yellow {
-  background-color: #f78b04;
+  background-color: yellow;
+  position: relative;
+}
+
+#yellow::after {
+  background-image: url(assets/distressed-background.jpg);
+  background-size: cover;
+  content: " ";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.25;
+  z-index: 900;
 }
 
 .transparent {
   opacity: 60%;
+  background-image: url(assets/robot.svg);
+  background-size: 50%;
+  content: " ";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.25;
+  z-index: 900;
 }
 
 .hide {

@@ -30,6 +30,7 @@ const modalContainer = document.querySelector(".modal-container");
 const userDifficultyDropdown = document.getElementById("user-difficulty");
 
 let gameSpeed = 750;
+let lightSpeed = 300;
 
 const changeDifficulty = () => {
   const myVal = userDifficultyDropdown.value;
@@ -46,6 +47,7 @@ const changeDifficulty = () => {
       break;
     case "impossible":
       gameSpeed = 300;
+      lightSpeed = 100;
       break;
   }
 };
@@ -81,25 +83,25 @@ function playLoop() {
       redButton.classList.add("transparent");
       setTimeout(() => {
         redButton.classList.remove("transparent");
-      }, 300);
+      }, lightSpeed);
     } else if (gamePattern[i] === "green") {
       greenAudio.play();
       greenButton.classList.add("transparent");
       setTimeout(() => {
         greenButton.classList.remove("transparent");
-      }, 300);
+      }, lightSpeed);
     } else if (gamePattern[i] === "blue") {
       blueAudio.play();
       blueButton.classList.add("transparent");
       setTimeout(() => {
         blueButton.classList.remove("transparent");
-      }, 300);
+      }, lightSpeed);
     } else if (gamePattern[i] === "yellow") {
       yellowAudio.play();
       yellowButton.classList.add("transparent");
       setTimeout(() => {
         yellowButton.classList.remove("transparent");
-      }, 300);
+      }, lightSpeed);
     }
 
     i++; //  increment the counter
