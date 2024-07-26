@@ -1,5 +1,3 @@
-const navbarLinks = document.querySelectorAll(".navbar-link");
-
 // navbarLinks.forEach((element) => {
 //   element.addEventListener("click", function () {
 //     // if (element.classList.contains("selected")) {
@@ -18,67 +16,45 @@ const navbarPhotography = document.getElementById("navbar-photography");
 const navBar = document.querySelector(".navbar");
 const navbarMenuIcon = document.querySelector(".mobile-menu-icon");
 
+const navBarLinks = document.querySelectorAll(".navbar-link");
+
 navbarMenuIcon.addEventListener("click", function () {
   navBar.classList.toggle("show-navbar");
   navbarMenuIcon.classList.toggle("other-colour");
 });
 
-navbarHome.classList.add("selected");
 // console.log("sadfasd");
 
-const addAndRemove = function (
-  elementZero,
-  elementOne,
-  elementTwo,
-  elementThree,
-  className
-) {
-  elementZero.classList.remove(className);
-  elementOne.classList.remove(className);
-  elementTwo.classList.remove(className);
-  elementThree.classList.add(className);
-  navBar.classList.remove("show-navbar");
-  navbarMenuIcon.classList.remove("other-colour");
+let navCounter = "home";
+
+const updateNavBar = () => {
+  navBarLinks.forEach((element) => {
+    console.log(element);
+    if (element.id === `navbar-${navCounter}`) {
+      console.log(element.id);
+      element.classList.add("selected");
+    } else {
+      element.classList.remove("selected");
+    }
+  });
 };
 
-navbarHome.addEventListener("click", function () {
-  addAndRemove(
-    navbarAbout,
-    navbarWork,
-    navbarPhotography,
-    navbarHome,
-    "selected"
-  );
-});
+updateNavBar();
+
 navbarAbout.addEventListener("click", function () {
-  addAndRemove(
-    navbarHome,
-    navbarWork,
-    navbarPhotography,
-    navbarAbout,
-    "selected"
-  );
+  changeNav("about");
 });
-
 navbarWork.addEventListener("click", function () {
-  addAndRemove(
-    navbarAbout,
-    navbarHome,
-    navbarPhotography,
-    navbarWork,
-    "selected"
-  );
+  changeNav("work");
+});
+navbarPhotography.addEventListener("click", function () {
+  changeNav("photography");
 });
 
-navbarPhotography.addEventListener("click", function () {
-  addAndRemove(
-    navbarAbout,
-    navbarHome,
-    navbarWork,
-    navbarPhotography,
-    "selected"
-  );
-});
+const changeNav = (changeChoice) => {
+  navCounter = changeChoice;
+  updateNavBar();
+};
 
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
@@ -111,8 +87,8 @@ const elementInView = (element, scrollOffset) => {
   );
 };
 
-const addClasslist = (element, chosenClass) => {
-  element.classList.add(chosenClass);
+const addClasslist = (element, chosenClass, chosenClass2) => {
+  element.classList.add(chosenClass, chosenClass2);
 };
 
 const handleScrollAnimation = (targetElement, chosenClass) => {
@@ -123,24 +99,49 @@ const handleScrollAnimation = (targetElement, chosenClass) => {
   });
 };
 
-const addSingleAnimation = (element, chosenClass) => {
+const aboutCardsAnimation = (element, chosenClass) => {
   if (elementInView(element, 300)) {
     addClasslist(element, chosenClass);
   }
   if (pastCard.classList.contains("transform-zero")) {
-    addClasslist(presentCard, "transform-zero");
+    setTimeout(function () {
+      addClasslist(presentCard, "transform-zero", "scrolled");
+    }, 700);
+    setTimeout(function () {
+      addClasslist(futureCard, "transform-zero", "scrolled");
+    }, 1400);
   }
 };
 
 window.addEventListener("scroll", () => {
   handleScrollAnimation(unscrolledElements, "scrolled");
-  addSingleAnimation(pastCard, "transform-zero");
-  addSingleAnimation(futureCard, "transform-zero");
+  aboutCardsAnimation(pastCard, "transform-zero");
 });
 
-/* ADD LEFT AND RIGHT IN FOR THE ABOUT THINGIES */
+const delayedAnimation = () => {
+  if (pastCard.classList.contains("transform-zero")) {
+    addClasslist(presentCard, "transform-zero");
+  }
+};
 
 /* ----------------------------- CAROUSEL ---------------------------------- */
+
+const carouselAltText = {
+  landscape: {
+    1: "A temple on a rocky hill at Hua Caves in Vietnam with mountains stretching into the background",
+    2: "A man in a boat fishing on a lake in front of skyscrapers in Ho Chi Minh City",
+    3: "A large bridge-like structure curves through the fog over lush vegetation in Thailand",
+    4: "Two girls sit on a rock, looking towards the sunrise in the Australian outback",
+    5: "Two people on a cliff in the distance are silhouetted against the blue sky at Kings Canyon, Australia.",
+  },
+  street: {
+    1: "A boy kicks a ball in mid-air over a blue playing court in Bangkok.",
+    2: "A group of women in colourful dresses pose for a photo in Hanoi.",
+    3: "A man looks down as he does business with another man in Bangkok.",
+    4: "A man in Hanoi leans against a motorcycle as he picks his teeth.",
+    5: "A close up of a street vendor with a cigarette in his mouth cutting Durian in Chinatown, Bangkok.",
+  },
+};
 
 let carouselContainer = document.getElementById("carousel");
 const leftButton = document.querySelector(".left-arrow-container");
@@ -152,7 +153,8 @@ let chosenFolder = "landscape";
 let photoCounter = 1;
 
 const updateCarousel = () => {
-  carouselContainer.innerHTML = `<img src="assets/photography/${chosenFolder}/${photoCounter}.jpeg" alt=""/>`;
+  carouselContainer.innerHTML = `<img src="assets/photography/${chosenFolder}/${photoCounter}.jpeg" alt="${carouselAltText[chosenFolder][photoCounter]}"/>`;
+
   photographyBtns.forEach((element) => {
     if (element.id === chosenFolder) {
       element.classList.add("bordered");
@@ -160,6 +162,7 @@ const updateCarousel = () => {
       element.classList.remove("bordered");
     }
   });
+
   carouselDots.forEach((element) => {
     if (element.id === `dot-${photoCounter}`) {
       element.classList.add("full-dot");
