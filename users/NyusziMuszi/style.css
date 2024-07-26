@@ -4,128 +4,118 @@ body {
   overscroll-behavior-y: none;
 }
 
+/*--TYPE-- */
+
+#head {
+  color: #4a4a4f97;
+  mix-blend-mode: multiply;
+}
+#blurb {
+}
+#meta {
+}
+/*--GENERAL-- */
+
+.projectMedia {
+  max-width: 50vw;
+}
+.button {
+  background-color: #ffffff60; /* Green */
+  border: 1px solid black;
+  color: rgb(0, 0, 0);
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: help;
+  transition: 0.3s;
+}
+.button:hover {
+  border-radius: 20px;
+}
+
+/* .cursor {
+  pointer-events: none;
+  
+  &__ball {
+    position: fixed;
+    top: 0;
+    left: 0;
+    mix-blend-mode: difference;
+    z-index: 1000;
+    
+    circle {
+      fill: #f7f8fa;
+    }
+  }  */
+
 /*--LAYOUT-- */
 
 #table {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  overscroll-behavior-y: none;
+  overflow: hidden;
+  height: 100vh;
+  background-color: rgb(175, 174, 174);
+  transition: background-color 0.3s linear;
+  will-change: background-color;
+}
+#navMenu {
+  position: absolute;
+  display: flex;
+  gap: 10px;
+
+  top: 20px;
+  left: 20px;
+  z-index: 100;
 }
 
 #foodSection {
   padding: 20px;
-  background-color: rgb(175, 175, 175);
   height: 100vh;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  z-index: 1;
+  flex: 1;
 }
 
 #contentSection {
+  overflow-y: auto;
   padding: 20px;
-  background: rgb(175, 175, 175);
+  flex-direction: column;
+  flex: 3;
+}
+.flexCol {
+  display: flex;
+  /* flex: 1; */
   flex-direction: column;
 }
 
 .relativeContainer {
   position: relative;
 }
-
-.projectMedia {
-  max-width: 50vw;
-}
-.flexCol {
+.absoluteItem {
+  position: absolute;
   display: flex;
-  flex: 1;
-  flex-direction: column;
 }
 
-.plateContainer {
-  display: flex;
+/* --TASTY BITES: GENERAL-- */
 
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  z-index: 1;
-}
 #shapesContainer {
   isolation: isolate;
 }
-#plate {
-  /* flex: 1; */
-
-  width: 50vw;
-  height: 50vw;
-  /* top: 70px;
-  left: 15px; */
-  /* min-height: 100%;
-  min-width: 100%; */
-
-  /* position: absolute;*/
-  /* z-index: -999; */
-
-  border-radius: 50%;
-  z-index: 1;
-  background-color: rgba(219, 219, 219, 0.233);
-  @include filter-gradient(#e2e1e7, #d2d1d7, vertical); // IE6-9
-  @include background-image(
-    linear-gradient(top, rgba(226, 225, 231, 1) 0%, rgba(210, 209, 215, 1) 100%)
-  );
-  box-shadow: 0 -5px 4px -2px rgba(79, 77, 77, 0.3),
-    0 0 3px 2px rgba(1, 1, 1, 0.2) inset;
-
-  /* &-inner {
-    width: 70%;
-    height: 70%;
-    position: absolute;
-    left: 15%;
-    top: 15%;
-    display: block;
-    border-radius: 999em;
-    box-shadow: 0 20px 10px -5px rgba(255, 255, 255, 0.145) inset,
-      0 -20px 10px -5px rgba(161, 161, 161, 0.205) inset;
-  } */
-}
-
-#logo {
-  max-width: 50px;
-}
-#menu {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 100;
-}
-
-.absoluteItem {
-  position: absolute;
-  display: block;
-}
-/* @-webkit-keyframes toBlack {
-  0% {
-    background-color: white;
-  }
-  100% {
-    background-color: black;
-  }
-} */
-
-/* img {
-    max-width:100%;
-    height:auto;
-    max-height:100%;
- } */
 
 .shape {
   transition: transform 2s ease-in-out;
   mix-blend-mode: soft-light;
-  /* isolation: isolate; */
-
   z-index: 10;
-  height: 30vh;
+  height: 30vw;
   width: 30vw;
   scale: 100%;
-
-  /* -webkit-animation-name: blackWhite;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-duration: 2s; */
 }
 
 .shape:hover {
@@ -134,23 +124,45 @@ body {
 
 .shape.clicked {
   transition: 3s;
-  /* margin-left: 100%; */
+  /* margin-right: 100%; */
   background-color: hsla(0, 0%, 100%, 0) !important;
 
   scale: 0% !important;
 }
 
-/* --IDIVIDUAL SHAPES-- */
+/* --UNIQUE OBJECTS-- */
+
+#logo {
+  max-width: 50px;
+}
+#plate {
+  width: 40vw;
+  height: 40vw;
+  margin: 30px;
+
+  z-index: 1;
+
+  border-radius: 50%;
+
+  background-color: rgba(219, 219, 219, 0.233);
+  box-shadow: 0 -5px 4px -2px rgba(79, 77, 77, 0.3),
+    0 0 3px 2px rgba(1, 1, 1, 0.2) inset;
+}
+
+/* --TASTY BITES: INDIVIDUAL-- */
 
 .parallelogram {
   top: 70px;
   left: 15px;
+  aspect-ratio: 1/2;
 
   transform: skew(20deg) rotate(20deg);
 }
 .circle {
   top: 70px;
   left: 15px;
+  aspect-ratio: 1/5;
+  transform: skew(20deg) rotate(20deg);
 
   border-radius: 50%;
 }
@@ -158,8 +170,8 @@ body {
 .flower {
   top: 170px;
   left: 15px;
+  aspect-ratio: 2/1;
 
-  aspect-ratio: 1;
   --g: /33.334% 33.334% radial-gradient(#000 calc(71% - 1px), #0000 71%) no-repeat;
   mask: 100% 50% var(--g), 75% 93.301% var(--g), 25% 93.301% var(--g),
     0% 50% var(--g), 25% 6.699% var(--g), 75% 6.699% var(--g),
@@ -179,6 +191,7 @@ body {
   left: 35px;
 
   aspect-ratio: 1;
+
   clip-path: polygon(
     100% 50%,
     79.74% 53.92%,
@@ -236,9 +249,38 @@ body {
 
   --r: 30px; /* radius of circles */
   aspect-ratio: 1;
+
   padding: calc(1.5 * var(--r));
   mask: linear-gradient(#000 0 0) no-repeat 50% / calc(100% - 2 * var(--r))
       calc(100% - 2 * var(--r)),
     radial-gradient(farthest-side, #000 97%, #0000) 0 0 / calc(2 * var(--r))
       calc(2 * var(--r)) round;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+  #foodSection {
+    flex: 1;
+  }
+  #contentSection {
+    flex: 2;
+  }
+}
+
+@media (max-width: 800px) {
+  #table {
+    flex-direction: column;
+    overflow: auto;
+    height: auto;
+  }
+  .projectMedia {
+    max-width: 100vw;
+  }
+  #plate {
+    width: 80vw;
+    height: 80vw;
+  }
+  #menu {
+    position: fixed;
+  }
 }

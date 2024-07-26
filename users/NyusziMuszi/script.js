@@ -1,13 +1,27 @@
 "use strict";
 
+//// SELECTORS /////
+
+const contentSection = document.getElementById("contentSection");
+const foodSection = document.getElementById("foodSection");
+const table = document.getElementById("table");
+const head = document.getElementById("head");
+const contentContainer = document.getElementById("content");
+
+const shapes = document.getElementsByClassName("shape");
+
+const reloadBtn = document.getElementById("reloadBtn");
+const shuffleBtn = document.getElementById("shuffleBtn");
+const chefBtn = document.getElementById("chefBtn");
+
 //// FUNCTIONS /////
 
-//////// Generating random values /////
+//////// FUNCTION: Generating random values /////
 
 const getRandomNumber = (min, max) =>
   Math.round(Math.random() * (max - min) + min);
 
-const getRandomHslaColor = (hueLimit) => {
+function getRandomHslaColor(hueLimit) {
   const getRandomNumberAlpha = (min, max) =>
     (Math.random() * (max - min) + min).toFixed(1);
   const { hue, saturation, lightness, alpha } = {
@@ -16,32 +30,45 @@ const getRandomHslaColor = (hueLimit) => {
     lightness: getRandomNumber(30, 70),
     alpha: getRandomNumberAlpha(1, 1),
   };
+  return [hue, saturation, lightness, alpha];
+}
 
-  console.log(hue, "hue");
-  console.log(hueLimit, "huelimit");
-
-  return `hsla(${hue + hueLimit}, ${saturation}%, ${lightness}%, ${alpha} )`;
-};
-
-const getRandomPosition = () => {
+function getRandomPosition() {
   const position = [
     `${getRandomNumber(0, 100)}px`,
     `${getRandomNumber(0, 200)}px`,
   ];
   return position;
-};
+}
 
-const getRandomScale = () => {
+function getRandomScale() {
   const scale = `${getRandomNumber(70, 100)}%`;
   return scale;
-};
+}
 
-//////// Setting random values /////
-function setColor(huelimit) {
+//////// FUNCTION: Setting random values /////
+function setColor(hueLimit) {
   const shapes = document.getElementsByClassName("shape");
   for (let i = 0; i < shapes.length; i++) {
-    shapes[i].style.backgroundColor = getRandomHslaColor(huelimit);
+    const [hue, saturation, lightness, alpha] = getRandomHslaColor(hueLimit);
+    shapes[i].style.backgroundColor = `hsla(${
+      hue + hueLimit
+    }, ${saturation}%, ${lightness}%, ${alpha} )`;
   }
+}
+function matchColor(hueLimit) {
+  const [hue, saturation, lightness, alpha] = getRandomHslaColor(hueLimit);
+  const colorBg = `hsla(${hue}, ${saturation - 30}%, ${
+    lightness + 30
+  }%, ${alpha} )`;
+  const colorHead = `hsla(${hue}, ${saturation - 30}%, ${
+    lightness - 30
+  }%, ${alpha} )`;
+
+  table.style.backgroundColor = colorBg;
+  head.style.color = colorHead;
+  // .replace("rgb", "rgba")
+  // .replace(")", ", 0.1)");
 }
 
 function setScale() {
@@ -61,7 +88,7 @@ function setPosition() {
   }
 }
 
-//////// Shapes /////
+//////// FUNCTION: Shapes /////
 
 function removeShape(e) {
   e.style.display = "none";
@@ -70,33 +97,37 @@ function animateShape(e) {
   e.classList.add("clicked");
 }
 
-function matchColor(e) {
-  let colorShape = e.style.backgroundColor;
-
-  contentSection.style.backgroundColor = colorShape
-    .replace("rgb", "rgba")
-    .replace(")", ", 0.5)");
-
-  foodSection.style.backgroundColor = colorShape
-    .replace("rgb", "rgba")
-    .replace(")", ", 0.5)");
-}
-
-//////// Content /////
+//////// FUNCTION: Content /////
 
 function findID(e) {
   return e.id;
 }
 
 function loadContent(shapeId) {
+  // const body = document.createElement("p");
+  // const node = document.createTextNode(work[shapeId].blurb);
+
+  // body.appendChild(node);
+  // contentContainer.appendChild(body);
+
+  // head.innerHTML = work[shapeId].title;
+
+  // work[shapeId];
+  console.log(work[shapeId].imgURL.length);
+  const imageURLS = [];
+  work[shapeId].imgURL.forEach((url) => {
+    imageURLS.push(`<img class="projectMedia" src="${url}" alt="" />`);
+  });
+  console.log(imageURLS.join(" "));
+
   let div = document.createElement("div");
   div.id = "content";
-  div.innerHTML = `<h2 id="title">${work[shapeId].title}</h2>
-  <p id="blurb">${work[shapeId].blurb}</p>
-  <img class="projectMedia" src="${work[shapeId].imgURL[0]}" alt="" />
-  `;
+
+  contentSection.innerHTML = `<h2 id="head">${work[shapeId].title}</h2>
+    <p id="blurb">${work[shapeId].blurb}</p>${imageURLS.join(" ")}`;
   contentSection.appendChild(div);
 }
+
 function removeContent() {
   let element;
   if ((element = document.getElementById("content"))) {
@@ -104,14 +135,9 @@ function removeContent() {
   } else {
     console.log("not yet loaded");
   }
+  // head.innerHTML = "";
+  // body.innerHTML = "";
 }
-//// TARGETS /////
-
-const contentSection = document.getElementById("contentSection");
-const foodSection = document.getElementById("foodSection");
-
-const shapes = document.getElementsByClassName("shape");
-const loadButton = document.getElementById("loadBtn");
 
 //// EVENT LISTENERS /////
 
@@ -119,13 +145,13 @@ for (let i = 0; i < shapes.length; i++) {
   shapes[i].addEventListener("click", function () {
     animateShape(shapes[i]);
     // removeShape(shapes[i]);
-    matchColor(shapes[i]);
     findID(shapes[i]);
     removeContent();
     setTimeout(() => {
       removeShape(shapes[i]);
     }, "1000");
     loadContent(findID(shapes[i]));
+    matchColor(getRandomNumber(0, 150));
   });
 }
 
@@ -135,23 +161,33 @@ window.addEventListener("load", function () {
   setScale();
 });
 
-loadButton.addEventListener("click", function () {
-  console.log("clicked");
+reloadBtn.addEventListener("click", function () {
+  location.reload();
+});
+
+shuffleBtn.addEventListener("click", function () {
   setPosition();
   setColor(getRandomNumber(0, 150));
   setScale();
 });
 
+chefBtn.addEventListener("click", function () {
+  loadContent("chef");
+});
+
 //// DATABASE /////
+
 const work = [
   {
     id: "0",
     title: "Insula Lutherana",
 
     blurb:
-      "Making the Lutheran Complex (situated on the main square of Budapest) visible, by initiating a dialogue with the city it serves.",
+      "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book. It usually begins wit Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.The purpose of lorem ipsum is to create a natural looking block of text (sentence, paragraph, page, etc.) that doesn't distract from the layout. A practice not without controversy, laying out pages with meaningless filler text can be very useful when the focus is meant to be on design, not content The passage experienced a surge in popularity during the 1960s when Letraset used it on their dry-transfer sheets, and again during the 90s as desktop publishers bundled the text with their software. Today it's seen all around the web; on templates, websites, and stock designs. Use our generator to get your own, or read on for the authoritative history of lorem ipsum",
     imgURL: [
       "img/eszter_muray_ammonite_1.png",
+      "img/eszter_muray_insula_3.png",
+      "img/eszter_muray_insula_3.png",
       "img/eszter_muray_insula_3.png",
     ],
   },
@@ -160,7 +196,6 @@ const work = [
     title: "Something Else",
 
     blurb: "something else",
-    blurb2: "ejlkhdfqlwehfgl else",
 
     imgURL: ["img/eszter_muray_insula_3.png"],
   },
@@ -192,6 +227,13 @@ const work = [
     blurb: "something else",
     imgURL: ["img/DigiLens-Argo-AR-Smart-Glasses-HD.jpg"],
   },
+  {
+    id: "chef",
+    title: " Else Else Else  ",
+
+    blurb: "something else",
+    imgURL: ["img/DigiLens-Argo-AR-Smart-Glasses-HD.jpg"],
+  },
 ];
 
 // {
@@ -201,3 +243,21 @@ const work = [
 //     imgName2: "",
 //     imgName3: "",
 //   }
+
+// class Project {
+//   constructor(head, body, imgs) {
+//     this.values = [r, g, b];
+//   }
+//   get red() {
+//     return this.values[0];
+//   }
+//   set red(value) {
+//     this.values[0] = value;
+//   }
+// }
+
+// const work2 = [
+//   new Project(255, 0, 0),
+//   new Project(255, 0, 0),
+//   new Project(255, 0, 0),
+// ];
