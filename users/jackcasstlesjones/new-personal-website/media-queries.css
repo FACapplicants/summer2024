@@ -112,7 +112,6 @@
   }
 
   .about-card {
-<<<<<<< HEAD
     margin-bottom: 50px;
     width: 100%;
   }
@@ -134,7 +133,6 @@
 @media screen and (max-width: 450px) {
   .hero-text-container {
     width: 70%;
-=======
     width: 80%;
   }
 }
@@ -262,6 +260,5 @@
     .carousel-folder-choice button {
       font-size: 12px;
     }
->>>>>>> 18f8abd3a6007426f59fd8a5a958c8305c86298b
   }
 }
