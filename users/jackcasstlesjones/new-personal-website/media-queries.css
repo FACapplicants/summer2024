@@ -132,13 +132,13 @@
     .left-arrow-container {
       position: absolute;
       left: 35%;
-      top: 60%;
+      top: 65%;
       /* top: 100%; */
       /* bottom: 10%; */
     }
     .right-arrow-container {
       right: 35%;
-      top: 60%;
+      top: 65%;
       position: absolute;
     }
 
