@@ -351,12 +351,12 @@ nav {
   position: absolute;
   left: 70%;
   top: 30%;
-  width: 120px;
+  width: 80px;
 }
 .squiggle-two {
   position: absolute;
-  left: 70%;
-  top: 75%;
+  left: 80%;
+  top: 60%;
   width: 40px;
 }
 
@@ -364,14 +364,14 @@ nav {
   position: absolute;
   left: 20%;
   top: 25%;
-  width: 100px;
+  width: 80px;
 }
 
 .squiggle-four {
   position: absolute;
   left: 20%;
-  top: 80%;
-  width: 100px;
+  top: 70%;
+  width: 50px;
 }
 
 .squiggle-seven {
@@ -386,7 +386,7 @@ nav {
   position: absolute;
   left: 50%;
   top: 10%;
-  width: 60px;
+  width: 0;
 }
 
 .mouse::before {
