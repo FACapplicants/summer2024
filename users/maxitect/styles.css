@@ -182,28 +182,38 @@ h1, h2, .white-text {
 }
 
 .start-button, .key-white, .key-yellow {
-  padding: 15px 25px;
-  font-size: 24px;
   text-align: center;
   cursor: pointer;
   outline: none;
   color: black;
   border-color: black;
   border:3px solid;
-  border-radius: 15px;
   box-shadow: 0 9px black;
   margin-top: 0;
 }
 
+.start-button {
+  padding: 15px 25px;
+  font-size: 24px;
+  border-radius: 15px;
+}
+
+.key-white, .key-yellow {
+  padding: 10px 20px;
+  font-size: 24px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
 .start-button, .key-white {
   background-color: white;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .key-yellow {
   background-color: yellow;
-  gap: 10px;
+  gap: 5px;
 }
 
 .margin-left {
@@ -266,6 +276,23 @@ h1, h2, .white-text {
 
 .sound:hover {
   fill: yellow;
+}
+
+.icon-stroke {
+  stroke:black;
+  stroke-width: 1.5px;
+}
+
+.icon-fill {
+  fill: yellow;
+}
+
+.icon {
+  width: 80px;
+  height: 80px;
+  margin: 5px 20px;
+  display: inline-flex;
+  fill: white;
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
