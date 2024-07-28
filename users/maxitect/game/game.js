@@ -81,6 +81,21 @@ document.addEventListener("mousemove", (e) => {
     }
 });
 
+//move paddle based on touchscreen position
+document.addEventListener('touchstart', handleTouchEvent, true);
+document.addEventListener('touchmove', handleTouchEvent, true);
+document.addEventListener('touchend', handleTouchEvent, true);
+document.addEventListener('touchcancel', handleTouchEvent, true);
+function handleTouchEvent(e) {
+    if (e.touches.length === 0 ) return;
+    e.preventDefault();
+    e.stopPropagation();
+    var touch = e.touches[0];
+    if (touch.pageX > 0 && touch.pageX < canvas.width) {
+        paddleX = touch.pageX - paddleWidth / 2;
+    }
+}
+
 //sound control
 document.getElementById("sound").addEventListener("click", () => {
     mute = !mute; //update mute boolean variable
