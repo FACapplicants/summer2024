@@ -9,15 +9,15 @@ const ctx = canvas.getContext("2d");
 const gameTitle = document.getElementById("game-title");
 const startText = document.getElementById("start");
 const eventTitle = document.getElementById("event-title");
-const description = document.getElementById("description");
+const description = document.getElementById("description1");
 let screenWidth  = window.innerWidth; //reinitialised variable
 let screenHeight = window.innerHeight; //reinitialised variable
 let timeToStart = 3; //reinitialised variable
 let won = false; //reinitialised variable
 let level = 0;
 let mute = false;
-const elementsMain = ["game-title", "runButton", "event-title", "description"];
-const elementsCon = ["kb1", "kb2"];
+const elementsMain = ["game-title", "runButton", "event-title", "description1"];
+const elementsCon = ["icons", "description2", "kb1", "kb2"];
 
 //paddle variables
 const paddleHeight = 12;
