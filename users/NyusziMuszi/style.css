@@ -2,6 +2,7 @@
 body {
   all: unset;
   overscroll-behavior-y: none;
+  overscroll-behavior-x: none;
 }
 
 /*--TYPE-- */
@@ -35,21 +36,24 @@ body {
   border-radius: 20px;
 }
 
-/* .cursor {
-  pointer-events: none;
-  
-  &__ball {
-    position: fixed;
-    top: 0;
-    left: 0;
-    mix-blend-mode: difference;
-    z-index: 1000;
-    
-    circle {
-      fill: #f7f8fa;
-    }
-  }  */
+/*--CURSOR-- */
 
+#reloadBtn {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🏁</text></svg>")
+      16 0,
+    auto; /*!emojicursor.app*/
+}
+
+#shuffleBtn {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🍽️ </text></svg>")
+      16 0,
+    auto; /*!emojicursor.app*/
+}
+#chefBtn {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>👩‍🍳</text></svg>")
+      16 0,
+    auto; /*!emojicursor.app*/
+}
 /*--LAYOUT-- */
 
 #table {
