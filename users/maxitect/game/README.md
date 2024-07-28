@@ -11,15 +11,15 @@ These variables set up the game. Some are reinitialized in the `initVar` functio
 - `const gameTitle = document.getElementById("game-title");` - Title element.
 - `const startText = document.getElementById("start");` - Start button element.
 - `const eventTitle = document.getElementById("event-title");` - Event title element.
-- `const description = document.getElementById("description");` - Description element.
+- `const description = document.getElementById("description1");` - Description element.
 - `let screenWidth = window.innerWidth;` - Screen width, reinitialized.
 - `let screenHeight = window.innerHeight;` - Screen height, reinitialized.
 - `let timeToStart = 3;` - Countdown timer, reinitialized.
 - `let won = false;` - Win state, reinitialized.
 - `let level = 0;` - Current game level.
 - `let mute = false;` - Mute state.
-- `const elementsMain = ["game-title", "runButton", "event-title", "description"];` - Main elements.
-- `const elementsCon = ["kb1", "kb2"];` - Additional elements.
+- `const elementsMain = ["game-title", "runButton", "event-title", "description1"];` - Main elements.
+- `const elementsCon = ["icons", "description2", "kb1", "kb2"];` - Additional elements.
 
 ### Paddle Variables
 - `const paddleHeight = 12;` - Paddle height.
