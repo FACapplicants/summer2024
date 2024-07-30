@@ -196,3 +196,7 @@ leftButton.addEventListener("click", function () {
   photoCounter--;
   updateCarousel();
 });
+
+/* ------------------------------------------ learning resource dialogue boxes ---------------- */
+
+const learningCards = document.querySelectorAll("learning-resouce-card");

@@ -496,6 +496,57 @@ nav {
   opacity: 1;
 }
 
+.learning-resources-container {
+  /* background-color: pink; */
+  margin-top: 200px;
+}
+
+.learning-cards-container {
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  /* height: 20px; */
+  gap: 20px;
+}
+
+.learning-resource-card {
+  width: 300px;
+  transition: all 0.5s;
+  display: flex;
+  flex-direction: column;
+  border: none;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid transparent; /* Start with a transparent border */
+  padding: 20px;
+  cursor: pointer;
+}
+
+.learning-resource-card:hover {
+  /* transition: all 2s; */
+  border-color: white;
+}
+
+.learning-resource-card h3 {
+  margin-bottom: 50px;
+}
+
+.learning-resource-icon {
+  width: 100px;
+  text-align: center;
+}
+
+.udemy-resource-icon {
+  stroke-width: 10px;
+  height: 100px;
+  /* display: none; */
+}
+
+.learning-resource-info {
+  display: none;
+}
+
 /* --------------------------- WORK SECTION  --------------------------------------------- */
 
 #work h1 {
