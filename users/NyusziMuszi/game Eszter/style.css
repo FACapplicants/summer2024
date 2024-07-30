@@ -1,0 +1,25 @@
+/*--RESET-- */
+body {
+  all: unset;
+  overscroll-behavior-y: none;
+  overscroll-behavior-x: none;
+}
+main {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch
+  width: 100vw;
+  height: 100vh;
+}
+.flexy {
+  flex: 1;
+  background-color: aqua;
+  border: 2px dotted;
+}
+/*--TYPE-- */
+
+/*--GENERAL-- */
+
+/*--CURSOR-- */
+
+/*--LAYOUT-- */

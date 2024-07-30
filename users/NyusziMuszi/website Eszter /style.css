@@ -1,0 +1,290 @@
+/*--RESET-- */
+body {
+  all: unset;
+  overscroll-behavior-y: none;
+  overscroll-behavior-x: none;
+}
+
+/*--TYPE-- */
+
+#head {
+  color: #4a4a4f97;
+  mix-blend-mode: multiply;
+}
+#blurb {
+}
+#meta {
+}
+/*--GENERAL-- */
+
+.projectMedia {
+  max-width: 50vw;
+}
+.button {
+  background-color: #ffffff60; /* Green */
+  border: 1px solid black;
+  color: rgb(0, 0, 0);
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: help;
+  transition: 0.3s;
+}
+.button:hover {
+  border-radius: 20px;
+}
+
+/*--CURSOR-- */
+
+#reloadBtn {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🏁</text></svg>")
+      16 0,
+    auto; /*!emojicursor.app*/
+}
+
+#shuffleBtn {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🍽️ </text></svg>")
+      16 0,
+    auto; /*!emojicursor.app*/
+}
+#chefBtn {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>👩‍🍳</text></svg>")
+      16 0,
+    auto; /*!emojicursor.app*/
+}
+/*--LAYOUT-- */
+
+#table {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  overscroll-behavior-y: none;
+  overflow: hidden;
+  height: 100vh;
+  background-color: rgb(175, 174, 174);
+  transition: background-color 0.3s linear;
+  will-change: background-color;
+}
+#navMenu {
+  position: absolute;
+  display: flex;
+  gap: 10px;
+
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+}
+
+#foodSection {
+  padding: 20px;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  z-index: 1;
+  flex: 1;
+}
+
+#contentSection {
+  overflow-y: auto;
+  padding: 20px;
+  flex-direction: column;
+  flex: 3;
+}
+.flexCol {
+  display: flex;
+  /* flex: 1; */
+  flex-direction: column;
+}
+
+.relativeContainer {
+  position: relative;
+}
+.absoluteItem {
+  position: absolute;
+  display: flex;
+}
+
+/* --TASTY BITES: GENERAL-- */
+
+#shapesContainer {
+  isolation: isolate;
+}
+
+.shape {
+  transition: transform 2s ease-in-out;
+  mix-blend-mode: soft-light;
+  z-index: 10;
+  height: 30vw;
+  width: 30vw;
+  scale: 100%;
+}
+
+.shape:hover {
+  transform: rotate(44deg) scale(134%);
+}
+
+.shape.clicked {
+  transition: 3s;
+  /* margin-right: 100%; */
+  background-color: hsla(0, 0%, 100%, 0) !important;
+
+  scale: 0% !important;
+}
+
+/* --UNIQUE OBJECTS-- */
+
+#logo {
+  max-width: 50px;
+}
+#plate {
+  width: 40vw;
+  height: 40vw;
+  margin: 30px;
+
+  z-index: 1;
+
+  border-radius: 50%;
+
+  background-color: rgba(219, 219, 219, 0.233);
+  box-shadow: 0 -5px 4px -2px rgba(79, 77, 77, 0.3),
+    0 0 3px 2px rgba(1, 1, 1, 0.2) inset;
+}
+
+/* --TASTY BITES: INDIVIDUAL-- */
+
+.parallelogram {
+  top: 70px;
+  left: 15px;
+  aspect-ratio: 1/2;
+
+  transform: skew(20deg) rotate(20deg);
+}
+.circle {
+  top: 70px;
+  left: 15px;
+  aspect-ratio: 1/5;
+  transform: skew(20deg) rotate(20deg);
+
+  border-radius: 50%;
+}
+
+.flower {
+  top: 170px;
+  left: 15px;
+  aspect-ratio: 2/1;
+
+  --g: /33.334% 33.334% radial-gradient(#000 calc(71% - 1px), #0000 71%) no-repeat;
+  mask: 100% 50% var(--g), 75% 93.301% var(--g), 25% 93.301% var(--g),
+    0% 50% var(--g), 25% 6.699% var(--g), 75% 6.699% var(--g),
+    radial-gradient(100% 100%, #000 28.868%, #0000 calc(28.868% + 1px));
+}
+
+.hexagon {
+  top: 0px;
+  left: 35px;
+
+  aspect-ratio: 1 / cos(30deg);
+  clip-path: polygon(50% -50%, 100% 50%, 50% 150%, 0 50%);
+}
+
+.starburst {
+  top: 0px;
+  left: 35px;
+
+  aspect-ratio: 1;
+
+  clip-path: polygon(
+    100% 50%,
+    79.74% 53.92%,
+    98.3% 62.94%,
+    77.72% 61.48%,
+    93.3% 75%,
+    73.8% 68.26%,
+    85.36% 85.36%,
+    68.26% 73.8%,
+    75% 93.3%,
+    61.48% 77.72%,
+    62.94% 98.3%,
+    53.92% 79.74%,
+    50% 100%,
+    46.08% 79.74%,
+    37.06% 98.3%,
+    38.52% 77.72%,
+    25% 93.3%,
+    31.74% 73.8%,
+    14.64% 85.36%,
+    26.2% 68.26%,
+    6.7% 75%,
+    22.28% 61.48%,
+    1.7% 62.94%,
+    20.26% 53.92%,
+    0% 50%,
+    20.26% 46.08%,
+    1.7% 37.06%,
+    22.28% 38.52%,
+    6.7% 25%,
+    26.2% 31.74%,
+    14.64% 14.64%,
+    31.74% 26.2%,
+    25% 6.7%,
+    38.52% 22.28%,
+    37.06% 1.7%,
+    46.08% 20.26%,
+    50% 0%,
+    53.92% 20.26%,
+    62.94% 1.7%,
+    61.48% 22.28%,
+    75% 6.7%,
+    68.26% 26.2%,
+    85.36% 14.64%,
+    73.8% 31.74%,
+    93.3% 25%,
+    77.72% 38.52%,
+    98.3% 37.06%,
+    79.74% 46.08%
+  );
+}
+.scalloped-box {
+  top: 0px;
+  left: 35px;
+
+  --r: 30px; /* radius of circles */
+  aspect-ratio: 1;
+
+  padding: calc(1.5 * var(--r));
+  mask: linear-gradient(#000 0 0) no-repeat 50% / calc(100% - 2 * var(--r))
+      calc(100% - 2 * var(--r)),
+    radial-gradient(farthest-side, #000 97%, #0000) 0 0 / calc(2 * var(--r))
+      calc(2 * var(--r)) round;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+  #foodSection {
+    flex: 1;
+  }
+  #contentSection {
+    flex: 2;
+  }
+}
+
+@media (max-width: 800px) {
+  #table {
+    flex-direction: column;
+    overflow: auto;
+    height: auto;
+  }
+  .projectMedia {
+    max-width: 100vw;
+  }
+  #plate {
+    width: 80vw;
+    height: 80vw;
+  }
+  #menu {
+    position: fixed;
+  }
+}
