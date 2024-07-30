@@ -131,6 +131,7 @@ table {
 
 html {
   overflow-x: hidden;
+  position: relative;
 }
 
 body {
@@ -138,6 +139,7 @@ body {
   color: white;
   font-family: "Roboto", serif;
   overflow-x: hidden;
+  position: relative;
 }
 
 p {
@@ -209,6 +211,7 @@ nav {
 /*--------------- HERO -------------------------------- */
 
 #hero {
+  position: relative;
   height: calc(100vh - 110px);
   /* background-color: pink; */
   width: 100%;
@@ -270,7 +273,7 @@ nav {
   left: 0;
   z-index: -1;
   animation: showLine 0.95s ease-out, lineDrawToRight 1.3s linear 0.9s,
-    removeLineFromLeft 2s forwards 3.6s;
+    removeLineFromLeft 1.2s forwards 3.6s;
 }
 
 .second-half-hero::after {
@@ -372,21 +375,6 @@ nav {
   left: 20%;
   top: 70%;
   width: 50px;
-}
-
-.squiggle-seven {
-  position: absolute;
-  top: 20%;
-  left: 5%;
-  /* background-color: red; */
-  width: 80px;
-}
-
-.squiggle-nine {
-  position: absolute;
-  left: 50%;
-  top: 10%;
-  width: 0;
 }
 
 .mouse::before {
@@ -494,6 +482,108 @@ nav {
   transform: translateY(0);
   /* transition: all 1s; */
   opacity: 1;
+}
+
+.learning-resources-container {
+  /* background-color: pink; */
+  margin-top: 200px;
+}
+
+.learning-cards-container {
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  /* height: 20px; */
+  gap: 20px;
+}
+
+.learning-resource-card {
+  /* width: 400px; */
+  /* height: 300px; */
+  transition: all 0.5s;
+  display: flex;
+  flex-direction: column;
+  border: none;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid transparent; /* Start with a transparent border */
+  padding: 20px;
+  cursor: pointer;
+  flex-grow: 0;
+  flex-shrink: 1;
+  align-self: flex-start;
+  overflow: hidden;
+  position: relative;
+}
+
+.learning-resource-card:hover {
+  /* transition: all 2s; */
+  border-color: white;
+}
+
+.learning-resource-card h3 {
+  margin-bottom: 50px;
+  font-family: "cormorant", sans-serif;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 30px;
+  /* letter-spacing: 1px; */
+}
+
+.learning-resource-icon {
+  width: 100px;
+  text-align: center;
+}
+
+.udemy-resource-icon {
+  stroke-width: 10px;
+  height: 100px;
+  /* display: none; */
+}
+
+.learning-resource-info {
+  /* display: none; */
+  margin-top: 50px;
+  transition: max-height 1s, opacity 0.2s ease-in 0.2s;
+  max-height: 0px;
+  opacity: 0;
+}
+
+.learning-resource-info a {
+  color: white;
+  background-color: #757761;
+  /* font-style: italic; */
+}
+
+.learning-resource-info a:hover {
+  color: rgb(215, 215, 215);
+}
+
+.learning-resource-info a:active {
+  color: rgb(168, 168, 168);
+}
+
+.show {
+  /* display: block; */
+  max-height: 200px;
+  opacity: 1;
+}
+
+.resources-icon {
+  position: absolute;
+  top: 3;
+  left: 90%;
+  stroke: white;
+  transition: all 0.3s;
+}
+
+.show-icon {
+  opacity: 1;
+}
+
+.hidden-icon {
+  opacity: 0;
 }
 
 /* --------------------------- WORK SECTION  --------------------------------------------- */
@@ -651,21 +741,43 @@ nav {
 
 footer {
   padding: 20px;
+  margin: auto;
   margin-top: 20px;
   color: black;
   text-align: center;
-  width: 100%;
+  /* width: 100%; */
   background-color: #f4edea;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-content {
+  /* width: 90%; */
+  margin: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center child elements horizontally */
 }
 
 .socials-container {
   display: flex;
   justify-content: space-between;
-  max-width: 7%;
+  width: 7%;
   margin: auto;
   margin-bottom: 20px;
 }
 
+.socials-icon {
+  width: 20px;
+}
+
 footer a {
   text-decoration: none;
+}
+
+footer p {
+  text-align: center;
 }
