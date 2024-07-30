@@ -131,6 +131,7 @@ table {
 
 html {
   overflow-x: hidden;
+  position: relative;
 }
 
 body {
@@ -138,6 +139,7 @@ body {
   color: white;
   font-family: "Roboto", serif;
   overflow-x: hidden;
+  position: relative;
 }
 
 p {
@@ -209,6 +211,7 @@ nav {
 /*--------------- HERO -------------------------------- */
 
 #hero {
+  position: relative;
   height: calc(100vh - 110px);
   /* background-color: pink; */
   width: 100%;
