@@ -320,6 +320,10 @@
     width: 90%;
   }
 
+  .mouse-container {
+    bottom: 70px;
+  }
+
   
   .project-heading {
     font-size: 32px;
@@ -352,6 +356,8 @@
   .hero-header {
     font-size: 38px;
   }
+
+  
 
   .about-heading {
     font-size: 32px;
