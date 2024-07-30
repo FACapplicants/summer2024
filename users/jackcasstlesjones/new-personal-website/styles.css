@@ -374,21 +374,6 @@ nav {
   width: 50px;
 }
 
-.squiggle-seven {
-  position: absolute;
-  top: 20%;
-  left: 5%;
-  /* background-color: red; */
-  width: 80px;
-}
-
-.squiggle-nine {
-  position: absolute;
-  left: 50%;
-  top: 10%;
-  width: 0;
-}
-
 .mouse::before {
   border-radius: 10000px;
   position: absolute;
@@ -753,17 +738,31 @@ nav {
 
 footer {
   padding: 20px;
+  margin: auto;
   margin-top: 20px;
   color: black;
   text-align: center;
-  width: 100%;
+  /* width: 100%; */
   background-color: #f4edea;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-content {
+  /* width: 90%; */
+  margin: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center child elements horizontally */
 }
 
 .socials-container {
   display: flex;
   justify-content: space-between;
-  max-width: 7%;
+  width: 7%;
   margin: auto;
   margin-bottom: 20px;
 }
@@ -774,4 +773,8 @@ footer {
 
 footer a {
   text-decoration: none;
+}
+
+footer p {
+  text-align: center;
 }

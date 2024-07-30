@@ -163,6 +163,10 @@
   .learning-resources-container {
     margin-top: 100px;
   }
+
+  .socials-container {
+    width: 20%;
+  }
 }
 
 /* ---------------------- */
@@ -179,6 +183,14 @@
   .learning-resources-container {
     margin-top: 20px;
   }
+}
+
+.squiggle-one {
+  top: 20%;
+}
+
+.squiggle-two {
+  top: 70%;
 }
 /* ---------------------- */
 
@@ -240,6 +252,19 @@
   .second-half-hero::after {
     bottom: 6px;
     height: 4px;
+  }
+
+  .squiggle-one {
+    width: 50px;
+  }
+  .squiggle-two {
+    width: 30px;
+  }
+  .squiggle-three {
+    width: 50px;
+  }
+  .squiggle-four {
+    width: 30px;
   }
 
   .about-cards-container {
@@ -311,6 +336,10 @@
   .carousel-folder-choice button {
     padding: 5px;
   }
+}
+
+.socials-container {
+  width: 50%;
 }
 
 /* ---------------------- */
