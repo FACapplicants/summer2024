@@ -511,7 +511,7 @@ nav {
 }
 
 .learning-resource-card {
-  width: 400px;
+  /* width: 400px; */
   /* height: 300px; */
   transition: all 0.5s;
   display: flex;

@@ -32,7 +32,7 @@
   }
 
   .learning-resource-card {
-    width: 250px;
+    width: 80%;
   }
 }
 
@@ -152,15 +152,20 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 50%;
-  }
-}
-@media screen and (max-width: 450px) {
-  .hero-text-container {
-    width: 70%;
     width: 80%;
   }
+
+  .learning-resource-card {
+    align-self: auto;
+    width: 100%;
+  }
+
+  .learning-resources-container {
+    margin-top: 100px;
+  }
 }
+
+/* ---------------------- */
 
 @media screen and (max-width: 980px) {
   .carousel-container {
@@ -170,145 +175,160 @@
   .carousel-img-container img {
     max-height: 400px;
   }
-  @media screen and (max-width: 750px) {
-    .carousel-img-container img {
-      max-height: 300px;
-    }
 
-    .left-arrow-container {
-      position: absolute;
-      left: 35%;
-      top: 65%;
-      /* top: 100%; */
-      /* bottom: 10%; */
-    }
-    .right-arrow-container {
-      right: 35%;
-      top: 65%;
-      position: absolute;
-    }
+  .learning-resources-container {
+    margin-top: 20px;
+  }
+}
+/* ---------------------- */
 
-    .carousel-dots-container {
-      margin-top: 80px;
-    }
+@media screen and (max-width: 750px) {
+  .carousel-img-container img {
+    max-height: 300px;
+  }
 
-    .carousel-dot {
-      width: 5px;
-      height: 5px;
-    }
+  .left-arrow-container {
+    position: absolute;
+    left: 35%;
+    top: 65%;
+    /* top: 100%; */
+    /* bottom: 10%; */
+  }
+  .right-arrow-container {
+    right: 35%;
+    top: 65%;
+    position: absolute;
+  }
 
-    .carousel-folder-choice {
-      font-size: 16px;
-      gap: 50px;
-    }
+  .carousel-dots-container {
+    margin-top: 80px;
+  }
 
-    .carousel-folder-choice button {
-      font-size: 16px;
-    }
+  .carousel-dot {
+    width: 5px;
+    height: 5px;
+  }
+
+  .carousel-folder-choice {
+    font-size: 16px;
+    gap: 50px;
+  }
+
+  .carousel-folder-choice button {
+    font-size: 16px;
   }
 }
 
-  @media screen and (max-width: 650px) {
-    .hero-header {
-      font-size: 48px;
-    }
+/* ---------------------- */
 
-    .hero-subheading {
-      max-width: 400px;
-      font-size: 18px;
-      line-height: 30px;
-    }
+@media screen and (max-width: 650px) {
+  .hero-header {
+    font-size: 48px;
+  }
 
-    .first-half-hero::after {
-      bottom: 6px;
-      height: 4px;
-    }
+  .hero-subheading {
+    max-width: 400px;
+    font-size: 18px;
+    line-height: 30px;
+  }
 
-    .second-half-hero::after {
-      bottom: 6px;
-      height: 4px;
-    }
+  .first-half-hero::after {
+    bottom: 6px;
+    height: 4px;
+  }
 
-    .about-cards-container {
-      gap: 10px;
-    }
+  .second-half-hero::after {
+    bottom: 6px;
+    height: 4px;
+  }
 
-    .about-card {
-      margin-bottom: 50px;
-      width: 100%;
-    }
+  .about-cards-container {
+    gap: 10px;
+  }
 
-    .project-heading {
-      margin-bottom: 24px;
-    }
+  .about-card {
+    margin-bottom: 50px;
+    width: 100%;
+  }
 
-    .project-card {
-      flex-direction: column;
-    }
+  .project-heading {
+    margin-bottom: 24px;
+  }
 
-    /* .project-heading {
+  .project-card {
+    flex-direction: column;
+  }
+
+  /* .project-heading {
       font-size: 42px;
       text-align: center;
       margin-bottom: 72px;
     } */
 
-    .project-paragraph {
-      font-size: 14px;
-    }
+  .project-paragraph {
+    font-size: 14px;
   }
-  @media screen and (max-width: 550px) {
-    .carousel {
-      width: 100%;
-    }
+}
 
-    .carousel-img-container img {
-      max-width: 110%;
-    }
-  }
-  @media screen and (max-width: 450px) {
-    .hero-header {
-      font-size: 42px;
-    }
-
-    .hero-text-container {
-      width: 90%;
-    }
-
-
-
-    .project-heading {
-      font-size: 32px;
-      
-    }
-
-    .projects-subheading {
-      margin-bottom: 50px;
-    }
-
-    .project-technologies {
-      font-size: 20px;
-    }
-
-    .carousel-img-container img {
-      max-height: 200px;
-    }
-
-    .carousel-folder-choice button {
-      padding: 5px;
-    }
+/* ---------------------- */
+@media screen and (max-width: 550px) {
+  .carousel {
+    width: 100%;
   }
 
-  @media screen and (max-width: 375px) {
-    .hero-header {
-      font-size: 38px;
-    }
+  .carousel-img-container img {
+    max-width: 110%;
+  }
+}
 
-    .project-paragraph {
-      line-height: 20px;
-    }
+/* ---------------------- */
 
-    .carousel-folder-choice button {
-      font-size: 12px;
-    }
+@media screen and (max-width: 450px) {
+  .hero-header {
+    font-size: 42px;
+  }
+
+  .hero-text-container {
+    width: 90%;
+  }
+
+  .project-heading {
+    font-size: 32px;
+  }
+
+  .projects-subheading {
+    margin-bottom: 50px;
+  }
+
+  .project-technologies {
+    font-size: 20px;
+  }
+
+  .carousel-img-container img {
+    max-height: 200px;
+  }
+
+  .carousel-folder-choice button {
+    padding: 5px;
+  }
+}
+
+/* ---------------------- */
+
+@media screen and (max-width: 375px) {
+  .hero-header {
+    font-size: 38px;
+  }
+
+  .about-heading {
+    font-size: 32px;
+  }
+
+  .project-paragraph {
+    line-height: 20px;
+  }
+
+  .carousel-folder-choice button {
+    font-size: 12px;
   }
 }
