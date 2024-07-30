@@ -13,14 +13,6 @@
     font-size: 72px;
   }
 
-  .project-card {
-    grid-template-columns: 1fr;
-  }
-
-  .main-project-img {
-    max-width: 100%;
-  }
-
   .about-cards-container {
     flex-direction: column;
     justify-content: center;
@@ -130,15 +122,31 @@
     flex-direction: column;
   }
 
+  .project-card {
+    grid-template-columns: 1fr;
+    border: 1px solid white;
+    gap: 0px;
+    /* padding: 10px; */
+  }
+
+  .project-info {
+    padding: 30px;
+  }
+
+  .project-technologies {
+    font-size: 28px;
+  }
+
+  .main-project-img {
+    max-width: 100%;
+  }
+
   .project-heading {
     font-size: 42px;
     text-align: center;
     margin-bottom: 72px;
   }
 
-  .project-info p {
-    font-size: 14px;
-  }
   .learning-cards-container {
     flex-direction: column;
     justify-content: center;
@@ -198,6 +206,8 @@
       font-size: 16px;
     }
   }
+}
+
   @media screen and (max-width: 650px) {
     .hero-header {
       font-size: 48px;
@@ -228,15 +238,19 @@
       width: 100%;
     }
 
+    .project-heading {
+      margin-bottom: 24px;
+    }
+
     .project-card {
       flex-direction: column;
     }
 
-    .project-heading {
+    /* .project-heading {
       font-size: 42px;
       text-align: center;
       margin-bottom: 72px;
-    }
+    } */
 
     .project-paragraph {
       font-size: 14px;
@@ -260,6 +274,21 @@
       width: 90%;
     }
 
+
+
+    .project-heading {
+      font-size: 32px;
+      
+    }
+
+    .projects-subheading {
+      margin-bottom: 50px;
+    }
+
+    .project-technologies {
+      font-size: 20px;
+    }
+
     .carousel-img-container img {
       max-height: 200px;
     }
@@ -272,6 +301,10 @@
   @media screen and (max-width: 375px) {
     .hero-header {
       font-size: 38px;
+    }
+
+    .project-paragraph {
+      line-height: 20px;
     }
 
     .carousel-folder-choice button {
