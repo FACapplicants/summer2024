@@ -512,6 +512,7 @@ nav {
 
 .learning-resource-card {
   width: 300px;
+  /* height: 300px; */
   transition: all 0.5s;
   display: flex;
   flex-direction: column;
@@ -521,6 +522,10 @@ nav {
   border: 1px solid transparent; /* Start with a transparent border */
   padding: 20px;
   cursor: pointer;
+  flex-grow: 0;
+  flex-shrink: 0; /* Prevent shrinking */
+  align-self: flex-start;
+  overflow: hidden;
 }
 
 .learning-resource-card:hover {
@@ -530,6 +535,11 @@ nav {
 
 .learning-resource-card h3 {
   margin-bottom: 50px;
+  font-family: "cormorant", sans-serif;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 30px;
+  /* letter-spacing: 1px; */
 }
 
 .learning-resource-icon {
@@ -544,7 +554,17 @@ nav {
 }
 
 .learning-resource-info {
-  display: none;
+  /* display: none; */
+  margin-top: 50px;
+  transition: max-height 1s, opacity 0.2s ease-in 0.2s;
+  max-height: 0px;
+  opacity: 0;
+}
+
+.show {
+  /* display: block; */
+  max-height: 200px;
+  opacity: 1;
 }
 
 /* --------------------------- WORK SECTION  --------------------------------------------- */

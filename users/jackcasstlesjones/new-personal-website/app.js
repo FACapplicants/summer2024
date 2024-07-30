@@ -199,4 +199,14 @@ leftButton.addEventListener("click", function () {
 
 /* ------------------------------------------ learning resource dialogue boxes ---------------- */
 
-const learningCards = document.querySelectorAll("learning-resouce-card");
+const learningCards = document.querySelectorAll(".learning-resource-card");
+
+// console.log(learningCards);
+
+learningCards.forEach((element) => {
+  element.addEventListener("click", function () {
+    const elementInfo = document.getElementById(`info-${element.id}`);
+    elementInfo.classList.toggle("show");
+  });
+  console.log(element);
+});
