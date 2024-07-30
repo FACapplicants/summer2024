@@ -206,6 +206,8 @@ const learningCards = document.querySelectorAll(".learning-resource-card");
 learningCards.forEach((element) => {
   element.addEventListener("click", function () {
     const elementInfo = document.getElementById(`info-${element.id}`);
+
+    /* REFACTOR THIS USING FOREACH ON THE ICON ELEMENTS TO TOGGLE*/
     const elementPlusIcon = document.getElementById(`${element.id}-plus-icon`);
     const elementMinusIcon = document.getElementById(
       `${element.id}-minus-icon`

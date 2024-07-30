@@ -529,14 +529,6 @@ nav {
   position: relative;
 }
 
-.resources-icon {
-  position: absolute;
-  top: 3;
-  left: 90%;
-  stroke: white;
-  transition: all 1s;
-}
-
 .learning-resource-card:hover {
   /* transition: all 2s; */
   border-color: white;
@@ -574,6 +566,14 @@ nav {
   /* display: block; */
   max-height: 200px;
   opacity: 1;
+}
+
+.resources-icon {
+  position: absolute;
+  top: 3;
+  left: 90%;
+  stroke: white;
+  transition: all 0.3s;
 }
 
 .show-icon {
