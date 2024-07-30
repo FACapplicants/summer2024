@@ -526,6 +526,15 @@ nav {
   flex-shrink: 0; /* Prevent shrinking */
   align-self: flex-start;
   overflow: hidden;
+  position: relative;
+}
+
+.resources-icon {
+  position: absolute;
+  top: 3;
+  left: 90%;
+  stroke: white;
+  transition: all 1s;
 }
 
 .learning-resource-card:hover {
@@ -565,6 +574,14 @@ nav {
   /* display: block; */
   max-height: 200px;
   opacity: 1;
+}
+
+.show-icon {
+  opacity: 1;
+}
+
+.hidden-icon {
+  opacity: 0;
 }
 
 /* --------------------------- WORK SECTION  --------------------------------------------- */

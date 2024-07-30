@@ -32,6 +32,14 @@
   .carousel-img-container img {
     max-height: 400px;
   }
+
+  .learning-cards-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 50%;
+  }
 }
 
 @media screen and (max-width: 1100px) {

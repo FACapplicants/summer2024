@@ -206,7 +206,13 @@ const learningCards = document.querySelectorAll(".learning-resource-card");
 learningCards.forEach((element) => {
   element.addEventListener("click", function () {
     const elementInfo = document.getElementById(`info-${element.id}`);
+    const elementPlusIcon = document.getElementById(`${element.id}-plus-icon`);
+    const elementMinusIcon = document.getElementById(
+      `${element.id}-minus-icon`
+    );
     elementInfo.classList.toggle("show");
+    elementPlusIcon.classList.toggle("hidden-icon");
+    elementMinusIcon.classList.toggle("hidden-icon");
   });
   console.log(element);
 });
