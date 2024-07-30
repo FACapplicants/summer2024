@@ -1,3 +1,9 @@
+@media screen and (max-width: 1400px) {
+  .learning-resource-card {
+    width: 300px;
+  }
+}
+
 @media screen and (max-width: 1300px) {
   .hero-text-container {
     width: 70%;
@@ -33,12 +39,8 @@
     max-height: 400px;
   }
 
-  .learning-cards-container {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 50%;
+  .learning-resource-card {
+    width: 250px;
   }
 }
 
@@ -136,6 +138,13 @@
 
   .project-info p {
     font-size: 14px;
+  }
+  .learning-cards-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 50%;
   }
 }
 @media screen and (max-width: 450px) {
