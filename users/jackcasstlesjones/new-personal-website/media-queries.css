@@ -296,7 +296,7 @@
 }
 
 /* ---------------------- */
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 580px) {
   .carousel {
     width: 100%;
   }
@@ -304,6 +304,9 @@
   .carousel-img-container img {
     max-width: 110%;
   }
+
+  .about-heading {
+    font-size: 40px;
 }
 
 /* ---------------------- */
@@ -317,6 +320,7 @@
     width: 90%;
   }
 
+  
   .project-heading {
     font-size: 32px;
   }
@@ -352,6 +356,7 @@
   .about-heading {
     font-size: 32px;
   }
+
 
   .project-paragraph {
     line-height: 20px;
