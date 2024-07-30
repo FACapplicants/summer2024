@@ -9,15 +9,15 @@ const ctx = canvas.getContext("2d");
 const gameTitle = document.getElementById("game-title");
 const startText = document.getElementById("start");
 const eventTitle = document.getElementById("event-title");
-const description = document.getElementById("description");
+const description = document.getElementById("description1");
 let screenWidth  = window.innerWidth; //reinitialised variable
 let screenHeight = window.innerHeight; //reinitialised variable
 let timeToStart = 3; //reinitialised variable
 let won = false; //reinitialised variable
 let level = 0;
 let mute = false;
-const elementsMain = ["game-title", "runButton", "event-title", "description"];
-const elementsCon = ["kb1", "kb2"];
+const elementsMain = ["game-title", "runButton", "event-title", "description1"];
+const elementsCon = ["icons", "description2", "kb1", "kb2"];
 
 //paddle variables
 const paddleHeight = 12;
@@ -80,6 +80,21 @@ document.addEventListener("mousemove", (e) => {
         paddleX = relativeX - paddleWidth / 2;
     }
 });
+
+//move paddle based on touchscreen position
+document.addEventListener('touchstart', handleTouchEvent, true);
+document.addEventListener('touchmove', handleTouchEvent, true);
+document.addEventListener('touchend', handleTouchEvent, true);
+document.addEventListener('touchcancel', handleTouchEvent, true);
+function handleTouchEvent(e) {
+    if (e.touches.length === 0 ) return;
+    e.preventDefault();
+    e.stopPropagation();
+    var touch = e.touches[0];
+    if (touch.pageX > 0 && touch.pageX < canvas.width) {
+        paddleX = touch.pageX - paddleWidth / 2;
+    }
+}
 
 //sound control
 document.getElementById("sound").addEventListener("click", () => {
