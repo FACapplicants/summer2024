@@ -9,7 +9,7 @@ const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 // Function to create and start an oscillator
 function createAndStartOscillator(frequency, duration) {
   const oscillator = audioCtx.createOscillator();
-  oscillator.waveType = "square";
+  oscillator.type = "sine";
   oscillator.frequency.setValueAtTime(frequency, audioCtx.currentTime);
   oscillator.connect(audioCtx.destination);
   oscillator.start();
@@ -46,6 +46,9 @@ const modalBtn = document.getElementById("modal-button");
 const modalContainer = document.querySelector(".modal-container");
 
 const userDifficultyDropdown = document.getElementById("user-difficulty");
+
+const gameOverBtn = document.getElementById("game-over-btn");
+const gameOverModal = document.querySelector(".game-over-modal");
 
 let gameSpeed = 750;
 let lightSpeed = 300;
@@ -167,7 +170,7 @@ function checkWin() {
   for (let i = 0; i < userPattern.length; i++) {
     if (userPattern[i] !== gamePattern[i]) {
       console.log("LOSER");
-      alert("YOU LOSE! BETTER LUCK NEXT TIME!");
+      gameOverModal.classList.remove("hide");
       resetGame();
       return;
     }
@@ -229,3 +232,7 @@ UPGRADE IDEAS:
 - Bug when user clicks 'start' button while playing
 - Easy/hard mode
 - */
+gameOverBtn.addEventListener("click", function () {
+  gameOverModal.classList.add("hide");
+  startRound();
+});
