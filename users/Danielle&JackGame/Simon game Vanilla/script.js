@@ -7,14 +7,19 @@
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
 // Function to create and start an oscillator
-function createAndStartOscillator(waveType, frequency, duration) {
+function createAndStartOscillator(frequency, duration) {
   const oscillator = audioCtx.createOscillator();
-  oscillator.waveType = waveType;
+  oscillator.waveType = "square";
   oscillator.frequency.setValueAtTime(frequency, audioCtx.currentTime);
   oscillator.connect(audioCtx.destination);
   oscillator.start();
   oscillator.stop(audioCtx.currentTime + duration);
 }
+
+const redFrequency = 300;
+const greenFrequency = 400;
+const blueFrequency = 500;
+const yellowFrequency = 600;
 
 const buttonColours = ["red", "green", "blue", "yellow"];
 
@@ -44,23 +49,35 @@ const userDifficultyDropdown = document.getElementById("user-difficulty");
 
 let gameSpeed = 750;
 let lightSpeed = 300;
+let playerDuration = 0.3;
+let ComputerDuration = 0.4;
 
 const changeDifficulty = () => {
+  resetGame();
+  startRound();
+
   const myVal = userDifficultyDropdown.value;
-  console.log(myVal);
+
   switch (myVal) {
     case "easy":
       gameSpeed = 1200;
+      lightSpeed = 300;
       break;
     case "normal":
       gameSpeed = 750;
+      lightSpeed = 300;
       break;
     case "hard":
-      gameSpeed = 500;
+      gameSpeed = 400;
+      lightSpeed = 200;
+      playerDuration = 0.2;
+      ComputerDuration = 0.2;
       break;
     case "impossible":
-      gameSpeed = 300;
+      gameSpeed = 250;
       lightSpeed = 100;
+      ComputerDuration = 0.175;
+      playerDuration = 0.075;
       break;
   }
 };
@@ -92,27 +109,27 @@ let i = 0;
 function playLoop() {
   setTimeout(function () {
     if (gamePattern[i] === "red") {
-      createAndStartOscillator("sine", 440, 0.4);
+      createAndStartOscillator(redFrequency, ComputerDuration);
       redButton.classList.add("transparent");
       setTimeout(() => {
         redButton.classList.remove("transparent");
       }, lightSpeed);
     } else if (gamePattern[i] === "green") {
-      createAndStartOscillator("sine", 500, 0.4);
+      createAndStartOscillator(greenFrequency, ComputerDuration);
 
       greenButton.classList.add("transparent");
       setTimeout(() => {
         greenButton.classList.remove("transparent");
       }, lightSpeed);
     } else if (gamePattern[i] === "blue") {
-      createAndStartOscillator("sine", 600, 0.4);
+      createAndStartOscillator(blueFrequency, ComputerDuration);
 
       blueButton.classList.add("transparent");
       setTimeout(() => {
         blueButton.classList.remove("transparent");
       }, lightSpeed);
     } else if (gamePattern[i] === "yellow") {
-      createAndStartOscillator("sine", 300, 0.4);
+      createAndStartOscillator(yellowFrequency, ComputerDuration);
       yellowButton.classList.add("transparent");
       setTimeout(() => {
         yellowButton.classList.remove("transparent");
@@ -164,44 +181,31 @@ startButton.addEventListener("click", function () {
   startRound();
 });
 
-// const userButtonPush = (userButton, frequency) => {
-//   userPattern.push(userButton);
-//   timesClicked++;
-//   createAndStartOscillator("sine", 440, 0.3);
-//   checkWin();
-
-// };
+const userButtonClick = (buttonColour, frequency) => {
+  userPattern.push(buttonColour);
+  timesClicked++;
+  createAndStartOscillator(frequency, playerDuration);
+  checkWin();
+};
 
 // Pushes "red" to the userPattern, adds 1 to timesClicked, and checks for a win
 redButton.addEventListener("click", function () {
-  userPattern.push("red");
-  timesClicked++;
-  createAndStartOscillator("sine", 440, 0.3);
-  checkWin();
+  userButtonClick("red", redFrequency);
 });
 
 // Pushes "green" to the userPattern, adds 1 to timesClicked, and checks for a win
 greenButton.addEventListener("click", function () {
-  userPattern.push("green");
-  timesClicked++;
-  createAndStartOscillator("sine", 500, 0.3);
-  checkWin();
+  userButtonClick("green", greenFrequency);
 });
 
 // Pushes "blue" to the userPattern, adds 1 to timesClicked, and checks for a win
 blueButton.addEventListener("click", function () {
-  userPattern.push("blue");
-  timesClicked++;
-  createAndStartOscillator("sine", 600, 0.3);
-  checkWin();
+  userButtonClick("blue", blueFrequency);
 });
 
 // Pushes "green" to the userPattern, adds 1 to timesClicked, and checks for a win
 yellowButton.addEventListener("click", function () {
-  userPattern.push("yellow");
-  timesClicked++;
-  checkWin();
-  createAndStartOscillator("sine", 300, 0.3);
+  userButtonClick("yellow", yellowFrequency);
 });
 
 modalBtn.addEventListener("click", function () {
