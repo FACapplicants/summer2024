@@ -307,6 +307,7 @@
 
   .about-heading {
     font-size: 40px;
+  }
 }
 
 /* ---------------------- */
@@ -324,7 +325,6 @@
     bottom: 70px;
   }
 
-  
   .project-heading {
     font-size: 32px;
   }
@@ -357,12 +357,9 @@
     font-size: 38px;
   }
 
-  
-
   .about-heading {
     font-size: 32px;
   }
-
 
   .project-paragraph {
     line-height: 20px;
