@@ -10,7 +10,7 @@
 
 const navbarHome = document.getElementById("navbar-home");
 const navbarAbout = document.getElementById("navbar-about");
-const navbarWork = document.getElementById("navbar-work");
+const navbarProjects = document.getElementById("navbar-projects");
 const navbarPhotography = document.getElementById("navbar-photography");
 
 const navBar = document.querySelector(".navbar");
@@ -44,8 +44,8 @@ updateNavBar();
 navbarAbout.addEventListener("click", function () {
   changeNav("about");
 });
-navbarWork.addEventListener("click", function () {
-  changeNav("work");
+navbarProjects.addEventListener("click", function () {
+  changeNav("projects");
 });
 navbarPhotography.addEventListener("click", function () {
   changeNav("photography");
@@ -54,6 +54,8 @@ navbarPhotography.addEventListener("click", function () {
 const changeNav = (changeChoice) => {
   navCounter = changeChoice;
   updateNavBar();
+  navBar.classList.remove("show-navbar");
+  navbarMenuIcon.classList.toggle("other-colour");
 };
 
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {

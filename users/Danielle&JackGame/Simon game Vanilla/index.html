@@ -12,6 +12,8 @@
     <!--StyleSheet-->
     <link rel="stylesheet" href="styles.css" />
 
+    <link rel="stylesheet" href="media-queries.css">
+
 
 <!--Audio files-->
 
@@ -60,6 +62,13 @@
     
     
     <div class="game-container">
+      <div class="game-over-modal hide">
+        <div class="game-over-modal-content">
+
+          <h2>GAME OVER</h2>
+          <button id="game-over-btn">Play again</button>
+        </div>
+      </div>
       <!--Note to self, change classes here-->
       <div class="buttons">
         <button class="btn red" id="red"></button>

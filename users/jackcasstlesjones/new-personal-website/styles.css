@@ -132,6 +132,7 @@ table {
 html {
   overflow-x: hidden;
   position: relative;
+  font-size: 62.5%;
 }
 
 body {
@@ -144,6 +145,7 @@ body {
 
 p {
   letter-spacing: 0.5px;
+  font-size: 1.6rem;
 }
 
 /* .top-wrapper {
@@ -151,27 +153,27 @@ p {
   } */
 
 nav {
-  margin: 10px auto 0;
+  margin: 1rem auto 0;
   width: 80%;
   display: flex;
   /* position: fixed; */
   align-items: center;
   background-color: #757761;
 
-  height: 100px;
-  font-size: 20px;
+  height: 10rem;
+  font-size: 2rem;
 }
 
 .navbar-img-and-title {
   display: flex;
   margin-right: auto;
-  gap: 10px;
+  gap: 1rem;
   align-items: center;
 }
 
 .navbar-img {
-  width: 72px;
-  margin-right: 42px;
+  width: 7.2rem;
+  margin-right: 4.2rem;
 }
 
 .navbar-links-list {
@@ -184,7 +186,7 @@ nav {
 }
 
 .navbar-link {
-  padding: 0 20px;
+  padding: 0 2rem;
   position: relative;
   color: inherit;
   text-decoration: none;
@@ -212,7 +214,7 @@ nav {
 
 #hero {
   position: relative;
-  height: calc(100vh - 110px);
+  height: calc(100vh - 11rem);
   /* background-color: pink; */
   width: 100%;
   /* margin: auto; */
@@ -231,10 +233,10 @@ nav {
 }
 
 .hero-header {
-  font-size: 96px;
+  font-size: 9.6rem;
   font-family: "cormorant";
   font-weight: bold;
-  margin-bottom: 50px;
+  margin-bottom: 5rem;
   z-index: 900;
   color: white;
   position: relative;
@@ -328,14 +330,14 @@ nav {
 }
 
 .hero-subheading {
-  margin-top: 50px;
+  margin-top: 5rem;
 
-  font-size: 24px;
+  font-size: 2.4rem;
 }
 
 .mouse-container {
   position: absolute;
-  bottom: 20px;
+  bottom: 2rem;
   left: 50%;
 }
 
@@ -343,38 +345,38 @@ nav {
   position: relative;
 
   border: black single 1pxi;
-  width: 25px;
-  height: 50px;
+  width: 2.5rem;
+  height: 5rem;
   /* background-color: red; */
-  border-radius: 15px;
-  border: 2px solid white;
+  border-radius: 1.5rem;
+  border: 0.2rem solid white;
 }
 
 .squiggle-one {
   position: absolute;
   left: 70%;
   top: 30%;
-  width: 80px;
+  width: 8rem;
 }
 .squiggle-two {
   position: absolute;
   left: 80%;
   top: 60%;
-  width: 40px;
+  width: 4rem;
 }
 
 .squiggle-three {
   position: absolute;
   left: 20%;
   top: 25%;
-  width: 80px;
+  width: 8rem;
 }
 
 .squiggle-four {
   position: absolute;
   left: 20%;
   top: 70%;
-  width: 50px;
+  width: 5rem;
 }
 
 .mouse::before {
@@ -384,8 +386,8 @@ nav {
   left: 50%;
   transform: translate(-50%, -50%);
   content: " ";
-  width: 6px;
-  height: 6px;
+  width: 0.6rem;
+  height: 0.6rem;
   background-color: white;
   animation: moveDown 1.3s ease infinite;
 }
@@ -396,7 +398,7 @@ nav {
     opacity: 1;
   }
   100% {
-    transform: translate(-50%, -50%) translateY(25px);
+    transform: translate(-50%, -50%) translateY(2.5rem);
     opacity: 0;
   }
 }
@@ -406,21 +408,21 @@ nav {
 .section {
   margin: auto;
   width: 85%;
-  padding-top: 100px;
-  margin-bottom: 120px;
+  padding-top: 10rem;
+  margin-bottom: 12rem;
 }
 
 .about-heading {
-  margin: 0 auto 100px;
+  margin: 0 auto 10rem;
   text-align: center;
-  font-size: 64px;
+  font-size: 6.4rem;
   font-weight: bold;
   font-family: "cormorant", serif;
 }
 
 .about-cards-container {
   display: flex;
-  gap: 100px;
+  gap: 10rem;
 }
 
 .about-card {
@@ -430,14 +432,14 @@ nav {
 .about-card-header {
   text-align: center;
   font-family: "cormorant", serif;
-  font-size: 32px;
+  font-size: 3.2rem;
   font-weight: 600;
-  margin-bottom: 40px;
+  margin-bottom: 4rem;
 }
 
 .about-card-info {
   /* opacity: 0; */
-  line-height: 24px;
+  line-height: 2.4rem;
   /* transition: all 1s; */
 }
 
@@ -454,7 +456,7 @@ nav {
 .scrolled {
   opacity: 1;
   /* background-color: red; */
-  line-height: 24px;
+  line-height: 2.4rem;
   animation: all 1s;
 }
 
@@ -486,7 +488,7 @@ nav {
 
 .learning-resources-container {
   /* background-color: pink; */
-  margin-top: 200px;
+  margin-top: 20rem;
 }
 
 .learning-cards-container {
@@ -495,7 +497,7 @@ nav {
   justify-content: space-between;
   width: 100%;
   /* height: 20px; */
-  gap: 20px;
+  gap: 2rem;
 }
 
 .learning-resource-card {
@@ -508,7 +510,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   border: 1px solid transparent; /* Start with a transparent border */
-  padding: 20px;
+  padding: 2rem;
   cursor: pointer;
   flex-grow: 0;
   flex-shrink: 1;
@@ -523,28 +525,28 @@ nav {
 }
 
 .learning-resource-card h3 {
-  margin-bottom: 50px;
+  margin-bottom: 5rem;
   font-family: "cormorant", sans-serif;
   font-weight: 500;
-  font-size: 28px;
-  line-height: 30px;
+  font-size: 2.8rem;
+  line-height: 3rem;
   /* letter-spacing: 1px; */
 }
 
 .learning-resource-icon {
-  width: 100px;
+  width: 10rem;
   text-align: center;
 }
 
 .udemy-resource-icon {
-  stroke-width: 10px;
-  height: 100px;
+  stroke-width: 1rem;
+  height: 10rem;
   /* display: none; */
 }
 
 .learning-resource-info {
   /* display: none; */
-  margin-top: 50px;
+  margin-top: 5rem;
   transition: max-height 1s, opacity 0.2s ease-in 0.2s;
   max-height: 0px;
   opacity: 0;
@@ -566,7 +568,7 @@ nav {
 
 .show {
   /* display: block; */
-  max-height: 200px;
+  max-height: 20rem;
   opacity: 1;
 }
 
@@ -589,12 +591,12 @@ nav {
 /* --------------------------- WORK SECTION  --------------------------------------------- */
 
 #work h1 {
-  margin-bottom: 80px;
+  margin-bottom: 8rem;
 }
 
 .projects-subheading {
   font-family: "cormorant", sans-serif;
-  font-size: 28px;
+  font-size: 2.8rem;
   margin: auto;
   text-align: center;
   margin-bottom: 120px;
@@ -604,30 +606,30 @@ nav {
   margin: auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  margin-bottom: 100px;
+  gap: 8rem;
+  margin-bottom: 10rem;
   width: 100%;
 }
 
 .project-heading {
-  font-size: 64px;
+  font-size: 6.4rem;
   font-family: "cormorant";
   font-weight: 500;
-  margin-bottom: 40px;
+  margin-bottom: 4rem;
 }
 
 .project-technologies {
   font-family: "cormorant", sans-serif;
-  font-size: 24px;
+  font-size: 2.4rem;
   font-weight: 600;
-  margin-bottom: 20px;
-  margin-bottom: 24px;
+  margin-bottom: 2rem;
+  margin-bottom: 2.4rem;
 }
 
 .project-paragraph {
-  font-size: 16px;
+  font-size: 1.6rem;
   letter-spacing: 0.5px;
-  line-height: 24px;
+  line-height: 2.4rem;
 }
 
 .main-project-img {
@@ -673,7 +675,7 @@ nav {
 
 .carousel-img-container img {
   /* max-width: 100%; */
-  max-height: 600px;
+  max-height: 60rem;
   display: block;
 }
 
@@ -693,9 +695,9 @@ nav {
 .photography-btn {
   background-color: #757761;
   color: white;
-  font-size: 20px;
+  font-size: 2rem;
 
-  padding: 10px;
+  padding: 1rem;
   cursor: pointer;
   box-shadow: none;
   outline: inherit;
@@ -704,18 +706,18 @@ nav {
 
 .carousel-dots-container {
   margin: auto;
-  margin-top: 20px;
+  margin-top: 2rem;
   display: flex;
   /* background-color: yellow; */
 
   justify-content: center;
   width: 50%;
-  gap: 20px;
+  gap: 2rem;
 }
 
 .carousel-dot {
-  width: 8px;
-  height: 8px;
+  width: 0.8rem;
+  height: 0.8rem;
   border: solid 2px white;
   /* background-color: white; */
   border-radius: 999px;
@@ -730,9 +732,9 @@ nav {
 }
 
 .carousel-folder-choice {
-  margin-top: 40px;
+  margin-top: 4rem;
   display: flex;
-  gap: 200px;
+  gap: 20rem;
   justify-content: center;
   align-items: center;
 }
@@ -740,9 +742,9 @@ nav {
 /* ------------------------------------------------------------------- */
 
 footer {
-  padding: 20px;
+  padding: 2rem;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 2rem;
   color: black;
   text-align: center;
   /* width: 100%; */
@@ -765,13 +767,13 @@ footer {
 .socials-container {
   display: flex;
   justify-content: space-between;
-  width: 7%;
+  width: 80%;
   margin: auto;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 }
 
 .socials-icon {
-  width: 20px;
+  width: 2rem;
 }
 
 footer a {

@@ -3,6 +3,24 @@
 //The sequence builds the higher the level you go
 //A wrong move ends the game.
 
+// Create an AudioContext
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+// Function to create and start an oscillator
+function createAndStartOscillator(frequency, duration) {
+  const oscillator = audioCtx.createOscillator();
+  oscillator.type = "sine";
+  oscillator.frequency.setValueAtTime(frequency, audioCtx.currentTime);
+  oscillator.connect(audioCtx.destination);
+  oscillator.start();
+  oscillator.stop(audioCtx.currentTime + duration);
+}
+
+const redFrequency = 300;
+const greenFrequency = 400;
+const blueFrequency = 500;
+const yellowFrequency = 600;
+
 const buttonColours = ["red", "green", "blue", "yellow"];
 
 let gamePattern = [];
@@ -29,25 +47,48 @@ const modalContainer = document.querySelector(".modal-container");
 
 const userDifficultyDropdown = document.getElementById("user-difficulty");
 
+const gameOverBtn = document.getElementById("game-over-btn");
+const gameOverModal = document.querySelector(".game-over-modal");
+
 let gameSpeed = 750;
 let lightSpeed = 300;
+let playerDuration = 0.3;
+let ComputerDuration = 0.4;
+
+const handleDifficultyChange = (
+  newGameSpeed,
+  newLightSpeed,
+  newPlayerDuration,
+  newComputerDuration
+) => {
+  (gameSpeed = newGameSpeed),
+    (lightSpeed = newLightSpeed),
+    (playerDuration = newPlayerDuration),
+    (ComputerDuration = newComputerDuration);
+};
 
 const changeDifficulty = () => {
+  resetGame();
+  startRound();
+
   const myVal = userDifficultyDropdown.value;
-  console.log(myVal);
+
   switch (myVal) {
     case "easy":
-      gameSpeed = 1200;
+      handleDifficultyChange(1000, 300, 0.3, 0.4);
+
       break;
     case "normal":
-      gameSpeed = 750;
+      handleDifficultyChange(750, 300, 0.3, 0.4);
+
       break;
     case "hard":
-      gameSpeed = 500;
+      handleDifficultyChange(400, 200, 0.2, 0.2);
+
       break;
     case "impossible":
-      gameSpeed = 300;
-      lightSpeed = 100;
+      handleDifficultyChange(250, 100, 0.075, 0.175);
+
       break;
   }
 };
@@ -79,25 +120,27 @@ let i = 0;
 function playLoop() {
   setTimeout(function () {
     if (gamePattern[i] === "red") {
-      redAudio.play();
+      createAndStartOscillator(redFrequency, ComputerDuration);
       redButton.classList.add("transparent");
       setTimeout(() => {
         redButton.classList.remove("transparent");
       }, lightSpeed);
     } else if (gamePattern[i] === "green") {
-      greenAudio.play();
+      createAndStartOscillator(greenFrequency, ComputerDuration);
+
       greenButton.classList.add("transparent");
       setTimeout(() => {
         greenButton.classList.remove("transparent");
       }, lightSpeed);
     } else if (gamePattern[i] === "blue") {
-      blueAudio.play();
+      createAndStartOscillator(blueFrequency, ComputerDuration);
+
       blueButton.classList.add("transparent");
       setTimeout(() => {
         blueButton.classList.remove("transparent");
       }, lightSpeed);
     } else if (gamePattern[i] === "yellow") {
-      yellowAudio.play();
+      createAndStartOscillator(yellowFrequency, ComputerDuration);
       yellowButton.classList.add("transparent");
       setTimeout(() => {
         yellowButton.classList.remove("transparent");
@@ -127,7 +170,7 @@ function checkWin() {
   for (let i = 0; i < userPattern.length; i++) {
     if (userPattern[i] !== gamePattern[i]) {
       console.log("LOSER");
-      alert("YOU LOSE! BETTER LUCK NEXT TIME!");
+      gameOverModal.classList.remove("hide");
       resetGame();
       return;
     }
@@ -149,36 +192,31 @@ startButton.addEventListener("click", function () {
   startRound();
 });
 
+const userButtonClick = (buttonColour, frequency) => {
+  userPattern.push(buttonColour);
+  timesClicked++;
+  createAndStartOscillator(frequency, playerDuration);
+  checkWin();
+};
+
 // Pushes "red" to the userPattern, adds 1 to timesClicked, and checks for a win
 redButton.addEventListener("click", function () {
-  userPattern.push("red");
-  timesClicked++;
-  redAudio.play();
-  checkWin();
+  userButtonClick("red", redFrequency);
 });
 
 // Pushes "green" to the userPattern, adds 1 to timesClicked, and checks for a win
 greenButton.addEventListener("click", function () {
-  userPattern.push("green");
-  timesClicked++;
-  greenAudio.play();
-  checkWin();
+  userButtonClick("green", greenFrequency);
 });
 
 // Pushes "blue" to the userPattern, adds 1 to timesClicked, and checks for a win
 blueButton.addEventListener("click", function () {
-  userPattern.push("blue");
-  timesClicked++;
-  blueAudio.play();
-  checkWin();
+  userButtonClick("blue", blueFrequency);
 });
 
 // Pushes "green" to the userPattern, adds 1 to timesClicked, and checks for a win
 yellowButton.addEventListener("click", function () {
-  userPattern.push("yellow");
-  timesClicked++;
-  checkWin();
-  yellowAudio.play();
+  userButtonClick("yellow", yellowFrequency);
 });
 
 modalBtn.addEventListener("click", function () {
@@ -194,3 +232,7 @@ UPGRADE IDEAS:
 - Bug when user clicks 'start' button while playing
 - Easy/hard mode
 - */
+gameOverBtn.addEventListener("click", function () {
+  gameOverModal.classList.add("hide");
+  startRound();
+});
