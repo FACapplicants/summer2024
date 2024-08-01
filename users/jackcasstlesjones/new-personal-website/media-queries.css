@@ -28,7 +28,7 @@
   }
 
   .carousel-img-container img {
-    max-height: 400px;
+    max-height: 40rem;
   }
 
   .learning-resource-card {
@@ -51,8 +51,8 @@
   .mobile-menu-icon {
     display: block;
     position: absolute;
-    right: 50px;
-    top: 50px;
+    right: 5rem;
+    top: 5rem;
     cursor: pointer;
     z-index: 1001;
     color: #f4edea;
@@ -102,19 +102,19 @@
   }
 
   .hero-header {
-    font-size: 72px;
+    font-size: 7.2rem;
   }
 
   .hero-subheading {
-    font-size: 18px;
+    font-size: 1.8rem;
   }
 
   .about-cards-container {
-    gap: 100px;
+    gap: 10rem;
   }
 
   .about-card {
-    margin-bottom: 50px;
+    margin-bottom: 5rem;
     width: 100%;
   }
 
@@ -130,11 +130,11 @@
   }
 
   .project-info {
-    padding: 30px;
+    padding: 3rem;
   }
 
   .project-technologies {
-    font-size: 28px;
+    font-size: 2.8rem;
   }
 
   .main-project-img {
@@ -142,9 +142,9 @@
   }
 
   .project-heading {
-    font-size: 42px;
+    font-size: 4.2rem;
     text-align: center;
-    margin-bottom: 72px;
+    margin-bottom: 7.2rem;
   }
 
   .learning-cards-container {
@@ -160,15 +160,15 @@
   }
 
   .learning-resources-container {
-    margin-top: 100px;
+    margin-top: 10rem;
   }
 
   .learning-resource-info {
-    padding-bottom: 16px;
+    padding-bottom: 1.6rem;
   }
 
   #info-odin {
-    padding-bottom: 30px;
+    padding-bottom: 3rem;
   }
 
   .socials-container {
@@ -184,11 +184,11 @@
   }
 
   .carousel-img-container img {
-    max-height: 400px;
+    max-height: 40rem;
   }
 
   .learning-resources-container {
-    margin-top: 20px;
+    margin-top: 2rem;
   }
 }
 
@@ -203,7 +203,7 @@
 
 @media screen and (max-width: 750px) {
   .carousel-img-container img {
-    max-height: 300px;
+    max-height: 30rem;
   }
 
   .left-arrow-container {
@@ -220,21 +220,21 @@
   }
 
   .carousel-dots-container {
-    margin-top: 80px;
+    margin-top: 8rem;
   }
 
   .carousel-dot {
-    width: 5px;
-    height: 5px;
+    width: 0.5rem;
+    height: 0.5rem;
   }
 
   .carousel-folder-choice {
-    font-size: 16px;
-    gap: 50px;
+    font-size: 1.6rem;
+    gap: 5rem;
   }
 
   .carousel-folder-choice button {
-    font-size: 16px;
+    font-size: 1.6rem;
   }
 }
 
@@ -242,13 +242,13 @@
 
 @media screen and (max-width: 650px) {
   .hero-header {
-    font-size: 48px;
+    font-size: 4.8rem;
   }
 
   .hero-subheading {
-    max-width: 400px;
-    font-size: 18px;
-    line-height: 30px;
+    max-width: 40rem;
+    font-size: 1.8rem;
+    line-height: 3rem;
   }
 
   .first-half-hero::after {
@@ -262,29 +262,29 @@
   }
 
   .squiggle-one {
-    width: 50px;
+    width: 5rem;
   }
   .squiggle-two {
-    width: 30px;
+    width: 3rem;
   }
   .squiggle-three {
-    width: 50px;
+    width: 5rem;
   }
   .squiggle-four {
-    width: 30px;
+    width: 3rem;
   }
 
   .about-cards-container {
-    gap: 10px;
+    gap: 1rem;
   }
 
   .about-card {
-    margin-bottom: 50px;
+    margin-bottom: 5rem;
     width: 100%;
   }
 
   .project-heading {
-    margin-bottom: 24px;
+    margin-bottom: 2.4rem;
   }
 
   .project-card {
@@ -298,7 +298,7 @@
     } */
 
   .project-paragraph {
-    font-size: 14px;
+    font-size: 1.4rem;
   }
 }
 
@@ -313,7 +313,7 @@
   }
 
   .about-heading {
-    font-size: 40px;
+    font-size: 4rem;
   }
 }
 
@@ -321,7 +321,7 @@
 
 @media screen and (max-width: 450px) {
   .hero-header {
-    font-size: 42px;
+    font-size: 4.2rem;
   }
 
   .hero-text-container {
@@ -329,27 +329,27 @@
   }
 
   .mouse-container {
-    bottom: 70px;
+    bottom: 7rem;
   }
 
   .project-heading {
-    font-size: 32px;
+    font-size: 3.2rem;
   }
 
   .projects-subheading {
-    margin-bottom: 50px;
+    margin-bottom: 5rem;
   }
 
   .project-technologies {
-    font-size: 20px;
+    font-size: 2rem;
   }
 
   .carousel-img-container img {
-    max-height: 200px;
+    max-height: 20rem;
   }
 
   .carousel-folder-choice button {
-    padding: 5px;
+    padding: 0.5rem;
   }
 }
 
@@ -361,18 +361,18 @@
 
 @media screen and (max-width: 375px) {
   .hero-header {
-    font-size: 38px;
+    font-size: 3.8rem;
   }
 
   .about-heading {
-    font-size: 32px;
+    font-size: 3.2rem;
   }
 
   .project-paragraph {
-    line-height: 20px;
+    line-height: 2rem;
   }
 
   .carousel-folder-choice button {
-    font-size: 12px;
+    font-size: 1.2rem;
   }
 }
