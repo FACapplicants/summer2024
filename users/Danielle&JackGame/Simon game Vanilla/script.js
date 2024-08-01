@@ -7,9 +7,9 @@
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
 // Function to create and start an oscillator
-function createAndStartOscillator(type, frequency, duration) {
+function createAndStartOscillator(waveType, frequency, duration) {
   const oscillator = audioCtx.createOscillator();
-  oscillator.type = type;
+  oscillator.waveType = waveType;
   oscillator.frequency.setValueAtTime(frequency, audioCtx.currentTime);
   oscillator.connect(audioCtx.destination);
   oscillator.start();
@@ -164,11 +164,19 @@ startButton.addEventListener("click", function () {
   startRound();
 });
 
+// const userButtonPush = (userButton, frequency) => {
+//   userPattern.push(userButton);
+//   timesClicked++;
+//   createAndStartOscillator("sine", 440, 0.3);
+//   checkWin();
+
+// };
+
 // Pushes "red" to the userPattern, adds 1 to timesClicked, and checks for a win
 redButton.addEventListener("click", function () {
   userPattern.push("red");
   timesClicked++;
-  redAudio.play();
+  createAndStartOscillator("sine", 440, 0.3);
   checkWin();
 });
 
@@ -176,7 +184,7 @@ redButton.addEventListener("click", function () {
 greenButton.addEventListener("click", function () {
   userPattern.push("green");
   timesClicked++;
-  greenAudio.play();
+  createAndStartOscillator("sine", 500, 0.3);
   checkWin();
 });
 
@@ -184,7 +192,7 @@ greenButton.addEventListener("click", function () {
 blueButton.addEventListener("click", function () {
   userPattern.push("blue");
   timesClicked++;
-  blueAudio.play();
+  createAndStartOscillator("sine", 600, 0.3);
   checkWin();
 });
 
@@ -193,7 +201,7 @@ yellowButton.addEventListener("click", function () {
   userPattern.push("yellow");
   timesClicked++;
   checkWin();
-  yellowAudio.play();
+  createAndStartOscillator("sine", 300, 0.3);
 });
 
 modalBtn.addEventListener("click", function () {
