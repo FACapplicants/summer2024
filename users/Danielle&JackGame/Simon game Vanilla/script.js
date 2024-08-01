@@ -3,6 +3,19 @@
 //The sequence builds the higher the level you go
 //A wrong move ends the game.
 
+// Create an AudioContext
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+// Function to create and start an oscillator
+function createAndStartOscillator(type, frequency, duration) {
+  const oscillator = audioCtx.createOscillator();
+  oscillator.type = type;
+  oscillator.frequency.setValueAtTime(frequency, audioCtx.currentTime);
+  oscillator.connect(audioCtx.destination);
+  oscillator.start();
+  oscillator.stop(audioCtx.currentTime + duration);
+}
+
 const buttonColours = ["red", "green", "blue", "yellow"];
 
 let gamePattern = [];
@@ -79,25 +92,27 @@ let i = 0;
 function playLoop() {
   setTimeout(function () {
     if (gamePattern[i] === "red") {
-      redAudio.play();
+      createAndStartOscillator("sine", 440, 0.4);
       redButton.classList.add("transparent");
       setTimeout(() => {
         redButton.classList.remove("transparent");
       }, lightSpeed);
     } else if (gamePattern[i] === "green") {
-      greenAudio.play();
+      createAndStartOscillator("sine", 500, 0.4);
+
       greenButton.classList.add("transparent");
       setTimeout(() => {
         greenButton.classList.remove("transparent");
       }, lightSpeed);
     } else if (gamePattern[i] === "blue") {
-      blueAudio.play();
+      createAndStartOscillator("sine", 600, 0.4);
+
       blueButton.classList.add("transparent");
       setTimeout(() => {
         blueButton.classList.remove("transparent");
       }, lightSpeed);
     } else if (gamePattern[i] === "yellow") {
-      yellowAudio.play();
+      createAndStartOscillator("sine", 300, 0.4);
       yellowButton.classList.add("transparent");
       setTimeout(() => {
         yellowButton.classList.remove("transparent");
