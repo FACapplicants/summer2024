@@ -129,7 +129,7 @@ table {
 body {
   font-family: "orbitron", sans-serif;
   text-transform: uppercase;
-
+  height: 100vh;
   background-image: linear-gradient(
       to right bottom,
       rgba(0, 0, 0, 0.6),
@@ -190,7 +190,7 @@ h1 {
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.1)
     ),
-    url(assets/conrete-or-not.jpg);
+    url(assets/modal-background.jpg);
   background-size: cover;
   z-index: 9000;
 }

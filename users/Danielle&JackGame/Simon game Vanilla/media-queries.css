@@ -1,0 +1,81 @@
+@media screen and (max-width: 1100px) {
+  .modal-container {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #start-button {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .level-choice-container {
+    font-size: 16px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .level-choice-container select {
+    width: 80%;
+  }
+
+  .level-container {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .modal-container {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 52px;
+  }
+
+  #start-button {
+    font-size: 12px;
+    padding: 5px;
+    height: 40px;
+    align-self: flex-end;
+    flex-grow: 0;
+  }
+
+  .level-choice-container {
+    font-size: 16px;
+  }
+
+  .level-choice-container label {
+    font-size: 12px;
+  }
+
+  .level-container {
+    font-size: 10px;
+  }
+
+  .modal-container {
+    width: 80%;
+    padding: 15px;
+    font-size: 13px;
+    line-height: 20px;
+    border-width: 5px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  body {
+    height: 100vh;
+  }
+  h1 {
+    font-size: 32px;
+  }
+
+  .buttons {
+    height: 70vh;
+  }
+}
