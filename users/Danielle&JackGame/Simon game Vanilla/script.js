@@ -52,6 +52,18 @@ let lightSpeed = 300;
 let playerDuration = 0.3;
 let ComputerDuration = 0.4;
 
+const handleDifficultyChange = (
+  newGameSpeed,
+  newLightSpeed,
+  newPlayerDuration,
+  newComputerDuration
+) => {
+  (gameSpeed = newGameSpeed),
+    (lightSpeed = newLightSpeed),
+    (playerDuration = newPlayerDuration),
+    (ComputerDuration = newComputerDuration);
+};
+
 const changeDifficulty = () => {
   resetGame();
   startRound();
@@ -60,24 +72,20 @@ const changeDifficulty = () => {
 
   switch (myVal) {
     case "easy":
-      gameSpeed = 1200;
-      lightSpeed = 300;
+      handleDifficultyChange(1000, 300, 0.3, 0.4);
+
       break;
     case "normal":
-      gameSpeed = 750;
-      lightSpeed = 300;
+      handleDifficultyChange(750, 300, 0.3, 0.4);
+
       break;
     case "hard":
-      gameSpeed = 400;
-      lightSpeed = 200;
-      playerDuration = 0.2;
-      ComputerDuration = 0.2;
+      handleDifficultyChange(400, 200, 0.2, 0.2);
+
       break;
     case "impossible":
-      gameSpeed = 250;
-      lightSpeed = 100;
-      ComputerDuration = 0.175;
-      playerDuration = 0.075;
+      handleDifficultyChange(250, 100, 0.075, 0.175);
+
       break;
   }
 };
