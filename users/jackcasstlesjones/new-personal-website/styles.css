@@ -765,7 +765,7 @@ footer {
 .socials-container {
   display: flex;
   justify-content: space-between;
-  width: 7%;
+  width: 80%;
   margin: auto;
   margin-bottom: 20px;
 }

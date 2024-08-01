@@ -151,7 +151,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
     width: 80%;
   }
 
@@ -162,6 +161,14 @@
 
   .learning-resources-container {
     margin-top: 100px;
+  }
+
+  .learning-resource-info {
+    padding-bottom: 16px;
+  }
+
+  #info-odin {
+    padding-bottom: 30px;
   }
 
   .socials-container {
