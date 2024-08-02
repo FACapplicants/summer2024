@@ -121,6 +121,13 @@ function pushRandomColourToGameArray() {
   gamePattern.push(buttonColours[myRandomNumber]);
 }
 
+const playLights = (chosenButton) => {
+  chosenButton.classList.add("transparent");
+  setTimeout(() => {
+    chosenButton.classList.remove("transparent");
+  }, lightSpeed);
+};
+
 // Defined in the global scope so that the playSoundsAndLights function
 // does not loop endlessly
 let i = 0;
@@ -129,30 +136,16 @@ function playSoundsAndLights() {
   setTimeout(function () {
     if (gamePattern[i] === "red") {
       createAndStartOscillator(redFrequency, ComputerDuration);
-      redButton.classList.add("transparent");
-      setTimeout(() => {
-        redButton.classList.remove("transparent");
-      }, lightSpeed);
+      playLights(redButton);
     } else if (gamePattern[i] === "green") {
       createAndStartOscillator(greenFrequency, ComputerDuration);
-
-      greenButton.classList.add("transparent");
-      setTimeout(() => {
-        greenButton.classList.remove("transparent");
-      }, lightSpeed);
+      playLights(greenButton);
     } else if (gamePattern[i] === "blue") {
       createAndStartOscillator(blueFrequency, ComputerDuration);
-
-      blueButton.classList.add("transparent");
-      setTimeout(() => {
-        blueButton.classList.remove("transparent");
-      }, lightSpeed);
+      playLights(blueButton);
     } else if (gamePattern[i] === "yellow") {
       createAndStartOscillator(yellowFrequency, ComputerDuration);
-      yellowButton.classList.add("transparent");
-      setTimeout(() => {
-        yellowButton.classList.remove("transparent");
-      }, lightSpeed);
+      playLights(yellowButton);
     }
 
     i++; //  increment the counter
