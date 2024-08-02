@@ -134,18 +134,23 @@ let i = 0;
 
 function playSoundsAndLights() {
   setTimeout(function () {
-    if (gamePattern[i] === "red") {
-      createAndStartOscillator(redFrequency, ComputerDuration);
-      playLights(redButton);
-    } else if (gamePattern[i] === "green") {
-      createAndStartOscillator(greenFrequency, ComputerDuration);
-      playLights(greenButton);
-    } else if (gamePattern[i] === "blue") {
-      createAndStartOscillator(blueFrequency, ComputerDuration);
-      playLights(blueButton);
-    } else if (gamePattern[i] === "yellow") {
-      createAndStartOscillator(yellowFrequency, ComputerDuration);
-      playLights(yellowButton);
+    switch (gamePattern[i]) {
+      case "red":
+        createAndStartOscillator(redFrequency, ComputerDuration);
+        playLights(redButton);
+        break;
+      case "green":
+        createAndStartOscillator(greenFrequency, ComputerDuration);
+        playLights(greenButton);
+        break;
+      case "blue":
+        createAndStartOscillator(blueFrequency, ComputerDuration);
+        playLights(blueButton);
+        break;
+      case "yellow":
+        createAndStartOscillator(yellowFrequency, ComputerDuration);
+        playLights(yellowButton);
+        break;
     }
 
     i++; //  increment the counter
