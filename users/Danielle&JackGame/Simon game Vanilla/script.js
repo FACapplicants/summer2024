@@ -16,10 +16,11 @@ function createAndStartOscillator(frequency, duration) {
   oscillator.stop(audioCtx.currentTime + duration);
 }
 
-const redFrequency = 300;
-const greenFrequency = 400;
-const blueFrequency = 500;
-const yellowFrequency = 600;
+// Frequencies for buttons
+const redFrequency = 349.23;
+const greenFrequency = 392;
+const blueFrequency = 440;
+const yellowFrequency = 523.25;
 
 const buttonColours = ["red", "green", "blue", "yellow"];
 
@@ -50,11 +51,14 @@ const userDifficultyDropdown = document.getElementById("user-difficulty");
 const gameOverBtn = document.getElementById("game-over-btn");
 const gameOverModal = document.querySelector(".game-over-modal");
 
+// Set default speeds for the speed computer plays sounds/lights, the time the lights
+// flash for, the duration of the player's sounds, and duration of the computer's sounds
 let gameSpeed = 750;
 let lightSpeed = 300;
 let playerDuration = 0.3;
 let ComputerDuration = 0.4;
 
+// Utility function for changing the values above
 const handleDifficultyChange = (
   newGameSpeed,
   newLightSpeed,
@@ -67,6 +71,8 @@ const handleDifficultyChange = (
     (ComputerDuration = newComputerDuration);
 };
 
+// Resets game and starts round, then uses a switch statement to change above values
+// depending on user selection of game difficulty
 const changeDifficulty = () => {
   resetGame();
   startRound();
@@ -95,7 +101,7 @@ const changeDifficulty = () => {
 
 userDifficultyDropdown.addEventListener("change", changeDifficulty);
 
-// Resets all the game arrays
+// Resets the game completely
 function resetGame() {
   gamePattern = [];
   userPattern = [];
@@ -109,15 +115,17 @@ function randomNumber() {
   return Math.floor(Math.random() * 4);
 }
 
-// Uses a random number to push to game array & generate a random color
-function pushToGameArray() {
+// Uses a random number to push one random colour to the gameArray
+function pushRandomColourToGameArray() {
   const myRandomNumber = randomNumber();
   gamePattern.push(buttonColours[myRandomNumber]);
 }
 
+// Defined in the global scope so that the playSoundsAndLights function
+// does not loop endlessly
 let i = 0;
 
-function playLoop() {
+function playSoundsAndLights() {
   setTimeout(function () {
     if (gamePattern[i] === "red") {
       createAndStartOscillator(redFrequency, ComputerDuration);
@@ -149,16 +157,16 @@ function playLoop() {
 
     i++; //  increment the counter
     if (i <= gameLevel) {
-      playLoop();
+      playSoundsAndLights();
     } else i = 0;
   }, gameSpeed);
 }
 
 // Resets game, then pushes to the gamePattern array 4 times so that 4 colours are selected
 function startRound() {
-  pushToGameArray();
+  pushRandomColourToGameArray();
   levelCounter.innerHTML = gameLevel;
-  playLoop();
+  playSoundsAndLights();
 }
 
 // Compares the user pattern against the game pattern.
@@ -166,7 +174,7 @@ function startRound() {
 // loser in the console, and a alert message to the user.
 // However if it does match, the game continues and we start a new pattern again.
 
-function checkWin() {
+function checkUserInput() {
   for (let i = 0; i < userPattern.length; i++) {
     if (userPattern[i] !== gamePattern[i]) {
       console.log("LOSER");
@@ -192,29 +200,27 @@ startButton.addEventListener("click", function () {
   startRound();
 });
 
+// Pushes user choice to userPattern array, adds 1 to timesClicked
+// Plays the sound and colour of the user's choice, and checks for correct input
 const userButtonClick = (buttonColour, frequency) => {
   userPattern.push(buttonColour);
   timesClicked++;
   createAndStartOscillator(frequency, playerDuration);
-  checkWin();
+  checkUserInput();
 };
 
-// Pushes "red" to the userPattern, adds 1 to timesClicked, and checks for a win
 redButton.addEventListener("click", function () {
   userButtonClick("red", redFrequency);
 });
 
-// Pushes "green" to the userPattern, adds 1 to timesClicked, and checks for a win
 greenButton.addEventListener("click", function () {
   userButtonClick("green", greenFrequency);
 });
 
-// Pushes "blue" to the userPattern, adds 1 to timesClicked, and checks for a win
 blueButton.addEventListener("click", function () {
   userButtonClick("blue", blueFrequency);
 });
 
-// Pushes "green" to the userPattern, adds 1 to timesClicked, and checks for a win
 yellowButton.addEventListener("click", function () {
   userButtonClick("yellow", yellowFrequency);
 });

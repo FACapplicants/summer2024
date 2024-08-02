@@ -200,6 +200,7 @@ h1 {
 } */
 
 .modal-button {
+  cursor: pointer;
   padding: 10px 20px;
   margin: 10px auto;
   background-color: white;
