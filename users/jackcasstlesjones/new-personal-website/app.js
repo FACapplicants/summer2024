@@ -13,17 +13,13 @@ navbarMenuIcon.addEventListener("click", function () {
   navbarMenuIcon.classList.toggle("other-colour");
 });
 
-// console.log("sadfasd");
-
 let navCounter = "home";
 
 // Updates the appearance of the navbar by checking what value of the navCounter against each varBarLink element and
 // adds the "selected" (blue underline) class if the navCounter is equal to the element ID. Removes it if not.
 const updateNavBar = () => {
   navBarLinks.forEach((element) => {
-    console.log(element);
     if (element.id === `navbar-${navCounter}`) {
-      console.log(element.id);
       element.classList.add("selected");
     } else {
       element.classList.remove("selected");
@@ -213,8 +209,6 @@ leftButton.addEventListener("click", function () {
 
 const learningCards = document.querySelectorAll(".learning-resource-card");
 
-// console.log(learningCards);
-
 let chosenLearningCard = "";
 
 learningCards.forEach((element) => {
@@ -237,7 +231,6 @@ const updateLearningCards = () => {
       `${element.id}-minus-icon`
     );
 
-    // console.log(elementPlusIcon);
     if (chosenLearningCard === element.id) {
       elementInfo.classList.add("show");
       elementPlusIcon.classList.add("hidden-icon");
