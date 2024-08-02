@@ -56,7 +56,7 @@ const gameOverModal = document.querySelector(".game-over-modal");
 let gameSpeed = 750;
 let lightSpeed = 300;
 let playerDuration = 0.3;
-let ComputerDuration = 0.4;
+let computerDuration = 0.4;
 
 // Utility function for changing the values above
 const handleDifficultyChange = (
@@ -68,7 +68,7 @@ const handleDifficultyChange = (
   (gameSpeed = newGameSpeed),
     (lightSpeed = newLightSpeed),
     (playerDuration = newPlayerDuration),
-    (ComputerDuration = newComputerDuration);
+    (computerDuration = newComputerDuration);
 };
 
 // Resets game and starts round, then uses a switch statement to change above values
@@ -136,19 +136,19 @@ function playSoundsAndLights() {
   setTimeout(function () {
     switch (gamePattern[i]) {
       case "red":
-        createAndStartOscillator(redFrequency, ComputerDuration);
+        createAndStartOscillator(redFrequency, computerDuration);
         playLights(redButton);
         break;
       case "green":
-        createAndStartOscillator(greenFrequency, ComputerDuration);
+        createAndStartOscillator(greenFrequency, computerDuration);
         playLights(greenButton);
         break;
       case "blue":
-        createAndStartOscillator(blueFrequency, ComputerDuration);
+        createAndStartOscillator(blueFrequency, computerDuration);
         playLights(blueButton);
         break;
       case "yellow":
-        createAndStartOscillator(yellowFrequency, ComputerDuration);
+        createAndStartOscillator(yellowFrequency, computerDuration);
         playLights(yellowButton);
         break;
     }
@@ -168,14 +168,12 @@ function startRound() {
 }
 
 // Compares the user pattern against the game pattern.
-// if the user pattern doesnt match the game pattern, the game immediately ends and displays
-// loser in the console, and a alert message to the user.
+// if the user pattern doesnt match the game pattern, the game immediately ends
 // However if it does match, the game continues and we start a new pattern again.
 
 function checkUserInput() {
   for (let i = 0; i < userPattern.length; i++) {
     if (userPattern[i] !== gamePattern[i]) {
-      console.log("LOSER");
       gameOverModal.classList.remove("hide");
       resetGame();
       return;
@@ -183,7 +181,6 @@ function checkUserInput() {
   }
 
   if (userPattern.length === gamePattern.length) {
-    console.log("WINNER");
     gameLevel++;
     userPattern = [];
     timesClicked = 0;
@@ -228,14 +225,6 @@ modalBtn.addEventListener("click", function () {
   startRound();
 });
 
-/*
-UPGRADE IDEAS:
-- Fail noise e.g. buzzer or sad trombone
-- User can increase or decrease speed
-- High score record
-- Bug when user clicks 'start' button while playing
-- Easy/hard mode
-- */
 gameOverBtn.addEventListener("click", function () {
   gameOverModal.classList.add("hide");
   startRound();
