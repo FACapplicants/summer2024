@@ -34,14 +34,15 @@ Welcome to my portfolio website. I have created a responsive site with a mobile 
 
 - **[OlympiaTree](https://olympiatree.netlify.app/)**
 
-  - Made using React, this project involved translating [this](https://qph.cf2.quoracdn.net/main-qimg-2bd602d9041eff7f417ea6dd81fbaf42) family tree, found on Quora, into [this](https://imgur.com/a/hNC6BUC) grid layout using Figma. I hand-coded the grid into React, using components to style the lines and give each God their own information card. The information cards were designed in Figma and the descriptions adapted from [Theoi](https://www.theoi.com/). UUIDs are used for each God to dynamically generate and display the God Info Cards.
+  - Made using React, this project involved translating [this](https://qph.cf2.quoracdn.net/main-qimg-2bd602d9041eff7f417ea6dd81fbaf42) family tree, found on Quora, into [this](https://imgur.com/a/hNC6BUC) grid layout using Figma. Following this, I hand-coded the grid into React, using components to style the lines and give each God their own information card. I also designed the information cards in Figma, hard-coded the description for each God, adapted from copy on [Theoi](https://www.theoi.com/). This project also utilised UUIDs for each God. These are generated at the start of every session, which is what enables the God Info Cards to be displayed.
 
 - **[Random Fact Generator](https://jackcasstlesjones.github.io/random-facts/)**
 
-  - Inspired by [altl.io](https://www.altl.io/), this simple fact-generator uses the [Facts API](https://api-ninjas.com/api/facts) from API Ninjas. Designed to be responsive and visually appealing, it served as a learning project for APIs and asynchronous coding.
+  - I love a good bit of trivia. This simple fact-generator was inspired by [altl.io](https://www.altl.io/) and utilises the [Facts API](https://api-ninjas.com/api/facts) from API Ninjas. I wanted it to be responsive and aesthetically pleasing, and many of the design choices used in my portfolio were first explored here. I made this after my first foray into APIs and asynchronous coding.
 
 - **[Humble or Noble](https://jackcasstlesjones.github.io/humble-or-noble/)**
-  - A project based on a game where foods are categorised as 'humble' or 'noble'. It uses a hard-coded object with 738 foods and the [Unsplash](https://unsplash.com/) API to fetch and display images. Includes logic to handle image retrieval and API rate limits.
+
+  - This project originated from a game I played with friends, where we decide/debate whether a certain food is 'humble' or 'noble'. This very simple project has a hard-coded object containing 738 foods. I then used splice() to both remove a food from the object, ensuring zero repeats in a session, and return a string to display the food and make a call to the [Unsplash](https://unsplash.com/) API. Depending on the food, this can result in an accurate picture being displayed, but often something unrelated will come back. If there is nothing returned, another call to the API will be made and that food will be skipped. To qualify for the Unplash API's production rate, I had to ensure that all artists were credited accordingly on the website, and apply using the Unplash processes.
 
 ## JavaScript Functionality
 
