@@ -36,9 +36,9 @@ Welcome to my portfolio website. I have created a responsive site with a mobile 
 
   - Made using React, this project involved translating [this](https://qph.cf2.quoracdn.net/main-qimg-2bd602d9041eff7f417ea6dd81fbaf42) family tree, found on Quora, into [this](https://imgur.com/a/hNC6BUC) grid layout using Figma. Following this, I hand-coded the grid into React, using components to style the lines and give each God their own information card. I also designed the information cards in Figma, hard-coded the description for each God, adapted from copy on [Theoi](https://www.theoi.com/). This project also utilised UUIDs for each God. These are generated at the start of every session, which is what enables the God Info Cards to be displayed.
 
-- **[Random Fact Generator](https://jackcasstlesjones.github.io/random-facts/)**
+- **[Ella Rose Bakes](https://ella-jackcj.wunderbucket.dev/)**
 
-  - I love a good bit of trivia. This simple fact-generator was inspired by [altl.io](https://www.altl.io/) and utilises the [Facts API](https://api-ninjas.com/api/facts) from API Ninjas. I wanted it to be responsive and aesthetically pleasing, and many of the design choices used in my portfolio were first explored here. I made this after my first foray into APIs and asynchronous coding.
+  - This was a very early project I made after taking Jonas Schmedtmann's first course. I wanted to use the design and development principles I had learnt to build something of my own. I contacted a friend who ran a [small bakery business](https://www.instagram.com/ellar.osebakes/?hl=en-gb) in lockdown, and she agreed to let me design her a website. After learning crude CCS, it was great to utilise responsive design principles, as well as accessibility principles, to make a website with a cohesive design scheme. I gave the website a fun and delicate feel, reflecting the nature of the business and the products that my friend was creating. After following tutorials for such a long time, this was my first foray into making my CSS work together to produce something that looked aesthetically pleasing and thematically coordinated.
 
 - **[Humble or Noble](https://jackcasstlesjones.github.io/humble-or-noble/)**
 
