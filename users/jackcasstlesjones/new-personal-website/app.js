@@ -1,13 +1,3 @@
-// navbarLinks.forEach((element) => {
-//   element.addEventListener("click", function () {
-//     // if (element.classList.contains("selected")) {
-//     //   element.classList.remove("selected");
-//     // }
-//     element.classList.toggle("selected");
-//     console.log(element);
-//   });
-// });
-
 const navbarHome = document.getElementById("navbar-home");
 const navbarAbout = document.getElementById("navbar-about");
 const navbarProjects = document.getElementById("navbar-projects");
@@ -27,6 +17,8 @@ navbarMenuIcon.addEventListener("click", function () {
 
 let navCounter = "home";
 
+// Updates the appearance of the navbar by checking what value of the navCounter against each varBarLink element and
+// adds the "selected" (blue underline) class if the navCounter is equal to the element ID. Removes it if not.
 const updateNavBar = () => {
   navBarLinks.forEach((element) => {
     console.log(element);
@@ -51,6 +43,7 @@ navbarPhotography.addEventListener("click", function () {
   changeNav("photography");
 });
 
+// Changes the value of navCounter to the changeChoice argument and updates the navBar
 const changeNav = (changeChoice) => {
   navCounter = changeChoice;
   updateNavBar();
@@ -58,6 +51,7 @@ const changeNav = (changeChoice) => {
   navbarMenuIcon.classList.toggle("other-colour");
 };
 
+// Changes the scrolling behaviour of the anchor links to 'smooth'
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault();
@@ -75,56 +69,72 @@ const pastCard = document.querySelector(".past-card");
 const presentCard = document.querySelector(".present-card");
 const futureCard = document.querySelector(".future-card");
 
-unscrolledElements.forEach((element) => {
-  // element.style.opacity = 0;
-});
-
+// Function to check if an element is in view within the current viewport
 const elementInView = (element, scrollOffset) => {
   const elementTop = element.getBoundingClientRect().top;
-  // console.log(elementTop);
-  // console.log(window.innerHeight);
+  // Return true if the element is within the viewport after applying the scroll offset
   return (
     elementTop <=
     (window.innerHeight || document.documentElement.clientHeight) - scrollOffset
   );
 };
 
+// Utility function for adding one or two classes to an element
 const addClasslist = (element, chosenClass, chosenClass2) => {
   element.classList.add(chosenClass, chosenClass2);
 };
 
+// Function to handle the scroll animation by adding a class to elements when they are in view
 const handleScrollAnimation = (targetElement, chosenClass) => {
+  // Iterate through each target element
   targetElement.forEach((element) => {
+    // Check if the element is in view with a scroll offset of 300 pixels
     if (elementInView(element, 300)) {
+      // Add the chosen class to the element if it is in view
       addClasslist(element, chosenClass);
     }
   });
 };
 
-const aboutCardsAnimation = (element, chosenClass) => {
-  if (elementInView(element, 300)) {
-    addClasslist(element, chosenClass);
+// const aboutCardsAnimation = (element, chosenClass) => {
+//   if (elementInView(element, 300)) {
+//     addClasslist(element, chosenClass);
+//   }
+//   if (pastCard.classList.contains("transform-zero")) {
+//     setTimeout(function () {
+//       addClasslist(presentCard, "transform-zero", "scrolled");
+//     }, 700);
+//     setTimeout(function () {
+//       addClasslist(futureCard, "transform-zero", "scrolled");
+//     }, 1400);
+//   }
+// };
+
+// Handles the transform animation for the about cards
+const aboutCardsAnimation = () => {
+  // If the pastCard is in view, add the transfom zero class
+  if (elementInView(pastCard, 300)) {
+    addClasslist(pastCard, "transform-zero");
   }
+  // If pastCard has transform-zero class, wait 700 ms then add "transform zero" to presentCard
   if (pastCard.classList.contains("transform-zero")) {
     setTimeout(function () {
       addClasslist(presentCard, "transform-zero", "scrolled");
     }, 700);
+    // If pastCard has transform-zero class, wait 1400 ms then add "transform zero" to futureCard
     setTimeout(function () {
       addClasslist(futureCard, "transform-zero", "scrolled");
     }, 1400);
   }
 };
 
+// Everytime user scrolls, tries to trigger handleScrollAnimation() or aboutCardsAnimation()
+// Due to elementInView(), these functions are only called
+// when the elements are actually on screen
 window.addEventListener("scroll", () => {
   handleScrollAnimation(unscrolledElements, "scrolled");
-  aboutCardsAnimation(pastCard, "transform-zero");
+  aboutCardsAnimation();
 });
-
-const delayedAnimation = () => {
-  if (pastCard.classList.contains("transform-zero")) {
-    addClasslist(presentCard, "transform-zero");
-  }
-};
 
 /* ----------------------------- CAROUSEL ---------------------------------- */
 
@@ -205,18 +215,37 @@ const learningCards = document.querySelectorAll(".learning-resource-card");
 
 // console.log(learningCards);
 
+let chosenLearningCard = "";
+
 learningCards.forEach((element) => {
   element.addEventListener("click", function () {
-    const elementInfo = document.getElementById(`info-${element.id}`);
+    if (chosenLearningCard !== element.id) {
+      chosenLearningCard = element.id;
+      updateLearningCards();
+    } else {
+      chosenLearningCard = "";
+      updateLearningCards();
+    }
+  });
+});
 
-    /* REFACTOR THIS USING FOREACH ON THE ICON ELEMENTS TO TOGGLE*/
+const updateLearningCards = () => {
+  learningCards.forEach((element) => {
+    const elementInfo = document.getElementById(`info-${element.id}`);
     const elementPlusIcon = document.getElementById(`${element.id}-plus-icon`);
     const elementMinusIcon = document.getElementById(
       `${element.id}-minus-icon`
     );
-    elementInfo.classList.toggle("show");
-    elementPlusIcon.classList.toggle("hidden-icon");
-    elementMinusIcon.classList.toggle("hidden-icon");
+
+    // console.log(elementPlusIcon);
+    if (chosenLearningCard === element.id) {
+      elementInfo.classList.add("show");
+      elementPlusIcon.classList.add("hidden-icon");
+      elementMinusIcon.classList.remove("hidden-icon");
+    } else {
+      elementInfo.classList.remove("show");
+      elementPlusIcon.classList.remove("hidden-icon");
+      elementMinusIcon.classList.add("hidden-icon");
+    }
   });
-  console.log(element);
-});
+};
