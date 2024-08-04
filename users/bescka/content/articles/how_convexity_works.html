@@ -1,0 +1,110 @@
+<h2>Convexity: How it works</h2>
+
+<p>A discussion on some of the features used in <a href="https://bescka.github.io/convexity">Convexity</a>.</p>
+
+<p>The idea of the game is to connect dots into completed 2d convex shapes. All of the Dots must be used to complete a level. Dots can only be used once and lines between the dots cannot directly traverse wall elements.</p>
+
+<h3>Graph Traversal</h3>
+Collections of dots form a graph. Shape completion checking is done via a graph traversal algorithm, see the implementation note <a href="#/algorithms/graphs">here</a>.
+
+
+<h3>Convexity Checks</h3>
+
+<p>Technically we are making convext polygons. There are a few equivalent definitions of convexity. Basically, in the case with only straight lines, every internal angle in the shape is strictly less than 180 degrees. In the more general case, the shape should have no indentations or inward curves - you should be able to draw a line between any two edges inside the shape and not intersect any other edges.</p>
+<p>We only have the case with straight lines/ vectors. One way to perform this check programatically is to use the cross product of each set of connected edges in the shape and check the calculations all have the same sign.</p>
+
+<p>In two dimensions, with points <span class="math inline">\(p1\)</span>, <span class="math inline">\(p2\)</span> and <span class="math inline">\(p3\)</span> we create the vectors <span class="math inline">\(a = [a_{x}, a_{y}]\)</span> and <span class="math inline">\(b = [b_{x}, b_{y}]\)</span>:</p>
+<span class=math display">\[\begin{align} a_{x} = p2_{x} - p1_{x} \\ 
+  a_{y} = p2_{y} - p1_{y}\\
+  b_{x} = p3_{x} - p2_{x}\\
+  b_{y} = p3_{y} - p2_{x}
+  \end{align}
+  \]</span>
+Where we remember that the viewport/ canvas takes the top left corner as the origin.
+<p>The cross product for a pair of two-dimensional vectors <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> returns a scalar that indicates the direction of the turn between two lines. It is 0 when the vectors are collinear - i.e. at <span class="math inline">\(0^\circ\)</span> or <span class="math inline">\(180^\circ\)</span>, positive when the turn from a to b is to the left and negative to the right. We can ignore collinearity for our purposes - <span class="math inline">\(180^\circ\)</span> doesn't preclude convexity and the game won't allow setting on to the same dot. The formula is:</p>
+<span class=math display">\[\mathbf{a} \times \mathbf{b} = a_x b_y - a_y b_x\]</span>
+<p>One last point is the use of the modulo operator in the iterative step. We iterate through the points in the path from the previous graph traversal, making sure that we can check the angles between the edges of the last and first point by letting <span class="math inline">\(p2\)</span> and <span class="math inline">\(p3\)</span> loop round to the first and second points respectively with <span class="math inline">\((dot_{i + 1} \bmod n)\)</span> and <span class="math inline">\((dot_{i+2} \bmod n)\)</span>:</p> 
+
+<pre><code class="language-javascript">  checkConvexity() {
+    if (!this.shape || this.shape.length < 3) return false;
+
+    const crossProduct = (p1, p2, p3) => {
+      const dx1 = p2.x - p1.x;
+      const dy1 = p2.y - p1.y;
+      const dx2 = p3.x - p2.x;
+      const dy2 = p3.y - p2.y;
+      return dx1 * dy2 - dy1 * dx2;
+    };
+
+    const n = this.shape.length; // Number of dots/vertices in the detected shape
+    let sign = 0;
+
+    for (let i = 0; i < n; i++) {
+      const p1 = this.shape[i];
+      const p2 = this.shape[(i + 1) % n]; 
+      const p3 = this.shape[(i + 2) % n];
+
+      const cross = crossProduct(p1, p2, p3);
+      if (cross !== 0) {
+        if (sign === 0) {
+          sign = Math.sign(cross);
+        } else if (sign !== Math.sign(cross)) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
+</code></pre>
+
+<h3>Collision Detection</h3>
+
+<p>Lines connecting dots that cross "wall" elements - solid blocks, should not be able to be set. We also need to prevent hover mechanics from showing the dots as selectable if the current line from the active dot (origin) to the dot under the cursor intersects with a wall.</p>
+
+<p>One way of doing this is to examine if the line intersects any of the edges of the walls. To do this, we can use the vector equation of a line to solve for the intersection.</p> 
+
+<p>The vector between the source dot <span class="math inline">\(D_{0}\)</span> and the dot to be selected <span class="math inline">\(D_{1}\)</span> is given as:</p>
+<span class=math display">\[\overrightarrow{OD_{0}} + \lambda(\overrightarrow{OD_{1}} - \overrightarrow{OD_{0}})\]</span>
+<p>Where <span class="math inline">\(O\)</span> denotes the origin and <span class="math inline">\(\lambda \in [0,1]\)</span>. We can similarly denote any of the edges of the wall using the beginning (<span class="math inline">\(R_{0}\)</span>) and end points (<span class="math inline">\(R_{1}\)</span>) of an edge:</p>
+<span class=math display">\[\overrightarrow{OR_{0}} + \mu(\overrightarrow{OR_{1}} - \overrightarrow{OR_{0}})\]</span>
+<p>Where <span class="math inline">\(\mu \in [0,1]\)</span>. To evaluate the intersection, we can equate the two vector equations.<span class=math display">\[
+    \begin{pmatrix}
+      d^{0}_{x} \\
+      d^{0}_{y} 
+    \end{pmatrix}
+    + \lambda \left(
+    \begin{pmatrix}
+      d^1_x \\
+      d^1_y
+    \end{pmatrix}
+    - 
+    \begin{pmatrix}
+      d^0_x \\
+      d^0_y
+    \end{pmatrix} \right)
+    = 
+    \begin{pmatrix}
+      r^{0}_{x} \\
+      r^{0}_{y} 
+    \end{pmatrix}
+    + \mu \left(
+    \begin{pmatrix}
+      r^1_x \\
+      r^1_y
+    \end{pmatrix}
+    - 
+    \begin{pmatrix}
+      r^0_x \\
+      r^0_y
+    \end{pmatrix} \right)
+   \]</span>
+Solving, this yields the following expressions for <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\mu\)</span>. We can check if both of these values <span class="math inline">\(\in [0, 1]\)</span> to verify if the lines are intersecting: 
+<span class=math display">\[
+  \lambda = \frac{-(r^1_y - r^0_y)(r^0_x - d^0_x) + (r^1_x - r^0_x)(r^0_y - d^0_y)}{(d^1_x - d^0_x)(r^0_y - r^1_y) - (d^1_y - d^0_y)(r^0_x - r^1_x)}\\
+  \]</span>
+<span class=math display">\[\mu = \frac{-(d^1_y - d^0_y)(r^0_x - d^0_x) + (d^1_x - d^0_x)(r^0_y - d^0_y)}{(d^1_x - d^0_x)(r^0_y - r^1_y) - (d^1_y - d^0_y)(r^0_x - r^1_x)}\]</span>
+<p>We can perform this check for each edge in the wall rectangle. Note we only need to call this check when we have an active line between the cursor and a source dot, and we have a destination dot being selected.</p>
+
+<h3>Links</h3>
+<p>3 blue 1 brown is a great channel to see visually how linear algebra works. See <a href="https://www.3blue1brown.com/topics/linear-algebra">this playlist</a>.</p>

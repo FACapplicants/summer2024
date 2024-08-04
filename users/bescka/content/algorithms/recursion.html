@@ -66,7 +66,7 @@
         return recurse(data, keys);
     }</code></pre>
 
-<p>The function takes a list of keys which traverse the datastructure, regardless of whether the keys are nested in an array/ object array etc. This avoids having to specify indicies for array positions and makes the code more readable. We can do something like this to get an array of types in each order:</p> 
+<p>The function takes a list of keys which traverse the datastructure, regardless of whether the keys are nested in an array/ object array etc. This avoids having to specify indices for array positions and makes the code more readable. We can do something like this to get an array of types in each order:</p> 
 
 <pre><code class="language-javascript">getNested(json_column, ['order','type'])</code></pre>
 <p>Which, if applied on a row basis would give us something like<p>

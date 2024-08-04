@@ -19,7 +19,8 @@
   <script src="fn/donut.js"></script>
   <script src="fn/cube_frame.js"></script>
   <script src="fn/cube_grid.js"></script>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <!-- <script type="module" src="content/convexity/canvastest.js"></script> -->
+  <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> -->
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <link id="prism-theme" href="prism-spmcs.css" rel="Stylesheet">
 </head>
@@ -42,6 +43,7 @@
           <a href="#/about">About</a>
           <a href="#/articles">Articles</a>
           <a href="#/algorithms">Algorithms</a>
+          <a href="content/convexity/index.html">Convexity</a>
         </div>
       </div>
     </div>
@@ -53,23 +55,33 @@
   <script type="module">
     import { handleDropdownBehaviour } from './fn/dropdown.js'
     import { handleNavigation } from './fn/app.js'
+    // import { checkInitConvexityCanvas } from './content/convexity/canvas_init.js'
+    // import { drawText } from './content/convexity/canvastest.js'
     document.addEventListener('DOMContentLoaded', function() {
-        handleNavigation();    
-        handleDropdownBehaviour(); 
+      handleNavigation();    
+      handleDropdownBehaviour(); 
+    
+      Prism.highlightAll();
+      const mainContent = document.getElementById('main-content');
+      const observer = new MutationObserver((mutationsList) => {
+          for (const mutation of mutationsList) {
+              if (mutation.type === 'childList') {
+                  mutation.addedNodes.forEach(node => {
+                      if (node.nodeType === Node.ELEMENT_NODE) {
+                          const preElements = node.querySelectorAll('pre code');
+                          preElements.forEach(el => Prism.highlightElement(el));
 
-        Prism.highlightAll();
-
-        document.getElementById('main-content').addEventListener('DOMNodeInserted', function(event) {
-                // Use a timeout to ensure the element is fully added to the DOM
-                setTimeout(() => {
-                    const element = event.target;
-                    if (element.tagName === 'PRE' && element.querySelector('code')) {
-                        Prism.highlightElement(element.querySelector('code'));
-                    } else if (element.tagName === 'CODE') {
-                        Prism.highlightElement(element);
-                    }
-                }, 0);
-            });
+                          if (node.tagName === 'PRE' && node.querySelector('code')) {
+                              Prism.highlightElement(node.querySelector('code'));
+                          } else if (node.tagName === 'CODE') {
+                              Prism.highlightElement(node);
+                          }
+                      }
+                  });
+              }
+          }
+      });
+      observer.observe(mainContent, { childList: true, subtree: true });
     });
   </script>
   <!-- Prism JS -->
