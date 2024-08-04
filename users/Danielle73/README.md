@@ -1,6 +1,8 @@
 # Project Website.
 Hello! I’m Danielle, and this is my website project created for Founders and Coders (FAC). My aim was to create a responsive website with a light and dark theme option, applied via a toggle switch.
 
+---
+
 ### Built with:
 - HTML
 - CSS
@@ -8,6 +10,7 @@ Hello! I’m Danielle, and this is my website project created for Founders and C
 - CSS Grid
 - Javascript
 
+---
 
 **Light & Dark theme:**
 
@@ -24,9 +27,17 @@ To make my website responsive, I used a combination of CSS Grid and Flexbox. Gri
 
 - On a mobile device, the navigation bar is set to be [fixed](https://www.w3schools.com/css/css_navbar_horizontal.asp) at the top of the screen, ensuring it remains accessible. Using Flexbox, helped to align it horizontally. 
 
+---
+
 ### Useful resources:
 
 - [How To Toggle Between Dark and Light Mode](https://www.w3schools.com/howto/howto_js_toggle_dark_mode.asp) - used in creating a dark theme.
 - [Can I set an opacity only to the background image of a div?](https://stackoverflow.com/questions/7241341/can-i-set-an-opacity-only-to-the-background-image-of-a-div) via Stack Overflow. Solved the issue of opacity affecting text readability on top of an image.  
-https://icons8.com/ - provided images graphics.
-https://colorable.jxnblk.com/ - Tested accessibility issues of colours used for font against a background. 
+- [icons8](https://icons8.com/)- provided images graphics.
+- [Colorable](https://colorable.jxnblk.com/)- Tested accessibility issues of colours used for font against a background. 
+
+-----
+
+### Game Project:
+
+[Game Submission project](https://github.com/FACapplicants/summer2024/tree/main/users/Danielle%26JackGame/Simon%20game%20Vanilla)
