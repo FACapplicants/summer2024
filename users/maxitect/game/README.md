@@ -18,8 +18,10 @@ These variables set up the game. Some are reinitialized in the `initVar` functio
 - `let won = false;` - Win state, reinitialized.
 - `let level = 0;` - Current game level.
 - `let mute = false;` - Mute state.
-- `const elementsMain = ["game-title", "runButton", "event-title", "description1"];` - Main elements.
-- `const elementsCon = ["icons", "description2", "kb1", "kb2"];` - Additional elements.
+- `const elementsMain = ["game-title", "runButton", "event-title", "description1"];` - Main HTML elements.
+- `const elementsCon = ["icons", "description2", "kb1", "kb2"];` - Additional HTML elements.
+- `const elements = elementsMain.concat(elementsCon);` - Combined HTML elements.
+
 
 ### Paddle Variables
 - `const paddleHeight = 12;` - Paddle height.
@@ -277,7 +279,7 @@ All functions, intervals, and game mechanics are called here.
 function startGame() {
     initVar();
     drawCanvas();
-    elementsMain.forEach(id => document.getElementById(id).style.display = "none");
+    elements.forEach(id => document.getElementById(id).style.display = "none");
     canvas.style.display = "initial";
     const timer = setInterval(drawTimer, 1000);
     setTimeout(function game() {
