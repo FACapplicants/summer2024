@@ -18,6 +18,7 @@ let level = 0;
 let mute = false;
 const elementsMain = ["game-title", "runButton", "event-title", "description1"];
 const elementsCon = ["icons", "description2", "kb1", "kb2"];
+const elements = elementsMain.concat(elementsCon);
 
 //paddle variables
 const paddleHeight = 12;
@@ -242,7 +243,7 @@ function startGame() {
     initVar(); //reinitialise variables at every new game or level
     drawCanvas(); //initial draw canvas at the start of each game or level for countdown to start
     //disappear landing page element:
-    elementsMain+elementsCon.forEach(id => document.getElementById(id).style.display = "none");
+    elements.forEach(id => document.getElementById(id).style.display = "none");
     //reappear canvas element:
     canvas.style.display = "initial";
     const timer = setInterval(drawTimer, 1000); //countdown starts and clears upon setTimeout method below
