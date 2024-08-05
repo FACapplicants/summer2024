@@ -204,7 +204,7 @@ li a:hover {
     bottom: 0;
     left: 0;
     right: 0;
-    background-image:url("/images/bermuda-22.png");
+    background-image:url("images/bermuda-22.png");
     background-position: center;
     background-repeat: no-repeat;
     opacity: .4;
@@ -217,7 +217,7 @@ li a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image:url("/images/flamenco-153.png");
+    background-image:url("images/flamenco-153.png");
     background-position: top;
     background-repeat: no-repeat;
 }
