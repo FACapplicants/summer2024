@@ -12,6 +12,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
+    <!--Newer font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+
+
     <title>Danielle</title>
 </head>
 <body>
@@ -28,38 +35,74 @@
 <!--TOP CONTAINER-->
 
 <div id="Home"></div>
-<div class="main-container"> 
+<div class="main-container">
 
+<!--TOGGLE FOR DARK MODE-->
 
-    <button onclick="lightsOff()" id="darkMode" >Hit the lights!</button>
+    <div class="toggle-switch">
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider" onclick="lightsOff()"></span>
+        </label>
+
+</div>
 
     <div class="top-container">
-    
+
         <div class="intro">
-        <h1>Hello! Im Danielle.</h1>
-        <p id="intro-para">Im a front end developer based in London</p>
+        <h1>Hello!<br> I'm Danielle.</h1>
+        <p id="intro-para">I'm a front end developer based in London.</p>
         </div>
         
         <div class="image">
-            <!-- <img src="/images/Bart_Simpson.png" height="250px" alt=""> -->
-        <img id ='myImage' src="https://th.bing.com/th/id/R.1f57e5988584554f8cc3f862f1a8773f?rik=nRV8PIqb02RHuA&riu=http%3a%2f%2fupload.wikimedia.org%2fwikipedia%2fbs%2fe%2fec%2fLisa_Simpson.png&ehk=BtwwYlTcmoQosJmYJL81k5qSxIi%2bT8YLzGZ%2bVeYg6Ww%3d&risl=&pid=ImgRaw&r=0" height="250px" alt="">
+        <img id="introImage" src="/images/bermuda-113.png" alt="sun">
         </div>
-    </div>
+    
+</div>
 
 
 <div id="About"></div>
     <!--MIDDLE CONTAINER-->
 
-    <h2>A little about me:</h2>
-    <div class="middle-container">
-   
-    <p> My name is Danielle and Im a front end dev based in London. I enjoy bringing ideas to life using HTML, CSS and Javascript. 
-    <br> When Im not coding, I enjoy travelling and have so far tallied up 23 countries with hopefully more to come! I also enjoy learning non-coding languages and have embarked on a journey to learn BSL. 
-    </p>
+<h2>About me:</h2>
+
+<div class="about-me-container">
+    <div class="about-me-img">
+        <img id="profile-pic"src="images/Danielle.png" alt="profile-pic" height="300px">
     </div>
-    
-    
-    <!--BOTTOM CONTAINER-->
+
+    <div class="about-me-info">
+        <div class="bg-img"></div>
+        <p id="about-me-para">
+            Hi there! I'm Danielle, a front-end developer based in London. </p>
+        <p id="about-me-para">
+            I discovered my love for coding during lockdown and have been immersed in front-end development ever since. 
+            As someone who has always loved tech but never felt brave enough to pursue it, 
+            coding was a perfect way for me to cross that barrier. 
+            Since coding my first HTML page, I have loved the challenges and problem-solving that come with the territory. 
+            Being able to be creative through code, and seeing my ideas take shape has been hugely satisfying.
+            Though my journey hasn't been linear, I have always found my way back to coding, and hope to develop even further. 
+        </p>
+        <p id="about-me-para">
+            After my first Tuesday meet-up session with Founders and Coders (FAC), 
+            I immediately knew I had made the right choice in who I wanted to study with. 
+            FAC provided a warm, welcoming community, and a supportive, friendly atmosphere 
+            that I hadn't experienced before.  
+            At FAC, I found a wonderful group of people who shared my passions, who I have 
+            collaborated with and become friends with. FAC has been really encouraging in my journey 
+            and I hope to continue growing and contributing to this amazing community.
+
+        </p>
+        <p id="about-me-para">
+            When I'm not coding, I like to solve word puzzles and travel — I have visited 23 countries so far and hope to visit many more. 
+            As a lifelong learner, I'm also currently learning British Sign Language and, under intense duress from the Duolingo owl, 
+            keeping up my streak in Mandarin. 
+        </p>
+    </div>
+
+</div>
+
+<!--BOTTOM CONTAINER-->
 
 <div id="Projects"></div>
 
@@ -67,86 +110,140 @@
 
 <div class="projects-container">
 
-<div class="projects-card">
-<h3>Card 1</h3>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non quaerat corrupti odit molestiae! Fugiat unde commodi a. Voluptas temporibus asperiores quibusdam quidem, eum facilis labore nihil recusandae. Magnam, ea laborum?</p>
+    <!-- COPY TEST-->
+<!--Project Card 1 / Top Left-->
+<div class="projects-card-container">
+<h3>Personal Website</h3>
+<div class="pro-card">
+
+<div class="project-img">
+<img src="/images/Website-Light-Theme.png" alt="" width="275px">
+<img src="/images/Website-Dark-Theme.png" alt="" width="275px">
 </div>
 
-<div class="projects-card">
-<h3>Card 2</h3>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non quaerat corrupti odit molestiae! Fugiat unde commodi a. Voluptas temporibus asperiores quibusdam quidem, eum facilis labore nihil recusandae. Magnam, ea laborum?</p>
+<p class = "projects-paragraph"> 
+    I created this project website and worked with the aim of having
+    a dark and light theme. 
+    <br>
+    <br>
+    Clicking the toggle located at the top right 
+    will switch between the two color palettes and change the website images also.
+    <br>
+    <br>
+
+    <a class="read-more" href="https://github.com/FACapplicants/summer2024/blob/main/users/Danielle73/README.md" target="_blank">Read more >>></a>
+</p>
 </div>
 
-<div class="projects-card">
-<h3>Card 3</h3>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non quaerat corrupti odit molestiae! Fugiat unde commodi a. Voluptas temporibus asperiores quibusdam quidem, eum facilis labore nihil recusandae. Magnam, ea laborum?</p>
 </div>
 
-<div class="projects-card">
-<h3>Card 4</h3>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non quaerat corrupti odit molestiae! Fugiat unde commodi a. Voluptas temporibus asperiores quibusdam quidem, eum facilis labore nihil recusandae. Magnam, ea laborum?</p>
-</div>
+<!--Project Card 2 / Top Right-->
+<div class="projects-card-container">
+    <h3>SIMON Game</h3>
+    <div class="pro-card">
+    
+    <div class="project-img">
+    <img src="/images/SimonGame.png" alt="" width="275px">
+
+    </div>
+    
+    <p class = "projects-paragraph">
+       Can you beat the dystopian overlord that is SIMON?
+
+    <br>
+    <br>
+
+    <a class="read-more" href="https://github.com/FACapplicants/summer2024/tree/main/users/Danielle%26JackGame/Simon%20game%20Vanilla">Read more >>></a>
+    <br>
+    <br>
+    <a id="simon-game-link" href="https://simongamedandj.netlify.app/" target="_blank">Play SIMON >>></a>
+
+
+    </p>
+    </div>
+    
+    </div>
+
+<!--Futher project card containers--> 
+   
+<!--Project Card 3 / Bottom Left-->
+<!-- <div class="projects-card-container">
+    <h3>Project 3</h3>
+    <div class="pro-card">
+    
+    <div class="project-img">
+    <img src="/images/bermuda-98.png" alt="" width="275px">
+    </div>
+    
+    <p class = "projects-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non quaerat corrupti odit molestiae! Fugiat unde commodi a. Voluptas temporibus asperiores quibusdam quidem, eum facilis labore nihil recusandae. Magnam, ea laborum?</p>
+    </div>
+    
+    </div> -->
+
+<!--Project Card 4 / Bottom Right-->
+<!-- <div class="projects-card-container">
+    <h3>Project 4</h3>
+    <div class="pro-card">
+    
+    <div class="project-img">
+    <img src="/images/bermuda-98.png" alt="" width="275px">
+    </div>
+    
+    <p class = "projects-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non quaerat corrupti odit molestiae! Fugiat unde commodi a. Voluptas temporibus asperiores quibusdam quidem, eum facilis labore nihil recusandae. Magnam, ea laborum?</p>
+    </div>
+    
+    </div> -->
+    
+    
 
 </div>
+
 
 <div id="Contact"></div>
 
-<h2>Get in Contact:</h2>
-<div class="contact-container">
 
-    <!--instagram-->
+<h2> Get in Contact:</h2>
+
+<div class="contact-container">
+            
+      <!--github-->
+    <a href="https://github.com/Danielle73" target="_blank">
+      <img id="gitIcon" src="https://img.icons8.com/material-outlined/36/000000/github.png" alt="github">
+      </a>
+    
+     
+   <!--linkedin-->
+    <a href="https://www.linkedin.com/in/danielle-lee-ab8b0887/" target="_blank">
+      <img id="linkedInIcon" src="https://img.icons8.com/ios-glyphs/36/000000/linkedin.png" alt="linkedin">
+     </a>
+
+    <!--Code Wars-->
+
+    <a href="https://www.codewars.com/users/Danielle_l" target="_blank">
+        <img id="CodeWarsIcon" src="https://img.icons8.com/?size=36&id=PlozTIZdV8xJ&format=png&color=000000" alt="">
+    </a>
+
+     <!-- Links created for other social media outlets  -->
+
+    <!-- twitter
+    <a href="#twitter" target="_blank">
+    <img id="icons" src="https://img.icons8.com/windows/36/000000/twitter.png" alt="twitter">
+    </a> -->
+                     
+    <!-- instagram
     <a href="#instagram" target="_blank">
-        <img id="icons" src="https://img.icons8.com/material-outlined/36/000000/instagram-new--v1.png" alt="instagram">        
-              </a>
-            
-              <!--github-->
-            <a href="#github" target="_blank">
-              <img id="icons" src="https://img.icons8.com/material-outlined/36/000000/github.png" alt="github">
-              </a>
-            
-              <!--twitter-->
-             <a href="#twitter" target="_blank">
-             <img id="icons" src="https://img.icons8.com/windows/36/000000/twitter.png" alt="twitter">
-               </a>
-            
-              <!--linkedin-->
-           
-            <a href="#linkedin" target="_blank">
-              <img id="icons" src="https://img.icons8.com/ios-glyphs/36/000000/linkedin.png" alt="linkedin">
-             </a>
+    <img id="icons" src="https://img.icons8.com/material-outlined/36/000000/instagram-new--v1.png" alt="instagram">        
+    </a> -->
     
 </div>
-
-
 
 
 <!--END DIV OF MAIN CONTAINER-->
 </div>
 
 
-<script>
 
-function lightsOff() {
-
-const darkMode = document.body;
-darkMode.classList.toggle("dark-theme");
-
-const nav = document.querySelector('.navigation');
-nav.classList.toggle('dark-theme');
-
-
-const changeImage = document.getElementById('myImage');
-const originalSrc = "https://th.bing.com/th/id/R.1f57e5988584554f8cc3f862f1a8773f?rik=nRV8PIqb02RHuA&riu=http%3a%2f%2fupload.wikimedia.org%2fwikipedia%2fbs%2fe%2fec%2fLisa_Simpson.png&ehk=BtwwYlTcmoQosJmYJL81k5qSxIi%2bT8YLzGZ%2bVeYg6Ww%3d&risl=&pid=ImgRaw&r=0";
-const newSrc = "/images/Bart_Simpson.png";
-
-if (changeImage.src === originalSrc) {
-    changeImage.src = newSrc;
-} else {
-    changeImage.src = originalSrc;
-}
-}
-
-    </script>
+<script src="/script.js"></script>
 
 </body>
 </html>
