@@ -2,8 +2,6 @@
 
 The SIMON game was a collaborative project between Danielle and Jack. The aim of the SIMON game is to memorise and submit the correct colour pattern that SIMON flashes on the screen. The colour pattern increases by one colour each level unless the player submits an incorrect colour, in which case the game will restart at level one.
 
-![Screenshot of the SIMON Game start screen.](users/Danielle&JackGame/Simon game Vanilla/assets/Simon Game.png)
-
 **Intro:** 
 
 Not to be mistaken for Simon Says, the main goal of SIMON is to challenge and improve short-term memory. Gameplay for SIMON is as follows:
@@ -35,8 +33,6 @@ For user enjoyment, we established four levels of difficulty for SIMON:
 - Impossible
 
 Users can select from the four options to either increase or decrease game speed. By default, it is set to Normal.
-
-![Screenshot of the SIMON Game level drop-down menu.](users/Danielle&JackGame/Simon game Vanilla/assets/Simon levels .png)
 
 **Conclusion:**
 
