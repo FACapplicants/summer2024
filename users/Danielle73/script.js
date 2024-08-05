@@ -8,8 +8,8 @@ function lightsOff() {
 
     /* JS for image change */
     const changeHeadImage = document.getElementById('introImage');
-    const originalSrc = "/images/bermuda-113.png";
-    const newSrc = "/images/bermuda-come-back-later-1.png";
+    const originalSrc = "users/Danielle73/images/bermuda-113.png";
+    const newSrc = "users/Danielle73/images/bermuda-come-back-later-1.png";
 
     if (isDarkMode) {
         changeHeadImage.src = newSrc;
@@ -19,8 +19,8 @@ function lightsOff() {
 
     // Image change for bg image of text element
     const aboutCard = document.querySelector('.bg-img');
-    const originalBg = 'url("/images/bermuda-22.png")';
-    const newBg = 'url("/images/bermuda-114.png")';
+    const originalBg = 'url("users/Danielle73/images/bermuda-22.png")';
+    const newBg = 'url("users/Danielle73/images/bermuda-114.png")';
 
     if (isDarkMode) {
         aboutCard.style.backgroundImage = newBg;
@@ -30,8 +30,8 @@ function lightsOff() {
 
     // image change for bg image for profile picture
     const aboutMeImg = document.querySelector('.about-me-img');
-    const originalAboutMeBg = 'url("/images/flamenco-153.png")';
-    const newAboutMeBg = 'url("/images/flamenco-137.png")';
+    const originalAboutMeBg = 'url("users/Danielle73/images/flamenco-153.png")';
+    const newAboutMeBg = 'url("users/Danielle73/images/flamenco-137.png")';
 
     if (isDarkMode) {
         aboutMeImg.style.backgroundImage = newAboutMeBg;
