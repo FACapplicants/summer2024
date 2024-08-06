@@ -1,10 +1,14 @@
-#SIMON Game
+# SIMON Game
 
 The SIMON game was a collaborative project between Danielle and Jack. The aim of the SIMON game is to memorise and submit the correct colour pattern that SIMON flashes on the screen. The colour pattern increases by one colour each level unless the player submits an incorrect colour, in which case the game will restart at level one.
 
 **Intro:** 
 
 Not to be mistaken for Simon Says, the main goal of SIMON is to challenge and improve short-term memory. Gameplay for SIMON is as follows:
+
+
+![Screenshot of SIMON start screen](https://raw.githubusercontent.com/FACapplicants/summer2024/main/users/Danielle%26JackGame/Simon%20game%20Vanilla/assets/SimonGame.png)
+
 
 - SIMON flashes a colour and plays a corresponding tone for the player.
 - The player must submit that colour correctly to proceed to the next level.
@@ -31,6 +35,9 @@ For user enjoyment, we established four levels of difficulty for SIMON:
 - Normal
 - Hard
 - Impossible
+
+![Screenshot of SIMON start screen](https://raw.githubusercontent.com/FACapplicants/summer2024/main/users/Danielle%26JackGame/Simon%20game%20Vanilla/assets/SimonLevels.png)
+
 
 Users can select from the four options to either increase or decrease game speed. By default, it is set to Normal.
 
