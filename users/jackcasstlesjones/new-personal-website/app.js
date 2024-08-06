@@ -29,6 +29,9 @@ const updateNavBar = () => {
 
 updateNavBar();
 
+navbarHome.addEventListener("click", function () {
+  changeNav("home");
+});
 navbarAbout.addEventListener("click", function () {
   changeNav("about");
 });
