@@ -338,7 +338,6 @@ nav {
 .mouse-container {
   position: absolute;
   bottom: 2rem;
-  left: 50%;
 }
 
 .mouse {
@@ -524,7 +523,7 @@ nav {
   border-color: white;
 }
 
-.learning-resource-card h3 {
+.learning-resource-title {
   margin-bottom: 5rem;
   font-family: "cormorant", sans-serif;
   font-weight: 500;

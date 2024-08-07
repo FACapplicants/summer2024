@@ -29,6 +29,9 @@ const updateNavBar = () => {
 
 updateNavBar();
 
+navbarHome.addEventListener("click", function () {
+  changeNav("home");
+});
 navbarAbout.addEventListener("click", function () {
   changeNav("about");
 });
@@ -52,7 +55,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault();
 
-    document.querySelector(this.getAttribute("href")).scrollIntoView({
+    document.querySelector(anchor.getAttribute("href")).scrollIntoView({
       behavior: "smooth",
     });
   });
