@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="'viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/khalos.css">
+  <title>Khalos Portfolio</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+<body>
+  <!-- NAVBAR: -->
+  <nav id="navbar" class="nav">
+    <ul class="nav-list">
+      <li>
+        <a class="link" href="#welcome-section">Info</a>
+      </li>
+      <li>
+        <a class="link" href="#projects">Projects</a>
+      </li>
+      <li>
+        <a class="link" href="#contact">Contacts</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- INFO: -->
+  <section id="welcome-section" class="welcome-section">
+    <h1>Hi everyone, this is Khalos!</h1>
+    <p>Web Developer by <button id="light-mode" class="light-mode">day</button> Super Hero by </button>
+      <button id="dark-mode" class="dark-mode">night</button>
+    </p>
+    <div>
+      <img src="images/sh-day.png" class="sh-day" id="sh-day">
+    </div>
+  </section>
+
+  <!-- PROJECTS: -->
+  <section id="projects" class="projects-section">
+    <h2 class="projects-section-header">These are some of my projects</h2>
+    <div class="projects-grid">
+      <a href="todo-list.html" target="_blank" class="project"><img id="image" class="image"
+          src="images/todo-list-png.webp" alt="todo-list"></a>
+      <a href="rock-paper-scrissors.html" class="project" target="_blank"><img id="image" class="image"
+          src="images/rps-game.png" alt="rock-paper-scrissors"></a>
+      <a href="ekans.html" class="project" target="_blank"><img id="image" class="image" src="images/ekans.png"
+          alt="ekans"></a>
+      <a href="calculator.html" class="project" target="_blank"><img id="image" class="image"
+          src="images/calculator.png" alt="calculator"></a>
+    </div>
+  </section>
+
+  <!-- CONTACTS: -->
+  <section id="contact" class="contact-section">
+    <div class="contact-section-header">
+      <h2>Let's build new software together</h2>
+    </div>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/khalosmoscato/" targer="_blank" class="btn contact-details"><i class='fab fa-linkedin-in'></i> LinkedIn</a>
+      <a id="profile-link" href="https://github.com/khalosmoscato" target="_blank" class="btn contact-details">
+        <i class="fab fa-github"></i> GitHub</a>
+      <a href="mailto:khalos.moscato@icloud.com" class="btn contact-details"><i class="fas fa-at"></i> eMail</a>
+    </div>
+  </section>
+  
+<!-- FOOTER: -->
+  <footer id="footer" class="footer">
+    <p>Created for </p>
+    <svg viewBox="-1 0 301 141" fill="none" width="140" class="site-logo" stroke-width="1"
+      xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="diagonalHatch" patternUnits="userSpaceOnUse" width="5" height="5">
+          <path d="M-1,1 l2,-2 M0,5 l5,-5 M4,6 l2,-2" stroke="black" strokewidth="1"></path>
+        </pattern>
+      </defs>
+      <g id="square">
+        <rect width="100" height="100" stroke="black"></rect>
+        <rect width="100" height="50" fill="black"></rect>
+        <rect width="50" height="50" x="50" y="50" fill="url(#diagonalHatch)"></rect>
+      </g>
+      <g id="triangle" transform="translate(8, 0)">
+        <polygon points="100,100 150,0 200, 100" stroke="black"></polygon>
+        <polygon points="100,100 125,50 150,100" fill="black"></polygon>
+        <polygon points="150, 100 175,50, 200,100" fill="black"></polygon>
+        <polygon points="125,50 150,100 175,50" fill="url(#diagonalHatch)"></polygon>
+      </g>
+      <g id="circle">
+        <ellipse cx="250" cy="50" rx="50" ry="50" stroke="black"></ellipse>
+        <ellipse cx="250" cy="50" rx="22" ry="22" fill="url(#diagonalHatch)"></ellipse>
+        <path d="M250,0 a1,1 0 0,1 0,100" fill="black"></path>
+      </g>
+      <text x="0" y="128" text-length="301" length-adjust="spacingAndGlyphs" stroke="none" fill="black"
+        style="font-size: 26px; text-transform: uppercase;">
+        <a href="https://www.foundersandcoders.com/" target="_blank">Founders & coders</a>
+      </text>
+    </svg>
+
+  </footer>
+
+  <script src="scripts/khalos.js"></script>
+</body>
+
+</html>
